@@ -36,7 +36,7 @@ author_img: img/author.jpg ## size:220px*220px.display author avatar picture.if 
 banner_img: #img/banner.jpg ## size:1920px*200px+. Banner Picture
 ### Theme Color 
 theme_color:
-    theme: '#2ca6cb'    ##the defaut theme color is blue
+    theme: '#dd4b39'    ##the defaut theme color is blue  #2ca6cb 
 
 # 代码高亮主题
 # available: default | night
@@ -56,16 +56,16 @@ creative_commons: none
 
 #### Author information
 author:
-  intro_line1:  "Hello ,I'm Larry Page in Google."    ## your introduction on the bottom of the page
-  intro_line2:  "This is my blog,believe it or not."  ## the 2nd line
-  weibo: 2176287895     ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
-  weibo_verifier: b3593ceb    ## e.g. b3593ceb Your weibo-show widget verifier ,if you use weibo-show it is needed.
+  intro_line1:  "Welcome to Ryukie`s Fantasty World!!"    ## your introduction on the bottom of the page
+  intro_line2:  "Ryukie Wang"  ## the 2nd line
+  ##weibo: 2176287895     ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
+  ## weibo_verifier: b3593ceb    ## e.g. b3593ceb Your weibo-show widget verifier ,if you use weibo-show it is needed.
   tsina:      ## e.g. 2176287895  Your weibo ID,It will be used in share button.
   douban:     ## e.g. wuchong1014 or your id for https://www.douban.com/people/wuchong1014
   zhihu:      ## e.g. jark  for http://www.zhihu.com/people/jark
-  email:      ## e.g. imjark@gmail.com
+  email: ryukie.sama@gmail.com     ## e.g. imjark@gmail.com
   twitter:    ## e.g. jarkwu for https://twitter.com/jarkwu
-  github:     ## e.g. wuchong for https://github.com/wuchong
+  github: https://github.com/RyukieSama     ## e.g. wuchong for https://github.com/wuchong
   facebook:   ## e.g. imjark for https://facebook.com/imjark
   linkedin:   ## e.g. wuchong1014 for https://www.linkedin.com/in/wuchong1014
   google_plus:    ## e.g. "111190881341800841449" for https://plus.google.com/u/0/111190881341800841449, the "" is needed!
@@ -81,13 +81,13 @@ toc:
 
 #### Links
 links:
-  码农圈: https://coderq.com,一个面向程序员交流分享的新一代社区
-  Jark's Blog: http://wuchong.me
+  #码农圈: https://coderq.com,一个面向程序员交流分享的新一代社区
+  #Jark's Blog: http://wuchong.me
 
 
 
 #### Comment
-duoshuo_shortname:    ## e.g. wuchong   your duoshuo short name.
+duoshuo_shortname: Ryuk   ## e.g. wuchong   your duoshuo short name.
 disqus_shortname:     ## e.g. wuchong   your disqus short name.
 
 #### Share button
