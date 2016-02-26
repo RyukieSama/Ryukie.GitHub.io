@@ -68,4 +68,6 @@ theme: jacman
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repository: https://github.com/RyukieSama/Ryukie.GitHub.io.git
+  branch: gh-pages
