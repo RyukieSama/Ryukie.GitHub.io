@@ -49,7 +49,7 @@ for (int i = 0; i < largeNumber; ++i) {
 - 保证应用程序不退出
 - 实现: 一个死循环不断地监视事件 (方法,点击事件等),并执行对应的方法
 - [面试会问]app是如何运行的?
-![](https://github.com/RyukieSama/Ryukie.GitHub.io/blob/gh-pages/images/79FFBB31-E37D-440D-8870-E3092C958B2C.png
+![](https://github.com/RyukieSama/Ryukie.GitHub.io/blob/gh-pages/images/79FFBB31-E37D-440D-8870-E3092C958B2C.png?raw=true
 )
 - 执行流程详细描述:
     - 应用程序开启 -> 创建一个消息循环 -> 监视事件 -> 接收到事件 -> 执行创建自动释放次并执行相应操作 -> 将执行中产生的对象丢入刚才创建的那个自动释放池 -> 消息执行结束 -> 自动释放池销毁(对其中所有对象发送一个 release消息,销毁对象) -> 一次消息循环结束 -> 开始下一次消息循环
