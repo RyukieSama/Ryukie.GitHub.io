@@ -36,7 +36,7 @@ author_img: img/author.jpg ## size:220px*220px.display author avatar picture.if 
 banner_img: #img/banner.jpg ## size:1920px*200px+. Banner Picture
 ### Theme Color 
 theme_color:
-    theme: '#dd4b39'    ##the defaut theme color is blue  #2ca6cb 
+    theme: '#00aced'    ##the defaut theme color is blue  #2ca6cb 
 
 # 代码高亮主题
 # available: default | night
@@ -44,7 +44,7 @@ highlight_theme: default
 
 #### index post is expanding or not 
 index:
-  expand: true           ## default is unexpanding,so you can only see the short description of each post.
+  expand: false           ## default is unexpanding,so you can only see the short description of each post.
   excerpt_link: Read More  
 
 close_aside: false  #close sidebar in post page if true
