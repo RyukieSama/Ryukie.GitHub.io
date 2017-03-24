@@ -1,6 +1,6 @@
 title: AutoreleasePool
 date: 2016-03-21 01:27:31
-tags:
+tags: iOS_UI
 ---
 自动释放池
 
