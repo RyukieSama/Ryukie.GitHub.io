@@ -1,0 +1,499 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Nodejs StudyNotes_01 | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="[TOC] Node.js 学习笔记01 最近开始学习 Node.js 了为了给自己的游戏做服务本来就是个懒人…不喜欢写东西还是要逼自己一把了  Node.js 事件循环Node.js是单进程应用程序,但是通过事件和回调支持并发,所以性能非常高.每一个API都是异步的,并作为一个独立线程运行,使用异步函数调用,并处理并发.基本上所有的事件机制都是用观察者模式实现的.单线程类似进入一个while(t">
+<meta name="keywords" content="Nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nodejs StudyNotes_01">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/08/15/Node-js-StudyNotes-01/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="[TOC] Node.js 学习笔记01 最近开始学习 Node.js 了为了给自己的游戏做服务本来就是个懒人…不喜欢写东西还是要逼自己一把了  Node.js 事件循环Node.js是单进程应用程序,但是通过事件和回调支持并发,所以性能非常高.每一个API都是异步的,并作为一个独立线程运行,使用异步函数调用,并处理并发.基本上所有的事件机制都是用观察者模式实现的.单线程类似进入一个while(t">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15027293122199.jpg">
+<meta property="og:updated_time" content="2017-08-15T12:01:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nodejs StudyNotes_01">
+<meta name="twitter:description" content="[TOC] Node.js 学习笔记01 最近开始学习 Node.js 了为了给自己的游戏做服务本来就是个懒人…不喜欢写东西还是要逼自己一把了  Node.js 事件循环Node.js是单进程应用程序,但是通过事件和回调支持并发,所以性能非常高.每一个API都是异步的,并作为一个独立线程运行,使用异步函数调用,并处理并发.基本上所有的事件机制都是用观察者模式实现的.单线程类似进入一个while(t">
+<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15027293122199.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2017/08/15/Node-js-StudyNotes-01/" title="Nodejs StudyNotes_01" itemprop="url">Nodejs StudyNotes_01</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-14T16:25:00.000Z" itemprop="datePublished"> 发表于 2017-08-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js-学习笔记01"><span class="toc-number">1.</span> <span class="toc-text">Node.js 学习笔记01</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js-事件循环"><span class="toc-number">1.1.</span> <span class="toc-text">Node.js 事件循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件驱动程序"><span class="toc-number">1.2.</span> <span class="toc-text">事件驱动程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventEmitter"><span class="toc-number">1.3.</span> <span class="toc-text">EventEmitter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer"><span class="toc-number">1.4.</span> <span class="toc-text">Buffer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建方式"><span class="toc-number">1.4.1.</span> <span class="toc-text">创建方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1-创建指定字节数的Buffer"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">方法1: 创建指定字节数的Buffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2-通过给定的数组创建Buffer"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">方法2: 通过给定的数组创建Buffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法3-通过一个字符串来创建Buffer"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">方法3: 通过一个字符串来创建Buffer</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写入缓存区"><span class="toc-number">1.4.2.</span> <span class="toc-text">写入缓存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取缓存数据"><span class="toc-number">1.4.3.</span> <span class="toc-text">读取缓存数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将Buffer转化为JSON对象"><span class="toc-number">1.4.4.</span> <span class="toc-text">将Buffer转化为JSON对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并Buffer"><span class="toc-number">1.4.5.</span> <span class="toc-text">合并Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓冲区对比"><span class="toc-number">1.4.6.</span> <span class="toc-text">缓冲区对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Copy"><span class="toc-number">1.4.7.</span> <span class="toc-text">Copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#剪裁-Slice"><span class="toc-number">1.4.8.</span> <span class="toc-text">剪裁 Slice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#length"><span class="toc-number">1.4.9.</span> <span class="toc-text">length</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream-流"><span class="toc-number">1.5.</span> <span class="toc-text">Stream 流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四种流类型"><span class="toc-number">1.5.1.</span> <span class="toc-text">四种流类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所有Stream都是EventEmitter的实例-常用事件有"><span class="toc-number">1.5.2.</span> <span class="toc-text">所有Stream都是EventEmitter的实例 常用事件有</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道流"><span class="toc-number">1.5.3.</span> <span class="toc-text">管道流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链式流"><span class="toc-number">1.5.4.</span> <span class="toc-text">链式流</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<p>[TOC]</p>
+<h1 id="Node-js-学习笔记01"><a href="#Node-js-学习笔记01" class="headerlink" title="Node.js 学习笔记01"></a>Node.js 学习笔记01</h1><blockquote>
+<p>最近开始学习 <code>Node.js</code> 了为了给自己的游戏做服务<br>本来就是个懒人…不喜欢写东西<br>还是要逼自己一把了</p>
+</blockquote>
+<h2 id="Node-js-事件循环"><a href="#Node-js-事件循环" class="headerlink" title="Node.js 事件循环"></a>Node.js 事件循环</h2><p>Node.js是单进程应用程序,但是通过<code>事件</code>和<code>回调</code>支持并发,所以性能非常高.<br>每一个API都是异步的,并作为一个独立线程运行,使用<code>异步函数</code>调用,并处理并发.<br>基本上所有的事件机制都是用<code>观察者模式</code>实现的.<br>单线程类似进入一个<code>while(true)</code>的死循环中,直到没有事件观察者退出,每个异步事件都会生成一个<code>事件观察者(eventEmitter)</code>如果有时间发生就调用该回调函数</p>
+<blockquote>
+<p>看到这里感觉类似<code>iOS</code>中的<code>运行循环</code></p>
+</blockquote>
+<h2 id="事件驱动程序"><a href="#事件驱动程序" class="headerlink" title="事件驱动程序"></a>事件驱动程序</h2><p>使用事件驱动模型,当<code>webServer</code>接收到请求,就把请求关闭掉进行处理,然后去服务下一个请求.<br>当请求完成后,放入<code>loop</code>中,当达到队列开头,最终返回给用户.<br>这个模型非常高效且拓展性强,server一直接收请求二不等待任何读写操作.(这也被称为:<code>非阻塞式IO</code>或者<code>事件驱动IO</code>)<br>在事件驱动模型中,会生成一个主循环来监听事件,当检测到事件时触发回调函数.</p>
+<ul>
+<li>[ ] loop是个同步队列?应该是遵循<code>FIFO</code>的规则即先进先出的把?</li>
+</ul>
+<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15027293122199.jpg" alt=""></p>
+<h2 id="EventEmitter"><a href="#EventEmitter" class="headerlink" title="EventEmitter"></a>EventEmitter</h2><h2 id="Buffer"><a href="#Buffer" class="headerlink" title="Buffer"></a>Buffer</h2><p>JS本身只有字符串数据类型没有二进制数据类型.<br>但在处理<code>TCP流</code>或<code>文件流</code>时必须使用二进制数据.因此在Node.js中定义了一个Buffer类,该类来创建一个专门方二进制数据的缓存区.<br>一个<code>Buffer</code>类似于一个<code>整数数组</code>,但它对应<code>V8堆内存</code>之外的一块<code>原始内存</code>.</p>
+<h3 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h3><h4 id="方法1-创建指定字节数的Buffer"><a href="#方法1-创建指定字节数的Buffer" class="headerlink" title="方法1: 创建指定字节数的Buffer"></a>方法1: 创建指定字节数的Buffer</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buf = new <span class="type">Buffer</span>(<span class="number">26</span>);</div></pre></td></tr></table></figure>
+<h4 id="方法2-通过给定的数组创建Buffer"><a href="#方法2-通过给定的数组创建Buffer" class="headerlink" title="方法2: 通过给定的数组创建Buffer"></a>方法2: 通过给定的数组创建Buffer</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buf = new <span class="type">Buffer</span>([<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]);</div></pre></td></tr></table></figure>
+<h4 id="方法3-通过一个字符串来创建Buffer"><a href="#方法3-通过一个字符串来创建Buffer" class="headerlink" title="方法3: 通过一个字符串来创建Buffer"></a>方法3: 通过一个字符串来创建Buffer</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buf = new <span class="type">Buffer</span>('<span class="type">HelloWorld'</span>);</div></pre></td></tr></table></figure>
+<h3 id="写入缓存区"><a href="#写入缓存区" class="headerlink" title="写入缓存区"></a>写入缓存区</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.write(string,offset,length,encoding)</div></pre></td></tr></table></figure>
+<p>返回实际写入的大小,如果控件不足则只会写入部分字符串.</p>
+<h3 id="读取缓存数据"><a href="#读取缓存数据" class="headerlink" title="读取缓存数据"></a>读取缓存数据</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.<span class="built_in">toString</span>(encoding,start,end);</div></pre></td></tr></table></figure>
+<h3 id="将Buffer转化为JSON对象"><a href="#将Buffer转化为JSON对象" class="headerlink" title="将Buffer转化为JSON对象"></a>将Buffer转化为JSON对象</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.toJson()</div></pre></td></tr></table></figure>
+<h3 id="合并Buffer"><a href="#合并Buffer" class="headerlink" title="合并Buffer"></a>合并Buffer</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buffA = new <span class="type">Buffer</span>('<span class="type">Hello'</span>);</div><div class="line"><span class="keyword">var</span> buffB = new <span class="type">Buffer</span>('<span class="type">World'</span>);</div><div class="line"><span class="keyword">var</span> buffC = <span class="type">Buffer</span>.concat([buffA,buffB],<span class="number">6</span>);</div><div class="line">console.log(buffC.<span class="built_in">toString</span>('ascii'));</div></pre></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">HelloW</span></div></pre></td></tr></table></figure>
+<h3 id="缓冲区对比"><a href="#缓冲区对比" class="headerlink" title="缓冲区对比"></a>缓冲区对比</h3><p>这里对比的应该是<code>ASCII</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> buffA = new <span class="type">Buffer</span>('<span class="type">Hello'</span>);</div><div class="line"><span class="keyword">var</span> buffB = new <span class="type">Buffer</span>('<span class="type">World'</span>);</div><div class="line"></div><div class="line"><span class="comment">//缓冲区对比</span></div><div class="line"><span class="keyword">var</span> result = <span class="type">Buffer</span>.compare(buffA,buffB);</div><div class="line">console.log('result=' + result);</div><div class="line"><span class="keyword">if</span> (result == <span class="number">0</span>) &#123;</div><div class="line">    console.log('相同');</div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (result &lt; <span class="number">0</span>) &#123;</div><div class="line">    console.log('第一个在第二个前面');</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    console.log('第一个在第二个后面');</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">result=-<span class="number">1</span></div><div class="line">第一个在第二个前面</div></pre></td></tr></table></figure>
+<h3 id="Copy"><a href="#Copy" class="headerlink" title="Copy"></a>Copy</h3><h3 id="剪裁-Slice"><a href="#剪裁-Slice" class="headerlink" title="剪裁 Slice"></a>剪裁 Slice</h3><p>返回一个新的缓冲区,他和旧的缓冲区指向同一块内存,但是从索引 start 到 end 的位置剪切.</p>
+<h3 id="length"><a href="#length" class="headerlink" title="length"></a>length</h3><h2 id="Stream-流"><a href="#Stream-流" class="headerlink" title="Stream 流"></a>Stream 流</h2><p><code>Stream</code> 是一个抽象接口,Node中很多对象都实现了这个接口.例如,对http服务器发起请求的<code>request</code>对象就是一个Stream,还有<code>stdout(标准输出)</code>.</p>
+<h3 id="四种流类型"><a href="#四种流类型" class="headerlink" title="四种流类型"></a>四种流类型</h3><ul>
+<li>Readable 可读操作</li>
+<li>Writable 可写操作</li>
+<li>Duplex 可读可写操作</li>
+<li>Transform 操作被写入数据,然后读出结果</li>
+</ul>
+<h3 id="所有Stream都是EventEmitter的实例-常用事件有"><a href="#所有Stream都是EventEmitter的实例-常用事件有" class="headerlink" title="所有Stream都是EventEmitter的实例 常用事件有"></a>所有Stream都是EventEmitter的实例 常用事件有</h3><ul>
+<li>data 当有数可读时触发</li>
+<li>end 没有更多数据可读时触发</li>
+<li>error 接收和写入的过程发生错误时触发</li>
+<li>finish 所有数据已被写入到底层系统时触发(只有read操作才有的)</li>
+</ul>
+<h3 id="管道流"><a href="#管道流" class="headerlink" title="管道流"></a>管道流</h3><p>管道提供了一个输出流到输入流的机制.<br>通常用于从一个流中获取数据并将数据传递到另一个流中.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fileIn = 'hello.txt';</div><div class="line"><span class="keyword">var</span> fileOut = 'world.txt';</div><div class="line"><span class="keyword">var</span> fs = require('fs');</div><div class="line"></div><div class="line"><span class="keyword">var</span> readStream = fs.createReadStream(fileIn);</div><div class="line"><span class="keyword">var</span> writeStream = fs.createWriteStream(fileOut);</div><div class="line"></div><div class="line"><span class="comment">//管道操作    读取文件写入另一个文件中</span></div><div class="line">readStream.pipe(writeStream);</div><div class="line">console.log('end');</div></pre></td></tr></table></figure>
+<h3 id="链式流"><a href="#链式流" class="headerlink" title="链式流"></a>链式流</h3><p>是通过链接输出流到另一个流并创建多个流操作链的机制.<br>一般用于管道操作.和链式调用差不多</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/Nodejs/">Nodejs</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2017/08/15/hello-world/" title="Hello World">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Hello World</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2017/06/08/iOS-RYPhotosBrowser/"  title="iOS_RYPhotosBrowser">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS_RYPhotosBrowser
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/08/15/Node-js-StudyNotes-01/" data-title="Nodejs StudyNotes_01" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/08/15/Node-js-StudyNotes-01/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js-学习笔记01"><span class="toc-number">1.</span> <span class="toc-text">Node.js 学习笔记01</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js-事件循环"><span class="toc-number">1.1.</span> <span class="toc-text">Node.js 事件循环</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件驱动程序"><span class="toc-number">1.2.</span> <span class="toc-text">事件驱动程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventEmitter"><span class="toc-number">1.3.</span> <span class="toc-text">EventEmitter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Buffer"><span class="toc-number">1.4.</span> <span class="toc-text">Buffer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建方式"><span class="toc-number">1.4.1.</span> <span class="toc-text">创建方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法1-创建指定字节数的Buffer"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">方法1: 创建指定字节数的Buffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法2-通过给定的数组创建Buffer"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">方法2: 通过给定的数组创建Buffer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法3-通过一个字符串来创建Buffer"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">方法3: 通过一个字符串来创建Buffer</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写入缓存区"><span class="toc-number">1.4.2.</span> <span class="toc-text">写入缓存区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取缓存数据"><span class="toc-number">1.4.3.</span> <span class="toc-text">读取缓存数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#将Buffer转化为JSON对象"><span class="toc-number">1.4.4.</span> <span class="toc-text">将Buffer转化为JSON对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#合并Buffer"><span class="toc-number">1.4.5.</span> <span class="toc-text">合并Buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缓冲区对比"><span class="toc-number">1.4.6.</span> <span class="toc-text">缓冲区对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Copy"><span class="toc-number">1.4.7.</span> <span class="toc-text">Copy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#剪裁-Slice"><span class="toc-number">1.4.8.</span> <span class="toc-text">剪裁 Slice</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#length"><span class="toc-number">1.4.9.</span> <span class="toc-text">length</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream-流"><span class="toc-number">1.5.</span> <span class="toc-text">Stream 流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四种流类型"><span class="toc-number">1.5.1.</span> <span class="toc-text">四种流类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#所有Stream都是EventEmitter的实例-常用事件有"><span class="toc-number">1.5.2.</span> <span class="toc-text">所有Stream都是EventEmitter的实例 常用事件有</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#管道流"><span class="toc-number">1.5.3.</span> <span class="toc-text">管道流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链式流"><span class="toc-number">1.5.4.</span> <span class="toc-text">链式流</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

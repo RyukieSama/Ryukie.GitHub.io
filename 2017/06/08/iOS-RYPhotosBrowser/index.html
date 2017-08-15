@@ -1,0 +1,474 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS_RYPhotosBrowser | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="RYPhotosBrowser亮点 可高度自定义的图片浏览控件 支持多种图片传入类型:  本地文件路径 网络图片NSString  UIImage对象或者三者混合 基于SDWebImage4.0 可自定义加载阶段HUD  导入方式iOS 9+pod ‘RYPhotosBrowser’ 两种弹出姿势 从图片容器放大恢复   12345678910[RYImageBrowser showBrowser">
+<meta name="keywords" content="轮子">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS_RYPhotosBrowser">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/06/08/iOS-RYPhotosBrowser/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="RYPhotosBrowser亮点 可高度自定义的图片浏览控件 支持多种图片传入类型:  本地文件路径 网络图片NSString  UIImage对象或者三者混合 基于SDWebImage4.0 可自定义加载阶段HUD  导入方式iOS 9+pod ‘RYPhotosBrowser’ 两种弹出姿势 从图片容器放大恢复   12345678910[RYImageBrowser showBrowser">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/14968906918877.gif">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/14968935108832.gif">
+<meta property="og:updated_time" content="2017-08-15T12:01:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS_RYPhotosBrowser">
+<meta name="twitter:description" content="RYPhotosBrowser亮点 可高度自定义的图片浏览控件 支持多种图片传入类型:  本地文件路径 网络图片NSString  UIImage对象或者三者混合 基于SDWebImage4.0 可自定义加载阶段HUD  导入方式iOS 9+pod ‘RYPhotosBrowser’ 两种弹出姿势 从图片容器放大恢复   12345678910[RYImageBrowser showBrowser">
+<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/14968906918877.gif">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2017/06/08/iOS-RYPhotosBrowser/" title="iOS_RYPhotosBrowser" itemprop="url">iOS_RYPhotosBrowser</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-08T05:29:17.000Z" itemprop="datePublished"> 发表于 2017-06-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RYPhotosBrowser"><span class="toc-number">1.</span> <span class="toc-text">RYPhotosBrowser</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#亮点"><span class="toc-number">1.1.</span> <span class="toc-text">亮点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入方式"><span class="toc-number">1.2.</span> <span class="toc-text">导入方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种弹出姿势"><span class="toc-number">1.3.</span> <span class="toc-text">两种弹出姿势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置分页样式"><span class="toc-number">1.4.</span> <span class="toc-text">设置分页样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调用方法"><span class="toc-number">1.5.</span> <span class="toc-text">调用方法</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="RYPhotosBrowser"><a href="#RYPhotosBrowser" class="headerlink" title="RYPhotosBrowser"></a>RYPhotosBrowser</h1><h2 id="亮点"><a href="#亮点" class="headerlink" title="亮点"></a>亮点</h2><blockquote>
+<p>可高度自定义的图片浏览控件</p>
+<p>支持多种图片传入类型:  <code>本地文件路径</code> <code>网络图片NSString</code>  <code>UIImage对象</code>或<code>者三者混合</code></p>
+<p>基于SDWebImage4.0</p>
+<p>可自定义加载阶段HUD</p>
+</blockquote>
+<h2 id="导入方式"><a href="#导入方式" class="headerlink" title="导入方式"></a>导入方式</h2><p>iOS 9+<br>pod ‘RYPhotosBrowser’</p>
+<h2 id="两种弹出姿势"><a href="#两种弹出姿势" class="headerlink" title="两种弹出姿势"></a>两种弹出姿势</h2><ul>
+<li>从图片容器放大恢复</li>
+</ul>
+<p><img src="http://ohfpqyfi7.bkt.clouddn.com/14968906918877.gif" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">[<span class="type">RYImageBrowser</span> showBrowserWithImageURLs:arr atIndex:[obj integerValue] withPageStyle:<span class="type">RYImageBrowserPageStyleAuto</span> fromImageView:weakSelf.vCover withProgress:^(<span class="type">NSInteger</span> receivedSize, <span class="type">NSInteger</span> expectedSize, <span class="type">NSURL</span> *targetURL) &#123;</div><div class="line">                <span class="type">NSLog</span>(@<span class="string">"withProgress"</span>);</div><div class="line">                [<span class="type">SVProgressHUD</span> show];</div><div class="line">            &#125; changImage:^(<span class="type">NSInteger</span> receivedSize, <span class="type">NSInteger</span> expectedSize, <span class="type">NSURL</span> *targetURL) &#123;</div><div class="line">                <span class="type">NSLog</span>(@<span class="string">"changImage"</span>);</div><div class="line">                [<span class="type">SVProgressHUD</span> dismiss];</div><div class="line">            &#125; loadedImage:^(<span class="type">NSInteger</span> receivedSize, <span class="type">NSInteger</span> expectedSize, <span class="type">NSURL</span> *targetURL) &#123;</div><div class="line">                <span class="type">NSLog</span>(@<span class="string">"loadedImage"</span>);</div><div class="line">                [<span class="type">SVProgressHUD</span> dismiss];</div><div class="line">            &#125;];</div></pre></td></tr></table></figure>
+<ul>
+<li>渐变放大</li>
+</ul>
+<p><img src="http://ohfpqyfi7.bkt.clouddn.com/14968935108832.gif" alt=""></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="type">RYImageBrowser</span> showBrowserWithImageURLs:arr atIndex:[obj integerValue] withPageStyle:<span class="type">RYImageBrowserPageStyleAuto</span>];</div></pre></td></tr></table></figure>
+<h2 id="设置分页样式"><a href="#设置分页样式" class="headerlink" title="设置分页样式"></a>设置分页样式</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">typedef <span class="type">NS_ENUM</span>(<span class="type">NSInteger</span>, <span class="type">RYImageBrowserPageStyle</span>) &#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     9张以内显示点点点    大于9张显示文字序号</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="type">RYImageBrowserPageStyleAuto</span> = <span class="number">99</span>,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     显示点点点</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="type">RYImageBrowserPageStylePoints</span> = <span class="number">100</span>,</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     显示文字</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="type">RYImageBrowserPageStyleText</span> = <span class="number">101</span>,</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> show   自定义分页样式</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment"> @param imageURLs 图片数组  UIImage 和 URLString(webURL/本地路径) 都行  混合也行   @[UIImage ,UIImage UIImage , ...]  或  @[NSString, NSString ,NSString , ...]  或 @[UIImage ,NSString ,UIImage , ...]</span></div><div class="line"><span class="comment"> @param index 当前第几张   从0 开始</span></div><div class="line"><span class="comment"> @param style 页码样式</span></div><div class="line"><span class="comment"> */</span></div><div class="line">+ (void)showBrowserWithImageURLs:(<span class="type">NSArray</span> *)imageURLs atIndex:(<span class="type">NSInteger</span>)index withPageStyle:(<span class="type">RYImageBrowserPageStyle</span>)style;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> show   自定义分页样式</span></div><div class="line"><span class="comment"> </span></div><div class="line"><span class="comment"> @param imageURLs 图片数组  UIImage 和 URLString(webURL/本地路径) 都行  混合也行   @[UIImage ,UIImage UIImage , ...]  或  @[NSString, NSString ,NSString , ...]  或 @[UIImage ,NSString ,UIImage , ...]</span></div><div class="line"><span class="comment"> @param index 当前第几张   从0 开始</span></div><div class="line"><span class="comment"> @param style 页码样式</span></div><div class="line"><span class="comment"> @param imageView 点击的图片容器</span></div><div class="line"><span class="comment"> */</span></div><div class="line">+ (void)showBrowserWithImageURLs:(<span class="type">NSArray</span> *)imageURLs atIndex:(<span class="type">NSInteger</span>)index withPageStyle:(<span class="type">RYImageBrowserPageStyle</span>)style fromImageView:(<span class="type">UIView</span> *)imageView;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> show   自定义分页样式</span></div><div class="line"><span class="comment"> </span></div><div class="line"><span class="comment"> @param imageURLs 图片数组  UIImage 和 URLString(webURL/本地路径) 都行  混合也行   @[UIImage ,UIImage UIImage , ...]  或  @[NSString, NSString ,NSString , ...]  或 @[UIImage ,NSString ,UIImage , ...]</span></div><div class="line"><span class="comment"> @param index 当前第几张   从0 开始</span></div><div class="line"><span class="comment"> @param style 页码样式</span></div><div class="line"><span class="comment"> @param imageView 点击的图片容器</span></div><div class="line"><span class="comment"> @param progress 加载图片中的回调  在此可自定义添加HUD等操作</span></div><div class="line"><span class="comment"> @param changed 切换图片的回调</span></div><div class="line"><span class="comment"> @param loaded 图片完成的回调</span></div><div class="line"><span class="comment"> */</span></div><div class="line">+ (void)showBrowserWithImageURLs:(<span class="type">NSArray</span> *)imageURLs atIndex:(<span class="type">NSInteger</span>)index withPageStyle:(<span class="type">RYImageBrowserPageStyle</span>)style fromImageView:(<span class="type">UIView</span> *)imageView withProgress:(<span class="type">RYWebImageDownloaderProgressBlock</span>)progress changImage:(<span class="type">RYWebImageDownloaderProgressBlock</span>)changed loadedImage:(<span class="type">RYWebImageDownloaderProgressBlock</span>)loaded;</div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/轮子/">轮子</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2017/08/15/Node-js-StudyNotes-01/" title="Nodejs StudyNotes_01">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Nodejs StudyNotes_01</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2017/06/05/RYImagePicker-iOS图片视频选择器/"  title="RYImagePicker_iOS图片视频选择器">
+ <strong>下一篇：</strong><br/> 
+ <span>RYImagePicker_iOS图片视频选择器
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/06/08/iOS-RYPhotosBrowser/" data-title="iOS_RYPhotosBrowser" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/06/08/iOS-RYPhotosBrowser/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RYPhotosBrowser"><span class="toc-number">1.</span> <span class="toc-text">RYPhotosBrowser</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#亮点"><span class="toc-number">1.1.</span> <span class="toc-text">亮点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入方式"><span class="toc-number">1.2.</span> <span class="toc-text">导入方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#两种弹出姿势"><span class="toc-number">1.3.</span> <span class="toc-text">两种弹出姿势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置分页样式"><span class="toc-number">1.4.</span> <span class="toc-text">设置分页样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调用方法"><span class="toc-number">1.5.</span> <span class="toc-text">调用方法</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>7</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
