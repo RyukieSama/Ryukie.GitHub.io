@@ -4,24 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>UIWebView自适应高度 | RyukieSama`sDogHouse</title>
+    <title>Storyboard中UnwindSegue的使用 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="场景 最近项目中遇到Native页面内需要内嵌H5页面的需求内嵌的H5页面用来暂时运营后台动态配置的一些运营内容需要自适应H5内容的高度  思路思路一: webViewDidFinishLoad初遇这个问题时我首先想到的是在webViewDidFinishLoad 这个代理方法中通过获取webView的ScrollView的大小去改变内嵌部分的高度 123- (void)webViewDidFin">
+    <meta name="description" content="Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加 之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了  想我这里联线的是按钮 toMain  点击按钮之后就会回到写有 unwindSwgue 的页面  当然传值操作和普通">
 <meta name="keywords" content="iOS_UI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UIWebView自适应高度">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/03/24/UIWebView自适应高度/index.html">
+<meta property="og:title" content="Storyboard中UnwindSegue的使用">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="场景 最近项目中遇到Native页面内需要内嵌H5页面的需求内嵌的H5页面用来暂时运营后台动态配置的一些运营内容需要自适应H5内容的高度  思路思路一: webViewDidFinishLoad初遇这个问题时我首先想到的是在webViewDidFinishLoad 这个代理方法中通过获取webView的ScrollView的大小去改变内嵌部分的高度 123- (void)webViewDidFin">
-<meta property="og:updated_time" content="2017-08-15T12:01:06.000Z">
+<meta property="og:description" content="Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加 之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了  想我这里联线的是按钮 toMain  点击按钮之后就会回到写有 unwindSwgue 的页面  当然传值操作和普通">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15082331645192.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15094637614639.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15094639919780.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15094641190591.jpg">
+<meta property="og:updated_time" content="2017-10-31T15:41:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UIWebView自适应高度">
-<meta name="twitter:description" content="场景 最近项目中遇到Native页面内需要内嵌H5页面的需求内嵌的H5页面用来暂时运营后台动态配置的一些运营内容需要自适应H5内容的高度  思路思路一: webViewDidFinishLoad初遇这个问题时我首先想到的是在webViewDidFinishLoad 这个代理方法中通过获取webView的ScrollView的大小去改变内嵌部分的高度 123- (void)webViewDidFin">
+<meta name="twitter:title" content="Storyboard中UnwindSegue的使用">
+<meta name="twitter:description" content="Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加 之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了  想我这里联线的是按钮 toMain  点击按钮之后就会回到写有 unwindSwgue 的页面  当然传值操作和普通">
+<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15082331645192.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/03/24/UIWebView自适应高度/" title="UIWebView自适应高度" itemprop="url">UIWebView自适应高度</a>
+      <a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/" title="Storyboard中UnwindSegue的使用" itemprop="url">Storyboard中UnwindSegue的使用</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-03-24T08:02:31.000Z" itemprop="datePublished"> Published 2017-03-24</time>
+    <time datetime="2017-10-17T09:35:02.000Z" itemprop="datePublished"> Published 2017-10-17</time>
     
   </p>
 </header>
@@ -97,25 +102,17 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路一-webViewDidFinishLoad"><span class="toc-number">2.1.</span> <span class="toc-text">思路一: webViewDidFinishLoad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路二-KVO"><span class="toc-number">2.2.</span> <span class="toc-text">思路二: KVO</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Storyboard中UnwindSegue的使用"><span class="toc-number">1.</span> <span class="toc-text">Storyboard中UnwindSegue的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在最下层控制器中添加-unwind-segue-的-IBAction"><span class="toc-number">1.1.</span> <span class="toc-text">在最下层控制器中添加 unwind segue 的 IBAction</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><blockquote>
-<p>最近项目中遇到Native页面内需要内嵌H5页面的需求<br>内嵌的H5页面用来暂时运营后台动态配置的一些运营内容<br>需要自适应H5内容的高度</p>
-</blockquote>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="思路一-webViewDidFinishLoad"><a href="#思路一-webViewDidFinishLoad" class="headerlink" title="思路一: webViewDidFinishLoad"></a>思路一: webViewDidFinishLoad</h3><p>初遇这个问题时我首先想到的是在<code>webViewDidFinishLoad</code> 这个代理方法中通过获取<code>webView</code>的<code>ScrollView</code>的大小去改变内嵌部分的高度</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)webViewDidFinishLoad:(<span class="type">UIWebView</span> *)webView &#123;</div><div class="line">    <span class="comment">//<span class="doctag">TODO:</span> 获取高度并改变容器大小</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>但是<br>这个方法执行的时候页面可能还没有完全展示出来,web页面渲染是需要时间的<br>所以<br>在<code>webViewDidFinishLoad</code>中去获取到的高度并不准确</p>
-<h3 id="思路二-KVO"><a href="#思路二-KVO" class="headerlink" title="思路二: KVO"></a>思路二: KVO</h3><p>对!<br>监听<code>webView</code>的<code>scrollView</code>的contentSize的变化</p>
-<blockquote>
-<p>添加监听</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="keyword">self</span>.hybridWebView.scrollView addObserver:<span class="keyword">self</span> forKeyPath:@<span class="string">"contentSize"</span> options:<span class="type">NSKeyValueObservingOptionNew</span> context:<span class="literal">nil</span>];</div></pre></td></tr></table></figure>
-<blockquote>
-<p>触发</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#pragma mark - <span class="type">KVO</span></div><div class="line">- (void)observeValueForKeyPath:(<span class="type">NSString</span> *)keyPath ofObject:(id)object change:(<span class="type">NSDictionary</span>&lt;<span class="type">NSKeyValueChangeKey</span>,id&gt; *)change context:(void *)context &#123;</div><div class="line">    <span class="keyword">if</span> ([keyPath isEqualToString:@<span class="string">"contentSize"</span>]) &#123;</div><div class="line">       <span class="comment">//<span class="doctag">TODO:</span> 获取高度并改变容器大小</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+		<h1 id="Storyboard中UnwindSegue的使用"><a href="#Storyboard中UnwindSegue的使用" class="headerlink" title="Storyboard中UnwindSegue的使用"></a>Storyboard中UnwindSegue的使用</h1><h2 id="在最下层控制器中添加-unwind-segue-的-IBAction"><a href="#在最下层控制器中添加-unwind-segue-的-IBAction" class="headerlink" title="在最下层控制器中添加 unwind segue 的 IBAction"></a>在最下层控制器中添加 <code>unwind segue</code> 的 <code>IBAction</code></h2><p>在一系列跳转关系的控制器中的根控制器中添加一个方法<br>如下图,我就该在红框控制器中添加<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15082331645192.jpg" alt=""></p>
+<p>之后在该控制器后续关联的控制器中点击 <code>exit</code> 可以看到这个 <code>segue</code> 了</p>
+<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15094637614639.jpg" alt=""></p>
+<p>想我这里联线的是按钮 <code>toMain</code>  点击按钮之后就会回到写有 <code>unwindSwgue</code> 的页面</p>
+<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15094639919780.jpg" alt=""></p>
+<p>当然传值操作和普通 <code>segue</code> 一样可以再下面的方法中进行</p>
+<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15094641190591.jpg" alt=""></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -174,18 +171,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2017/03/30/隐藏导航栏下面的线/" title="隐藏导航栏下面的线">
+ <a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" title="使用KVC设置UIAlertAction按钮颜色的Crash">
   <strong>上一篇：</strong><br/>
   <span>
-  隐藏导航栏下面的线</span>
+  使用KVC设置UIAlertAction按钮颜色的Crash</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2016/03/21/autoreleasepool/"  title="AutoreleasePool">
+<a href="/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/"  title="iOS 使用TTF字体">
  <strong>下一篇：</strong><br/> 
- <span>AutoreleasePool
+ <span>iOS 使用TTF字体
 </span>
 </a>
 </div>
@@ -194,7 +191,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/03/24/UIWebView自适应高度/" data-title="UIWebView自适应高度" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/03/24/UIWebView自适应高度/"></div>
+	<div class="ds-thread" data-thread-key="2017/10/17/Storyboard中UnwindSegue的使用/" data-title="Storyboard中UnwindSegue的使用" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/"></div>
 </section>
 
 
@@ -204,7 +201,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">2.</span> <span class="toc-text">思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#思路一-webViewDidFinishLoad"><span class="toc-number">2.1.</span> <span class="toc-text">思路一: webViewDidFinishLoad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路二-KVO"><span class="toc-number">2.2.</span> <span class="toc-text">思路二: KVO</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Storyboard中UnwindSegue的使用"><span class="toc-number">1.</span> <span class="toc-text">Storyboard中UnwindSegue的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在最下层控制器中添加-unwind-segue-的-IBAction"><span class="toc-number">1.1.</span> <span class="toc-text">在最下层控制器中添加 unwind segue 的 IBAction</span></a></li></ol></li></ol>
  
   </div>
 
