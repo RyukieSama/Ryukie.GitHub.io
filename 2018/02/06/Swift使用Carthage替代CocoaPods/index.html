@@ -11,21 +11,21 @@
     
 
     
-    <meta name="description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也">
+    <meta name="description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也需要一个无后缀的配置文件 Carthfil">
 <meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift使用Carthage替代CocoaPods">
 <meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也">
+<meta property="og:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也需要一个无后缀的配置文件 Carthfil">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703205983.jpg">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703379835.jpg">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703670579.jpg">
-<meta property="og:updated_time" content="2018-02-07T02:29:35.557Z">
+<meta property="og:updated_time" content="2018-02-07T08:23:42.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift使用Carthage替代CocoaPods">
-<meta name="twitter:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也">
+<meta name="twitter:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也需要一个无后缀的配置文件 Carthfil">
 <meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg">
 
     
@@ -102,14 +102,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相较于CocoaPods的不同"><span class="toc-number">1.1.</span> <span class="toc-text">相较于CocoaPods的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.2.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">导入第三方库</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.1.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.1.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.2.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">导入第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些坑"><span class="toc-number">1.4.</span> <span class="toc-text">一些坑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-has-no-shared-framework-schemes"><span class="toc-number">1.4.1.</span> <span class="toc-text">01: has no shared framework schemes</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
 		<h1 id="Swift使用Carthage替代CocoaPods"><a href="#Swift使用Carthage替代CocoaPods" class="headerlink" title="Swift使用Carthage替代CocoaPods"></a>Swift使用Carthage替代CocoaPods</h1><blockquote>
 <p>官方地址: <a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">https://github.com/Carthage/Carthage</a><br>参考文章: <a href="https://www.jianshu.com/p/76b9ff09f99c" target="_blank" rel="external">https://www.jianshu.com/p/76b9ff09f99c</a></p>
 </blockquote>
-<h2 id="相较于CocoaPods的不同"><a href="#相较于CocoaPods的不同" class="headerlink" title="相较于CocoaPods的不同"></a>相较于<code>CocoaPods</code>的不同</h2><p>TODO:</p>
 <h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><h3 id="通过-Homebrew-安装"><a href="#通过-Homebrew-安装" class="headerlink" title="通过 Homebrew 安装"></a>通过 <code>Homebrew</code> 安装</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install carthage</div></pre></td></tr></table></figure>
 <h3 id="项目配置文件"><a href="#项目配置文件" class="headerlink" title="项目配置文件"></a>项目配置文件</h3><p>和使用<code>CocoaPods</code>一样, 这里也需要一个无后缀的配置文件 <code>Carthfile</code></p>
 <h4 id="配置依赖库"><a href="#配置依赖库" class="headerlink" title="配置依赖库"></a>配置依赖库</h4><p>熟悉<code>Podfile</code>的话这里就不会陌生了</p>
@@ -137,6 +136,15 @@
 </li>
 </ul>
 <h2 id="导入第三方库"><a href="#导入第三方库" class="headerlink" title="导入第三方库"></a>导入第三方库</h2><p>手动将<code>Carthage/Build</code>中的<code>framework</code>加到项目中<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703205983.jpg" alt=""><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703379835.jpg" alt=""><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703670579.jpg" alt=""><br>先在就阔以在项目中使用<code>Alamofire</code>咯</p>
+<h2 id="一些坑"><a href="#一些坑" class="headerlink" title="一些坑"></a>一些坑</h2><h3 id="01-has-no-shared-framework-schemes"><a href="#01-has-no-shared-framework-schemes" class="headerlink" title="01: has no shared framework schemes"></a>01: has no shared framework schemes</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">*** <span class="type">Skipped</span> building <span class="type">R</span>.swift due to the error:</div><div class="line"><span class="type">Dependency</span> <span class="string">"R.swift"</span> has no shared framework schemes <span class="keyword">for</span> any of the platforms: iOS</div></pre></td></tr></table></figure>
+<ul>
+<li>因为<code>Carthage</code>需要库工程的<code>Scheme</code>需要为<code>Shared</code></li>
+<li>没有的话可能是因为<code>git</code>忽略了相应文件 <code>xcuserdata</code></li>
+</ul>
+<p>参考</p>
+<blockquote>
+<p><a href="https://stackoverflow.com/questions/35054788/carthage-no-shared-framework-schemes-for-ios-platform-for-my-own-framework" target="_blank" rel="external">https://stackoverflow.com/questions/35054788/carthage-no-shared-framework-schemes-for-ios-platform-for-my-own-framework</a><br><a href="https://www.jianshu.com/p/a7defcf2e327" target="_blank" rel="external">https://www.jianshu.com/p/a7defcf2e327</a></p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -225,7 +233,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相较于CocoaPods的不同"><span class="toc-number">1.1.</span> <span class="toc-text">相较于CocoaPods的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.2.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">导入第三方库</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.1.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.1.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.1.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.2.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">导入第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些坑"><span class="toc-number">1.4.</span> <span class="toc-text">一些坑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-has-no-shared-framework-schemes"><span class="toc-number">1.4.1.</span> <span class="toc-text">01: has no shared framework schemes</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
