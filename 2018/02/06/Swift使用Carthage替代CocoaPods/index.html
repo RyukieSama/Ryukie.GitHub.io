@@ -4,27 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS 使用TTF字体 | RyukieSama`sDogHouse</title>
+    <title>Swift使用Carthage替代CocoaPods | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也需要一个无后缀的配置文件 Carthfile 配置依赖库熟悉Podfile的话这里就不会">
+<meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 使用TTF字体">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/index.html">
+<meta property="og:title" content="Swift使用Carthage替代CocoaPods">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066114496262.jpg">
-<meta property="og:updated_time" content="2017-09-28T15:45:12.000Z">
+<meta property="og:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也需要一个无后缀的配置文件 Carthfile 配置依赖库熟悉Podfile的话这里就不会">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703205983.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703379835.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703670579.jpg">
+<meta property="og:updated_time" content="2018-02-07T02:26:55.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 使用TTF字体">
-<meta name="twitter:description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg">
+<meta name="twitter:title" content="Swift使用Carthage替代CocoaPods">
+<meta name="twitter:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也需要一个无后缀的配置文件 Carthfile 配置依赖库熟悉Podfile的话这里就不会">
+<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -84,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/" title="iOS 使用TTF字体" itemprop="url">iOS 使用TTF字体</a>
+      <a href="/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/" title="Swift使用Carthage替代CocoaPods" itemprop="url">Swift使用Carthage替代CocoaPods</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-28T14:04:06.000Z" itemprop="datePublished"> Published 2017-09-28</time>
+    <time datetime="2018-02-06T09:46:36.000Z" itemprop="datePublished"> Published 2018-02-06</time>
     
   </p>
 </header>
@@ -100,17 +102,41 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-使用TTF字体"><span class="toc-number">1.</span> <span class="toc-text">iOS 使用TTF字体</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相较于CocoaPods的不同"><span class="toc-number">1.1.</span> <span class="toc-text">相较于CocoaPods的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.2.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">导入第三方库</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="iOS-使用TTF字体"><a href="#iOS-使用TTF字体" class="headerlink" title="iOS 使用TTF字体"></a>iOS 使用TTF字体</h1><p>在项目的 <code>Info.plist</code> 中添加 <code>Fonts provided by application</code> 在其中填入字体文件名</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg" alt=""></p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15066114496262.jpg" alt=""></p>
+		<h1 id="Swift使用Carthage替代CocoaPods"><a href="#Swift使用Carthage替代CocoaPods" class="headerlink" title="Swift使用Carthage替代CocoaPods"></a>Swift使用Carthage替代CocoaPods</h1><blockquote>
+<p>官方地址: <a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">https://github.com/Carthage/Carthage</a></p>
+</blockquote>
+<h2 id="相较于CocoaPods的不同"><a href="#相较于CocoaPods的不同" class="headerlink" title="相较于CocoaPods的不同"></a>相较于<code>CocoaPods</code>的不同</h2><p>TODO:</p>
+<h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><h3 id="通过-Homebrew-安装"><a href="#通过-Homebrew-安装" class="headerlink" title="通过 Homebrew 安装"></a>通过 <code>Homebrew</code> 安装</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install carthage</div></pre></td></tr></table></figure>
+<h3 id="项目配置文件"><a href="#项目配置文件" class="headerlink" title="项目配置文件"></a>项目配置文件</h3><p>和使用<code>CocoaPods</code>一样, 这里也需要一个无后缀的配置文件 <code>Carthfile</code></p>
+<h4 id="配置依赖库"><a href="#配置依赖库" class="headerlink" title="配置依赖库"></a>配置依赖库</h4><p>熟悉<code>Podfile</code>的话这里就不会陌生了</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">github <span class="string">"Alamofire/Alamofire"</span></div></pre></td></tr></table></figure>
 <ul>
-<li>可以通过下面的方式通过 <code>fontName</code> 设置 <code>font</code></li>
+<li>对于<code>github</code>指名后会去<code>github</code>上找对对应的库 <ul>
+<li>格式: <code>github Username/ProjectName</code> </li>
 </ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> familyNames = <span class="type">UIFont</span>.familyNames</div><div class="line">        <span class="keyword">for</span> familyName <span class="keyword">in</span> familyNames &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"++++++ "</span> + familyName + <span class="string">" ++++++"</span>)</div><div class="line">            <span class="keyword">let</span> fontNames = <span class="type">UIFont</span>.fontNames(forFamilyName: familyName)</div><div class="line">            <span class="keyword">for</span> fontName <span class="keyword">in</span> fontNames &#123;</div><div class="line">                <span class="built_in">print</span>(fontName)</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"================================="</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="type">UIFont</span>(name: <span class="string">"hahahahahaah"</span>, size: fontSize)!</div></pre></td></tr></table></figure>
+</li>
+<li><code>git</code> 支持<code>http://</code> <code>git://</code> <code>ssh://</code></li>
+</ul>
+<blockquote>
+<p><code>==</code> 毫无疑问是说必须为指定版本，如果没有，就不下载编译；<br><code>&gt;=</code> 使用大于或等于指定版本的库，如果有最新，则使用最新的；<br><code>~&gt;</code> 则是一个开区间，如“~&gt;1.1.0”则会返回“1.1.1~1.9.9”之间的版本，不包括2.0.0；</p>
+</blockquote>
+<h2 id="编译第三方库"><a href="#编译第三方库" class="headerlink" title="编译第三方库"></a>编译第三方库</h2><p>类似<code>pod install</code>操作, <code>cd</code> 到工程目录执行下面命令</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">carthage update --platform iOS</div></pre></td></tr></table></figure>
+<ul>
+<li><p>一般这里指定一下平台好些,否则会编译出mac,tv,iOS个平台的,完全没必要</p>
+</li>
+<li><p>执行完成后会看到有个<code>Carthage</code>目录<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg" alt=""></p>
+<ul>
+<li><code>build</code>中就是编译好的第三方库</li>
+<li><code>Checkouts</code>中是第三方库的缓存</li>
+</ul>
+</li>
+</ul>
+<h2 id="导入第三方库"><a href="#导入第三方库" class="headerlink" title="导入第三方库"></a>导入第三方库</h2><p>手动将<code>Carthage/Build</code>中的<code>framework</code>加到项目中<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703205983.jpg" alt=""><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703379835.jpg" alt=""><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703670579.jpg" alt=""><br>先在就阔以在项目中使用<code>Alamofire</code>咯</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -124,7 +150,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/Swift/">Swift</a>
   </div>
 
 </div>
@@ -168,19 +194,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/" title="Storyboard中UnwindSegue的使用">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Storyboard中UnwindSegue的使用</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/08/16/Node-js-StudyNotes-02/"  title="Node-js-StudyNotes-02">
+<a href="/Ryukie.GitHub.io/2018/02/06/SwiftPackage使用/"  title="SwiftPackage使用">
  <strong>下一篇：</strong><br/> 
- <span>Node-js-StudyNotes-02
+ <span>SwiftPackage使用
 </span>
 </a>
 </div>
@@ -189,7 +207,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/09/28/iOS-使用TTF字体/" data-title="iOS 使用TTF字体" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/"></div>
+	<div class="ds-thread" data-thread-key="2018/02/06/Swift使用Carthage替代CocoaPods/" data-title="Swift使用Carthage替代CocoaPods" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/"></div>
 </section>
 
 
@@ -199,7 +217,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-使用TTF字体"><span class="toc-number">1.</span> <span class="toc-text">iOS 使用TTF字体</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相较于CocoaPods的不同"><span class="toc-number">1.1.</span> <span class="toc-text">相较于CocoaPods的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.2.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">导入第三方库</span></a></li></ol></li></ol>
  
   </div>
 
