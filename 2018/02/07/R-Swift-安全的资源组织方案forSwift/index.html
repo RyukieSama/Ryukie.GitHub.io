@@ -4,29 +4,28 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Swift使用Carthage替代CocoaPods | RyukieSama`sDogHouse</title>
+    <title>R.Swift-安全的资源组织方案forSwift | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也">
+    <meta name="description" content="R.Swift-安全的资源组织方案forSwift 官方链接: https://github.com/mac-cain13/R.swift参考文章:   http://swifter.tips/safe-resource/https://www.jianshu.com/p/6234e6e79b15   场景在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高  一般操作">
 <meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift使用Carthage替代CocoaPods">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/index.html">
+<meta property="og:title" content="R.Swift-安全的资源组织方案forSwift">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703205983.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703379835.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179703670579.jpg">
-<meta property="og:updated_time" content="2018-02-07T02:29:35.557Z">
+<meta property="og:description" content="R.Swift-安全的资源组织方案forSwift 官方链接: https://github.com/mac-cain13/R.swift参考文章:   http://swifter.tips/safe-resource/https://www.jianshu.com/p/6234e6e79b15   场景在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高  一般操作">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179849878526.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179848803178.jpg">
+<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179854353794.jpg">
+<meta property="og:updated_time" content="2018-02-07T06:39:01.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift使用Carthage替代CocoaPods">
-<meta name="twitter:description" content="Swift使用Carthage替代CocoaPods 官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c  相较于CocoaPods的不同TODO: 集成通过 Homebrew 安装1brew install carthage 项目配置文件和使用CocoaPods一样, 这里也">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg">
+<meta name="twitter:title" content="R.Swift-安全的资源组织方案forSwift">
+<meta name="twitter:description" content="R.Swift-安全的资源组织方案forSwift 官方链接: https://github.com/mac-cain13/R.swift参考文章:   http://swifter.tips/safe-resource/https://www.jianshu.com/p/6234e6e79b15   场景在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高  一般操作">
+<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179849878526.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -86,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/" title="Swift使用Carthage替代CocoaPods" itemprop="url">Swift使用Carthage替代CocoaPods</a>
+      <a href="/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/" title="R.Swift-安全的资源组织方案forSwift" itemprop="url">R.Swift-安全的资源组织方案forSwift</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-02-06T09:46:36.000Z" itemprop="datePublished"> Published 2018-02-06</time>
+    <time datetime="2018-02-07T03:21:33.000Z" itemprop="datePublished"> Published 2018-02-07</time>
     
   </p>
 </header>
@@ -102,41 +101,37 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相较于CocoaPods的不同"><span class="toc-number">1.1.</span> <span class="toc-text">相较于CocoaPods的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.2.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">导入第三方库</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-Swift-安全的资源组织方案forSwift"><span class="toc-number">1.</span> <span class="toc-text">R.Swift-安全的资源组织方案forSwift</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入R-Swift"><span class="toc-number">1.2.</span> <span class="toc-text">导入R.Swift</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="Swift使用Carthage替代CocoaPods"><a href="#Swift使用Carthage替代CocoaPods" class="headerlink" title="Swift使用Carthage替代CocoaPods"></a>Swift使用Carthage替代CocoaPods</h1><blockquote>
-<p>官方地址: <a href="https://github.com/Carthage/Carthage" target="_blank" rel="external">https://github.com/Carthage/Carthage</a><br>参考文章: <a href="https://www.jianshu.com/p/76b9ff09f99c" target="_blank" rel="external">https://www.jianshu.com/p/76b9ff09f99c</a></p>
+		<h1 id="R-Swift-安全的资源组织方案forSwift"><a href="#R-Swift-安全的资源组织方案forSwift" class="headerlink" title="R.Swift-安全的资源组织方案forSwift"></a>R.Swift-安全的资源组织方案forSwift</h1><blockquote>
+<p>官方链接: <a href="https://github.com/mac-cain13/R.swift" target="_blank" rel="external">https://github.com/mac-cain13/R.swift</a><br>参考文章: </p>
+<blockquote>
+<p><a href="http://swifter.tips/safe-resource/" target="_blank" rel="external">http://swifter.tips/safe-resource/</a><br><a href="https://www.jianshu.com/p/6234e6e79b15" target="_blank" rel="external">https://www.jianshu.com/p/6234e6e79b15</a></p>
 </blockquote>
-<h2 id="相较于CocoaPods的不同"><a href="#相较于CocoaPods的不同" class="headerlink" title="相较于CocoaPods的不同"></a>相较于<code>CocoaPods</code>的不同</h2><p>TODO:</p>
-<h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><h3 id="通过-Homebrew-安装"><a href="#通过-Homebrew-安装" class="headerlink" title="通过 Homebrew 安装"></a>通过 <code>Homebrew</code> 安装</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">brew install carthage</div></pre></td></tr></table></figure>
-<h3 id="项目配置文件"><a href="#项目配置文件" class="headerlink" title="项目配置文件"></a>项目配置文件</h3><p>和使用<code>CocoaPods</code>一样, 这里也需要一个无后缀的配置文件 <code>Carthfile</code></p>
-<h4 id="配置依赖库"><a href="#配置依赖库" class="headerlink" title="配置依赖库"></a>配置依赖库</h4><p>熟悉<code>Podfile</code>的话这里就不会陌生了</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">github <span class="string">"Alamofire/Alamofire"</span></div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高</p>
 <ul>
-<li>对于<code>github</code>指名后会去<code>github</code>上找对对应的库 <ul>
-<li>格式: <code>github Username/ProjectName</code> </li>
+<li>一般操作</li>
 </ul>
-</li>
-<li><code>git</code> 支持<code>http://</code> <code>git://</code> <code>ssh://</code></li>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> icon = <span class="type">UIImage</span>(named: <span class="string">"settings-icon"</span>)</div><div class="line"><span class="keyword">let</span> font = <span class="type">UIFont</span>(name: <span class="string">"San Francisco"</span>, size: <span class="number">42</span>)</div><div class="line"><span class="keyword">let</span> color = <span class="type">UIColor</span>(named: <span class="string">"indictator highlight"</span>)</div><div class="line"><span class="keyword">let</span> viewController = <span class="type">CustomViewController</span>(nibName: <span class="string">"CustomView"</span>, bundle: <span class="literal">nil</span>)</div><div class="line"><span class="keyword">let</span> string = <span class="type">String</span>(format: <span class="type">NSLocalizedString</span>(<span class="string">"welcome.withName"</span>, comment: <span class="string">""</span>), locale: <span class="type">NSLocale</span>.current, <span class="string">"Arthur Dent"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>使用<code>R.Swift</code></li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> icon = <span class="type">R</span>.image.settingsIcon()</div><div class="line"><span class="keyword">let</span> font = <span class="type">R</span>.font.sanFrancisco(size: <span class="number">42</span>)</div><div class="line"><span class="keyword">let</span> color = <span class="type">R</span>.color.indicatorHighlight()</div><div class="line"><span class="keyword">let</span> viewController = <span class="type">CustomViewController</span>(nib: <span class="type">R</span>.nib.customView)</div><div class="line"><span class="keyword">let</span> string = <span class="type">R</span>.string.localizable.welcomeWithName(<span class="string">"Arthur Dent"</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>是不是显得十分清爽</p>
+</blockquote>
+<h2 id="导入R-Swift"><a href="#导入R-Swift" class="headerlink" title="导入R.Swift"></a>导入<code>R.Swift</code></h2><ul>
+<li><code>pod &#39;R.swift&#39;</code></li>
+<li><code>install</code>完成后添加 <code>New Run Script Phase</code><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179849878526.jpg" alt=""></li>
+<li>添加脚本 <code>&quot;$PODS_ROOT/R.swift/rswift&quot; generate &quot;$SRCROOT&quot;</code><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179848803178.jpg" alt=""></li>
+<li><code>Command+B</code>编译一次后会在目录下生成一个<code>R.generated.swift</code>文件,将其拖入工程<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179854353794.jpg" alt=""></li>
 </ul>
 <blockquote>
-<p><code>==</code> 毫无疑问是说必须为指定版本，如果没有，就不下载编译；<br><code>&gt;=</code> 使用大于或等于指定版本的库，如果有最新，则使用最新的；<br><code>~&gt;</code> 则是一个开区间，如“~&gt;1.1.0”则会返回“1.1.1~1.9.9”之间的版本，不包括2.0.0；</p>
+<p>一定不要选中<code>Copy items if needed</code><br>因为每次编译都会重新生成该文件所以最好在<code>.gitignore</code>中添加忽略<code>*.generated.swift</code></p>
 </blockquote>
-<h2 id="编译第三方库"><a href="#编译第三方库" class="headerlink" title="编译第三方库"></a>编译第三方库</h2><p>类似<code>pod install</code>操作, <code>cd</code> 到工程目录执行下面命令</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">carthage update --platform iOS</div></pre></td></tr></table></figure>
-<ul>
-<li><p>一般这里指定一下平台好些,否则会编译出mac,tv,iOS个平台的,完全没必要</p>
-</li>
-<li><p>执行完成后会看到有个<code>Carthage</code>目录<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179696493656.jpg" alt=""></p>
-<ul>
-<li><code>build</code>中就是编译好的第三方库</li>
-<li><code>Checkouts</code>中是第三方库的缓存</li>
-</ul>
-</li>
-</ul>
-<h2 id="导入第三方库"><a href="#导入第三方库" class="headerlink" title="导入第三方库"></a>导入第三方库</h2><p>手动将<code>Carthage/Build</code>中的<code>framework</code>加到项目中<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703205983.jpg" alt=""><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703379835.jpg" alt=""><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179703670579.jpg" alt=""><br>先在就阔以在项目中使用<code>Alamofire</code>咯</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -194,19 +189,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/" title="R.Swift-安全的资源组织方案forSwift">
-  <strong>上一篇：</strong><br/>
-  <span>
-  R.Swift-安全的资源组织方案forSwift</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2018/02/06/SwiftPackage使用/"  title="SwiftPackage使用">
+<a href="/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/"  title="Swift使用Carthage替代CocoaPods">
  <strong>下一篇：</strong><br/> 
- <span>SwiftPackage使用
+ <span>Swift使用Carthage替代CocoaPods
 </span>
 </a>
 </div>
@@ -215,7 +202,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/02/06/Swift使用Carthage替代CocoaPods/" data-title="Swift使用Carthage替代CocoaPods" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/"></div>
+	<div class="ds-thread" data-thread-key="2018/02/07/R-Swift-安全的资源组织方案forSwift/" data-title="R.Swift-安全的资源组织方案forSwift" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/"></div>
 </section>
 
 
@@ -225,7 +212,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift使用Carthage替代CocoaPods"><span class="toc-number">1.</span> <span class="toc-text">Swift使用Carthage替代CocoaPods</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#相较于CocoaPods的不同"><span class="toc-number">1.1.</span> <span class="toc-text">相较于CocoaPods的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">1.2.</span> <span class="toc-text">集成</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过-Homebrew-安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">通过 Homebrew 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目配置文件"><span class="toc-number">1.2.2.</span> <span class="toc-text">项目配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置依赖库"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">配置依赖库</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译第三方库"><span class="toc-number">1.3.</span> <span class="toc-text">编译第三方库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入第三方库"><span class="toc-number">1.4.</span> <span class="toc-text">导入第三方库</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-Swift-安全的资源组织方案forSwift"><span class="toc-number">1.</span> <span class="toc-text">R.Swift-安全的资源组织方案forSwift</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入R-Swift"><span class="toc-number">1.2.</span> <span class="toc-text">导入R.Swift</span></a></li></ol></li></ol>
  
   </div>
 
