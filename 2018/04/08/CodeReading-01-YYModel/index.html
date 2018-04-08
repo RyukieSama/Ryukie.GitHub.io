@@ -1,0 +1,684 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CodeReading-01-YYModel | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="CodeReading-01-YYModel 感觉值对于优秀源码的学习阅读不是很够,开个坑,希望自己坚持下去YY作者写的相关文章必看: https://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/  结构加上.h只有5个文件相当轻量级的一个转模型框架,十分适合作为源码阅读计划的第一弹 YYModel.hNSObject+YYM">
+<meta name="keywords" content="iOS,学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CodeReading-01-YYModel">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/04/08/CodeReading-01-YYModel/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="CodeReading-01-YYModel 感觉值对于优秀源码的学习阅读不是很够,开个坑,希望自己坚持下去YY作者写的相关文章必看: https://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/  结构加上.h只有5个文件相当轻量级的一个转模型框架,十分适合作为源码阅读计划的第一弹 YYModel.hNSObject+YYM">
+<meta property="og:updated_time" content="2018-04-08T07:59:40.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CodeReading-01-YYModel">
+<meta name="twitter:description" content="CodeReading-01-YYModel 感觉值对于优秀源码的学习阅读不是很够,开个坑,希望自己坚持下去YY作者写的相关文章必看: https://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/  结构加上.h只有5个文件相当轻量级的一个转模型框架,十分适合作为源码阅读计划的第一弹 YYModel.hNSObject+YYM">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2018/04/08/CodeReading-01-YYModel/" title="CodeReading-01-YYModel" itemprop="url">CodeReading-01-YYModel</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2018-04-08T01:40:17.000Z" itemprop="datePublished"> Published 2018-04-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodeReading-01-YYModel"><span class="toc-number">1.</span> <span class="toc-text">CodeReading-01-YYModel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结构"><span class="toc-number">1.1.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YYModel-h"><span class="toc-number">1.2.</span> <span class="toc-text">YYModel.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSObject-YYModel"><span class="toc-number">1.3.</span> <span class="toc-text">NSObject+YYModel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型"><span class="toc-number">1.3.1.</span> <span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#YYEncodingNSType"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">YYEncodingNSType</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内联函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-number">1.3.3.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体-ModelSetContext"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">结构体 ModelSetContext</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYModelPropertyMeta-NSObject"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">_YYModelPropertyMeta : NSObject</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYModelMeta-NSObject"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">_YYModelMeta : NSObject</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YYClassInfo"><span class="toc-number">1.4.</span> <span class="toc-text">YYClassInfo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#YYEncodingType"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">YYEncodingType</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassIvarInfo"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">YYClassIvarInfo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassMethodInfo"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">YYClassMethodInfo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassPropertyInfo"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">YYClassPropertyInfo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassInfo-1"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">YYClassInfo</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">1.5.</span> <span class="toc-text">Tips:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#kCFNull"><span class="toc-number">1.5.1.</span> <span class="toc-text">kCFNull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-inline-内联函数"><span class="toc-number">1.5.2.</span> <span class="toc-text">static inline 内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#package-关键字"><span class="toc-number">1.5.3.</span> <span class="toc-text">@package 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unsafe-unretained-关键字"><span class="toc-number">1.5.4.</span> <span class="toc-text">__unsafe_unretained 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bridge-关键字"><span class="toc-number">1.5.5.</span> <span class="toc-text">__bridge 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命名对内对外"><span class="toc-number">1.5.6.</span> <span class="toc-text">命名对内对外</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CFDictionaryApplyFunction-amp-CFDictionaryApplyFunction-函数"><span class="toc-number">1.5.7.</span> <span class="toc-text">CFDictionaryApplyFunction & CFDictionaryApplyFunction 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性能优化Tips"><span class="toc-number">1.5.8.</span> <span class="toc-text">性能优化Tips:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="CodeReading-01-YYModel"><a href="#CodeReading-01-YYModel" class="headerlink" title="CodeReading-01-YYModel"></a>CodeReading-01-YYModel</h1><blockquote>
+<p>感觉值对于优秀源码的学习阅读不是很够,开个坑,希望自己坚持下去<br>YY作者写的相关文章必看: <a href="https://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/" target="_blank" rel="external">https://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/</a></p>
+</blockquote>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>加上<code>.h</code>只有5个文件相当轻量级的一个转模型框架,十分适合作为源码阅读计划的第一弹</p>
+<p><code>YYModel.h</code><br><code>NSObject+YYModel.h</code><br><code>NSObject+YYModel.m</code><br><code>YYClassInfo.h</code><br><code>YYClassInfo.m</code></p>
+<h2 id="YYModel-h"><a href="#YYModel-h" class="headerlink" title="YYModel.h"></a>YYModel.h</h2><p>头文件</p>
+<h2 id="NSObject-YYModel"><a href="#NSObject-YYModel" class="headerlink" title="NSObject+YYModel"></a>NSObject+YYModel</h2><blockquote>
+<p>负责转模型的操作</p>
+</blockquote>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h4 id="YYEncodingNSType"><a href="#YYEncodingNSType" class="headerlink" title="YYEncodingNSType"></a>YYEncodingNSType</h4><ul>
+<li>对应<code>Foundation</code>框架中基本类型的枚举</li>
+</ul>
+<h3 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h3><blockquote>
+<p>YYClassGetNSType(Class cls)</p>
+</blockquote>
+<ul>
+<li>类型映射</li>
+<li>返回: <code>YYEncodingNSType</code></li>
+</ul>
+<blockquote>
+<p>YYEncodingTypeIsCNumber(YYEncodingType type)</p>
+</blockquote>
+<ul>
+<li>判断是否是<code>C</code>的<code>number</code>类型</li>
+<li>返回: <code>BOOL</code></li>
+</ul>
+<blockquote>
+<p>NSNumber *YYNSNumberCreateFromID(__unsafe_unretained id value)</p>
+</blockquote>
+<ul>
+<li>从<code>id</code>类型返回<code>NSNumber</code></li>
+<li>其中对空的判断还有小数整数的处理值得一看</li>
+</ul>
+<blockquote>
+<p>NSDate <em>YYNSDateFromString(__unsafe_unretained NSString </em>string)</p>
+</blockquote>
+<ul>
+<li>从字符串获得<code>NSDate</code>对象</li>
+<li>作用域的控制值得学习 <code>{}</code></li>
+</ul>
+<blockquote>
+<p>Class YYNSBlockClass()</p>
+</blockquote>
+<ul>
+<li>获取<code>NSBlock</code>类 </li>
+<li>在判断<code>value</code>类型的时候有用到</li>
+</ul>
+<blockquote>
+<p>id YYValueForKeyPath(<strong>unsafe_unretained NSDictionary *dic, </strong>unsafe_unretained NSArray *keyPaths)</p>
+</blockquote>
+<ul>
+<li>通过一个 <code>keyPaths</code> 来从字典中获取对应 <code>value</code></li>
+<li>例如 <code>[@&quot;id&quot;,@&quot;ID&quot;,@&quot;myId&quot;]</code> 来从<code>dic</code>中获取一个ID</li>
+</ul>
+<blockquote>
+<p>id YYValueForMultiKeys(<strong>unsafe_unretained NSDictionary *dic, </strong>unsafe_unretained NSArray *multiKeys)</p>
+</blockquote>
+<ul>
+<li>Get the value with multi key (or key path) from dictionary</li>
+<li>The dic should be NSDictionary</li>
+<li>和上一个方法类似但这里的遍历时如果<code>key</code>不是<code>NSString</code>会调用上面的方法</li>
+</ul>
+<blockquote>
+<p>NSNumber <em>ModelCreateNumberFromProperty(<strong>unsafe_unretained id model,</strong>unsafe_unretained _YYModelPropertyMeta </em>meta)</p>
+</blockquote>
+<ul>
+<li>Get number from property.</li>
+<li>这里位移枚举的使用值得一看</li>
+</ul>
+<blockquote>
+<p>void ModelSetNumberToProperty(<strong>unsafe_unretained id model,</strong>unsafe_unretained NSNumber <em>num,__unsafe_unretained _YYModelPropertyMeta </em>meta)</p>
+</blockquote>
+<ul>
+<li>Set number to property.</li>
+<li>与上面的方法一对</li>
+</ul>
+<blockquote>
+<p>void ModelSetValueForProperty(<strong>unsafe_unretained id model,</strong>unsafe_unretained id value,__unsafe_unretained _YYModelPropertyMeta *meta)</p>
+</blockquote>
+<ul>
+<li>Set value to model with a property meta.</li>
+<li>核心函数之一</li>
+</ul>
+<blockquote>
+<p>void ModelSetWithDictionaryFunction(const void <em>_key, const void </em>_value, void *_context)</p>
+</blockquote>
+<ul>
+<li>Apply function for dictionary, to set the key-value pair to model.</li>
+<li>在<code>void CFDictionaryApplyFunction(CFDictionaryRef theDict, CFDictionaryApplierFunction applier, void *context);</code>方法中调用</li>
+<li>对字典中所有键值对执行<code>applier</code>函数</li>
+</ul>
+<blockquote>
+<p>void ModelSetWithPropertyMetaArrayFunction(const void <em>_propertyMeta, void </em>_context)</p>
+</blockquote>
+<ul>
+<li>Apply function for model property meta, to set dictionary to model.</li>
+<li>和上面的类似,是数组的</li>
+</ul>
+<h3 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h3><h4 id="结构体-ModelSetContext"><a href="#结构体-ModelSetContext" class="headerlink" title="结构体 ModelSetContext"></a>结构体 ModelSetContext</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">typedef <span class="class"><span class="keyword">struct</span> </span>&#123;</div><div class="line">    void *modelMeta;  <span class="comment">///&lt; _YYModelMeta</span></div><div class="line">    void *model;      <span class="comment">///&lt; id (self)</span></div><div class="line">    void *dictionary; <span class="comment">///&lt; NSDictionary (json)</span></div><div class="line">&#125; <span class="type">ModelSetContext</span>;</div></pre></td></tr></table></figure>
+<h4 id="YYModelPropertyMeta-NSObject"><a href="#YYModelPropertyMeta-NSObject" class="headerlink" title="_YYModelPropertyMeta : NSObject"></a>_YYModelPropertyMeta : NSObject</h4><ul>
+<li>A property info in object model.</li>
+<li>表示模型对象中的属性信息</li>
+<li>对应<code>YYClassPropertyInfo</code></li>
+<li>可理解为 属性 中间件</li>
+</ul>
+<h4 id="YYModelMeta-NSObject"><a href="#YYModelMeta-NSObject" class="headerlink" title="_YYModelMeta : NSObject"></a>_YYModelMeta : NSObject</h4><ul>
+<li>A class info in object model.</li>
+<li>表示模型的类信息</li>
+<li>对应<code>YYClassInfo</code></li>
+<li>可理解为 类 中间件</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Returns the cached model class meta</span></div><div class="line">+ (instancetype)metaWithClass:(<span class="type">Class</span>)cls &#123;</div><div class="line">    <span class="keyword">if</span> (!cls) <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">    <span class="keyword">static</span> <span class="type">CFMutableDictionaryRef</span> cache;</div><div class="line">    <span class="keyword">static</span> dispatch_once_t onceToken;</div><div class="line">    <span class="keyword">static</span> dispatch_semaphore_t lock;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        cache = <span class="type">CFDictionaryCreateMutable</span>(<span class="type">CFAllocatorGetDefault</span>(), <span class="number">0</span>, &amp;kCFTypeDictionaryKeyCallBacks, &amp;kCFTypeDictionaryValueCallBacks);</div><div class="line">        lock = dispatch_semaphore_create(<span class="number">1</span>);</div><div class="line">    &#125;);</div><div class="line">    dispatch_semaphore_wait(lock, <span class="type">DISPATCH_TIME_FOREVER</span>);</div><div class="line">    _YYModelMeta *meta = <span class="type">CFDictionaryGetValue</span>(cache, (__bridge const void *)(cls));</div><div class="line">    dispatch_semaphore_signal(lock);</div><div class="line">    <span class="keyword">if</span> (!meta || meta-&gt;_classInfo.needUpdate) &#123;</div><div class="line">        meta = [[_YYModelMeta alloc] initWithClass:cls];</div><div class="line">        <span class="keyword">if</span> (meta) &#123;</div><div class="line">            dispatch_semaphore_wait(lock, <span class="type">DISPATCH_TIME_FOREVER</span>);</div><div class="line">            <span class="type">CFDictionarySetValue</span>(cache, (__bridge const void *)(cls), (__bridge const void *)(meta));</div><div class="line">            dispatch_semaphore_signal(lock);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> meta;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>其中使用了 <code>dispatch_semaphore</code>信号量保证线程安全</li>
+<li>建立了一个静态缓存,缓存了每个<code>class</code>对应的<code>_YYModelMeta</code>对象,提高了性能</li>
+</ul>
+<h2 id="YYClassInfo"><a href="#YYClassInfo" class="headerlink" title="YYClassInfo"></a>YYClassInfo</h2><blockquote>
+<p>将<code>Runtime</code>中<code>C</code>的一些东西,通过面向对象的方式进行了封装,便于理解使用<br>转模型的基础</p>
+</blockquote>
+<h3 id="类型-1"><a href="#类型-1" class="headerlink" title="类型"></a>类型</h3><h4 id="YYEncodingType"><a href="#YYEncodingType" class="headerlink" title="YYEncodingType"></a>YYEncodingType</h4><blockquote>
+<p>Type encoding’s type.</p>
+</blockquote>
+<ul>
+<li>列举了各类编码信息，包括值类型、方法限定类型、属性修饰类型。YYEncodingType使用掩码的方式对三类不同的枚举信息进行分类，各占据1个字节</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">///值类型</span></div><div class="line"><span class="type">YYEncodingTypeMask</span>                = <span class="number">0xFF</span>       </div><div class="line"><span class="comment">///方法限定类型</span></div><div class="line"><span class="type">YYEncodingTypeQualifierMask</span>      = <span class="number">0xFF00</span>       </div><div class="line"><span class="comment">///属性修饰类型</span></div><div class="line"><span class="type">YYEncodingTypePropertyMask</span>      = <span class="number">0xFF0000</span></div></pre></td></tr></table></figure>
+<h3 id="Class-1"><a href="#Class-1" class="headerlink" title="Class"></a>Class</h3><h4 id="YYClassIvarInfo"><a href="#YYClassIvarInfo" class="headerlink" title="YYClassIvarInfo"></a>YYClassIvarInfo</h4><blockquote>
+<p>成员变量<br>objc_ivar</p>
+</blockquote>
+<h4 id="YYClassMethodInfo"><a href="#YYClassMethodInfo" class="headerlink" title="YYClassMethodInfo"></a>YYClassMethodInfo</h4><blockquote>
+<p>方法<br>objc_method</p>
+</blockquote>
+<h4 id="YYClassPropertyInfo"><a href="#YYClassPropertyInfo" class="headerlink" title="YYClassPropertyInfo"></a>YYClassPropertyInfo</h4><blockquote>
+<p>成员属性<br>property_t</p>
+</blockquote>
+<h4 id="YYClassInfo-1"><a href="#YYClassInfo-1" class="headerlink" title="YYClassInfo"></a>YYClassInfo</h4><blockquote>
+<p>类<br>objc_class</p>
+</blockquote>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">/.../</div><div class="line"></div><div class="line"><span class="comment">/// 成员变量列表</span></div><div class="line">@property (nullable, nonatomic, strong, readonly) <span class="type">NSDictionary</span>&lt;<span class="type">NSString</span> *, <span class="type">YYClassIvarInfo</span> *&gt; *ivarInfos; <span class="comment">///&lt; ivars</span></div><div class="line"><span class="comment">/// 方法列表</span></div><div class="line">@property (nullable, nonatomic, strong, readonly) <span class="type">NSDictionary</span>&lt;<span class="type">NSString</span> *, <span class="type">YYClassMethodInfo</span> *&gt; *methodInfos; <span class="comment">///&lt; methods</span></div><div class="line"><span class="comment">/// 成员属性</span></div><div class="line">@property (nullable, nonatomic, strong, readonly) <span class="type">NSDictionary</span>&lt;<span class="type">NSString</span> *, <span class="type">YYClassPropertyInfo</span> *&gt; *propertyInfos; <span class="comment">///&lt;</span></div><div class="line"></div><div class="line">/.../</div></pre></td></tr></table></figure>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h2><h3 id="kCFNull"><a href="#kCFNull" class="headerlink" title="kCFNull"></a>kCFNull</h3><ul>
+<li>还是头一回见到这个东西 <code>kCFNull</code></li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">+ (<span class="type">NSDictionary</span> *)_yy_dictionaryWithJSON:(id)json &#123;</div><div class="line">    <span class="keyword">if</span> (!json || json == (id)kCFNull) <span class="keyword">return</span> <span class="literal">nil</span>;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>点进去</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* Null representant */</span></div><div class="line"></div><div class="line">typedef const <span class="class"><span class="keyword">struct</span> <span class="title">CF_BRIDGED_TYPE</span>(<span class="title">NSNull</span>) <span class="title">__CFNull</span> * <span class="title">CFNullRef</span>;</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">CF_EXPORT</span></span></div><div class="line"><span class="class"><span class="title">CFTypeID</span> <span class="title">CFNullGetTypeID</span>(<span class="title">void</span>);</span></div><div class="line"><span class="class"></span></div><div class="line"><span class="class"><span class="title">CF_EXPORT</span></span></div><div class="line"><span class="class"><span class="title">const</span> <span class="title">CFNullRef</span> <span class="title">kCFNull</span>;	// <span class="title">the</span> <span class="title">singleton</span> <span class="title">null</span> <span class="title">instance</span></span></div></pre></td></tr></table></figure>
+<ul>
+<li>打印</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">id null1 = (id)kCFNull;</div><div class="line">id null2 = [<span class="type">NSNull</span> null];</div></pre></td></tr></table></figure>
+<ul>
+<li>打印地址</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">null1=(<span class="type">NSNull</span> *)<span class="number">0x10426eaf0</span></div><div class="line">null2=(<span class="type">NSNull</span> *)<span class="number">0x10426eaf0</span></div></pre></td></tr></table></figure>
+<ul>
+<li>拓展</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>标志</th>
+<th>值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NULL</td>
+<td>(void *)0</td>
+<td>C指针的字面零值</td>
+</tr>
+<tr>
+<td>nil</td>
+<td>(id)0</td>
+<td>Objective-C对象的字面零值</td>
+</tr>
+<tr>
+<td>Nil</td>
+<td>(Class)0</td>
+<td>Objective-C类的字面零值</td>
+</tr>
+<tr>
+<td>NSNull</td>
+<td>[NSNull null]</td>
+<td>用来表示零值的单独的对象</td>
+</tr>
+</tbody>
+</table>
+<h3 id="static-inline-内联函数"><a href="#static-inline-内联函数" class="headerlink" title="static inline 内联函数"></a>static inline 内联函数</h3><ul>
+<li><p>看到这样一个完全没见过的宏<br><code>#define force_inline __inline__ __attribute__((always_inline))</code></p>
+</li>
+<li><p>原来是叫<code>内联函数</code></p>
+</li>
+<li>挺好的一篇参考文章: <a href="http://www.cnblogs.com/wyk19910103/p/5660627.html" target="_blank" rel="external">http://www.cnblogs.com/wyk19910103/p/5660627.html</a></li>
+</ul>
+<h3 id="package-关键字"><a href="#package-关键字" class="headerlink" title="@package 关键字"></a>@package 关键字</h3><h3 id="unsafe-unretained-关键字"><a href="#unsafe-unretained-关键字" class="headerlink" title="__unsafe_unretained 关键字"></a>__unsafe_unretained 关键字</h3><ul>
+<li>与<code>weak</code>类似但有本质不同</li>
+<li><a href="https://www.zhihu.com/question/55831650" target="_blank" rel="external">https://www.zhihu.com/question/55831650</a></li>
+<li><a href="https://blog.csdn.net/bsplover/article/details/7707964" target="_blank" rel="external">https://blog.csdn.net/bsplover/article/details/7707964</a></li>
+<li><a href="https://blog.csdn.net/yueyansheng2/article/details/49813987" target="_blank" rel="external">https://blog.csdn.net/yueyansheng2/article/details/49813987</a></li>
+</ul>
+<h3 id="bridge-关键字"><a href="#bridge-关键字" class="headerlink" title="__bridge 关键字"></a>__bridge 关键字</h3><h3 id="命名对内对外"><a href="#命名对内对外" class="headerlink" title="命名对内对外"></a>命名对内对外</h3><ul>
+<li>对内的加<code>_</code>前缀</li>
+<li>对外的不加</li>
+<li><code>CoreFoundation</code>中也挺常见</li>
+</ul>
+<h3 id="CFDictionaryApplyFunction-amp-CFDictionaryApplyFunction-函数"><a href="#CFDictionaryApplyFunction-amp-CFDictionaryApplyFunction-函数" class="headerlink" title="CFDictionaryApplyFunction &amp; CFDictionaryApplyFunction 函数"></a>CFDictionaryApplyFunction &amp; CFDictionaryApplyFunction 函数</h3><h3 id="性能优化Tips"><a href="#性能优化Tips" class="headerlink" title="性能优化Tips:"></a>性能优化Tips:</h3><ul>
+<li>来自文章开头YY作者的文章,感觉相当重要这里<code>Copy</code>来方便看</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="number">1</span>. 缓存</div><div class="line"><span class="type">Model</span> <span class="type">JSON</span> 转换过程中需要很多类的元数据，如果数据足够小，则全部缓存到内存中。</div><div class="line"></div><div class="line"><span class="number">2</span>. 查表</div><div class="line">当遇到多项选择的条件时，要尽量使用查表法实现，比如 <span class="keyword">switch</span>/<span class="keyword">case</span>，<span class="type">C</span> <span class="type">Array</span>，如果查表条件是对象，则可以用 <span class="type">NSDictionary</span> 来实现。</div><div class="line"></div><div class="line"><span class="number">3</span>. 避免 <span class="type">KVC</span></div><div class="line"><span class="type">Key</span>-<span class="type">Value</span> <span class="type">Coding</span> 使用起来非常方便，但性能上要差于直接调用 <span class="type">Getter</span>/<span class="type">Setter</span>，所以如果能避免 <span class="type">KVC</span> 而用 <span class="type">Getter</span>/<span class="type">Setter</span> 代替，性能会有较大提升。</div><div class="line"></div><div class="line"><span class="number">4</span>. 避免 <span class="type">Getter</span>/<span class="type">Setter</span> 调用</div><div class="line">如果能直接访问 ivar，则尽量使用 ivar 而不要使用 <span class="type">Getter</span>/<span class="type">Setter</span> 这样也能节省一部分开销。</div><div class="line"></div><div class="line"><span class="number">5</span>. 避免多余的内存管理方法</div><div class="line">在 <span class="type">ARC</span> 条件下，默认声明的对象是 __strong 类型的，赋值时有可能会产生 retain/release 调用，如果一个变量在其生命周期内不会被释放，则使用 __unsafe_unretained 会节省很大的开销。</div><div class="line"></div><div class="line">访问具有 __weak 属性的变量时，实际上会调用 objc_loadWeak() 和 objc_storeWeak() 来完成，这也会带来很大的开销，所以要避免使用 __weak 属性。</div><div class="line">创建和使用对象时，要尽量避免对象进入 autoreleasepool，以避免额外的资源开销。</div><div class="line"></div><div class="line"><span class="number">6</span>. 遍历容器类时，选择更高效的方法</div><div class="line">相对于 <span class="type">Foundation</span> 的方法来说，<span class="type">CoreFoundation</span> 的方法有更高的性能，用 <span class="type">CFArrayApplyFunction</span>() 和 <span class="type">CFDictionaryApplyFunction</span>() 方法来遍历容器类能带来不少性能提升，但代码写起来会非常麻烦。</div><div class="line"></div><div class="line"><span class="number">7</span>. 尽量用纯 <span class="type">C</span> 函数、内联函数</div><div class="line">使用纯 <span class="type">C</span> 函数可以避免 <span class="type">ObjC</span> 的消息发送带来的开销。如果 <span class="type">C</span> 函数比较小，使用 inline 可以避免一部分压栈弹栈等函数调用的开销。</div><div class="line"></div><div class="line"><span class="number">8</span>. 减少遍历的循环次数</div><div class="line">在 <span class="type">JSON</span> 和 <span class="type">Model</span> 转换前，<span class="type">Model</span> 的属性个数和 <span class="type">JSON</span> 的属性个数都是已知的，这时选择数量较少的那一方进行遍历，会节省很多时间。</div></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="http://triplecc.github.io/blog/2016-06-05-yymodelyue-du-xiao-ji/" target="_blank" rel="external">http://triplecc.github.io/blog/2016-06-05-yymodelyue-du-xiao-ji/</a></li>
+<li><a href="https://lision.me/yymodel_x01/" target="_blank" rel="external">https://lision.me/yymodel_x01/</a></li>
+<li><a href="https://lision.me/yymodel_x02/" target="_blank" rel="external">https://lision.me/yymodel_x02/</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/学习/">学习</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2018/03/26/项目路由方案/"  title="组件化之路:去模型化与路由">
+ <strong>下一篇：</strong><br/> 
+ <span>组件化之路:去模型化与路由
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2018/04/08/CodeReading-01-YYModel/" data-title="CodeReading-01-YYModel" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/04/08/CodeReading-01-YYModel/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodeReading-01-YYModel"><span class="toc-number">1.</span> <span class="toc-text">CodeReading-01-YYModel</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#结构"><span class="toc-number">1.1.</span> <span class="toc-text">结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YYModel-h"><span class="toc-number">1.2.</span> <span class="toc-text">YYModel.h</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NSObject-YYModel"><span class="toc-number">1.3.</span> <span class="toc-text">NSObject+YYModel</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型"><span class="toc-number">1.3.1.</span> <span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#YYEncodingNSType"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">YYEncodingNSType</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内联函数"><span class="toc-number">1.3.2.</span> <span class="toc-text">内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class"><span class="toc-number">1.3.3.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#结构体-ModelSetContext"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">结构体 ModelSetContext</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYModelPropertyMeta-NSObject"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">_YYModelPropertyMeta : NSObject</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYModelMeta-NSObject"><span class="toc-number">1.3.3.3.</span> <span class="toc-text">_YYModelMeta : NSObject</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YYClassInfo"><span class="toc-number">1.4.</span> <span class="toc-text">YYClassInfo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#类型-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#YYEncodingType"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">YYEncodingType</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-1"><span class="toc-number">1.4.2.</span> <span class="toc-text">Class</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassIvarInfo"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">YYClassIvarInfo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassMethodInfo"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">YYClassMethodInfo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassPropertyInfo"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">YYClassPropertyInfo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#YYClassInfo-1"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">YYClassInfo</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tips"><span class="toc-number">1.5.</span> <span class="toc-text">Tips:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#kCFNull"><span class="toc-number">1.5.1.</span> <span class="toc-text">kCFNull</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-inline-内联函数"><span class="toc-number">1.5.2.</span> <span class="toc-text">static inline 内联函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#package-关键字"><span class="toc-number">1.5.3.</span> <span class="toc-text">@package 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unsafe-unretained-关键字"><span class="toc-number">1.5.4.</span> <span class="toc-text">__unsafe_unretained 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bridge-关键字"><span class="toc-number">1.5.5.</span> <span class="toc-text">__bridge 关键字</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命名对内对外"><span class="toc-number">1.5.6.</span> <span class="toc-text">命名对内对外</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CFDictionaryApplyFunction-amp-CFDictionaryApplyFunction-函数"><span class="toc-number">1.5.7.</span> <span class="toc-text">CFDictionaryApplyFunction & CFDictionaryApplyFunction 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性能优化Tips"><span class="toc-number">1.5.8.</span> <span class="toc-text">性能优化Tips:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>19</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
