@@ -4,29 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Storyboard中UnwindSegue的使用 | RyukieSama`sDogHouse</title>
+    <title>CodeReading-02-MJExtension | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加 之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了  想我这里联线的是按钮 toMain  点击按钮之后就会回到写有 unwindSwgue 的页面  当然传值操作和普通">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="CodeReading-02-MJExtension YYModel的原码过了一遍,接下来对比下比较”老”的MJExtension,同时做一些对比  ##">
+<meta name="keywords" content="iOS,学习,TODO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Storyboard中UnwindSegue的使用">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/index.html">
+<meta property="og:title" content="CodeReading-02-MJExtension">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/04/08/CodeReading-02-MJExtension/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加 之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了  想我这里联线的是按钮 toMain  点击按钮之后就会回到写有 unwindSwgue 的页面  当然传值操作和普通">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15082331645192.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15094637614639.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15094639919780.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15094641190591.jpg">
-<meta property="og:updated_time" content="2017-10-31T15:41:12.000Z">
+<meta property="og:description" content="CodeReading-02-MJExtension YYModel的原码过了一遍,接下来对比下比较”老”的MJExtension,同时做一些对比  ##">
+<meta property="og:updated_time" content="2018-04-08T08:15:48.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Storyboard中UnwindSegue的使用">
-<meta name="twitter:description" content="Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加 之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了  想我这里联线的是按钮 toMain  点击按钮之后就会回到写有 unwindSwgue 的页面  当然传值操作和普通">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15082331645192.jpg">
+<meta name="twitter:title" content="CodeReading-02-MJExtension">
+<meta name="twitter:description" content="CodeReading-02-MJExtension YYModel的原码过了一遍,接下来对比下比较”老”的MJExtension,同时做一些对比  ##">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -86,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/" title="Storyboard中UnwindSegue的使用" itemprop="url">Storyboard中UnwindSegue的使用</a>
+      <a href="/Ryukie.GitHub.io/2018/04/08/CodeReading-02-MJExtension/" title="CodeReading-02-MJExtension" itemprop="url">CodeReading-02-MJExtension</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-17T09:35:02.000Z" itemprop="datePublished"> Published 2017-10-17</time>
+    <time datetime="2018-04-08T08:07:40.000Z" itemprop="datePublished"> Published 2018-04-08</time>
     
   </p>
 </header>
@@ -102,17 +97,14 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Storyboard中UnwindSegue的使用"><span class="toc-number">1.</span> <span class="toc-text">Storyboard中UnwindSegue的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在最下层控制器中添加-unwind-segue-的-IBAction"><span class="toc-number">1.1.</span> <span class="toc-text">在最下层控制器中添加 unwind segue 的 IBAction</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodeReading-02-MJExtension"><span class="toc-number">1.</span> <span class="toc-text">CodeReading-02-MJExtension</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="Storyboard中UnwindSegue的使用"><a href="#Storyboard中UnwindSegue的使用" class="headerlink" title="Storyboard中UnwindSegue的使用"></a>Storyboard中UnwindSegue的使用</h1><h2 id="在最下层控制器中添加-unwind-segue-的-IBAction"><a href="#在最下层控制器中添加-unwind-segue-的-IBAction" class="headerlink" title="在最下层控制器中添加 unwind segue 的 IBAction"></a>在最下层控制器中添加 <code>unwind segue</code> 的 <code>IBAction</code></h2><p>在一系列跳转关系的控制器中的根控制器中添加一个方法<br>如下图,我就该在红框控制器中添加<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15082331645192.jpg" alt=""></p>
-<p>之后在该控制器后续关联的控制器中点击 <code>exit</code> 可以看到这个 <code>segue</code> 了</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15094637614639.jpg" alt=""></p>
-<p>想我这里联线的是按钮 <code>toMain</code>  点击按钮之后就会回到写有 <code>unwindSwgue</code> 的页面</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15094639919780.jpg" alt=""></p>
-<p>当然传值操作和普通 <code>segue</code> 一样可以再下面的方法中进行</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15094641190591.jpg" alt=""></p>
+		<h1 id="CodeReading-02-MJExtension"><a href="#CodeReading-02-MJExtension" class="headerlink" title="CodeReading-02-MJExtension"></a>CodeReading-02-MJExtension</h1><blockquote>
+<p>YYModel的原码过了一遍,接下来对比下比较”老”的<code>MJExtension</code>,同时做一些对比</p>
+</blockquote>
+<p>## </p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -126,7 +118,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/学习/">学习</a><a href="/Ryukie.GitHub.io/tags/TODO/">TODO</a>
   </div>
 
 </div>
@@ -170,19 +162,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" title="使用KVC设置UIAlertAction按钮颜色的Crash">
-  <strong>上一篇：</strong><br/>
-  <span>
-  使用KVC设置UIAlertAction按钮颜色的Crash</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/"  title="iOS 使用TTF字体">
+<a href="/Ryukie.GitHub.io/2018/04/08/CodeReading-01-YYModel/"  title="CodeReading-01-YYModel">
  <strong>下一篇：</strong><br/> 
- <span>iOS 使用TTF字体
+ <span>CodeReading-01-YYModel
 </span>
 </a>
 </div>
@@ -191,7 +175,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/10/17/Storyboard中UnwindSegue的使用/" data-title="Storyboard中UnwindSegue的使用" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/"></div>
+	<div class="ds-thread" data-thread-key="2018/04/08/CodeReading-02-MJExtension/" data-title="CodeReading-02-MJExtension" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/04/08/CodeReading-02-MJExtension/"></div>
 </section>
 
 
@@ -201,7 +185,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Storyboard中UnwindSegue的使用"><span class="toc-number">1.</span> <span class="toc-text">Storyboard中UnwindSegue的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#在最下层控制器中添加-unwind-segue-的-IBAction"><span class="toc-number">1.1.</span> <span class="toc-text">在最下层控制器中添加 unwind segue 的 IBAction</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodeReading-02-MJExtension"><span class="toc-number">1.</span> <span class="toc-text">CodeReading-02-MJExtension</span></a></li></ol>
  
   </div>
 
