@@ -11,17 +11,17 @@
     
 
     
-    <meta name="description" content="FMDB与WCDB 参考: https://cloud.tencent.com/developer/article/1005718  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,FMDB之做了最简单的封装,WCDB还做了ORM等封装,所以有了更多的步骤,性能稍劣于FMDB5%(官方给出的数据) 优于多">
+    <meta name="description" content="FMDB与WCDB 参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,">
 <meta name="keywords" content="iOS,数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FMDB与WCDB">
 <meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/03/FMDB与WCDB/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="FMDB与WCDB 参考: https://cloud.tencent.com/developer/article/1005718  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,FMDB之做了最简单的封装,WCDB还做了ORM等封装,所以有了更多的步骤,性能稍劣于FMDB5%(官方给出的数据) 优于多">
-<meta property="og:updated_time" content="2019-07-03T07:52:17.729Z">
+<meta property="og:description" content="FMDB与WCDB 参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,">
+<meta property="og:updated_time" content="2019-07-03T07:56:07.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FMDB与WCDB">
-<meta name="twitter:description" content="FMDB与WCDB 参考: https://cloud.tencent.com/developer/article/1005718  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,FMDB之做了最简单的封装,WCDB还做了ORM等封装,所以有了更多的步骤,性能稍劣于FMDB5%(官方给出的数据) 优于多">
+<meta name="twitter:description" content="FMDB与WCDB 参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -88,21 +88,21 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2019-07-03T07:33:36.000Z" itemprop="datePublished"> Published 2019-07-03</time>
+    <time datetime="2019-07-03T07:33:36.000Z" itemprop="datePublished"> 发表于 2019-07-03</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FMDB与WCDB"><span class="toc-number">1.</span> <span class="toc-text">FMDB与WCDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-number">1.1.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.3.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库升级"><span class="toc-number">1.4.</span> <span class="toc-text">数据库升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 		
 		</div>
 		
 		<h1 id="FMDB与WCDB"><a href="#FMDB与WCDB" class="headerlink" title="FMDB与WCDB"></a>FMDB与WCDB</h1><blockquote>
-<p>参考: <a href="https://cloud.tencent.com/developer/article/1005718" target="_blank" rel="external">https://cloud.tencent.com/developer/article/1005718</a></p>
+<p>参考:<br><a href="https://cloud.tencent.com/developer/article/1005718" target="_blank" rel="external">https://cloud.tencent.com/developer/article/1005718</a> 微信团队<br><a href="http://blog.devtang.com/2012/04/22/use-fmdb/" target="_blank" rel="external">http://blog.devtang.com/2012/04/22/use-fmdb/</a> 在iOS开发中使用FMDB</p>
 </blockquote>
 <h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><ul>
 <li>都是基于<code>SQLite</code>的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具</li>
@@ -210,22 +210,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FMDB与WCDB"><span class="toc-number">1.</span> <span class="toc-text">FMDB与WCDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-number">1.1.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.3.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库升级"><span class="toc-number">1.4.</span> <span class="toc-text">数据库升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -235,7 +235,7 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -248,7 +248,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -284,11 +284,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 			
 		
 			
@@ -308,7 +308,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
 </aside>
@@ -498,7 +498,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 
