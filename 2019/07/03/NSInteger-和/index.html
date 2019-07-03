@@ -4,19 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>RyukieSama`sDogHouse</title>
+    <title>NSInteger 和 %@ | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="RyukieSama`sDogHouse">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/index.html">
+    <meta name="description" content="NSInteger 和 %@12NSInteger age = 12;NSString *str = age ? [NSString stringWithFormat:@&quot;%@&quot;,age] : @&quot;&quot;;  上面代码看起来问题在%@,但最大的问题还在后面. 运行起来会崩溃 这里用%@,会去掉用description方法而NSInteger没有">
+<meta name="keywords" content="iOS,BUG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSInteger 和 %@">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/03/NSInteger-和/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="NSInteger 和 %@12NSInteger age = 12;NSString *str = age ? [NSString stringWithFormat:@&quot;%@&quot;,age] : @&quot;&quot;;  上面代码看起来问题在%@,但最大的问题还在后面. 运行起来会崩溃 这里用%@,会去掉用description方法而NSInteger没有">
+<meta property="og:updated_time" content="2019-07-03T12:43:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RyukieSama`sDogHouse">
+<meta name="twitter:title" content="NSInteger 和 %@">
+<meta name="twitter:description" content="NSInteger 和 %@12NSInteger age = 12;NSString *str = age ? [NSString stringWithFormat:@&quot;%@&quot;,age] : @&quot;&quot;;  上面代码看起来问题在%@,但最大的问题还在后面. 运行起来会崩溃 这里用%@,会去掉用description方法而NSInteger没有">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -70,253 +75,121 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2019/07/03/NSInteger-和/" title="NSInteger 和 %@" itemprop="url">
-  
-    <h1 itemprop="name">NSInteger 和 %@</h1>
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >NSInteger 和 %@12NSInteger age = 12;NSString *str = age ? [NSString stringWithFormat:@&quot;%@&quot;,age] : @&quot;&quot;;
-
-上面代码看起来问题在%@,但最大的问题还在后面.
-运行起来会崩溃
-这里用%</p>
-        
+      <a href="/Ryukie.GitHub.io/2019/07/03/NSInteger-和/" title="NSInteger 和 %@" itemprop="url">NSInteger 和 %@</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-03T12:40:20.000Z" itemprop="datePublished"> 發表於 2019-07-03</time>
     
-    <time datetime="2019-07-03T12:40:20.000Z" itemprop="datePublished">2019-07-03</time>
-  </a>
-</section>
-
-
-
-
-
-
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSInteger-和"><span class="toc-number">1.</span> <span class="toc-text">NSInteger 和 %@</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="NSInteger-和"><a href="#NSInteger-和" class="headerlink" title="NSInteger 和 %@"></a>NSInteger 和 %@</h1><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSInteger</span> age = <span class="number">12</span>;</div><div class="line"><span class="built_in">NSString</span> *str = age ? [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"%@"</span>,age] : <span class="string">@""</span>;</div></pre></td></tr></table></figure>
+<ul>
+<li>上面代码看起来问题在<code>%@</code>,但最大的问题还在后面.</li>
+<li>运行起来会崩溃</li>
+<li>这里用<code>%@</code>,会去掉用<code>description</code>方法而<code>NSInteger</code>没有</li>
+</ul>
   
-<section class="post" itemscope itemprop="blogitem">
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
   
-    <a href="/Ryukie.GitHub.io/2019/07/03/WCDB-Swift/" title="WCDB-Swift" itemprop="url">
-  
-    <h1 itemprop="name">WCDB-Swift</h1>
-    
-     
-           <p itemprop="description" ></p>
-        
-    
-    <time datetime="2019-07-03T08:02:32.000Z" itemprop="datePublished">2019-07-03</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2019/07/02/Swift-Optional实质/" title="Swift-Optional实质" itemprop="url">
-  
-    <h1 itemprop="name">Swift-Optional实质</h1>
-    
-     
-           <p itemprop="description" >Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把
-12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConverti</p>
-        
-    
-    <time datetime="2019-07-02T09:11:15.000Z" itemprop="datePublished">2019-07-02</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2019/06/18/iOS-weak实现原理/" title="iOS-weak实现原理" itemprop="url">
-  
-    <h1 itemprop="name">iOS-weak实现原理</h1>
-    
-     
-           <p itemprop="description" >iOS-weak实现原理描述
-系统维护了一个hash表,
-Key是所指对象的地址,
-Value是weak指针的地址数组
-弱引用,应用对象的引用计数不会+1
-并在对象被释放的时候自动设为nil,这是和assign本质的区别,用assign修饰对象的话会发生野指针的问题
-
-
-
-实现过</p>
-        
-    
-    <time datetime="2019-06-18T07:22:41.000Z" itemprop="datePublished">2019-06-18</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/08/20/RunLoop/" title="RunLoop" itemprop="url">
-  
-    <h1 itemprop="name">RunLoop</h1>
-    
-     
-           <p itemprop="description" >iOS App 运行原理App启动
-01_动态链接 dyld
-将程序依赖的动态链接库递归加载进内存
-
-02_ImageLoader
-image 表示一个二进制文件（可执行文件或 so 文件），里面是被编译过的符号、代码等
-ImageLoader 作用是将这些文件加载进内存，且每一</p>
-        
-    
-    <time datetime="2018-08-20T14:47:22.000Z" itemprop="datePublished">2018-08-20</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/08/12/纯Swift路由方案探究/" title="纯Swift路由方案探究" itemprop="url">
-  
-    <h1 itemprop="name">纯Swift路由方案探究</h1>
-    
-     
-           <p itemprop="description" >纯Swift路由方案探究前言
-
-OC 写了几年了到了新公司开始写Swift项目正在成长期, 开始人也不多, 模块化程度不高于是就整了这套路由方案发现现在很多Swift路由方案很大程度上还是使用了OC的特性比如需要继承NSObject作为一名Swift萌新, 这次路由方案的设计是很</p>
-        
-    
-    <time datetime="2018-08-12T08:46:55.000Z" itemprop="datePublished">2018-08-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/07/03/FMDB与WCDB/" title="FMDB与WCDB" itemprop="url">
-  
-    <h1 itemprop="name">FMDB与WCDB</h1>
-    
-     
-           <p itemprop="description" >FMDB与WCDB
-参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB
-
-兼容性
-都是基于SQL</p>
-        
-    
-    <time datetime="2018-07-03T07:33:36.000Z" itemprop="datePublished">2018-07-03</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/06/12/链表倒数第k个节点-Swift/" title="链表倒数第k个节点-Swift" itemprop="url">
-  
-    <h1 itemprop="name">链表倒数第k个节点-Swift</h1>
-    
-     
-           <p itemprop="description" >链表倒数第k个节点-Swift
-找出单链表中倒数第k个节点</p>
-        
-    
-    <time datetime="2018-06-12T07:59:41.000Z" itemprop="datePublished">2018-06-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/04/27/将node-js服务部署到VPS上/" title="将Node.js服务部署到VPS上" itemprop="url">
-  
-    <h1 itemprop="name">将Node.js服务部署到VPS上</h1>
-    
-     
-           <p itemprop="description" >将Node.js服务部署到VPS上我用的是Linode的VPS
-01_远程连接服务器根目录内容如下
-
-
-home 文件夹后面会存放程序源码
-usr 文件夹存放 node.js 和 MongoDB 源码
-var 文件夹放 MongoDB 的数据和日志
-
-02_安装相关软件更新一下软</p>
-        
-    
-    <time datetime="2018-04-27T04:44:32.000Z" itemprop="datePublished">2018-04-27</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/04/08/CodeReading-02-MJExtension/" title="CodeReading-02-MJExtension" itemprop="url">
-  
-    <h1 itemprop="name">CodeReading-02-MJExtension</h1>
-    
-     
-           <p itemprop="description" >CodeReading-02-MJExtension
-YYModel的原码过了一遍,接下来对比下比较”老”的MJExtension,同时做一些对比
-
-##</p>
-        
-    
-    <time datetime="2018-04-08T08:07:40.000Z" itemprop="datePublished">2018-04-08</time>
-  </a>
-</section>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix unexpand">
-    <span class="page-number current">1</span><a class="page-number" href="/Ryukie.GitHub.io/page/2/">2</a><a class="page-number" href="/Ryukie.GitHub.io/page/3/">3</a><a class="page-number" href="/Ryukie.GitHub.io/page/4/">4</a><a class="extend next" rel="next" href="/Ryukie.GitHub.io/page/2/">Next<span></span></a>
-  </nav>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/BUG/">BUG</a>
+  </div>
 
 </div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2019/07/03/WCDB-Swift/"  title="WCDB-Swift">
+ <strong>下一篇：</strong><br/> 
+ <span>WCDB-Swift
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2019/07/03/NSInteger-和/" data-title="NSInteger 和 %@" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/03/NSInteger-和/"></div>
+</section>
+
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSInteger-和"><span class="toc-number">1.</span> <span class="toc-text">NSInteger 和 %@</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
@@ -502,14 +375,54 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
 
 
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
@@ -578,4 +491,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
