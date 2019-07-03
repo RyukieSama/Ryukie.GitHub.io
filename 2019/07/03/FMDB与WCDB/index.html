@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>使用KVC设置UIAlertAction按钮颜色的Crash | RyukieSama`sDogHouse</title>
+    <title>FMDB与WCDB | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key _titleTextColor.	-&amp;gt; transla">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="FMDB与WCDB 参考: https://cloud.tencent.com/developer/article/1005718  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,FMDB之做了最简单的封装,WCDB还做了ORM等封装,所以有了更多的步骤,性能稍劣于FMDB5%(官方给出的数据) 优于多">
+<meta name="keywords" content="iOS,数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用KVC设置UIAlertAction按钮颜色的Crash">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/index.html">
+<meta property="og:title" content="FMDB与WCDB">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/03/FMDB与WCDB/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key _titleTextColor.	-&amp;gt; transla">
-<meta property="og:updated_time" content="2017-10-31T15:49:45.000Z">
+<meta property="og:description" content="FMDB与WCDB 参考: https://cloud.tencent.com/developer/article/1005718  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,FMDB之做了最简单的封装,WCDB还做了ORM等封装,所以有了更多的步骤,性能稍劣于FMDB5%(官方给出的数据) 优于多">
+<meta property="og:updated_time" content="2019-07-03T07:52:17.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用KVC设置UIAlertAction按钮颜色的Crash">
-<meta name="twitter:description" content="使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key _titleTextColor.	-&amp;gt; transla">
+<meta name="twitter:title" content="FMDB与WCDB">
+<meta name="twitter:description" content="FMDB与WCDB 参考: https://cloud.tencent.com/developer/article/1005718  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,FMDB之做了最简单的封装,WCDB还做了ORM等封装,所以有了更多的步骤,性能稍劣于FMDB5%(官方给出的数据) 优于多">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" title="使用KVC设置UIAlertAction按钮颜色的Crash" itemprop="url">使用KVC设置UIAlertAction按钮颜色的Crash</a>
+      <a href="/Ryukie.GitHub.io/2019/07/03/FMDB与WCDB/" title="FMDB与WCDB" itemprop="url">FMDB与WCDB</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-31T15:39:48.000Z" itemprop="datePublished"> Published 2017-10-31</time>
+    <time datetime="2019-07-03T07:33:36.000Z" itemprop="datePublished"> Published 2019-07-03</time>
     
   </p>
 </header>
@@ -97,17 +97,44 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用KVC设置UIAlertAction按钮颜色的Crash"><span class="toc-number">1.</span> <span class="toc-text">使用KVC设置UIAlertAction按钮颜色的Crash</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#fix"><span class="toc-number">2.</span> <span class="toc-text">fix</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FMDB与WCDB"><span class="toc-number">1.</span> <span class="toc-text">FMDB与WCDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-number">1.1.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.3.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库升级"><span class="toc-number">1.4.</span> <span class="toc-text">数据库升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="使用KVC设置UIAlertAction按钮颜色的Crash"><a href="#使用KVC设置UIAlertAction按钮颜色的Crash" class="headerlink" title="使用KVC设置UIAlertAction按钮颜色的Crash"></a>使用KVC设置UIAlertAction按钮颜色的Crash</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">=&gt; <span class="type">Start</span> [&lt;<span class="type">UIAlertAction</span> <span class="number">0x1702b63e0</span>&gt; setValue:forUndefinedKey:]: this <span class="class"><span class="keyword">class</span> <span class="title">is</span> <span class="title">not</span> <span class="title">key</span> <span class="title">value</span> <span class="title">coding</span>-<span class="title">compliant</span> <span class="title">for</span> <span class="title">the</span> <span class="title">key</span> <span class="title">_titleTextColor</span>.</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1005eb9a0</span> 』=&gt; -[<span class="title">UsedHouseDetail</span> <span class="title">firstCollectTip</span>] <span class="title">QFangWang</span>/<span class="title">HouseDetail</span>/<span class="title">Controller</span>/<span class="title">UsedHouseDetail</span>.<span class="title">m</span>: <span class="title">line</span> 509</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1005eb668</span> 』=&gt; <span class="title">__39</span>-[<span class="title">UsedHouseDetail</span> <span class="title">RequestColletionData</span>]<span class="title">_block_invoke</span>.481 <span class="title">QFangWang</span>/<span class="title">HouseDetail</span>/<span class="title">Controller</span>/<span class="title">UsedHouseDetail</span>.<span class="title">m</span>: <span class="title">line</span> 472</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1007b0cfc</span> 』=&gt; -[<span class="title">YTKNetworkAgent</span> <span class="title">handleRequestResult</span>:] /<span class="title">Users</span>/<span class="title">Fish</span>/<span class="title">iOS</span>-<span class="title">Client</span>/<span class="title">QFangWang</span>/<span class="title">Pods</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetworkAgent</span>.<span class="title">m</span>: <span class="title">line</span> 262</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1007b020c</span> 』=&gt; <span class="title">__33</span>-[<span class="title">YTKNetworkAgent</span> <span class="title">ytk_addRequst</span>:]<span class="title">_block_invoke</span>.145 /<span class="title">Users</span>/<span class="title">Fish</span>/<span class="title">iOS</span>-<span class="title">Client</span>/<span class="title">QFangWang</span>/<span class="title">Pods</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetworkAgent</span>.<span class="title">m</span>: <span class="title">line</span> 156</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x100227524</span> 』=&gt; <span class="title">main</span> <span class="title">QFangWang</span>/<span class="title">main</span>.<span class="title">mm</span>: <span class="title">line</span> 13</span></div><div class="line"><span class="class">=&gt; <span class="title">End</span> [&lt;<span class="title">UIAlertAction</span> 0<span class="title">x1702b63e0</span>&gt; <span class="title">setValue</span>:<span class="title">forUndefinedKey</span>:]: <span class="title">this</span> <span class="title">class</span> <span class="title">is</span> <span class="title">not</span> <span class="title">key</span> <span class="title">value</span> <span class="title">coding</span>-<span class="title">compliant</span> <span class="title">for</span> <span class="title">the</span> <span class="title">key</span> <span class="title">_titleTextColor</span>.</span></div><div class="line"><span class="class">&gt;------------------------------------------------------&lt;</span></div></pre></td></tr></table></figure>
-<p>最近线上发现了如上面所示的bug</p>
-<p>是为了实现改变 <code>UIAlertAction</code> 默认按钮颜色的地方使用了下面方式</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[action setValue:[<span class="type">UIColor</span> redColor] forKey:@<span class="string">"_titleTextColor"</span>];</div></pre></td></tr></table></figure>
-<p>但是在某些系统版本中 <code>UIAlertAction</code> 中并没有 <code>_titleTextColor</code> 这个成员变量而导致了崩溃<br>具体可以通过 <code>runtime</code> 获取成员列表来看看</p>
-<h1 id="fix"><a href="#fix" class="headerlink" title="fix"></a>fix</h1><p> 判断是否有 <code>_titleTextColor</code> 来设置<br> 或者<br> 通过设置 <code>alertController.view.tintColor</code> 来实现<br> 需要注意的是: 在8.4上由于层级结构的问题  需要在 <code>presentAlertVC</code> 后设置 <code>tintColor</code></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.jianshu.com/p/8a2b5a3a9167" target="_blank" rel="external">http://www.jianshu.com/p/8a2b5a3a9167</a></p>
+		<h1 id="FMDB与WCDB"><a href="#FMDB与WCDB" class="headerlink" title="FMDB与WCDB"></a>FMDB与WCDB</h1><blockquote>
+<p>参考: <a href="https://cloud.tencent.com/developer/article/1005718" target="_blank" rel="external">https://cloud.tencent.com/developer/article/1005718</a></p>
+</blockquote>
+<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><ul>
+<li>都是基于<code>SQLite</code>的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具</li>
+</ul>
+<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><ol>
+<li>读写</li>
+</ol>
+<ul>
+<li><code>SQLite</code>的 速度已经很快了,<code>FMDB</code>之做了最简单的封装,<code>WCDB</code>还做了ORM等封装,所以有了更多的步骤,性能稍劣于<code>FMDB</code>5%(官方给出的数据)<ul>
+<li>优于多携程读的优势,可以和<code>FMDB</code>持平了</li>
+</ul>
+</li>
+<li>写操作通常是性能的瓶颈,做了针对性优化使<code>WCDB</code>写操作优于<code>FMDB</code>28%,批量写优于180%</li>
+<li>多线程读写优于<code>FMDB</code>62%</li>
+<li>多线程写<code>FMDB</code>直接返回错误<code>SQLITE_BUSY</code>,无法完成</li>
+</ul>
+<ol>
+<li>初始化</li>
+</ol>
+<ul>
+<li><code>SQLite</code>连接的初始化速度会随着数据库内表的数量增加而逐渐上升,<code>WCDB</code>也针对这个场景做了优化.相较于没有优化的<code>FMDB</code>,<code>WCDB</code>的初始化速度有107%的性能优势</li>
+</ul>
+<h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><blockquote>
+<p>Object Relational Mapping</p>
+</blockquote>
+<p>有了ORM开发维护成本大大降低</p>
+<h2 id="数据库升级"><a href="#数据库升级" class="headerlink" title="数据库升级"></a>数据库升级</h2><ul>
+<li><code>SQLite</code> 的数据库升级一直是一个比较繁杂的问题</li>
+<li>通常的做法是，开发者自行定义一个版本号，并保存下来。数据库创建时每次检查版本号，若版本号较低，则对其字段进行升级，并更新版本号。但在多个版本的增增减减之后，版本的处理逻辑会越来越复杂，甚至可能弄错表内哪些字段是新增的，哪些是废弃的</li>
+<li><code>WCDB</code>将数据库升级和<code>ORM</code>结合起来，对于需要增删改的字段，只需直接在<code>ORM</code>层面修改，并再次调用 <code>createTableAndIndexesOfName:withClass:</code>接口即可自动升级</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>与 <code>FMDB</code> 对比， <code>WCDB</code> 使得开发者可以写更少的代码，但能获得更高的性能。<br>开发者不需要额外关注数据库升级和多线程操作的问题。同时， <code>WCDB</code> 还提供了加密、统计、修复等功能。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +148,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/数据库/">数据库</a>
   </div>
 
 </div>
@@ -165,19 +192,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/01/24/OC项目中加入Swift混编/" title="OC项目中加入Swift混编">
-  <strong>上一篇：</strong><br/>
-  <span>
-  OC项目中加入Swift混编</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/"  title="Storyboard中UnwindSegue的使用">
+<a href="/Ryukie.GitHub.io/2019/07/02/Swift-Optional实质/"  title="Swift-Optional实质">
  <strong>下一篇：</strong><br/> 
- <span>Storyboard中UnwindSegue的使用
+ <span>Swift-Optional实质
 </span>
 </a>
 </div>
@@ -186,7 +205,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" data-title="使用KVC设置UIAlertAction按钮颜色的Crash" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/"></div>
+	<div class="ds-thread" data-thread-key="2019/07/03/FMDB与WCDB/" data-title="FMDB与WCDB" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/03/FMDB与WCDB/"></div>
 </section>
 
 
@@ -196,7 +215,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用KVC设置UIAlertAction按钮颜色的Crash"><span class="toc-number">1.</span> <span class="toc-text">使用KVC设置UIAlertAction按钮颜色的Crash</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#fix"><span class="toc-number">2.</span> <span class="toc-text">fix</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FMDB与WCDB"><span class="toc-number">1.</span> <span class="toc-text">FMDB与WCDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-number">1.1.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.3.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库升级"><span class="toc-number">1.4.</span> <span class="toc-text">数据库升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
  
   </div>
 
