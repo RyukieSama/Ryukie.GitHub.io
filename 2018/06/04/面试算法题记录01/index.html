@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Swift-Optional实质 | RyukieSama`sDogHouse</title>
+    <title>面试算法题记录01 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把 12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConvertible &amp;#123;    case None    case Some(Wrapped)    /// Constru">
-<meta name="keywords" content="iOS,Swift">
+    <meta name="description" content="面试算法题记录01问题:  整型数组长度为n,内部有一个元素出现的数量大于n&amp;gt;&amp;gt;1,请设计一个算法求出这个元素要求时间复杂度为O(n)空间复杂度O(1)  分析:  n&amp;gt;&amp;gt;1.就是把n除以2的1次方,即该元素出现的次数大于一半  代码:Swift 1234567891011121314151617181920212223242526272829func getElement">
+<meta name="keywords" content="面试,算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift-Optional实质">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/02/Swift-Optional实质/index.html">
+<meta property="og:title" content="面试算法题记录01">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/06/04/面试算法题记录01/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把 12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConvertible &amp;#123;    case None    case Some(Wrapped)    /// Constru">
-<meta property="og:updated_time" content="2019-07-02T09:26:21.094Z">
+<meta property="og:description" content="面试算法题记录01问题:  整型数组长度为n,内部有一个元素出现的数量大于n&amp;gt;&amp;gt;1,请设计一个算法求出这个元素要求时间复杂度为O(n)空间复杂度O(1)  分析:  n&amp;gt;&amp;gt;1.就是把n除以2的1次方,即该元素出现的次数大于一半  代码:Swift 1234567891011121314151617181920212223242526272829func getElement">
+<meta property="og:updated_time" content="2019-07-04T03:57:35.935Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift-Optional实质">
-<meta name="twitter:description" content="Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把 12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConvertible &amp;#123;    case None    case Some(Wrapped)    /// Constru">
+<meta name="twitter:title" content="面试算法题记录01">
+<meta name="twitter:description" content="面试算法题记录01问题:  整型数组长度为n,内部有一个元素出现的数量大于n&amp;gt;&amp;gt;1,请设计一个算法求出这个元素要求时间复杂度为O(n)空间复杂度O(1)  分析:  n&amp;gt;&amp;gt;1.就是把n除以2的1次方,即该元素出现的次数大于一半  代码:Swift 1234567891011121314151617181920212223242526272829func getElement">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2019/07/02/Swift-Optional实质/" title="Swift-Optional实质" itemprop="url">Swift-Optional实质</a>
+      <a href="/Ryukie.GitHub.io/2018/06/04/面试算法题记录01/" title="面试算法题记录01" itemprop="url">面试算法题记录01</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2019-07-02T09:11:15.000Z" itemprop="datePublished"> Published 2019-07-02</time>
+    <time datetime="2018-06-04T03:05:09.000Z" itemprop="datePublished"> Published 2018-06-04</time>
     
   </p>
 </header>
@@ -97,25 +97,20 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-Optional实质"><span class="toc-number">1.</span> <span class="toc-text">Swift-Optional实质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#底层实现"><span class="toc-number">1.1.</span> <span class="toc-text">底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#amp-！"><span class="toc-number">1.2.</span> <span class="toc-text">? & ！</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试算法题记录01"><span class="toc-number">1.</span> <span class="toc-text">面试算法题记录01</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="Swift-Optional实质"><a href="#Swift-Optional实质" class="headerlink" title="Swift-Optional实质"></a>Swift-Optional实质</h1><h2 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h2><p>我们先看看<code>Swift</code>中<code>Optional</code>是怎么实现的把</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Optional</span>&lt;<span class="title">Wrapped</span>&gt; : <span class="title">_Reflectable</span>, <span class="title">NilLiteralConvertible</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">None</span></div><div class="line">    <span class="keyword">case</span> <span class="type">Some</span>(<span class="type">Wrapped</span>)</div><div class="line">    <span class="comment">/// Construct a `nil` instance.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>()</div><div class="line">    <span class="comment">/// Construct a non-`nil` instance that stores `some`.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="number">_</span> some: <span class="type">Wrapped</span>)</div><div class="line">    <span class="comment">/// If `self == nil`, returns `nil`.  Otherwise, returns `f(self!)`.</span></div><div class="line">    <span class="meta">@warn_unused_result</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">map</span>&lt;U&gt;<span class="params">(@noescape f: <span class="params">(Wrapped)</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">U</span>) <span class="keyword">rethrows</span> -&gt; <span class="type">U</span>?</div><div class="line">    <span class="comment">/// Returns `nil` if `self` is `nil`, `f(self!)` otherwise.</span></div><div class="line">    <span class="meta">@warn_unused_result</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">flatMap</span>&lt;U&gt;<span class="params">(@noescape f: <span class="params">(Wrapped)</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">U</span>?) <span class="keyword">rethrows</span> -&gt; <span class="type">U</span>?</div><div class="line">    <span class="comment">/// Create an instance initialized with `nil`.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(nilLiteral: ())</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>很明显可以看出，它实际是一个枚举。<br><code>.Some</code>的关联值就是我们解包出来的</p>
-<h2 id="amp-！"><a href="#amp-！" class="headerlink" title="? &amp; ！"></a>? &amp; ！</h2><p>在我们对一个<code>Optional</code>的变量进行赋值的时候，我们实际上是将初始值放到<code>.Some</code>中，取值是则是从<code>.Some</code>中取出。</p>
-<ul>
-<li><code>!</code><ul>
-<li>强制解包，告诉系统这个变量不为<code>nil</code> 且 <code>.Some</code>中一定有值</li>
-<li>如果为空则会崩溃</li>
-</ul>
-</li>
-<li><code>?</code><ul>
-<li>解包时会先判断是否为<code>nil</code>如果不为空则正常解包，否则会返回<code>nil</code>即默认初始值</li>
-</ul>
-</li>
-</ul>
+		<h1 id="面试算法题记录01"><a href="#面试算法题记录01" class="headerlink" title="面试算法题记录01"></a>面试算法题记录01</h1><p>问题:</p>
+<blockquote>
+<p>整型数组长度为n,内部有一个元素出现的数量大于n&gt;&gt;1,请设计一个算法求出这个元素<br>要求时间复杂度为O(n)空间复杂度O(1)</p>
+</blockquote>
+<p>分析:</p>
+<blockquote>
+<p>n&gt;&gt;1.就是把n除以2的1次方,即该元素出现的次数大于一半</p>
+</blockquote>
+<p>代码:Swift</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">func getElement(_ array: [Int]) -&gt; Int? &#123;</div><div class="line">    var currentItem<span class="keyword"> :</span> Int? // 当前的元素</div><div class="line">    var currentFlag = 0 // 该数字为0的时候表示,在这之前遍历的元素中重复的和不重复的持平</div><div class="line"></div><div class="line">    for item in<span class="built_in"> array </span>&#123;</div><div class="line">       <span class="built_in"> if </span>currentFlag == 0 &#123;//当前的元素出现的数量超出平衡,需要缓存一下</div><div class="line">            currentItem = item</div><div class="line">            currentFlag = 1</div><div class="line">        &#125;</div><div class="line">        else<span class="built_in"> if </span>currentItem == item &#123;</div><div class="line">            currentFlag += 1</div><div class="line">        &#125;</div><div class="line">        else<span class="built_in"> if </span>currentItem != item &#123;</div><div class="line">            currentFlag -= 1</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   <span class="built_in"> return </span>currentItem</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*:</div><div class="line"> 分析:</div><div class="line"> &gt; 根据元素个数,向右位移1为,即为出现的次数</div><div class="line"> &gt; 10个元素(1010),这里就需要大于5(0101)</div><div class="line"> &gt; 右移n位相当于除以2的n次方</div><div class="line"> */</div><div class="line"></div><div class="line">let<span class="built_in"> array </span>= [1,3,3,4,3,3,3,3,3,1]</div><div class="line">getElement(array)</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -129,7 +124,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/Swift/">Swift</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/面试/">面试</a><a href="/Ryukie.GitHub.io/tags/算法/">算法</a>
   </div>
 
 </div>
@@ -174,18 +169,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2019/07/03/WCDB-Swift/" title="WCDB-Swift">
+ <a href="/Ryukie.GitHub.io/2018/06/12/链表倒数第k个节点-Swift/" title="链表倒数第k个节点-Swift">
   <strong>上一篇：</strong><br/>
   <span>
-  WCDB-Swift</span>
+  链表倒数第k个节点-Swift</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2019/06/18/iOS-weak实现原理/"  title="iOS-weak实现原理">
+<a href="/Ryukie.GitHub.io/2018/04/27/将node-js服务部署到VPS上/"  title="将Node.js服务部署到VPS上">
  <strong>下一篇：</strong><br/> 
- <span>iOS-weak实现原理
+ <span>将Node.js服务部署到VPS上
 </span>
 </a>
 </div>
@@ -194,7 +189,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2019/07/02/Swift-Optional实质/" data-title="Swift-Optional实质" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/02/Swift-Optional实质/"></div>
+	<div class="ds-thread" data-thread-key="2018/06/04/面试算法题记录01/" data-title="面试算法题记录01" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/06/04/面试算法题记录01/"></div>
 </section>
 
 
@@ -204,7 +199,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-Optional实质"><span class="toc-number">1.</span> <span class="toc-text">Swift-Optional实质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#底层实现"><span class="toc-number">1.1.</span> <span class="toc-text">底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#amp-！"><span class="toc-number">1.2.</span> <span class="toc-text">? & ！</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试算法题记录01"><span class="toc-number">1.</span> <span class="toc-text">面试算法题记录01</span></a></li></ol>
  
   </div>
 
