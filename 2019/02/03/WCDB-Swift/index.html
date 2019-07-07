@@ -4,27 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS 使用TTF字体 | RyukieSama`sDogHouse</title>
+    <title>WCDB-Swift | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="TODO:">
+<meta name="keywords" content="iOS,数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 使用TTF字体">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/index.html">
+<meta property="og:title" content="WCDB-Swift">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/02/03/WCDB-Swift/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066114496262.jpg">
-<meta property="og:updated_time" content="2017-09-28T15:45:12.000Z">
+<meta property="og:description" content="TODO:">
+<meta property="og:updated_time" content="2019-07-07T08:13:16.930Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 使用TTF字体">
-<meta name="twitter:description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg">
+<meta name="twitter:title" content="WCDB-Swift">
+<meta name="twitter:description" content="TODO:">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -84,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/" title="iOS 使用TTF字体" itemprop="url">iOS 使用TTF字体</a>
+      <a href="/Ryukie.GitHub.io/2019/02/03/WCDB-Swift/" title="WCDB-Swift" itemprop="url">WCDB-Swift</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-28T14:04:06.000Z" itemprop="datePublished"> Published 2017-09-28</time>
+    <time datetime="2019-02-03T08:02:32.000Z" itemprop="datePublished"> Published 2019-02-03</time>
     
   </p>
 </header>
@@ -100,17 +97,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-使用TTF字体"><span class="toc-number">1.</span> <span class="toc-text">iOS 使用TTF字体</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h1 id="iOS-使用TTF字体"><a href="#iOS-使用TTF字体" class="headerlink" title="iOS 使用TTF字体"></a>iOS 使用TTF字体</h1><p>在项目的 <code>Info.plist</code> 中添加 <code>Fonts provided by application</code> 在其中填入字体文件名</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg" alt=""></p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15066114496262.jpg" alt=""></p>
-<ul>
-<li>可以通过下面的方式通过 <code>fontName</code> 设置 <code>font</code></li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> familyNames = <span class="type">UIFont</span>.familyNames</div><div class="line">        <span class="keyword">for</span> familyName <span class="keyword">in</span> familyNames &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"++++++ "</span> + familyName + <span class="string">" ++++++"</span>)</div><div class="line">            <span class="keyword">let</span> fontNames = <span class="type">UIFont</span>.fontNames(forFamilyName: familyName)</div><div class="line">            <span class="keyword">for</span> fontName <span class="keyword">in</span> fontNames &#123;</div><div class="line">                <span class="built_in">print</span>(fontName)</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"================================="</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="type">UIFont</span>(name: <span class="string">"hahahahahaah"</span>, size: fontSize)!</div></pre></td></tr></table></figure>
+		<p>TODO:</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -124,7 +115,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/数据库/">数据库</a>
   </div>
 
 </div>
@@ -169,18 +160,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/" title="Storyboard中UnwindSegue的使用">
+ <a href="/Ryukie.GitHub.io/2019/06/18/iOS-weak实现原理/" title="iOS-weak实现原理">
   <strong>上一篇：</strong><br/>
   <span>
-  Storyboard中UnwindSegue的使用</span>
+  iOS-weak实现原理</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/08/16/Node-js-StudyNotes-02/"  title="Node-js-StudyNotes-02">
+<a href="/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/"  title="Runtime-实现NSCoding的自动归档和自动解档">
  <strong>下一篇：</strong><br/> 
- <span>Node-js-StudyNotes-02
+ <span>Runtime-实现NSCoding的自动归档和自动解档
 </span>
 </a>
 </div>
@@ -189,7 +180,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/09/28/iOS-使用TTF字体/" data-title="iOS 使用TTF字体" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/"></div>
+	<div class="ds-thread" data-thread-key="2019/02/03/WCDB-Swift/" data-title="WCDB-Swift" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/02/03/WCDB-Swift/"></div>
 </section>
 
 
@@ -199,7 +190,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-使用TTF字体"><span class="toc-number">1.</span> <span class="toc-text">iOS 使用TTF字体</span></a></li></ol>
+ 
  
   </div>
 

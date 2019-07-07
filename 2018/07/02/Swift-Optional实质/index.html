@@ -4,27 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>iOS 使用TTF字体 | RyukieSama`sDogHouse</title>
+    <title>Swift-Optional实质 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把 12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConvertible &amp;#123;    case None    case Some(Wrapped)    /// Constru">
+<meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 使用TTF字体">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/index.html">
+<meta property="og:title" content="Swift-Optional实质">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/07/02/Swift-Optional实质/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066114496262.jpg">
-<meta property="og:updated_time" content="2017-09-28T15:45:12.000Z">
+<meta property="og:description" content="Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把 12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConvertible &amp;#123;    case None    case Some(Wrapped)    /// Constru">
+<meta property="og:updated_time" content="2019-07-07T08:12:41.763Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 使用TTF字体">
-<meta name="twitter:description" content="iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名    可以通过下面的方式通过 fontName 设置 font  1234567891011let familyNames = UIFont.familyNames        for familyName in familyNames &amp;#123;">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg">
+<meta name="twitter:title" content="Swift-Optional实质">
+<meta name="twitter:description" content="Swift-Optional实质底层实现我们先看看Swift中Optional是怎么实现的把 12345678910111213141516public enum Optional&amp;lt;Wrapped&amp;gt; : _Reflectable, NilLiteralConvertible &amp;#123;    case None    case Some(Wrapped)    /// Constru">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -84,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/" title="iOS 使用TTF字体" itemprop="url">iOS 使用TTF字体</a>
+      <a href="/Ryukie.GitHub.io/2018/07/02/Swift-Optional实质/" title="Swift-Optional实质" itemprop="url">Swift-Optional实质</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-09-28T14:04:06.000Z" itemprop="datePublished"> Published 2017-09-28</time>
+    <time datetime="2018-07-02T09:11:15.000Z" itemprop="datePublished"> Published 2018-07-02</time>
     
   </p>
 </header>
@@ -100,17 +97,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-使用TTF字体"><span class="toc-number">1.</span> <span class="toc-text">iOS 使用TTF字体</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-Optional实质"><span class="toc-number">1.</span> <span class="toc-text">Swift-Optional实质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#底层实现"><span class="toc-number">1.1.</span> <span class="toc-text">底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#amp-！"><span class="toc-number">1.2.</span> <span class="toc-text">? & ！</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="iOS-使用TTF字体"><a href="#iOS-使用TTF字体" class="headerlink" title="iOS 使用TTF字体"></a>iOS 使用TTF字体</h1><p>在项目的 <code>Info.plist</code> 中添加 <code>Fonts provided by application</code> 在其中填入字体文件名</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15066076915843.jpg" alt=""></p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15066114496262.jpg" alt=""></p>
+		<h1 id="Swift-Optional实质"><a href="#Swift-Optional实质" class="headerlink" title="Swift-Optional实质"></a>Swift-Optional实质</h1><h2 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h2><p>我们先看看<code>Swift</code>中<code>Optional</code>是怎么实现的把</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Optional</span>&lt;<span class="title">Wrapped</span>&gt; : <span class="title">_Reflectable</span>, <span class="title">NilLiteralConvertible</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">None</span></div><div class="line">    <span class="keyword">case</span> <span class="type">Some</span>(<span class="type">Wrapped</span>)</div><div class="line">    <span class="comment">/// Construct a `nil` instance.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>()</div><div class="line">    <span class="comment">/// Construct a non-`nil` instance that stores `some`.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(<span class="number">_</span> some: <span class="type">Wrapped</span>)</div><div class="line">    <span class="comment">/// If `self == nil`, returns `nil`.  Otherwise, returns `f(self!)`.</span></div><div class="line">    <span class="meta">@warn_unused_result</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">map</span>&lt;U&gt;<span class="params">(@noescape f: <span class="params">(Wrapped)</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">U</span>) <span class="keyword">rethrows</span> -&gt; <span class="type">U</span>?</div><div class="line">    <span class="comment">/// Returns `nil` if `self` is `nil`, `f(self!)` otherwise.</span></div><div class="line">    <span class="meta">@warn_unused_result</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">flatMap</span>&lt;U&gt;<span class="params">(@noescape f: <span class="params">(Wrapped)</span></span></span> <span class="keyword">throws</span> -&gt; <span class="type">U</span>?) <span class="keyword">rethrows</span> -&gt; <span class="type">U</span>?</div><div class="line">    <span class="comment">/// Create an instance initialized with `nil`.</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">init</span>(nilLiteral: ())</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>很明显可以看出，它实际是一个枚举。<br><code>.Some</code>的关联值就是我们解包出来的</p>
+<h2 id="amp-！"><a href="#amp-！" class="headerlink" title="? &amp; ！"></a>? &amp; ！</h2><p>在我们对一个<code>Optional</code>的变量进行赋值的时候，我们实际上是将初始值放到<code>.Some</code>中，取值是则是从<code>.Some</code>中取出。</p>
 <ul>
-<li>可以通过下面的方式通过 <code>fontName</code> 设置 <code>font</code></li>
+<li><code>!</code><ul>
+<li>强制解包，告诉系统这个变量不为<code>nil</code> 且 <code>.Some</code>中一定有值</li>
+<li>如果为空则会崩溃</li>
 </ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> familyNames = <span class="type">UIFont</span>.familyNames</div><div class="line">        <span class="keyword">for</span> familyName <span class="keyword">in</span> familyNames &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"++++++ "</span> + familyName + <span class="string">" ++++++"</span>)</div><div class="line">            <span class="keyword">let</span> fontNames = <span class="type">UIFont</span>.fontNames(forFamilyName: familyName)</div><div class="line">            <span class="keyword">for</span> fontName <span class="keyword">in</span> fontNames &#123;</div><div class="line">                <span class="built_in">print</span>(fontName)</div><div class="line">            &#125;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"================================="</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="type">UIFont</span>(name: <span class="string">"hahahahahaah"</span>, size: fontSize)!</div></pre></td></tr></table></figure>
+</li>
+<li><code>?</code><ul>
+<li>解包时会先判断是否为<code>nil</code>如果不为空则正常解包，否则会返回<code>nil</code>即默认初始值</li>
+</ul>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -124,7 +129,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/Swift/">Swift</a>
   </div>
 
 </div>
@@ -169,18 +174,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/" title="Storyboard中UnwindSegue的使用">
+ <a href="/Ryukie.GitHub.io/2018/07/03/FMDB与WCDB/" title="FMDB与WCDB">
   <strong>上一篇：</strong><br/>
   <span>
-  Storyboard中UnwindSegue的使用</span>
+  FMDB与WCDB</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/08/16/Node-js-StudyNotes-02/"  title="Node-js-StudyNotes-02">
+<a href="/Ryukie.GitHub.io/2018/06/12/链表倒数第k个节点-Swift/"  title="链表倒数第k个节点-Swift">
  <strong>下一篇：</strong><br/> 
- <span>Node-js-StudyNotes-02
+ <span>链表倒数第k个节点-Swift
 </span>
 </a>
 </div>
@@ -189,7 +194,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/09/28/iOS-使用TTF字体/" data-title="iOS 使用TTF字体" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/"></div>
+	<div class="ds-thread" data-thread-key="2018/07/02/Swift-Optional实质/" data-title="Swift-Optional实质" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/07/02/Swift-Optional实质/"></div>
 </section>
 
 
@@ -199,7 +204,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-使用TTF字体"><span class="toc-number">1.</span> <span class="toc-text">iOS 使用TTF字体</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-Optional实质"><span class="toc-number">1.</span> <span class="toc-text">Swift-Optional实质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#底层实现"><span class="toc-number">1.1.</span> <span class="toc-text">底层实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#amp-！"><span class="toc-number">1.2.</span> <span class="toc-text">? & ！</span></a></li></ol></li></ol>
  
   </div>
 
