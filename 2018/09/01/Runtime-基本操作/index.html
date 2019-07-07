@@ -1,0 +1,524 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Runtime-基本操作 | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="Runtime-基本操作1. 反射 NSString,Class,SEL,Protocol12345678FOUNDATION_EXPORT NSString *NSStringFromSelector(SEL aSelector);FOUNDATION_EXPORT SEL NSSelectorFromString(NSString *aSelectorName);FOUNDATION_EXPO">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Runtime-基本操作">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/01/Runtime-基本操作/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="Runtime-基本操作1. 反射 NSString,Class,SEL,Protocol12345678FOUNDATION_EXPORT NSString *NSStringFromSelector(SEL aSelector);FOUNDATION_EXPORT SEL NSSelectorFromString(NSString *aSelectorName);FOUNDATION_EXPO">
+<meta property="og:updated_time" content="2019-07-07T08:08:32.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Runtime-基本操作">
+<meta name="twitter:description" content="Runtime-基本操作1. 反射 NSString,Class,SEL,Protocol12345678FOUNDATION_EXPORT NSString *NSStringFromSelector(SEL aSelector);FOUNDATION_EXPORT SEL NSSelectorFromString(NSString *aSelectorName);FOUNDATION_EXPO">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2018/09/01/Runtime-基本操作/" title="Runtime-基本操作" itemprop="url">Runtime-基本操作</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2018-09-01T07:50:54.000Z" itemprop="datePublished"> Published 2018-09-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-基本操作"><span class="toc-number">1.</span> <span class="toc-text">Runtime-基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-反射-NSString-Class-SEL-Protocol"><span class="toc-number">1.1.</span> <span class="toc-text">1. 反射 NSString,Class,SEL,Protocol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-动态创建一个类"><span class="toc-number">1.2.</span> <span class="toc-text">2. 动态创建一个类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-获取一个类的所有方法"><span class="toc-number">1.3.</span> <span class="toc-text">3. 获取一个类的所有方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例方法"><span class="toc-number">1.3.1.</span> <span class="toc-text">实例方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类方法"><span class="toc-number">1.3.2.</span> <span class="toc-text">类方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-获取一个类的所有成员变量"><span class="toc-number">1.4.</span> <span class="toc-text">4. 获取一个类的所有成员变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-获取一个类的所有属性变量"><span class="toc-number">1.5.</span> <span class="toc-text">5. 获取一个类的所有属性变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-获取协议列表"><span class="toc-number">1.6.</span> <span class="toc-text">6. 获取协议列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-动态给一个类新增一个方法"><span class="toc-number">1.7.</span> <span class="toc-text">7. 动态给一个类新增一个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-动态增加实例变量"><span class="toc-number">1.8.</span> <span class="toc-text">8. 动态增加实例变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-动态改变对象的某个变量值"><span class="toc-number">1.9.</span> <span class="toc-text">9. 动态改变对象的某个变量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-属性关联"><span class="toc-number">1.10.</span> <span class="toc-text">10. 属性关联</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-交换方法"><span class="toc-number">1.11.</span> <span class="toc-text">11. 交换方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.12.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="Runtime-基本操作"><a href="#Runtime-基本操作" class="headerlink" title="Runtime-基本操作"></a>Runtime-基本操作</h1><h2 id="1-反射-NSString-Class-SEL-Protocol"><a href="#1-反射-NSString-Class-SEL-Protocol" class="headerlink" title="1. 反射 NSString,Class,SEL,Protocol"></a>1. 反射 <code>NSString</code>,<code>Class</code>,<code>SEL</code>,<code>Protocol</code></h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">FOUNDATION_EXPORT <span class="built_in">NSString</span> *<span class="built_in">NSStringFromSelector</span>(SEL aSelector);</div><div class="line">FOUNDATION_EXPORT SEL <span class="built_in">NSSelectorFromString</span>(<span class="built_in">NSString</span> *aSelectorName);</div><div class="line"></div><div class="line">FOUNDATION_EXPORT <span class="built_in">NSString</span> *<span class="built_in">NSStringFromClass</span>(Class aClass);</div><div class="line">FOUNDATION_EXPORT Class _Nullable <span class="built_in">NSClassFromString</span>(<span class="built_in">NSString</span> *aClassName);</div><div class="line"></div><div class="line">FOUNDATION_EXPORT <span class="built_in">NSString</span> *<span class="built_in">NSStringFromProtocol</span>(Protocol *proto) API_AVAILABLE(macos(<span class="number">10.5</span>), ios(<span class="number">2.0</span>), watchos(<span class="number">2.0</span>), tvos(<span class="number">9.0</span>));</div><div class="line">FOUNDATION_EXPORT Protocol * _Nullable <span class="built_in">NSProtocolFromString</span>(<span class="built_in">NSString</span> *namestr) API_AVAILABLE(macos(<span class="number">10.5</span>), ios(<span class="number">2.0</span>), watchos(<span class="number">2.0</span>), tvos(<span class="number">9.0</span>));</div></pre></td></tr></table></figure>
+<h2 id="2-动态创建一个类"><a href="#2-动态创建一个类" class="headerlink" title="2. 动态创建一个类"></a>2. 动态创建一个类</h2><ul>
+<li>创建一个继承<code>NSObject</code>的类,设定类名并初始化；</li>
+<li>为这个类增加一个实例变量,通过KVC给这个实例变量赋值。</li>
+<li>为这个类增加一个方法,在这个方法中打印一些值。</li>
+<li>通过这个类的实例调用新增的方法。</li>
+</ul>
+<h2 id="3-获取一个类的所有方法"><a href="#3-获取一个类的所有方法" class="headerlink" title="3. 获取一个类的所有方法"></a>3. 获取一个类的所有方法</h2><p><code>class_copyMethodList</code></p>
+<h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">&lt;objc/runtime.h&gt;</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">NSObject</span> (<span class="title">Runtime</span>)</span></div><div class="line"></div><div class="line">+ (<span class="built_in">NSArray</span> *)fetchInstanceMethodList</div><div class="line">&#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    Method *methodList = class_copyMethodList(<span class="keyword">self</span>, &amp;count);</div><div class="line">    </div><div class="line">    <span class="built_in">NSMutableArray</span> *mutableList = [<span class="built_in">NSMutableArray</span> arrayWithCapacity:count];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++)</div><div class="line">    &#123;</div><div class="line">        Method method = methodList[i];</div><div class="line">        SEL methodName = method_getName(method);</div><div class="line">        [mutableList addObject:<span class="built_in">NSStringFromSelector</span>(methodName)];</div><div class="line">    &#125;</div><div class="line">    free(methodList);</div><div class="line">    <span class="keyword">return</span> [<span class="built_in">NSArray</span> arrayWithArray:mutableList];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">+ (NSArray *)fetchClassMethodList</div><div class="line">&#123;</div><div class="line">    unsigned int <span class="built_in">count</span> = <span class="number">0</span><span class="comment">;</span></div><div class="line">    Method *methodList = class_copyMethodList(object_getClass(self), &amp;<span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">    </div><div class="line">    NSMutableArray *mutableList = [NSMutableArray arrayWithCapacity:<span class="built_in">count</span>]<span class="comment">;</span></div><div class="line">    for (unsigned int i = <span class="number">0</span><span class="comment">; i &lt; count; i++)</span></div><div class="line">    &#123;</div><div class="line">        Method method = methodList[i]<span class="comment">;</span></div><div class="line">        SEL methodName = method_getName(method)<span class="comment">;</span></div><div class="line">        [mutableList <span class="keyword">addObject:NSStringFromSelector(methodName)];</span></div><div class="line"><span class="keyword"> </span>   &#125;</div><div class="line">    free(methodList)<span class="comment">;</span></div><div class="line">    return [NSArray arrayWithArray:mutableList]<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-获取一个类的所有成员变量"><a href="#4-获取一个类的所有成员变量" class="headerlink" title="4. 获取一个类的所有成员变量"></a>4. 获取一个类的所有成员变量</h2><p><code>class_copyIvarList</code></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) getAllVariable &#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="comment">//获取类的一个包含所有变量的列表，IVar是runtime声明的一个宏，是实例变量的意思.</span></div><div class="line">    Ivar *allVariables = class_copyIvarList([<span class="keyword">self</span> <span class="keyword">class</span>], &amp;count);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;count;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//遍历每一个变量，包括名称和类型（此处没有星号"*"）</span></div><div class="line">        Ivar ivar = allVariables[i];</div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *Variablename = ivar_getName(ivar); <span class="comment">//获取成员变量名称</span></div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *VariableType = ivar_getTypeEncoding(ivar); <span class="comment">//获取成员变量类型</span></div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"(Name: %s) ----- (Type:%s)"</span>,Variablename,VariableType);</div><div class="line">    &#125;</div><div class="line">    free(allVariables);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="5-获取一个类的所有属性变量"><a href="#5-获取一个类的所有属性变量" class="headerlink" title="5. 获取一个类的所有属性变量"></a>5. 获取一个类的所有属性变量</h2><p><code>class_copyPropertyList</code></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>) getAllPropertyList &#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    <span class="keyword">objc_property_t</span> *allVariables = class_copyPropertyList([self class], &amp;count);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;count;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//遍历每一个变量，包括名称和类型（此处没有星号"*"）</span></div><div class="line">        <span class="keyword">objc_property_t</span> property = allVariables[i];</div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *Variablename = property_getName(property); <span class="comment">//获取属性变量名称</span></div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *VariableType = property_getAttributes(property); <span class="comment">//获取属性变量的属性</span></div><div class="line">        NSLog(@<span class="string">"(Name: %s) ----- (Type:%s)"</span>,Variablename,VariableType);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">free</span>(allVariables);</div><div class="line">&#125;</div><div class="line">  <span class="comment">//还有一种写法，注意 object_getClass 中的参数需要是一个对象实例，</span></div><div class="line">  <span class="comment">// 就是说 object_getClass([ChangePayPasswordViewController new]),</span></div><div class="line">  <span class="comment">//和 ChangePayPasswordViewController.Class 意义是一样的</span></div><div class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> a;</div><div class="line">  <span class="keyword">objc_property_t</span> * result = class_copyPropertyList(object_getClass([ChangePayPasswordViewController <span class="keyword">new</span>]), &amp;a);</div></pre></td></tr></table></figure>
+<h2 id="6-获取协议列表"><a href="#6-获取协议列表" class="headerlink" title="6. 获取协议列表"></a>6. 获取协议列表</h2> <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> + (<span class="built_in">NSArray</span> *)fetchProtocolList</div><div class="line">&#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    __<span class="keyword">unsafe_unretained</span> Protocol **protocolList = class_copyProtocolList(<span class="keyword">self</span>, &amp;count);</div><div class="line"></div><div class="line">    <span class="built_in">NSMutableArray</span> *mutableList = [<span class="built_in">NSMutableArray</span> arrayWithCapacity:count];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">unsigned</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++ )</div><div class="line">    &#123;</div><div class="line">        Protocol *protocol = protocolList[i];</div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *protocolName = protocol_getName(protocol);</div><div class="line">        [mutableList addObject:[<span class="built_in">NSString</span> stringWithUTF8String:protocolName]];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> [<span class="built_in">NSArray</span> arrayWithArray:mutableList];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-动态给一个类新增一个方法"><a href="#7-动态给一个类新增一个方法" class="headerlink" title="7. 动态给一个类新增一个方法"></a>7. 动态给一个类新增一个方法</h2><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 动态添加方法：</span></div><div class="line"><span class="comment"> 第一个参数表示Class cls 类型；</span></div><div class="line"><span class="comment"> 第二个参数表示待调用的方法名称；</span></div><div class="line"><span class="comment"> 第三个参数(IMP)myAddingFunction，IMP一个函数指针，这里表示指定具体实现方法myAddingFunction；</span></div><div class="line"><span class="comment"> 第四个参数表方法的参数，0代表没有参数；</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="selector-tag">class_addMethod</span>([person class], <span class="variable">@selector</span>(myAddingFunction), (IMP)myAddingFunction, <span class="number">0</span>);</div><div class="line"><span class="comment">//调用方法 【如果使用[per NewMethod]调用方法，在ARC下会报“no visible @interface"错误】</span></div><div class="line"><span class="selector-attr">[person performSelector:@selector(myAddingFunction)]</span>;</div><div class="line"></div><div class="line"><span class="comment">//具体的实现（方法的内部都默认包含两个参数Class类和SEL方法，被称为隐式参数。）</span></div><div class="line"><span class="selector-tag">int</span> <span class="selector-tag">myAddingFunction</span>(id self, SEL _cmd)&#123;</div><div class="line">    <span class="selector-tag">NSLog</span>(@<span class="string">"已新增方法:NewMethod"</span>);</div><div class="line">    <span class="selector-tag">return</span> <span class="selector-tag">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="8-动态增加实例变量"><a href="#8-动态增加实例变量" class="headerlink" title="8. 动态增加实例变量"></a>8. 动态增加实例变量</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">BOOL</span> isSuccess = class_addIvar(MyClass, <span class="string">"test"</span>, <span class="keyword">sizeof</span>(<span class="built_in">NSString</span> *), <span class="number">0</span>, <span class="string">"@"</span>);</div><div class="line"><span class="comment">// 三目运算符</span></div><div class="line">isSuccess?<span class="built_in">NSLog</span>(<span class="string">@"添加变量成功"</span>):<span class="built_in">NSLog</span>(<span class="string">@"添加变量失败"</span>);</div><div class="line"></div><div class="line">参数一、类名</div><div class="line">参数二、属性名称</div><div class="line">参数三、开辟字节长度</div><div class="line">参数四、对其方式</div><div class="line">参数五、参数类型 “@” 官方解释 An object (whether statically typed or typed <span class="keyword">id</span>) （对象 静态类型或者<span class="keyword">id</span>类型)</div></pre></td></tr></table></figure>
+<h2 id="9-动态改变对象的某个变量值"><a href="#9-动态改变对象的某个变量值" class="headerlink" title="9. 动态改变对象的某个变量值"></a>9. 动态改变对象的某个变量值</h2><ul>
+<li>可以是属性变量（注意加 _ ），也可以是私有的全局变量</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">Person *person = [[Person alloc]init];</div><div class="line">person.name = <span class="string">@"asdas"</span>;</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,person.name);</div><div class="line">[<span class="keyword">self</span> editObjectIvar:person :<span class="string">@"_name"</span> :<span class="string">@"新属性"</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"new :%@"</span>,person.name);</div><div class="line"></div><div class="line">- (<span class="keyword">void</span>)editObjectIvar :(<span class="keyword">id</span>)object</div><div class="line">                       :(<span class="built_in">NSString</span> *)IvarStr</div><div class="line">                       :(<span class="built_in">NSString</span> *)IvarNewStr</div><div class="line"></div><div class="line">&#123;</div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">    Ivar *allList = class_copyIvarList([object <span class="keyword">class</span>], &amp;count);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;count;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="comment">//遍历每一个变量，包括名称和类型（此处没有星号"*"）</span></div><div class="line">        Ivar ivar = allList[i];</div><div class="line">        <span class="keyword">const</span> <span class="keyword">char</span> *Variablename = ivar_getName(ivar); <span class="comment">//获取成员变量名称</span></div><div class="line">        <span class="keyword">if</span> ([[<span class="built_in">NSString</span> stringWithUTF8String:Variablename] isEqualToString:IvarStr]) &#123;</div><div class="line">            object_setIvar(object, ivar, IvarNewStr); <span class="comment">//name属性Tom被强制改为Mike。</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    free(allList);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="10-属性关联"><a href="#10-属性关联" class="headerlink" title="10. 属性关联"></a>10. 属性关联</h2><p>略</p>
+<h2 id="11-交换方法"><a href="#11-交换方法" class="headerlink" title="11. 交换方法"></a>11. 交换方法</h2><p>略</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/8225526096c7" target="_blank" rel="external">https://www.jianshu.com/p/8225526096c7</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2018/09/07/Runtime-消息机制/" title="Runtime-消息机制">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Runtime-消息机制</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2018/08/20/RunLoop/"  title="RunLoop">
+ <strong>下一篇：</strong><br/> 
+ <span>RunLoop
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2018/09/01/Runtime-基本操作/" data-title="Runtime-基本操作" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/01/Runtime-基本操作/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-基本操作"><span class="toc-number">1.</span> <span class="toc-text">Runtime-基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-反射-NSString-Class-SEL-Protocol"><span class="toc-number">1.1.</span> <span class="toc-text">1. 反射 NSString,Class,SEL,Protocol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-动态创建一个类"><span class="toc-number">1.2.</span> <span class="toc-text">2. 动态创建一个类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-获取一个类的所有方法"><span class="toc-number">1.3.</span> <span class="toc-text">3. 获取一个类的所有方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实例方法"><span class="toc-number">1.3.1.</span> <span class="toc-text">实例方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#类方法"><span class="toc-number">1.3.2.</span> <span class="toc-text">类方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-获取一个类的所有成员变量"><span class="toc-number">1.4.</span> <span class="toc-text">4. 获取一个类的所有成员变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-获取一个类的所有属性变量"><span class="toc-number">1.5.</span> <span class="toc-text">5. 获取一个类的所有属性变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-获取协议列表"><span class="toc-number">1.6.</span> <span class="toc-text">6. 获取协议列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-动态给一个类新增一个方法"><span class="toc-number">1.7.</span> <span class="toc-text">7. 动态给一个类新增一个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-动态增加实例变量"><span class="toc-number">1.8.</span> <span class="toc-text">8. 动态增加实例变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-动态改变对象的某个变量值"><span class="toc-number">1.9.</span> <span class="toc-text">9. 动态改变对象的某个变量值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-属性关联"><span class="toc-number">1.10.</span> <span class="toc-text">10. 属性关联</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-交换方法"><span class="toc-number">1.11.</span> <span class="toc-text">11. 交换方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.12.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>35</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>22</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
