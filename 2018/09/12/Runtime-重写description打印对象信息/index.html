@@ -4,27 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>OC项目中加入Swift混编 | RyukieSama`sDogHouse</title>
+    <title>Runtime-重写description打印对象信息 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="OC项目中加入Swift混编 年后项目准备引入 Swift新的模块需求使用 Swift 编写需要支持与 OC 与 Swift 的混编这里描述一下前期准备的工作  Project_defines module 配置 Project_product module name 配置这里的 Product Module Name 需要和 工程名称 一致  代码修改在需要调用到 Swift 的地方 impor">
-<meta name="keywords" content="iOS,Swift">
+    <meta name="description" content="Runtime-重写description打印对象信息12345678910111213141516-(NSString *)description&amp;#123;    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];    uint count;    objc_property_t *properties =">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OC项目中加入Swift混编">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/01/24/OC项目中加入Swift混编/index.html">
+<meta property="og:title" content="Runtime-重写description打印对象信息">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/12/Runtime-重写description打印对象信息/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="OC项目中加入Swift混编 年后项目准备引入 Swift新的模块需求使用 Swift 编写需要支持与 OC 与 Swift 的混编这里描述一下前期准备的工作  Project_defines module 配置 Project_product module name 配置这里的 Product Module Name 需要和 工程名称 一致  代码修改在需要调用到 Swift 的地方 impor">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15167571775287.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15167572476625.jpg">
-<meta property="og:updated_time" content="2018-01-29T01:52:44.648Z">
+<meta property="og:description" content="Runtime-重写description打印对象信息12345678910111213141516-(NSString *)description&amp;#123;    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];    uint count;    objc_property_t *properties =">
+<meta property="og:updated_time" content="2019-07-07T08:11:39.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OC项目中加入Swift混编">
-<meta name="twitter:description" content="OC项目中加入Swift混编 年后项目准备引入 Swift新的模块需求使用 Swift 编写需要支持与 OC 与 Swift 的混编这里描述一下前期准备的工作  Project_defines module 配置 Project_product module name 配置这里的 Product Module Name 需要和 工程名称 一致  代码修改在需要调用到 Swift 的地方 impor">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15167571775287.jpg">
+<meta name="twitter:title" content="Runtime-重写description打印对象信息">
+<meta name="twitter:description" content="Runtime-重写description打印对象信息12345678910111213141516-(NSString *)description&amp;#123;    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];    uint count;    objc_property_t *properties =">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -84,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/01/24/OC项目中加入Swift混编/" title="OC项目中加入Swift混编" itemprop="url">OC项目中加入Swift混编</a>
+      <a href="/Ryukie.GitHub.io/2018/09/12/Runtime-重写description打印对象信息/" title="Runtime-重写description打印对象信息" itemprop="url">Runtime-重写description打印对象信息</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-01-24T01:17:15.000Z" itemprop="datePublished"> Published 2018-01-24</time>
+    <time datetime="2018-09-12T03:57:49.000Z" itemprop="datePublished"> Published 2018-09-12</time>
     
   </p>
 </header>
@@ -100,31 +97,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OC项目中加入Swift混编"><span class="toc-number">1.</span> <span class="toc-text">OC项目中加入Swift混编</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-defines-module-配置"><span class="toc-number">1.1.</span> <span class="toc-text">Project_defines module 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-product-module-name-配置"><span class="toc-number">1.2.</span> <span class="toc-text">Project_product module name 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码修改"><span class="toc-number">1.3.</span> <span class="toc-text">代码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在需要调用到-Swift-的地方-import"><span class="toc-number">1.3.1.</span> <span class="toc-text">在需要调用到 Swift 的地方 import</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">注意点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要暴露给-Swift-调用的"><span class="toc-number">1.3.2.</span> <span class="toc-text">需要暴露给 Swift 调用的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点-1"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">注意点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apple官方混编指南"><span class="toc-number">1.4.</span> <span class="toc-text">Apple官方混编指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#国内汉化"><span class="toc-number">1.5.</span> <span class="toc-text">国内汉化</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-重写description打印对象信息"><span class="toc-number">1.</span> <span class="toc-text">Runtime-重写description打印对象信息</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="OC项目中加入Swift混编"><a href="#OC项目中加入Swift混编" class="headerlink" title="OC项目中加入Swift混编"></a>OC项目中加入Swift混编</h1><blockquote>
-<p>年后项目准备引入 <code>Swift</code><br>新的模块需求使用 <code>Swift</code> 编写<br>需要支持与 <code>OC</code> 与 <code>Swift</code> 的混编<br>这里描述一下前期准备的工作</p>
-</blockquote>
-<h2 id="Project-defines-module-配置"><a href="#Project-defines-module-配置" class="headerlink" title="Project_defines module 配置"></a>Project_defines module 配置</h2><p><img src="http://ohfpqyfi7.bkt.clouddn.com/15167571775287.jpg" alt=""></p>
-<h2 id="Project-product-module-name-配置"><a href="#Project-product-module-name-配置" class="headerlink" title="Project_product module name 配置"></a>Project_product module name 配置</h2><p>这里的 <code>Product Module Name</code> 需要和 <code>工程名称</code> 一致</p>
-<p><img src="http://ohfpqyfi7.bkt.clouddn.com/15167572476625.jpg" alt=""></p>
-<h2 id="代码修改"><a href="#代码修改" class="headerlink" title="代码修改"></a>代码修改</h2><h3 id="在需要调用到-Swift-的地方-import"><a href="#在需要调用到-Swift-的地方-import" class="headerlink" title="在需要调用到 Swift 的地方 import"></a>在需要调用到 <code>Swift</code> 的地方 <code>import</code></h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#<span class="keyword">import</span> "工程名称-Swift.h"</div></pre></td></tr></table></figure>
-<h4 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h4><ul>
-<li>这个文件 <code>import</code> 不会自动提示</li>
-<li>而且如果项目汇总没有 <code>swift</code> 文件的话编译也会报错</li>
-<li>不要自己去创建这个名字的文件</li>
-<li>只需要在项目中创建一个 <code>Swift</code> 文件这个文件就会自动生成</li>
-</ul>
-<h3 id="需要暴露给-Swift-调用的"><a href="#需要暴露给-Swift-调用的" class="headerlink" title="需要暴露给 Swift 调用的"></a>需要暴露给 <code>Swift</code> 调用的</h3><p>在 <code>OC</code> 项目中创建 <code>swift</code> 文件后会创建一个桥接文件 <code>工程名-Bridging-Header.h</code><br>所有需要暴露给 <code>swift</code> 调用的文件都在这里 <code>import</code> 即可</p>
-<h4 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h4><ul>
-<li>需要注意的是: 如果 <code>import</code> 的 <code>.h</code> 中有用到 <code>全局导入的引用</code> 时,编译会报错,这时需要在该被 <code>import</code> 的 <code>.h</code> 文件中添加相关引用或者使用 <code>@class</code> 即可</li>
-<li>项目中的 <code>Swift</code> 文件中使用上面 <code>import</code> 过的 <code>OC类</code> 无须再单独 <code>import</code></li>
-<li>如果在添加到桥接文件中后某些类型依旧报错 可以尝试将其在桥接文件中的位置提前</li>
-</ul>
-<h2 id="Apple官方混编指南"><a href="#Apple官方混编指南" class="headerlink" title="Apple官方混编指南"></a>Apple官方混编指南</h2><p><a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID122" target="_blank" rel="external">https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html#//apple_ref/doc/uid/TP40014216-CH10-ID122</a></p>
-<h2 id="国内汉化"><a href="#国内汉化" class="headerlink" title="国内汉化"></a>国内汉化</h2><p><a href="https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C中文手册.md" target="_blank" rel="external">https://github.com/CocoaChina-editors/Welcome-to-Swift/blob/master/UsingSwiftwithCocoaandObjective-C中文手册.md</a></p>
+		<h1 id="Runtime-重写description打印对象信息"><a href="#Runtime-重写description打印对象信息" class="headerlink" title="Runtime-重写description打印对象信息"></a>Runtime-重写description打印对象信息</h1><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">-(<span class="built_in">NSString</span> *)description</div><div class="line">&#123;</div><div class="line">    <span class="built_in">NSMutableDictionary</span> *dictionary = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">    uint count;</div><div class="line">    objc_property_t *properties = class_copyPropertyList([<span class="keyword">self</span> <span class="keyword">class</span>], &amp;count);</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;count; i++) &#123;</div><div class="line">        objc_property_t property = properties[i];</div><div class="line">        <span class="built_in">NSString</span> *name = @(property_getName(property));</div><div class="line">        <span class="keyword">id</span> value = [<span class="keyword">self</span> valueForKey:name]?:<span class="string">@"nil"</span>;      </div><div class="line">       [dictionary setObject:value forKey:name];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    free(properties);</div><div class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithFormat:<span class="string">@"&lt;%@: %p&gt; -- %@"</span>,[<span class="keyword">self</span> <span class="keyword">class</span>],<span class="keyword">self</span>,dictionary];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -138,7 +115,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/Swift/">Swift</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
   </div>
 
 </div>
@@ -183,18 +160,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/01/29/OC老项目Swift混编的一些坑/" title="OC老项目Swift混编的一些坑">
+ <a href="/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/" title="Runtime-实现NSCoding的自动归档和自动解档">
   <strong>上一篇：</strong><br/>
   <span>
-  OC老项目Swift混编的一些坑</span>
+  Runtime-实现NSCoding的自动归档和自动解档</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/"  title="使用KVC设置UIAlertAction按钮颜色的Crash">
+<a href="/Ryukie.GitHub.io/2018/09/07/Runtime-消息机制/"  title="Runtime-消息机制">
  <strong>下一篇：</strong><br/> 
- <span>使用KVC设置UIAlertAction按钮颜色的Crash
+ <span>Runtime-消息机制
 </span>
 </a>
 </div>
@@ -203,7 +180,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/01/24/OC项目中加入Swift混编/" data-title="OC项目中加入Swift混编" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/01/24/OC项目中加入Swift混编/"></div>
+	<div class="ds-thread" data-thread-key="2018/09/12/Runtime-重写description打印对象信息/" data-title="Runtime-重写description打印对象信息" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/12/Runtime-重写description打印对象信息/"></div>
 </section>
 
 
@@ -213,7 +190,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OC项目中加入Swift混编"><span class="toc-number">1.</span> <span class="toc-text">OC项目中加入Swift混编</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-defines-module-配置"><span class="toc-number">1.1.</span> <span class="toc-text">Project_defines module 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-product-module-name-配置"><span class="toc-number">1.2.</span> <span class="toc-text">Project_product module name 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码修改"><span class="toc-number">1.3.</span> <span class="toc-text">代码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在需要调用到-Swift-的地方-import"><span class="toc-number">1.3.1.</span> <span class="toc-text">在需要调用到 Swift 的地方 import</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">注意点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要暴露给-Swift-调用的"><span class="toc-number">1.3.2.</span> <span class="toc-text">需要暴露给 Swift 调用的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点-1"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">注意点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apple官方混编指南"><span class="toc-number">1.4.</span> <span class="toc-text">Apple官方混编指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#国内汉化"><span class="toc-number">1.5.</span> <span class="toc-text">国内汉化</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-重写description打印对象信息"><span class="toc-number">1.</span> <span class="toc-text">Runtime-重写description打印对象信息</span></a></li></ol>
  
   </div>
 
