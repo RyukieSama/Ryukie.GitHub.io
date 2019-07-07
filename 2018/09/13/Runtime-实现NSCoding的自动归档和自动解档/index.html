@@ -4,26 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>纯Swift路由方案探究 | RyukieSama`sDogHouse</title>
+    <title>Runtime-实现NSCoding的自动归档和自动解档 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="纯Swift路由方案探究前言  OC 写了几年了到了新公司开始写Swift项目正在成长期, 开始人也不多, 模块化程度不高于是就整了这套路由方案发现现在很多Swift路由方案很大程度上还是使用了OC的特性比如需要继承NSObject作为一名Swift萌新, 这次路由方案的设计是很好的一次对Swift的探索  回顾历史 Objective-c以往路由方案的核心主要是 +Load注册 反射 等 + L">
-<meta name="keywords" content="iOS,架构">
+    <meta name="description" content="Runtime-实现NSCoding的自动归档和自动解档 需要自定义模型持久化的时候我们往往需要为各个模型实现对应的encode``decode方法  借助Runtime我们可以对此进行封装 解档12345678910111213141516171819202122- (instancetype)initWithCoder:(NSCoder *)aDecoder&amp;#123;        if (">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="纯Swift路由方案探究">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/08/12/纯Swift路由方案探究/index.html">
+<meta property="og:title" content="Runtime-实现NSCoding的自动归档和自动解档">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="纯Swift路由方案探究前言  OC 写了几年了到了新公司开始写Swift项目正在成长期, 开始人也不多, 模块化程度不高于是就整了这套路由方案发现现在很多Swift路由方案很大程度上还是使用了OC的特性比如需要继承NSObject作为一名Swift萌新, 这次路由方案的设计是很好的一次对Swift的探索  回顾历史 Objective-c以往路由方案的核心主要是 +Load注册 反射 等 + L">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/RouterUML02-2.jpg">
-<meta property="og:updated_time" content="2018-08-13T16:22:24.128Z">
+<meta property="og:description" content="Runtime-实现NSCoding的自动归档和自动解档 需要自定义模型持久化的时候我们往往需要为各个模型实现对应的encode``decode方法  借助Runtime我们可以对此进行封装 解档12345678910111213141516171819202122- (instancetype)initWithCoder:(NSCoder *)aDecoder&amp;#123;        if (">
+<meta property="og:updated_time" content="2019-07-07T03:55:09.475Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="纯Swift路由方案探究">
-<meta name="twitter:description" content="纯Swift路由方案探究前言  OC 写了几年了到了新公司开始写Swift项目正在成长期, 开始人也不多, 模块化程度不高于是就整了这套路由方案发现现在很多Swift路由方案很大程度上还是使用了OC的特性比如需要继承NSObject作为一名Swift萌新, 这次路由方案的设计是很好的一次对Swift的探索  回顾历史 Objective-c以往路由方案的核心主要是 +Load注册 反射 等 + L">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/RouterUML02-2.jpg">
+<meta name="twitter:title" content="Runtime-实现NSCoding的自动归档和自动解档">
+<meta name="twitter:description" content="Runtime-实现NSCoding的自动归档和自动解档 需要自定义模型持久化的时候我们往往需要为各个模型实现对应的encode``decode方法  借助Runtime我们可以对此进行封装 解档12345678910111213141516171819202122- (instancetype)initWithCoder:(NSCoder *)aDecoder&amp;#123;        if (">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -83,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/08/12/纯Swift路由方案探究/" title="纯Swift路由方案探究" itemprop="url">纯Swift路由方案探究</a>
+      <a href="/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/" title="Runtime-实现NSCoding的自动归档和自动解档" itemprop="url">Runtime-实现NSCoding的自动归档和自动解档</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-08-12T08:46:55.000Z" itemprop="datePublished"> 發表於 2018-08-12</time>
+    <time datetime="2018-09-13T03:41:06.000Z" itemprop="datePublished"> 發表於 2018-09-13</time>
     
   </p>
 </header>
@@ -99,27 +97,19 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#纯Swift路由方案探究"><span class="toc-number">1.</span> <span class="toc-text">纯Swift路由方案探究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#回顾历史-Objective-c"><span class="toc-number">1.1.</span> <span class="toc-text">回顾历史 Objective-c</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Load"><span class="toc-number">1.1.1.</span> <span class="toc-text">+ Load</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反射"><span class="toc-number">1.1.2.</span> <span class="toc-text">反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调度形式"><span class="toc-number">1.1.3.</span> <span class="toc-text">调度形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.1.4.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RYRouter"><span class="toc-number">1.2.</span> <span class="toc-text">RYRouter</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-实现NSCoding的自动归档和自动解档"><span class="toc-number">1.</span> <span class="toc-text">Runtime-实现NSCoding的自动归档和自动解档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解档"><span class="toc-number">1.1.</span> <span class="toc-text">解档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解档-1"><span class="toc-number">1.2.</span> <span class="toc-text">解档</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="纯Swift路由方案探究"><a href="#纯Swift路由方案探究" class="headerlink" title="纯Swift路由方案探究"></a>纯Swift路由方案探究</h1><p>前言</p>
-<blockquote>
-<p><code>OC</code> 写了几年了到了新公司开始写<code>Swift</code><br>项目正在成长期, 开始人也不多, 模块化程度不高<br>于是就整了这套路由方案<br>发现现在很多Swift路由方案很大程度上还是使用了<code>OC</code>的特性比如需要继承<code>NSObject</code><br>作为一名<code>Swift</code>萌新, 这次路由方案的设计是很好的一次对<code>Swift</code>的探索</p>
+		<h1 id="Runtime-实现NSCoding的自动归档和自动解档"><a href="#Runtime-实现NSCoding的自动归档和自动解档" class="headerlink" title="Runtime-实现NSCoding的自动归档和自动解档"></a>Runtime-实现NSCoding的自动归档和自动解档</h1><blockquote>
+<p>需要自定义模型持久化的时候我们往往需要为各个模型实现对应的<code>encode``decode</code>方法</p>
 </blockquote>
-<h2 id="回顾历史-Objective-c"><a href="#回顾历史-Objective-c" class="headerlink" title="回顾历史 Objective-c"></a>回顾历史 Objective-c</h2><p>以往路由方案的核心主要是 <code>+Load注册</code> <code>反射</code> 等</p>
-<h3 id="Load"><a href="#Load" class="headerlink" title="+ Load"></a>+ Load</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (void)<span class="type">Load</span> &#123;</div><div class="line">    <span class="comment">// 注册唯一标示 </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h3><p>生成类</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">Class</span> myClass = <span class="type">NSClassFromString</span>(@<span class="string">"DetailViewController"</span>)</div></pre></td></tr></table></figure>
-<p>方法调用 </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="type">SEL</span> action = <span class="type">NSSelectorFromString</span>(selectorName);</div><div class="line"></div><div class="line"><span class="keyword">if</span> (![<span class="keyword">self</span> respondsToSelector:action]) &#123;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="type">IMP</span> imp = [<span class="keyword">self</span> methodForSelector:action];</div><div class="line">void (*<span class="function"><span class="keyword">func</span>)<span class="params">(id, SEL, id)</span></span> = (void *)imp;</div><div class="line"><span class="function"><span class="keyword">func</span><span class="params">(<span class="keyword">self</span>, action, data)</span></span>;</div></pre></td></tr></table></figure>
-<h3 id="调度形式"><a href="#调度形式" class="headerlink" title="调度形式"></a>调度形式</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// Target-Action</span></div><div class="line">[<span class="keyword">self</span> performTarget:@<span class="string">"ModuleA"</span> action:@<span class="string">"Func"</span> params:@&#123; @<span class="string">"name"</span>:@<span class="string">"OldWang"</span> &#125;]</div><div class="line"></div><div class="line"><span class="comment">// URL</span></div><div class="line">[<span class="keyword">self</span> <span class="keyword">open</span>:@<span class="string">"demo://ModuleA/showDetail?id=100"</span>]</div><div class="line"></div><div class="line"><span class="comment">// ...</span></div></pre></td></tr></table></figure>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
-<li><code>Swift</code>中没有 <code>+Load</code></li>
-<li><code>Swift</code>包含命名空间, 反射较为麻烦, 且必须继承<code>NSObject</code>才能反射</li>
-<li>硬编码多维护成本较高, 无法编译检查 </li>
-</ul>
-<h2 id="RYRouter"><a href="#RYRouter" class="headerlink" title="RYRouter"></a>RYRouter</h2><p><img src="http://ohfpqyfi7.bkt.clouddn.com/RouterUML02-2.jpg" alt="RouterUML02-2"></p>
+<p>借助<code>Runtime</code>我们可以对此进行封装</p>
+<h2 id="解档"><a href="#解档" class="headerlink" title="解档"></a>解档</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (instancetype)initWithCoder:(<span class="type">NSCoder</span> *)aDecoder&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> = [<span class="keyword">super</span> <span class="keyword">init</span>]) &#123;</div><div class="line">        <span class="type">Class</span> <span class="built_in">c</span> = <span class="keyword">self</span>.<span class="keyword">class</span>;</div><div class="line">        <span class="comment">// 截取类和父类的成员变量</span></div><div class="line">        <span class="keyword">while</span> (<span class="built_in">c</span> &amp;&amp; <span class="built_in">c</span> != [<span class="type">NSObject</span> <span class="class"><span class="keyword">class</span>]) </span>&#123;</div><div class="line">            unsigned int <span class="built_in">count</span> = <span class="number">0</span>;</div><div class="line">            <span class="type">Ivar</span> *ivars = class_copyIvarList(<span class="built_in">c</span>, &amp;<span class="built_in">count</span>);</div><div class="line">            <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="built_in">count</span>; i++) &#123;</div><div class="line">                <span class="type">NSString</span> *key = [<span class="type">NSString</span> stringWithUTF8String:ivar_getName(ivars[i])];</div><div class="line">                id value = [aDecoder decodeObjectForKey:key];</div><div class="line">                <span class="keyword">if</span> (value)&#123;<span class="comment">// 容错</span></div><div class="line">                     [<span class="keyword">self</span> setValue:value forKey:key];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 获得c的父类</span></div><div class="line">            <span class="built_in">c</span> = [<span class="built_in">c</span> superclass];</div><div class="line">            free(ivars);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这里需要注意的是如果版本升级后<code>Model</code>的属性发生了变化这里可能会发生崩溃<br>所以需要在<code>swtValueForKey</code>的时候做判断</p>
+</blockquote>
+<h2 id="解档-1"><a href="#解档-1" class="headerlink" title="解档"></a>解档</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (void)encodeWithCoder:(<span class="type">NSCoder</span> *)aCoder&#123;</div><div class="line">    </div><div class="line">    <span class="type">Class</span> <span class="built_in">c</span> = <span class="keyword">self</span>.<span class="keyword">class</span>;</div><div class="line">    <span class="comment">// 截取类和父类的成员变量</span></div><div class="line">    <span class="keyword">while</span> (<span class="built_in">c</span> &amp;&amp; <span class="built_in">c</span> != [<span class="type">NSObject</span> <span class="class"><span class="keyword">class</span>]) </span>&#123;</div><div class="line">        unsigned int <span class="built_in">count</span> = <span class="number">0</span>;</div><div class="line">        <span class="type">Ivar</span> *ivars = class_copyIvarList(<span class="built_in">c</span>, &amp;<span class="built_in">count</span>);</div><div class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="built_in">count</span>; i++) &#123;</div><div class="line">            <span class="type">Ivar</span> ivar = ivars[i];</div><div class="line">            <span class="type">NSString</span> *key = [<span class="type">NSString</span> stringWithUTF8String:ivar_getName(ivar)];</div><div class="line">            id value = [<span class="keyword">self</span> valueForKey:key];</div><div class="line">            <span class="keyword">if</span> (value)&#123;</div><div class="line">                 [aCoder encodeObject:value forKey:key];</div><div class="line">             &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">c</span> = [<span class="built_in">c</span> superclass];</div><div class="line">        <span class="comment">// 释放内存</span></div><div class="line">        free(ivars);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -133,7 +123,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/架构/">架构</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
   </div>
 
 </div>
@@ -178,18 +168,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/08/20/RunLoop/" title="RunLoop">
+ <a href="/Ryukie.GitHub.io/2019/06/18/iOS-weak实现原理/" title="iOS-weak实现原理">
   <strong>上一篇：</strong><br/>
   <span>
-  RunLoop</span>
+  iOS-weak实现原理</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2018/07/03/FMDB与WCDB/"  title="FMDB与WCDB">
+<a href="/Ryukie.GitHub.io/2018/08/20/RunLoop/"  title="RunLoop">
  <strong>下一篇：</strong><br/> 
- <span>FMDB与WCDB
+ <span>RunLoop
 </span>
 </a>
 </div>
@@ -198,7 +188,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/08/12/纯Swift路由方案探究/" data-title="纯Swift路由方案探究" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/08/12/纯Swift路由方案探究/"></div>
+	<div class="ds-thread" data-thread-key="2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/" data-title="Runtime-实现NSCoding的自动归档和自动解档" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/"></div>
 </section>
 
 
@@ -208,7 +198,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#纯Swift路由方案探究"><span class="toc-number">1.</span> <span class="toc-text">纯Swift路由方案探究</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#回顾历史-Objective-c"><span class="toc-number">1.1.</span> <span class="toc-text">回顾历史 Objective-c</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Load"><span class="toc-number">1.1.1.</span> <span class="toc-text">+ Load</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反射"><span class="toc-number">1.1.2.</span> <span class="toc-text">反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调度形式"><span class="toc-number">1.1.3.</span> <span class="toc-text">调度形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.1.4.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RYRouter"><span class="toc-number">1.2.</span> <span class="toc-text">RYRouter</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-实现NSCoding的自动归档和自动解档"><span class="toc-number">1.</span> <span class="toc-text">Runtime-实现NSCoding的自动归档和自动解档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解档"><span class="toc-number">1.1.</span> <span class="toc-text">解档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解档-1"><span class="toc-number">1.2.</span> <span class="toc-text">解档</span></a></li></ol></li></ol>
  
   </div>
 

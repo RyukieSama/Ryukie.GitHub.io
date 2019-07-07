@@ -52,7 +52,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -68,7 +68,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -91,14 +91,14 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-08-20T14:47:22.000Z" itemprop="datePublished"> Published 2018-08-20</time>
+    <time datetime="2018-08-20T14:47:22.000Z" itemprop="datePublished"> 發表於 2018-08-20</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-App-运行原理"><span class="toc-number">1.</span> <span class="toc-text">iOS App 运行原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App启动"><span class="toc-number">1.1.</span> <span class="toc-text">App启动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-动态链接-dyld"><span class="toc-number">1.1.1.</span> <span class="toc-text">01_动态链接 dyld</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-ImageLoader"><span class="toc-number">1.1.2.</span> <span class="toc-text">02_ImageLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-runtime"><span class="toc-number">1.1.3.</span> <span class="toc-text">03_runtime</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RunLoop"><span class="toc-number">1.2.</span> <span class="toc-text">RunLoop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-什么是RunLoop"><span class="toc-number">1.2.1.</span> <span class="toc-text">01_什么是RunLoop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-RunLoop-与-线程"><span class="toc-number">1.2.2.</span> <span class="toc-text">02_RunLoop 与 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-结构"><span class="toc-number">1.2.3.</span> <span class="toc-text">03_结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Source"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Source</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Source0-处理App内部事件-App自行管理"><span class="toc-number">1.2.3.1.1.</span> <span class="toc-text">Source0: 处理App内部事件, App自行管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Source1-由RunLoop内核管理-MachPort驱动-进程间通讯"><span class="toc-number">1.2.3.1.2.</span> <span class="toc-text">Source1: 由RunLoop内核管理, MachPort驱动(进程间通讯)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Timer"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">Timer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Observer"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">Observer</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Observer-与-AutoreleasePool-UIKit"><span class="toc-number">1.2.3.3.1.</span> <span class="toc-text">Observer 与 AutoreleasePool(UIKit)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mode"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">Mode</span></a></li></ol></li></ol></li></ol></li></ol>
 		
@@ -213,10 +213,10 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2019/06/18/iOS-weak实现原理/" title="iOS-weak实现原理">
+ <a href="/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/" title="Runtime-实现NSCoding的自动归档和自动解档">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS-weak实现原理</span>
+  Runtime-实现NSCoding的自动归档和自动解档</span>
 </a>
 </div>
 
@@ -238,22 +238,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-App-运行原理"><span class="toc-number">1.</span> <span class="toc-text">iOS App 运行原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#App启动"><span class="toc-number">1.1.</span> <span class="toc-text">App启动</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-动态链接-dyld"><span class="toc-number">1.1.1.</span> <span class="toc-text">01_动态链接 dyld</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-ImageLoader"><span class="toc-number">1.1.2.</span> <span class="toc-text">02_ImageLoader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-runtime"><span class="toc-number">1.1.3.</span> <span class="toc-text">03_runtime</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RunLoop"><span class="toc-number">1.2.</span> <span class="toc-text">RunLoop</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#01-什么是RunLoop"><span class="toc-number">1.2.1.</span> <span class="toc-text">01_什么是RunLoop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#02-RunLoop-与-线程"><span class="toc-number">1.2.2.</span> <span class="toc-text">02_RunLoop 与 线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#03-结构"><span class="toc-number">1.2.3.</span> <span class="toc-text">03_结构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Source"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Source</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Source0-处理App内部事件-App自行管理"><span class="toc-number">1.2.3.1.1.</span> <span class="toc-text">Source0: 处理App内部事件, App自行管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Source1-由RunLoop内核管理-MachPort驱动-进程间通讯"><span class="toc-number">1.2.3.1.2.</span> <span class="toc-text">Source1: 由RunLoop内核管理, MachPort驱动(进程间通讯)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Timer"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">Timer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Observer"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">Observer</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Observer-与-AutoreleasePool-UIKit"><span class="toc-number">1.2.3.3.1.</span> <span class="toc-text">Observer 与 AutoreleasePool(UIKit)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mode"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">Mode</span></a></li></ol></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -263,11 +263,11 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分類</p>
 		<ul>
 		
 		  
-			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>31</sup></a></li>
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>32</sup></a></li>
 		  
 		
 		</ul>
@@ -276,11 +276,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>18</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>19</sup></a></li>
 			
 		
 			
@@ -292,11 +292,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>3</sup></a></li>
 			
 		
 			
@@ -312,11 +312,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
 			
 		
 			
@@ -344,7 +344,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
 </aside>
@@ -534,7 +534,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 
