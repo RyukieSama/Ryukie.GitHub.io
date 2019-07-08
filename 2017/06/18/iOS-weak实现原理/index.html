@@ -1,0 +1,537 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-weak实现原理 | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="iOS-weak实现原理描述 系统维护了一个hash表, Key是所指对象的地址, Value是weak指针的地址数组 弱引用,应用对象的引用计数不会+1 并在对象被释放的时候自动设为nil,这是和assign本质的区别,用assign修饰对象的话会发生野指针的问题    实现过程初始化时 runtime调用objc_initWeak函数创建一个新的weak指针指向修饰的对象的地址  123456">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-weak实现原理">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/06/18/iOS-weak实现原理/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="iOS-weak实现原理描述 系统维护了一个hash表, Key是所指对象的地址, Value是weak指针的地址数组 弱引用,应用对象的引用计数不会+1 并在对象被释放的时候自动设为nil,这是和assign本质的区别,用assign修饰对象的话会发生野指针的问题    实现过程初始化时 runtime调用objc_initWeak函数创建一个新的weak指针指向修饰的对象的地址  123456">
+<meta property="og:updated_time" content="2019-07-08T07:20:07.006Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-weak实现原理">
+<meta name="twitter:description" content="iOS-weak实现原理描述 系统维护了一个hash表, Key是所指对象的地址, Value是weak指针的地址数组 弱引用,应用对象的引用计数不会+1 并在对象被释放的时候自动设为nil,这是和assign本质的区别,用assign修饰对象的话会发生野指针的问题    实现过程初始化时 runtime调用objc_initWeak函数创建一个新的weak指针指向修饰的对象的地址  123456">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2017/06/18/iOS-weak实现原理/" title="iOS-weak实现原理" itemprop="url">iOS-weak实现原理</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2017-06-18T07:22:41.000Z" itemprop="datePublished"> 发表于 2017-06-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-weak实现原理"><span class="toc-number">1.</span> <span class="toc-text">iOS-weak实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现过程"><span class="toc-number">1.2.</span> <span class="toc-text">实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化时"><span class="toc-number">1.2.1.</span> <span class="toc-text">初始化时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加引用时"><span class="toc-number">1.2.2.</span> <span class="toc-text">添加引用时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#释放时"><span class="toc-number">1.2.3.</span> <span class="toc-text">释放时</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="iOS-weak实现原理"><a href="#iOS-weak实现原理" class="headerlink" title="iOS-weak实现原理"></a>iOS-weak实现原理</h1><h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><ul>
+<li>系统维护了一个<code>hash</code>表,<ul>
+<li><code>Key</code>是所指对象的地址,</li>
+<li><code>Value</code>是<code>weak</code>指针的地址数组</li>
+<li>弱引用,应用对象的引用计数不会+1</li>
+<li>并在对象被释放的时候自动设为<code>nil</code>,这是和<code>assign</code>本质的区别,用<code>assign</code>修饰对象的话会发生野指针的问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="初始化时"><a href="#初始化时" class="headerlink" title="初始化时"></a>初始化时</h3><ul>
+<li><code>runtime</code>调用<code>objc_initWeak</code>函数创建一个新的<code>weak</code>指针指向修饰的对象的地址</li>
+</ul>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">//初始化weak表</div><div class="line">/** </div><div class="line"> * <span class="type">Initialize</span> a fresh weak <span class="built_in">pointer</span> to some <span class="keyword">object</span> location. </div><div class="line"> * <span class="type">It</span> would be used <span class="keyword">for</span> code like: </div><div class="line"> *</div><div class="line"> * (<span class="type">The</span> <span class="keyword">nil</span> <span class="keyword">case</span>) </div><div class="line"> * __weak id weakPtr;</div><div class="line"> * (<span class="type">The</span> non-<span class="keyword">nil</span> <span class="keyword">case</span>) </div><div class="line"> * <span class="type">NSObject</span> *o = ...;</div><div class="line"> * __weak id weakPtr = o;</div><div class="line"> * </div><div class="line"> * @param <span class="keyword">addr</span> <span class="type">Address</span> <span class="keyword">of</span> __weak <span class="keyword">ptr</span>. </div><div class="line"> * @param val <span class="type">Object</span> <span class="keyword">ptr</span>. </div><div class="line"> */</div><div class="line">id objc_initWeak(id *<span class="keyword">addr</span>, id val)</div><div class="line">&#123;</div><div class="line">    *<span class="keyword">addr</span> = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (!val) <span class="keyword">return</span> <span class="keyword">nil</span>;</div><div class="line">    <span class="keyword">return</span> objc_storeWeak(<span class="keyword">addr</span>, val); // 存储weak对象</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="添加引用时"><a href="#添加引用时" class="headerlink" title="添加引用时"></a>添加引用时</h3><ul>
+<li><code>objc_initWeak</code>会调用<code>objc_storeWeak</code>函数,更新指针指向,创建对应弱引用表</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** </span></div><div class="line"><span class="comment"> * This function stores a new value into a __weak variable. It would</span></div><div class="line"><span class="comment"> * be used anywhere a __weak variable is the target of an assignment.</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * @param location The address of the weak pointer itself</span></div><div class="line"><span class="comment"> * @param newObj The new object this weak ptr should now point to</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * @return \e newObj</span></div><div class="line"><span class="comment"> */</span></div><div class="line">id</div><div class="line">objc_storeWeak(id *location, id <span class="keyword">new</span><span class="type">Obj</span>)</div><div class="line">&#123;</div><div class="line">    id oldObj;</div><div class="line">    SideTable *oldTable;</div><div class="line">    SideTable *<span class="keyword">new</span><span class="type">Table</span>;</div><div class="line">    spinlock_t *lock1;</div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> SIDE_TABLE_STRIPE &gt; 1</span></div><div class="line">    spinlock_t *lock2;</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">    <span class="comment">// Acquire locks for old and new values.</span></div><div class="line">    <span class="comment">// Order by lock address to prevent lock ordering problems. </span></div><div class="line">    <span class="comment">// Retry if the old value changes underneath us.</span></div><div class="line"> retry:<span class="type"></span></div><div class="line"><span class="type">    oldObj </span>= *location;</div><div class="line">    </div><div class="line">    oldTable = SideTable:<span class="type"></span>:tableForPointer(oldObj);</div><div class="line">    <span class="keyword">new</span><span class="type">Table</span> = SideTable:<span class="type"></span>:tableForPointer(<span class="keyword">new</span><span class="type">Obj</span>);</div><div class="line">    </div><div class="line">    lock1 = &amp;<span class="keyword">new</span><span class="type">Table</span>-&gt;slock;</div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> SIDE_TABLE_STRIPE &gt; 1</span></div><div class="line">    lock2 = &amp;oldTable-&gt;slock;</div><div class="line">    <span class="keyword">if</span> (lock1 &gt; lock2) &#123;</div><div class="line">        spinlock_t *temp = lock1;</div><div class="line">        lock1 = lock2;</div><div class="line">        lock2 = temp;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (lock1 != lock2) spinlock_lock(lock2);</div><div class="line"><span class="meta">#endif</span></div><div class="line">    spinlock_lock(lock1);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (*location != oldObj) &#123;</div><div class="line">        spinlock_unlock(lock1);</div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> SIDE_TABLE_STRIPE &gt; 1</span></div><div class="line">        <span class="keyword">if</span> (lock1 != lock2) spinlock_unlock(lock2);</div><div class="line"><span class="meta">#endif</span></div><div class="line">        goto retry;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    weak_unregister_no_lock(&amp;oldTable-&gt;weak_table, oldObj, location);</div><div class="line">    <span class="keyword">new</span><span class="type">Obj</span> = weak_register_no_lock(&amp;<span class="keyword">new</span><span class="type">Table</span>-&gt;weak_table, <span class="keyword">new</span><span class="type">Obj</span>, location);</div><div class="line">    <span class="comment">// weak_register_no_lock returns nil if weak store should be rejected</span></div><div class="line"></div><div class="line">    <span class="comment">// Set is-weakly-referenced bit in refcount table.</span></div><div class="line">    <span class="keyword">if</span> (<span class="keyword">new</span><span class="type">Obj</span>  &amp;&amp;  !<span class="keyword">new</span><span class="type">Obj</span>-&gt;isTaggedPointer()) &#123;</div><div class="line">        <span class="keyword">new</span><span class="type">Obj</span>-&gt;setWeaklyReferenced_nolock();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// Do not set *location anywhere else. That would introduce a race.</span></div><div class="line">    *location = <span class="keyword">new</span><span class="type">Obj</span>;</div><div class="line">    </div><div class="line">    spinlock_unlock(lock1);</div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> SIDE_TABLE_STRIPE &gt; 1</span></div><div class="line">    <span class="keyword">if</span> (lock1 != lock2) spinlock_unlock(lock2);</div><div class="line"><span class="meta">#endif</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span><span class="type">Obj</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><code>weak_unregister_no_lock</code>旧对象解除注册<br>  * </li>
+<li><code>weak_register_no_lock</code>新对象添加注册<ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="释放时"><a href="#释放时" class="headerlink" title="释放时"></a>释放时</h3><ul>
+<li>调用<code>objc_release</code></li>
+<li>引用计数为0调用<code>dealloc</code></li>
+<li><code>dealloc</code>中调用了<code>_objc_rootDealloc</code>函数</li>
+<li><code>_objc_rootDealloc</code>调用了<code>object_dispose</code></li>
+<li>调用<code>objc_destructInstance</code></li>
+<li><code>objc_destructInstance</code>首先根据对象地址获取所有<code>weak</code>指针地址数组,遍历置为<code>nil</code>,然后把这<code>weak</code>表中所有该地址的记录删除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2017/08/15/Node-js-StudyNotes-01/" title="Nodejs StudyNotes_01">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Nodejs StudyNotes_01</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2017/06/08/iOS-RYPhotosBrowser/"  title="iOS_RYPhotosBrowser">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS_RYPhotosBrowser
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/06/18/iOS-weak实现原理/" data-title="iOS-weak实现原理" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/06/18/iOS-weak实现原理/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-weak实现原理"><span class="toc-number">1.</span> <span class="toc-text">iOS-weak实现原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#描述"><span class="toc-number">1.1.</span> <span class="toc-text">描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现过程"><span class="toc-number">1.2.</span> <span class="toc-text">实现过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化时"><span class="toc-number">1.2.1.</span> <span class="toc-text">初始化时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加引用时"><span class="toc-number">1.2.2.</span> <span class="toc-text">添加引用时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#释放时"><span class="toc-number">1.2.3.</span> <span class="toc-text">释放时</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>38</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

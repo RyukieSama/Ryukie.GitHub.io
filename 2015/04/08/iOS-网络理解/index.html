@@ -1,0 +1,593 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS-网络理解 | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="iOS-网络理解一:网络层级结构TCP/IP四层结构 应用层 传输层 网络层 网络接口层  OSI七层网络结构 应用层 表示层 会话层 传输层 网络层 数据链路层 物理层  二:HTTP协议-超文本传输协议 应用层面向对象的协议常基于TCP链接方式   特点: 支持客户端/服务端模式 简单快捷灵活 客户端每次发送的请求,都需要服务器回送响应,请求结束后主动释放链接.俗称短连接    三:TCP协议">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-网络理解">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/04/08/iOS-网络理解/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="iOS-网络理解一:网络层级结构TCP/IP四层结构 应用层 传输层 网络层 网络接口层  OSI七层网络结构 应用层 表示层 会话层 传输层 网络层 数据链路层 物理层  二:HTTP协议-超文本传输协议 应用层面向对象的协议常基于TCP链接方式   特点: 支持客户端/服务端模式 简单快捷灵活 客户端每次发送的请求,都需要服务器回送响应,请求结束后主动释放链接.俗称短连接    三:TCP协议">
+<meta property="og:updated_time" content="2019-07-08T07:18:01.354Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS-网络理解">
+<meta name="twitter:description" content="iOS-网络理解一:网络层级结构TCP/IP四层结构 应用层 传输层 网络层 网络接口层  OSI七层网络结构 应用层 表示层 会话层 传输层 网络层 数据链路层 物理层  二:HTTP协议-超文本传输协议 应用层面向对象的协议常基于TCP链接方式   特点: 支持客户端/服务端模式 简单快捷灵活 客户端每次发送的请求,都需要服务器回送响应,请求结束后主动释放链接.俗称短连接    三:TCP协议">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2015/04/08/iOS-网络理解/" title="iOS-网络理解" itemprop="url">iOS-网络理解</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2015-04-08T06:25:08.000Z" itemprop="datePublished"> 发表于 2015-04-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络理解"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-网络层级结构"><span class="toc-number">1.1.</span> <span class="toc-text">一:网络层级结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP四层结构"><span class="toc-number">1.1.1.</span> <span class="toc-text">TCP/IP四层结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI七层网络结构"><span class="toc-number">1.1.2.</span> <span class="toc-text">OSI七层网络结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-HTTP协议-超文本传输协议"><span class="toc-number">1.2.</span> <span class="toc-text">二:HTTP协议-超文本传输协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-TCP协议"><span class="toc-number">1.3.</span> <span class="toc-text">三:TCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-UDP协议"><span class="toc-number">1.4.</span> <span class="toc-text">四:UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-Socket"><span class="toc-number">1.5.</span> <span class="toc-text">五:Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-HTTP-Socket-TCP-的关系"><span class="toc-number">1.6.</span> <span class="toc-text">六:HTTP-Socket-TCP 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-TCP-UDP的区别"><span class="toc-number">1.7.</span> <span class="toc-text">七:TCP/UDP的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-Socket工作流程"><span class="toc-number">1.8.</span> <span class="toc-text">八.Socket工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-HTTP和Socket的区别"><span class="toc-number">1.9.</span> <span class="toc-text">九:HTTP和Socket的区别</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="iOS-网络理解"><a href="#iOS-网络理解" class="headerlink" title="iOS-网络理解"></a>iOS-网络理解</h1><h2 id="一-网络层级结构"><a href="#一-网络层级结构" class="headerlink" title="一:网络层级结构"></a>一:网络层级结构</h2><h3 id="TCP-IP四层结构"><a href="#TCP-IP四层结构" class="headerlink" title="TCP/IP四层结构"></a>TCP/IP四层结构</h3><ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>网络接口层</li>
+</ul>
+<h3 id="OSI七层网络结构"><a href="#OSI七层网络结构" class="headerlink" title="OSI七层网络结构"></a>OSI七层网络结构</h3><ul>
+<li>应用层</li>
+<li>表示层</li>
+<li>会话层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+<h2 id="二-HTTP协议-超文本传输协议"><a href="#二-HTTP协议-超文本传输协议" class="headerlink" title="二:HTTP协议-超文本传输协议"></a>二:HTTP协议-超文本传输协议</h2><blockquote>
+<p><code>应用层</code>面向对象的协议<br>常基于<code>TCP</code>链接方式</p>
+</blockquote>
+<ul>
+<li>特点:<ul>
+<li>支持客户端/服务端模式</li>
+<li>简单快捷灵活</li>
+<li>客户端每次发送的请求,都需要服务器回送响应,请求结束后主动释放链接.俗称<code>短连接</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="三-TCP协议"><a href="#三-TCP协议" class="headerlink" title="三:TCP协议"></a>三:TCP协议</h2><blockquote>
+<p><code>传输层</code><br>提供面向链接的可靠的字节流服务,提供<code>超时重发</code>,<code>丢弃重复数据</code>,<code>校验数据</code>,<code>流量控制</code>等功能<br>在正式收发数据前,需要建立三次握手建立可靠的链接</p>
+</blockquote>
+<ul>
+<li>三次握手<ul>
+<li>客户端向服务器发送一个SYN报文(syn=j),计入<code>SYN_SEND</code>状态,等待服务器确认</li>
+<li>服务器接收到客户端的SYN报文,确认客户端的SYN(ack=j+1),同时自己也发送一个SYN报文(syn=k),即<code>SYN+ACK</code>报文,服务器进入<code>SYN_RECV</code>状态</li>
+<li>客户端收到服务器的<code>SYN+ACK</code>报文,向服务器发送确认报文ACK(ack=k+1),此包发送完毕,客户端服务端进入<code>ESTABLISHED</code>状态,完成三次握手</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-UDP协议"><a href="#四-UDP协议" class="headerlink" title="四:UDP协议"></a>四:UDP协议</h2><blockquote>
+<p><code>传输层</code><br>面向非链接,不保证可靠性的数据传输协议,没有超时重发等机制,故传输速度很快<br>不与对方建立连接,直接把数据包丢过去,所以适合少量数据且可靠性要求不高的场景</p>
+</blockquote>
+<h2 id="五-Socket"><a href="#五-Socket" class="headerlink" title="五:Socket"></a>五:Socket</h2><p>IP地址+端口=Socket</p>
+<blockquote>
+<p>应用程序通过<code>Socket</code>向网络发送请求或响应<br>它是一个针对TCP/UDP编程的接口,基于它建立TCP/UDP连接.<br><code>Socket</code>连接就是所谓的长连接,一旦建立起连接,不会主动断掉</p>
+</blockquote>
+<h2 id="六-HTTP-Socket-TCP-的关系"><a href="#六-HTTP-Socket-TCP-的关系" class="headerlink" title="六:HTTP-Socket-TCP 的关系"></a>六:HTTP-Socket-TCP 的关系</h2><ol>
+<li>HTTP协议提供了封装或者显示数据的具体形式</li>
+<li>Socket连接提供了网络通信的能力</li>
+<li>TCP连接提供如何在网络中传输</li>
+<li>socket是纯C语言的,跨平台</li>
+<li>HTTP协议是基于socket的,底层使用的就是socket</li>
+<li>创建Socket连接时，可以指定使用的传输层协议(TCP或UDP),当使用TCP协议进行连接时，该Socket连接就是一个TCP连接</li>
+</ol>
+<h2 id="七-TCP-UDP的区别"><a href="#七-TCP-UDP的区别" class="headerlink" title="七:TCP/UDP的区别"></a>七:TCP/UDP的区别</h2><ol>
+<li>基于连接和无连接</li>
+<li>TCP对系统资源占用较多,UDP较少</li>
+<li>UDP程序结构简单</li>
+<li>TCP是字节流数据类型,UDP是用户数报文类型</li>
+<li>TCP保证数据可靠性,UDP不保证,可能丢包</li>
+</ol>
+<h2 id="八-Socket工作流程"><a href="#八-Socket工作流程" class="headerlink" title="八.Socket工作流程"></a>八.Socket工作流程</h2><ul>
+<li>服务端创建一个socket</li>
+<li>绑定服务器主机地址,监听一个端口</li>
+<li>调用accept函数，一致初一阻塞状态</li>
+<li>当客户端有客户端请求，并自己进入阻塞，一直到服务返回数据</li>
+<li>服务端保存客户端的socket，然后向客户单的socket 写入数据</li>
+<li>客户端接收后可以发送close消息断开链接，那么就完成一次完成的socket交流</li>
+</ul>
+<h2 id="九-HTTP和Socket的区别"><a href="#九-HTTP和Socket的区别" class="headerlink" title="九:HTTP和Socket的区别"></a>九:HTTP和Socket的区别</h2><ul>
+<li><code>HTTP连接</code>是短连接,<code>Socket连接</code>是长连接<ul>
+<li>尽管<code>HTTP1.1</code>开始支持持久链接但仍无法保证始终链接</li>
+<li>Socket建立TCP三次握手后,除非一方自动断开链接否则链接将一直保持</li>
+</ul>
+</li>
+<li><code>HTTP</code>服务端无法主动发送消息<ul>
+<li>采用<code>请求-响应</code>机制</li>
+</ul>
+</li>
+<li>应用场景<ul>
+<li>HTTP<ul>
+<li>双方不需要同时保持在线,如客户端资源获取,上传等</li>
+</ul>
+</li>
+<li>Socket<ul>
+<li>IM APNs等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2015/07/04/时间复杂度-空间复杂度/" title="时间复杂度&amp;空间复杂度">
+  <strong>上一篇：</strong><br/>
+  <span>
+  时间复杂度&amp;空间复杂度</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2014/01/01/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/04/08/iOS-网络理解/" data-title="iOS-网络理解" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/04/08/iOS-网络理解/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络理解"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-网络层级结构"><span class="toc-number">1.1.</span> <span class="toc-text">一:网络层级结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP四层结构"><span class="toc-number">1.1.1.</span> <span class="toc-text">TCP/IP四层结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI七层网络结构"><span class="toc-number">1.1.2.</span> <span class="toc-text">OSI七层网络结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-HTTP协议-超文本传输协议"><span class="toc-number">1.2.</span> <span class="toc-text">二:HTTP协议-超文本传输协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-TCP协议"><span class="toc-number">1.3.</span> <span class="toc-text">三:TCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-UDP协议"><span class="toc-number">1.4.</span> <span class="toc-text">四:UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-Socket"><span class="toc-number">1.5.</span> <span class="toc-text">五:Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-HTTP-Socket-TCP-的关系"><span class="toc-number">1.6.</span> <span class="toc-text">六:HTTP-Socket-TCP 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-TCP-UDP的区别"><span class="toc-number">1.7.</span> <span class="toc-text">七:TCP/UDP的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-Socket工作流程"><span class="toc-number">1.8.</span> <span class="toc-text">八.Socket工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-HTTP和Socket的区别"><span class="toc-number">1.9.</span> <span class="toc-text">九:HTTP和Socket的区别</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>38</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>24</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>6</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
