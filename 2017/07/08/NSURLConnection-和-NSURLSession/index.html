@@ -1,0 +1,623 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>NSURLConnection 和 NSURLSession | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="NSURLConnection 和 NSURLSession AFNetworking2.0-&amp;gt;3.0 用NSURLSession替换了NSURLConnection  一: 背景 iOS早期版本提供了了NSURLConnection来执行网络请求.应用开发人员需要管理链接池,并处理应用后台/中断以及请求的恢复.从iOS7开始,苹果发布了NSURLSession用来替代NSURLConnec">
+<meta name="keywords" content="iOS,网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NSURLConnection 和 NSURLSession">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/07/08/NSURLConnection-和-NSURLSession/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="NSURLConnection 和 NSURLSession AFNetworking2.0-&amp;gt;3.0 用NSURLSession替换了NSURLConnection  一: 背景 iOS早期版本提供了了NSURLConnection来执行网络请求.应用开发人员需要管理链接池,并处理应用后台/中断以及请求的恢复.从iOS7开始,苹果发布了NSURLSession用来替代NSURLConnec">
+<meta property="og:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-6d34f00f640514f4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-7b0c50fdae01a65c.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-651fb5b7d18581e4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-322f066750c730fb.png">
+<meta property="og:updated_time" content="2019-07-10T08:12:53.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NSURLConnection 和 NSURLSession">
+<meta name="twitter:description" content="NSURLConnection 和 NSURLSession AFNetworking2.0-&amp;gt;3.0 用NSURLSession替换了NSURLConnection  一: 背景 iOS早期版本提供了了NSURLConnection来执行网络请求.应用开发人员需要管理链接池,并处理应用后台/中断以及请求的恢复.从iOS7开始,苹果发布了NSURLSession用来替代NSURLConnec">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-6d34f00f640514f4.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2017/07/08/NSURLConnection-和-NSURLSession/" title="NSURLConnection 和 NSURLSession" itemprop="url">NSURLConnection 和 NSURLSession</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2017-07-08T14:40:15.000Z" itemprop="datePublished"> Published 2017-07-08</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSURLConnection-和-NSURLSession"><span class="toc-number">1.</span> <span class="toc-text">NSURLConnection 和 NSURLSession</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-背景"><span class="toc-number">1.1.</span> <span class="toc-text">一: 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-NSURLSession-优点"><span class="toc-number">1.2.</span> <span class="toc-text">二: NSURLSession 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-NSURLConnection-vs-NSURLSession"><span class="toc-number">1.3.</span> <span class="toc-text">三: NSURLConnection vs NSURLSession</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-NSURLSession-API"><span class="toc-number">1.4.</span> <span class="toc-text">四: NSURLSession API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionConfiguration"><span class="toc-number">1.4.1.</span> <span class="toc-text">NSURLSessionConfiguration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionTask"><span class="toc-number">1.4.2.</span> <span class="toc-text">NSURLSessionTask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionDelegate"><span class="toc-number">1.4.3.</span> <span class="toc-text">NSURLSessionDelegate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-Session分类"><span class="toc-number">1.5.</span> <span class="toc-text">四: Session分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-后台传输"><span class="toc-number">1.6.</span> <span class="toc-text">五: 后台传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程安全"><span class="toc-number">1.7.</span> <span class="toc-text">线程安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.8.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="NSURLConnection-和-NSURLSession"><a href="#NSURLConnection-和-NSURLSession" class="headerlink" title="NSURLConnection 和 NSURLSession"></a>NSURLConnection 和 NSURLSession</h1><blockquote>
+<p><code>AFNetworking2.0-&gt;3.0</code> 用<code>NSURLSession</code>替换了<code>NSURLConnection</code></p>
+</blockquote>
+<h2 id="一-背景"><a href="#一-背景" class="headerlink" title="一: 背景"></a>一: 背景</h2><blockquote>
+<p>iOS早期版本提供了了<code>NSURLConnection</code>来执行网络请求.<br>应用开发人员需要管理链接池,并处理应用后台/中断以及请求的恢复.<br>从<code>iOS7</code>开始,苹果发布了<code>NSURLSession</code>用来替代<code>NSURLConnection</code></p>
+</blockquote>
+<h2 id="二-NSURLSession-优点"><a href="#二-NSURLSession-优点" class="headerlink" title="二: NSURLSession 优点"></a>二: NSURLSession 优点</h2><p>使用<code>NSURLSession</code>具有以下优点:</p>
+<ul>
+<li><code>NSURLSession</code>对预防如其中的相关请求而言是一个可配置的容器.<ul>
+<li>例如:对服务器的所有请求都可以配置成始终包含访问令牌</li>
+</ul>
+</li>
+<li>你可以得到后台联网的所有好处.这有助于提高电池寿命/支持UIKit的多任务/使用与过程传输相同的委托模型</li>
+<li>热和网络任务都可以暂停/停止/重启.此处与<code>NSURLConnection</code>不同,此处不需要是<code>NSOperation</code>的子类</li>
+<li>你可以使用<code>NSURLSession</code>来配置会话以便在每个会话的基础上使用专用存储(缓存/cookie jar等)</li>
+<li>当使用<code>NSURLConnection</code>时,如果遇到了身份验证问题,问题会在任何一个请求中返回,你无法明确知道那个请求遇到了这个问题.使用<code>NSURLSession</code>,委托会处理身份验证</li>
+<li><code>NSURLConnection</code>有一些基于<code>Block</code>的异步方法,但委托不能使用它们.当发起一个请求时,要么成功,要么失败,即使它需要身份验证.</li>
+<li>使用<code>NSURLSession</code>你可以混合使用.也就是说,可以使用基于<code>Block</code>的异步方法,还可以设置委托以处理身份验证</li>
+</ul>
+<h2 id="三-NSURLConnection-vs-NSURLSession"><a href="#三-NSURLConnection-vs-NSURLSession" class="headerlink" title="三: NSURLConnection vs NSURLSession"></a>三: NSURLConnection vs NSURLSession</h2><ul>
+<li>NSURLConnection<ul>
+<li>一个<code>Connection</code>对象代表一个任务,每个任务绑定一个<code>configuration</code>,所有的<code>configuration</code>共享一个全局储存器(global storage)</li>
+</ul>
+</li>
+<li>NSURLSession<ul>
+<li>一个<code>Session</code>绑定一个<code>configuration</code>,一个<code>Session</code>可以创建多个<code>Task</code>,每个<code>Session</code>都有一个自己的储存器(private storage)</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-NSURLSession-API"><a href="#四-NSURLSession-API" class="headerlink" title="四: NSURLSession API"></a>四: NSURLSession API</h2><p><img src="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-6d34f00f640514f4.png" alt=""></p>
+<h3 id="NSURLSessionConfiguration"><a href="#NSURLSessionConfiguration" class="headerlink" title="NSURLSessionConfiguration"></a>NSURLSessionConfiguration</h3><p><img src="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-7b0c50fdae01a65c.png" alt=""></p>
+<ul>
+<li>缓存,cookies,证书存储</li>
+<li>电池使用,网络服务类型</li>
+<li>请求的数量</li>
+<li>资源/请求超时时间</li>
+<li>TLS协议</li>
+<li>HTTP代理,cookies,头部</li>
+<li>子类话的存储器</li>
+</ul>
+<blockquote>
+<p>Configuration对象默认是可变类型,它们被使用的时候相当于被copy了一份不可变的,在session中不能对中绑定的Configuration进行修改</p>
+</blockquote>
+<ul>
+<li>类型:<ul>
+<li>defaultSessionConfiguration : 系统默认</li>
+<li>ephemeralSessionConfiguration : 仅内存缓存, 不做磁盘缓存的配置</li>
+<li>backgroundSessionConfiguration : 这里需要指定一个identifier, identifier用来后台重连session对象. (做后台上传/下载就是这个config)</li>
+</ul>
+</li>
+</ul>
+<h3 id="NSURLSessionTask"><a href="#NSURLSessionTask" class="headerlink" title="NSURLSessionTask"></a>NSURLSessionTask</h3><p><img src="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-651fb5b7d18581e4.png" alt=""></p>
+<ul>
+<li>task被用来取代connection.一个task代表一个任务(相当于NSURLConnection对象)</li>
+<li>提供任务的状态和进度属性</li>
+<li>提供任务的取消/挂起/恢复功能</li>
+<li>区分data和upload任务</li>
+<li><p>提供断点续传的实现</p>
+</li>
+<li><p>分类:</p>
+<ul>
+<li>NSURLSessionTask : Task的抽象基类</li>
+<li>NSURLSessionDataTask : 以NSData的形式接收一个URLRequest的内容</li>
+<li>NSURLSessionUploadTask : 上传NSData或者本地磁盘中的文件, 完成后以NSData的形式接收一个URLRequest的响应</li>
+<li>NSURLSessionDownloadTask : 下载完成后返回临时文件在本地磁盘的URL路径</li>
+<li>NSURLSessionStreamTask : 用于建立一个TCP/IP连接</li>
+</ul>
+</li>
+</ul>
+<h3 id="NSURLSessionDelegate"><a href="#NSURLSessionDelegate" class="headerlink" title="NSURLSessionDelegate"></a>NSURLSessionDelegate</h3><p><img src="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/1862021-322f066750c730fb.png" alt=""></p>
+<ul>
+<li>一个代理对象可以处理所有NSURLSession方法<ul>
+<li>Session/task/dataTask/DownloadTask</li>
+</ul>
+</li>
+<li>强引用代理对象直到session无效(与平时代理对象weak引用不同),session就会把全部task都取消/完成</li>
+<li>代理方法有可能会阻塞加载<ul>
+<li>记得调用completion handler这个block去让session继续工作, 否则会阻塞起来</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-Session分类"><a href="#四-Session分类" class="headerlink" title="四: Session分类"></a>四: Session分类</h2><ul>
+<li>sharedSession: 全局session有局限性</li>
+<li>自定义session: 自定义session,我们用的一般是这个</li>
+<li>后台session: 也是一种自定义session,专门用来做后台上传下载任务</li>
+</ul>
+<blockquote>
+<p>类型由Configuration来决定</p>
+</blockquote>
+<h2 id="五-后台传输"><a href="#五-后台传输" class="headerlink" title="五: 后台传输"></a>五: 后台传输</h2><blockquote>
+<p>只支持上传下载任务,data任务不支持<br>只支持HTTPS<br>根据系统资源,很可能会取消掉后台任务,所以最好还是在前台完成<br>后台任务最好支持断点续传,分段传输</p>
+</blockquote>
+<ul>
+<li>系统创建一个守护进程</li>
+<li>当你的app正在运行的时候, 正常调用代理方法传输数据给你</li>
+<li>当你的app退出了(回到桌面/crash), 守护进程会继续他的工作, 直到需要重新认证或者完成所有任务</li>
+<li>re-launch你的app, 然后re-create你的后台session, 然后后台session会re-connect守护进程.</li>
+<li>守护进程此时就会把数据给你.</li>
+<li>可以通过不同的identifier创建多个后台session.</li>
+</ul>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h2><blockquote>
+<p>URLSession 的API全部都是线程安全的. 你可以在任何线程上创建session和tasks, task会自动调度到合适的代理队列中运行<br>后台传输的代理方法URLSession​Did​Finish​Events​For​Background​URLSession:​可能会在其他线程中被调用. 在该方法中你应该回到主线程然后调用completion handler去触发AppDelegate中的application:​handle​Events​For​Background​URLSession:​completion​Handler:​方法.</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.cnblogs.com/kakaluote123/articles/5426923.html" target="_blank" rel="external">https://www.cnblogs.com/kakaluote123/articles/5426923.html</a><br><a href="https://www.jianshu.com/p/056b1817d25a" target="_blank" rel="external">https://www.jianshu.com/p/056b1817d25a</a><br><a href="https://www.jianshu.com/p/94d214129d4d" target="_blank" rel="external">https://www.jianshu.com/p/94d214129d4d</a><br>&lt;&lt;高性能iOS应用开发&gt;&gt; GauravVaish</p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/网络/">网络</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2017/07/08/图片格式-WebP/" title="图片格式-WebP">
+  <strong>上一篇：</strong><br/>
+  <span>
+  图片格式-WebP</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2017/06/18/iOS-weak实现原理/"  title="iOS-weak实现原理">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS-weak实现原理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2017/07/08/NSURLConnection-和-NSURLSession/" data-title="NSURLConnection 和 NSURLSession" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/07/08/NSURLConnection-和-NSURLSession/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSURLConnection-和-NSURLSession"><span class="toc-number">1.</span> <span class="toc-text">NSURLConnection 和 NSURLSession</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-背景"><span class="toc-number">1.1.</span> <span class="toc-text">一: 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-NSURLSession-优点"><span class="toc-number">1.2.</span> <span class="toc-text">二: NSURLSession 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-NSURLConnection-vs-NSURLSession"><span class="toc-number">1.3.</span> <span class="toc-text">三: NSURLConnection vs NSURLSession</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-NSURLSession-API"><span class="toc-number">1.4.</span> <span class="toc-text">四: NSURLSession API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionConfiguration"><span class="toc-number">1.4.1.</span> <span class="toc-text">NSURLSessionConfiguration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionTask"><span class="toc-number">1.4.2.</span> <span class="toc-text">NSURLSessionTask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionDelegate"><span class="toc-number">1.4.3.</span> <span class="toc-text">NSURLSessionDelegate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-Session分类"><span class="toc-number">1.5.</span> <span class="toc-text">四: Session分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-后台传输"><span class="toc-number">1.6.</span> <span class="toc-text">五: 后台传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程安全"><span class="toc-number">1.7.</span> <span class="toc-text">线程安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.8.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>45</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>31</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
