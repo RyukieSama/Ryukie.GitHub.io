@@ -12,6 +12,7 @@
 
     
     <meta name="description" content="iOS App 运行原理App启动 01_动态链接 dyld 将程序依赖的动态链接库递归加载进内存  02_ImageLoader image 表示一个二进制文件（可执行文件或 so 文件），里面是被编译过的符号、代码等 ImageLoader 作用是将这些文件加载进内存，且每一个文件对应一个ImageLoader实例来负责加载 在程序运行时它先将动态链接的 image 加载 再从可执行文件 im">
+<meta name="keywords" content="iOS,RunLoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RunLoop">
 <meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/08/20/RunLoop/index.html">
@@ -20,7 +21,7 @@
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15347835107162.jpg">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15347839427918.jpg">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15347785363414.jpg">
-<meta property="og:updated_time" content="2019-07-03T07:31:25.265Z">
+<meta property="og:updated_time" content="2019-07-11T04:21:31.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RunLoop">
 <meta name="twitter:description" content="iOS App 运行原理App启动 01_动态链接 dyld 将程序依赖的动态链接库递归加载进内存  02_ImageLoader image 表示一个二进制文件（可执行文件或 so 文件），里面是被编译过的符号、代码等 ImageLoader 作用是将这些文件加载进内存，且每一个文件对应一个ImageLoader实例来负责加载 在程序运行时它先将动态链接的 image 加载 再从可执行文件 im">
@@ -134,6 +135,9 @@
 <h3 id="03-结构"><a href="#03-结构" class="headerlink" title="03_结构"></a>03_结构</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">__CFRunLoop</span> </span>&#123;</div><div class="line">    <span class="type">CFMutableSetRef</span> _commonModes;     <span class="comment">// Set</span></div><div class="line">    <span class="type">CFMutableSetRef</span> _commonModeItems; <span class="comment">// Set&lt;Source/Observer/Timer&gt;</span></div><div class="line">    <span class="type">CFRunLoopModeRef</span> _currentMode;    <span class="comment">// Current Runloop Mode</span></div><div class="line">    <span class="type">CFMutableSetRef</span> _modes;           <span class="comment">// Set</span></div><div class="line">    ...</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p><img src="http://ohfpqyfi7.bkt.clouddn.com/15347785363414.jpg" alt=""></p>
 <h4 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h4><p> <code>RunLoop</code> 的数据源抽象类</p>
+<blockquote>
+<p>RunLoop运行必须要在加入NSTimer或Source0、Sourc1、Observer输入后运行否则会直接退出</p>
+</blockquote>
 <h5 id="Source0-处理App内部事件-App自行管理"><a href="#Source0-处理App内部事件-App自行管理" class="headerlink" title="Source0: 处理App内部事件, App自行管理"></a>Source0: 处理App内部事件, App自行管理</h5><ul>
 <li>包含了一个<code>函数指针</code>，它并不能主动触发事件</li>
 <li>调用 <code>CFRunLoopSourceSignal(source)</code>，将这个 Source 标记为待处理</li>
@@ -170,6 +174,16 @@
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/RunLoop/">RunLoop</a>
+  </div>
 
 </div>
 
@@ -267,7 +281,7 @@
 		<ul>
 		
 		  
-			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>46</sup></a></li>
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>47</sup></a></li>
 		  
 		
 		</ul>
@@ -280,11 +294,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>32</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>33</sup></a></li>
 			
 		
 			
@@ -292,11 +302,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>4</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
 			
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>3</sup></a></li>
 			
 		
 			
@@ -312,7 +326,7 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
 			
 		
 			
@@ -320,11 +334,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
 			
 		
 			
@@ -340,6 +358,10 @@
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
 			
 		
@@ -348,11 +370,7 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
 			
 		
 		</ul>
