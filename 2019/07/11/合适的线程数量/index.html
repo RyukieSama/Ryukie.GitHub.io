@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>使用KVC设置UIAlertAction按钮颜色的Crash | RyukieSama`sDogHouse</title>
+    <title>合适的线程数量 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key _titleTextColor.	-&amp;gt; transla">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="合适的线程数量 多线程挺好但是并不是越多越好线程也是有消耗的iOS主线程堆栈大小1m,子线程512kb,并且不能通过编译器开关或线程API函数来更改  最优线程数计算理论依据 Venkat Subramaniam 博士在《Programming Concurrency on the JVM》中提到关于最优线程数的计算  123456789101112131415161718192021222324">
+<meta name="keywords" content="iOS,多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用KVC设置UIAlertAction按钮颜色的Crash">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/index.html">
+<meta property="og:title" content="合适的线程数量">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/11/合适的线程数量/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key _titleTextColor.	-&amp;gt; transla">
-<meta property="og:updated_time" content="2017-10-31T15:49:45.000Z">
+<meta property="og:description" content="合适的线程数量 多线程挺好但是并不是越多越好线程也是有消耗的iOS主线程堆栈大小1m,子线程512kb,并且不能通过编译器开关或线程API函数来更改  最优线程数计算理论依据 Venkat Subramaniam 博士在《Programming Concurrency on the JVM》中提到关于最优线程数的计算  123456789101112131415161718192021222324">
+<meta property="og:updated_time" content="2019-07-11T09:46:30.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用KVC设置UIAlertAction按钮颜色的Crash">
-<meta name="twitter:description" content="使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value coding-compliant for the key _titleTextColor.	-&amp;gt; transla">
+<meta name="twitter:title" content="合适的线程数量">
+<meta name="twitter:description" content="合适的线程数量 多线程挺好但是并不是越多越好线程也是有消耗的iOS主线程堆栈大小1m,子线程512kb,并且不能通过编译器开关或线程API函数来更改  最优线程数计算理论依据 Venkat Subramaniam 博士在《Programming Concurrency on the JVM》中提到关于最优线程数的计算  123456789101112131415161718192021222324">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" title="使用KVC设置UIAlertAction按钮颜色的Crash" itemprop="url">使用KVC设置UIAlertAction按钮颜色的Crash</a>
+      <a href="/Ryukie.GitHub.io/2019/07/11/合适的线程数量/" title="合适的线程数量" itemprop="url">合适的线程数量</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-31T15:39:48.000Z" itemprop="datePublished"> Published 2017-10-31</time>
+    <time datetime="2019-07-11T08:54:27.000Z" itemprop="datePublished"> Published 2019-07-11</time>
     
   </p>
 </header>
@@ -97,17 +97,31 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用KVC设置UIAlertAction按钮颜色的Crash"><span class="toc-number">1.</span> <span class="toc-text">使用KVC设置UIAlertAction按钮颜色的Crash</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#fix"><span class="toc-number">2.</span> <span class="toc-text">fix</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#合适的线程数量"><span class="toc-number">1.</span> <span class="toc-text">合适的线程数量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最优线程数计算理论依据"><span class="toc-number">1.1.</span> <span class="toc-text">最优线程数计算理论依据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网友的一点补充"><span class="toc-number">1.2.</span> <span class="toc-text">网友的一点补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="使用KVC设置UIAlertAction按钮颜色的Crash"><a href="#使用KVC设置UIAlertAction按钮颜色的Crash" class="headerlink" title="使用KVC设置UIAlertAction按钮颜色的Crash"></a>使用KVC设置UIAlertAction按钮颜色的Crash</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">=&gt; <span class="type">Start</span> [&lt;<span class="type">UIAlertAction</span> <span class="number">0x1702b63e0</span>&gt; setValue:forUndefinedKey:]: this <span class="class"><span class="keyword">class</span> <span class="title">is</span> <span class="title">not</span> <span class="title">key</span> <span class="title">value</span> <span class="title">coding</span>-<span class="title">compliant</span> <span class="title">for</span> <span class="title">the</span> <span class="title">key</span> <span class="title">_titleTextColor</span>.</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1005eb9a0</span> 』=&gt; -[<span class="title">UsedHouseDetail</span> <span class="title">firstCollectTip</span>] <span class="title">QFangWang</span>/<span class="title">HouseDetail</span>/<span class="title">Controller</span>/<span class="title">UsedHouseDetail</span>.<span class="title">m</span>: <span class="title">line</span> 509</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1005eb668</span> 』=&gt; <span class="title">__39</span>-[<span class="title">UsedHouseDetail</span> <span class="title">RequestColletionData</span>]<span class="title">_block_invoke</span>.481 <span class="title">QFangWang</span>/<span class="title">HouseDetail</span>/<span class="title">Controller</span>/<span class="title">UsedHouseDetail</span>.<span class="title">m</span>: <span class="title">line</span> 472</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1007b0cfc</span> 』=&gt; -[<span class="title">YTKNetworkAgent</span> <span class="title">handleRequestResult</span>:] /<span class="title">Users</span>/<span class="title">Fish</span>/<span class="title">iOS</span>-<span class="title">Client</span>/<span class="title">QFangWang</span>/<span class="title">Pods</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetworkAgent</span>.<span class="title">m</span>: <span class="title">line</span> 262</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x1007b020c</span> 』=&gt; <span class="title">__33</span>-[<span class="title">YTKNetworkAgent</span> <span class="title">ytk_addRequst</span>:]<span class="title">_block_invoke</span>.145 /<span class="title">Users</span>/<span class="title">Fish</span>/<span class="title">iOS</span>-<span class="title">Client</span>/<span class="title">QFangWang</span>/<span class="title">Pods</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetwork</span>/<span class="title">YTKNetworkAgent</span>.<span class="title">m</span>: <span class="title">line</span> 156</span></div><div class="line"><span class="class">	-&gt; <span class="title">translating</span>『 0<span class="title">x100227524</span> 』=&gt; <span class="title">main</span> <span class="title">QFangWang</span>/<span class="title">main</span>.<span class="title">mm</span>: <span class="title">line</span> 13</span></div><div class="line"><span class="class">=&gt; <span class="title">End</span> [&lt;<span class="title">UIAlertAction</span> 0<span class="title">x1702b63e0</span>&gt; <span class="title">setValue</span>:<span class="title">forUndefinedKey</span>:]: <span class="title">this</span> <span class="title">class</span> <span class="title">is</span> <span class="title">not</span> <span class="title">key</span> <span class="title">value</span> <span class="title">coding</span>-<span class="title">compliant</span> <span class="title">for</span> <span class="title">the</span> <span class="title">key</span> <span class="title">_titleTextColor</span>.</span></div><div class="line"><span class="class">&gt;------------------------------------------------------&lt;</span></div></pre></td></tr></table></figure>
-<p>最近线上发现了如上面所示的bug</p>
-<p>是为了实现改变 <code>UIAlertAction</code> 默认按钮颜色的地方使用了下面方式</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[action setValue:[<span class="type">UIColor</span> redColor] forKey:@<span class="string">"_titleTextColor"</span>];</div></pre></td></tr></table></figure>
-<p>但是在某些系统版本中 <code>UIAlertAction</code> 中并没有 <code>_titleTextColor</code> 这个成员变量而导致了崩溃<br>具体可以通过 <code>runtime</code> 获取成员列表来看看</p>
-<h1 id="fix"><a href="#fix" class="headerlink" title="fix"></a>fix</h1><p> 判断是否有 <code>_titleTextColor</code> 来设置<br> 或者<br> 通过设置 <code>alertController.view.tintColor</code> 来实现<br> 需要注意的是: 在8.4上由于层级结构的问题  需要在 <code>presentAlertVC</code> 后设置 <code>tintColor</code></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.jianshu.com/p/8a2b5a3a9167" target="_blank" rel="external">http://www.jianshu.com/p/8a2b5a3a9167</a></p>
+		<h1 id="合适的线程数量"><a href="#合适的线程数量" class="headerlink" title="合适的线程数量"></a>合适的线程数量</h1><blockquote>
+<p>多线程挺好<br>但是并不是越多越好<br>线程也是有消耗的<br>iOS主线程堆栈大小1m,子线程512kb,并且不能通过编译器开关或线程API函数来更改</p>
+</blockquote>
+<h2 id="最优线程数计算理论依据"><a href="#最优线程数计算理论依据" class="headerlink" title="最优线程数计算理论依据"></a>最优线程数计算理论依据</h2><ul>
+<li>Venkat Subramaniam 博士在《Programming Concurrency on the JVM》中提到关于最优线程数的计算</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">The minimum <span class="built_in">number</span> <span class="keyword">of</span> threads is equal <span class="built_in">to</span> <span class="keyword">the</span> <span class="built_in">number</span> <span class="keyword">of</span> available</div><div class="line">cores. If all tasks are computation intensive, <span class="keyword">then</span> this is all we need. Having</div><div class="line">more threads will actually hurt <span class="keyword">in</span> this <span class="keyword">case</span> because cores would be context</div><div class="line">switching between threads when there is still work <span class="built_in">to</span> <span class="built_in">do</span>. If tasks are IO</div><div class="line">intensive, <span class="keyword">then</span> we should have more threads.</div><div class="line"></div><div class="line">We can compute <span class="keyword">the</span> total <span class="built_in">number</span> <span class="keyword">of</span> threads we’d need <span class="keyword">as</span> follows:</div><div class="line">  Number <span class="keyword">of</span> threads = Number <span class="keyword">of</span> Available Cores / (<span class="number">1</span> - Blocking Coefficient)</div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line"> </div><div class="line"></div><div class="line"> To determine <span class="keyword">the</span> <span class="built_in">number</span> <span class="keyword">of</span> threads, we need <span class="built_in">to</span> know <span class="literal">two</span> things:</div><div class="line"> • The <span class="built_in">number</span> <span class="keyword">of</span> available cores</div><div class="line"> • The blocking coefficient <span class="keyword">of</span> tasks</div><div class="line"></div><div class="line"></div><div class="line"> The <span class="keyword">first</span> <span class="literal">one</span> is easy <span class="built_in">to</span> determine; we can look up that information, even <span class="keyword">at</span></div><div class="line"> runtime, <span class="keyword">as</span> we saw earlier. It takes <span class="keyword">a</span> bit <span class="keyword">of</span> effort <span class="built_in">to</span> determine <span class="keyword">the</span> blocking</div><div class="line"> coefficient. We can <span class="keyword">try</span> <span class="built_in">to</span> guess <span class="keyword">it</span>, <span class="keyword">or</span> we can use profiling tools <span class="keyword">or</span> <span class="keyword">the</span> java.</div><div class="line"> lang.management API <span class="built_in">to</span> determine <span class="keyword">the</span> amount <span class="keyword">of</span> <span class="built_in">time</span> <span class="keyword">a</span> thread spends <span class="keyword">on</span></div><div class="line"> <span class="keyword">system</span>/IO operations vs. <span class="keyword">on</span> <span class="title">CPU-intensive</span> <span class="title">tasks</span>.</div></pre></td></tr></table></figure>
+<ul>
+<li>线程数 = 可用核数 / (1 - 阻塞系数 )</li>
+<li>阻塞系数 = 阻塞时间 / (阻塞时间 + CPU使用时间)</li>
+</ul>
+<h2 id="网友的一点补充"><a href="#网友的一点补充" class="headerlink" title="网友的一点补充"></a>网友的一点补充</h2><p>其实，如果全系统只运行你一个程序，只考虑测试代码，阻塞系数是0.5，当然是没错的，但是这个公式是针对全系统而言的，需要把全系统所有程序的线程占用的timeslice都计算在内考虑。理论计算是需要考虑所有细节的，这些细节占用的时间可一点不少哦。</p>
+<p>当全系统线程数量远远大于执行核心数，则增加了线程的上下文环境交换时间等等，还有其他线程分走了许多CPU时间片，这部分时间可不少，可是却没有用在你的测试计算上。为简化理解，直接把这部分时间都划算到阻塞时间上，等于说阻塞系数变大，纯工作系数变小；分母就变小了，最佳线程数量就成倍增大了。</p>
+<p>如果还不理解，我举个例子，用实际场景来解释就明白了。</p>
+<p>一个加工厂有4条加工流水线，每一个人同时只能占用一条流水线加工自己的产品，假定一个人占据一条加工流水线完全饱和工作8小时能完成自己的加工，那么拆分到4条线上显然2小时可以加工完成，理论上。</p>
+<p>再假定人的饱和工作时间和空闲时间各占50%呢（构造阻塞系数0.5），在不考虑交班交接的时间，显然8个人同时排队加工才能这2小时完成，（加工厂只安排你的8个人）。</p>
+<p>但是事实工厂工况是怎么样的呢？这个加工厂有1000人在排队等着加工自己的产品(你安排了8个人过去加工你的产品 + 992个外人)，而且，一条流水线线上工作内容切换时，前一个人和后一个人交替交接需要占用不少时间，而且，992个外人也各自要加工自己的产品，分配给你那8个人的时间片机会就少了。为简化理解，那些时间都没为你的产品加工，都直接是划归到阻塞时间上去，阻塞系数变大，最佳线程数=CPU执行核心数/（1-阻塞系数）， 分母变小，结果自然变大。如果你要获得更多的时间片，你就要安排更多人过去，增大占时间片的机会。</p>
+<p>所以你安排8个人去加工，肯定2小时完成不了，可能实际用了3小时才加工完成。但是你若安排16个人过去排队加工，可能2.5小时就能加工完成了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.cnblogs.com/bobsha/p/6178995.html" target="_blank" rel="external">https://www.cnblogs.com/bobsha/p/6178995.html</a></p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -121,7 +135,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/多线程/">多线程</a>
   </div>
 
 </div>
@@ -165,19 +179,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/01/11/NSTimer与GCD/" title="NSTimer与GCD">
-  <strong>上一篇：</strong><br/>
-  <span>
-  NSTimer与GCD</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/"  title="Storyboard中UnwindSegue的使用">
+<a href="/Ryukie.GitHub.io/2019/07/08/Swift5新特性/"  title="Swift5新特性">
  <strong>下一篇：</strong><br/> 
- <span>Storyboard中UnwindSegue的使用
+ <span>Swift5新特性
 </span>
 </a>
 </div>
@@ -186,7 +192,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" data-title="使用KVC设置UIAlertAction按钮颜色的Crash" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/"></div>
+	<div class="ds-thread" data-thread-key="2019/07/11/合适的线程数量/" data-title="合适的线程数量" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/11/合适的线程数量/"></div>
 </section>
 
 
@@ -196,7 +202,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#使用KVC设置UIAlertAction按钮颜色的Crash"><span class="toc-number">1.</span> <span class="toc-text">使用KVC设置UIAlertAction按钮颜色的Crash</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#fix"><span class="toc-number">2.</span> <span class="toc-text">fix</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#合适的线程数量"><span class="toc-number">1.</span> <span class="toc-text">合适的线程数量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#最优线程数计算理论依据"><span class="toc-number">1.1.</span> <span class="toc-text">最优线程数计算理论依据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网友的一点补充"><span class="toc-number">1.2.</span> <span class="toc-text">网友的一点补充</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
