@@ -1,0 +1,611 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS多线程方案 | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="iOS多线程方案一: 总览  pthread 几乎不用 C语言的,全部由程序员自己管理   NSThread 程序员自己管理线程,用得少   GCD 自动管理   NSOperation 基于GCD 比GCD多了一些使用功能 面向对象    二: GCD特点 GCD会自动是用更多的CPU内核 自动管理线程生命周期(创建,调度,销毁等) 程序员只用高数GCD想要如何执行什么任务,不用编写线程管理代码">
+<meta name="keywords" content="iOS,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS多线程方案">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/10/12/iOS多线程方案/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="iOS多线程方案一: 总览  pthread 几乎不用 C语言的,全部由程序员自己管理   NSThread 程序员自己管理线程,用得少   GCD 自动管理   NSOperation 基于GCD 比GCD多了一些使用功能 面向对象    二: GCD特点 GCD会自动是用更多的CPU内核 自动管理线程生命周期(创建,调度,销毁等) 程序员只用高数GCD想要如何执行什么任务,不用编写线程管理代码">
+<meta property="og:image" content="http://api.cocoachina.com/uploads/20170707/1499394732413995.png">
+<meta property="og:updated_time" content="2019-07-12T03:51:53.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS多线程方案">
+<meta name="twitter:description" content="iOS多线程方案一: 总览  pthread 几乎不用 C语言的,全部由程序员自己管理   NSThread 程序员自己管理线程,用得少   GCD 自动管理   NSOperation 基于GCD 比GCD多了一些使用功能 面向对象    二: GCD特点 GCD会自动是用更多的CPU内核 自动管理线程生命周期(创建,调度,销毁等) 程序员只用高数GCD想要如何执行什么任务,不用编写线程管理代码">
+<meta name="twitter:image" content="http://api.cocoachina.com/uploads/20170707/1499394732413995.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2015/10/12/iOS多线程方案/" title="iOS多线程方案" itemprop="url">iOS多线程方案</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-12T03:02:28.000Z" itemprop="datePublished"> 发表于 2015-10-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS多线程方案"><span class="toc-number">1.</span> <span class="toc-text">iOS多线程方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-总览"><span class="toc-number">1.1.</span> <span class="toc-text">一: 总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-GCD"><span class="toc-number">1.2.</span> <span class="toc-text">二: GCD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.2.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group"><span class="toc-number">1.2.2.</span> <span class="toc-text">group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatch-barrier-async"><span class="toc-number">1.2.3.</span> <span class="toc-text">dispatch_barrier_async</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatch-apply-并行遍历"><span class="toc-number">1.2.4.</span> <span class="toc-text">dispatch_apply 并行遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-NSOperation"><span class="toc-number">1.3.</span> <span class="toc-text">三: NSOperation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSOperationQueue"><span class="toc-number">1.3.1.</span> <span class="toc-text">NSOperationQueue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="iOS多线程方案"><a href="#iOS多线程方案" class="headerlink" title="iOS多线程方案"></a>iOS多线程方案</h1><h2 id="一-总览"><a href="#一-总览" class="headerlink" title="一: 总览"></a>一: 总览</h2><p><img src="http://api.cocoachina.com/uploads/20170707/1499394732413995.png" alt=""></p>
+<ul>
+<li>pthread<ul>
+<li>几乎不用</li>
+<li>C语言的,全部由程序员自己管理</li>
+</ul>
+</li>
+<li>NSThread<ul>
+<li>程序员自己管理线程,用得少</li>
+</ul>
+</li>
+<li>GCD<ul>
+<li>自动管理</li>
+</ul>
+</li>
+<li>NSOperation<ul>
+<li>基于GCD</li>
+<li>比GCD多了一些使用功能</li>
+<li>面向对象</li>
+</ul>
+</li>
+</ul>
+<h2 id="二-GCD"><a href="#二-GCD" class="headerlink" title="二: GCD"></a>二: GCD</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li>GCD会自动是用更多的CPU内核</li>
+<li>自动管理线程生命周期(创建,调度,销毁等)</li>
+<li>程序员只用高数GCD想要如何执行什么任务,不用编写线程管理代码</li>
+</ul>
+<h3 id="group"><a href="#group" class="headerlink" title="group"></a>group</h3><ul>
+<li>使用 enter leave 的时候一定要出入数量对等否则会崩溃的</li>
+</ul>
+<h3 id="dispatch-barrier-async"><a href="#dispatch-barrier-async" class="headerlink" title="dispatch_barrier_async"></a>dispatch_barrier_async</h3><blockquote>
+<p>多个任务分两组完成</p>
+</blockquote>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 并发队列</span></div><div class="line">   <span class="built_in">dispatch_queue_t</span> queue = dispatch_queue_create(<span class="string">"test"</span>, DISPATCH_QUEUE_CONCURRENT);</div><div class="line"></div><div class="line">   <span class="comment">// 异步执行</span></div><div class="line">   <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">           <span class="built_in">NSLog</span>(<span class="string">@"栅栏：并发异步1   %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       &#125;</div><div class="line">   &#125;);</div><div class="line">   <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">           <span class="built_in">NSLog</span>(<span class="string">@"栅栏：并发异步2   %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       &#125;</div><div class="line">   &#125;);</div><div class="line"></div><div class="line">   dispatch_barrier_async(queue, ^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"------------barrier------------%@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"******* 并发异步执行，但是34一定在12后面 *********"</span>);</div><div class="line">   &#125;);</div><div class="line"></div><div class="line">   <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">           <span class="built_in">NSLog</span>(<span class="string">@"栅栏：并发异步3   %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       &#125;</div><div class="line">   &#125;);</div><div class="line">   <span class="built_in">dispatch_async</span>(queue, ^&#123;</div><div class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">           <span class="built_in">NSLog</span>(<span class="string">@"栅栏：并发异步4   %@"</span>,[<span class="built_in">NSThread</span> currentThread]);</div><div class="line">       &#125;</div><div class="line">   &#125;);</div></pre></td></tr></table></figure>
+<h3 id="dispatch-apply-并行遍历"><a href="#dispatch-apply-并行遍历" class="headerlink" title="dispatch_apply 并行遍历"></a>dispatch_apply 并行遍历</h3><blockquote>
+<p>和group关联的API,会在所有任务执行完成后执行后续操作<br>“完成”会在全部执行完成后打印出来</p>
+</blockquote>
+<ul>
+<li>应用场景<ul>
+<li>可在某些场景代替for循环<ul>
+<li>全部遍历,无顺序要求</li>
+</ul>
+</li>
+<li>不同文件并行iOS</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">NSArray *array = [NSArray arrayWithObjects:@<span class="string">"/Users/chentao/Desktop/copy_res/gelato.ds"</span>,</div><div class="line">                     @<span class="string">"/Users/chentao/Desktop/copy_res/jason.ds"</span>,</div><div class="line">                     @<span class="string">"/Users/chentao/Desktop/copy_res/jikejunyi.ds"</span>,</div><div class="line">                     @<span class="string">"/Users/chentao/Desktop/copy_res/molly.ds"</span>,</div><div class="line">                     @<span class="string">"/Users/chentao/Desktop/copy_res/zhangdachuan.ds"</span>,</div><div class="line">                     nil]<span class="comment">;</span></div><div class="line">   NSString *copyDes = @<span class="string">"/Users/chentao/Desktop/copy_des"</span><span class="comment">;</span></div><div class="line">   NSFileManager *fileManager = [NSFileManager defaultManager]<span class="comment">;</span></div><div class="line">   <span class="keyword">dispatch_async(dispatch_get_global_queue(0, </span><span class="number">0</span>), ^()&#123;</div><div class="line">       <span class="keyword">dispatch_apply([array </span><span class="built_in">count</span>], <span class="keyword">dispatch_get_global_queue(0, </span><span class="number">0</span>), ^(size_t index)&#123;</div><div class="line">           NSLog(@<span class="string">"copy-%ld"</span>, index)<span class="comment">;</span></div><div class="line">           NSString *sourcePath = [array objectAtIndex:index]<span class="comment">;</span></div><div class="line">           NSString *desPath = [NSString stringWithFormat:@<span class="string">"%@/%@"</span>, copyDes, [sourcePath lastPathComponent]]<span class="comment">;</span></div><div class="line">           [fileManager copyItemAtPath:sourcePath toPath:desPath error:nil]<span class="comment">;</span></div><div class="line">       &#125;)<span class="comment">;</span></div><div class="line">       NSLog(@<span class="string">"完成"</span>)<span class="comment">;</span></div><div class="line">   &#125;)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h2 id="三-NSOperation"><a href="#三-NSOperation" class="headerlink" title="三: NSOperation"></a>三: NSOperation</h2><blockquote>
+<p>基于GCD封装<br>配合NSOperationQueue实现多线程</p>
+</blockquote>
+<ul>
+<li>使用步骤<ul>
+<li>创建任务<ul>
+<li>先将需要执行的操作封装到NSOperation对象中</li>
+</ul>
+</li>
+<li>创建队列<ul>
+<li>创建NSOperationQueue</li>
+</ul>
+</li>
+<li>将任务加入队列<ul>
+<li>将NSOperation加入到NSOperationQueue中</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用注意<ul>
+<li>由于NSOperation是抽象类需要使用其子类<ul>
+<li>NSInvocationOperation<ul>
+<li>指定Target和Selectore</li>
+</ul>
+</li>
+<li>NSBlockOperation<ul>
+<li>基于Block</li>
+</ul>
+</li>
+<li>定义继承自NSOperation的子类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="NSOperationQueue"><a href="#NSOperationQueue" class="headerlink" title="NSOperationQueue"></a>NSOperationQueue</h3><blockquote>
+<p>暂停和取消不是立刻取消当前操作，而是等当前的操作执行完之后不再进行新的操作。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="http://www.cocoachina.com/articles/19769" target="_blank" rel="external">http://www.cocoachina.com/articles/19769</a></p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/多线程/">多线程</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Ryukie.GitHub.io/2015/10/12/死锁/" title="死锁">
+  <strong>上一篇：</strong><br/>
+  <span>
+  死锁</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2015/10/04/Runtime-MethodSwizzling的问题/"  title="Runtime-MethodSwizzling的问题">
+ <strong>下一篇：</strong><br/> 
+ <span>Runtime-MethodSwizzling的问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/10/12/iOS多线程方案/" data-title="iOS多线程方案" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/10/12/iOS多线程方案/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS多线程方案"><span class="toc-number">1.</span> <span class="toc-text">iOS多线程方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-总览"><span class="toc-number">1.1.</span> <span class="toc-text">一: 总览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-GCD"><span class="toc-number">1.2.</span> <span class="toc-text">二: GCD</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">1.2.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group"><span class="toc-number">1.2.2.</span> <span class="toc-text">group</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatch-barrier-async"><span class="toc-number">1.2.3.</span> <span class="toc-text">dispatch_barrier_async</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dispatch-apply-并行遍历"><span class="toc-number">1.2.4.</span> <span class="toc-text">dispatch_apply 并行遍历</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-NSOperation"><span class="toc-number">1.3.</span> <span class="toc-text">三: NSOperation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSOperationQueue"><span class="toc-number">1.3.1.</span> <span class="toc-text">NSOperationQueue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>51</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>37</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

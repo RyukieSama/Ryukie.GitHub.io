@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | RyukieSama`sDogHouse</title>
+    <title>死锁 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="死锁1234567NSLog(@&quot;之前 - %@&quot;, [NSThread currentThread]);  dispatch_sync(dispatch_get_main_queue(), ^&amp;#123;       NSLog(@&quot;sync - %@&quot;, [NSThread currentThread]);  &amp;#125;);  NSLog(@&quot;之后 - %@&quot;, [NSThread curr">
+<meta name="keywords" content="iOS,多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2014/01/01/hello-world/index.html">
+<meta property="og:title" content="死锁">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/10/12/死锁/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2019-07-07T03:29:31.424Z">
+<meta property="og:description" content="死锁1234567NSLog(@&quot;之前 - %@&quot;, [NSThread currentThread]);  dispatch_sync(dispatch_get_main_queue(), ^&amp;#123;       NSLog(@&quot;sync - %@&quot;, [NSThread currentThread]);  &amp;#125;);  NSLog(@&quot;之后 - %@&quot;, [NSThread curr">
+<meta property="og:updated_time" content="2019-07-12T04:12:51.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="死锁">
+<meta name="twitter:description" content="死锁1234567NSLog(@&quot;之前 - %@&quot;, [NSThread currentThread]);  dispatch_sync(dispatch_get_main_queue(), ^&amp;#123;       NSLog(@&quot;sync - %@&quot;, [NSThread currentThread]);  &amp;#125;);  NSLog(@&quot;之后 - %@&quot;, [NSThread curr">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -80,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2014/01/01/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/Ryukie.GitHub.io/2015/10/12/死锁/" title="死锁" itemprop="url">死锁</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2014-01-01T07:31:06.000Z" itemprop="datePublished"> 发表于 2014-01-01</time>
+    <time datetime="2015-10-12T08:27:13.000Z" itemprop="datePublished"> 发表于 2015-10-12</time>
     
   </p>
 </header>
@@ -96,24 +97,99 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#死锁"><span class="toc-number">1.</span> <span class="toc-text">死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-概述"><span class="toc-number">1.1.</span> <span class="toc-text">一: 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-四个必要条件"><span class="toc-number">1.2.</span> <span class="toc-text">二: 四个必要条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-产生原因"><span class="toc-number">1.3.</span> <span class="toc-text">三: 产生原因</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四-破坏死锁"><span class="toc-number">1.3.1.</span> <span class="toc-text">四: 破坏死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-预防死锁"><span class="toc-number">1.3.2.</span> <span class="toc-text">五: 预防死锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+		<h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"之前 - %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line"></div><div class="line">  <span class="built_in">dispatch_sync</span>(dispatch_get_main_queue(), ^&#123;</div><div class="line">       <span class="built_in">NSLog</span>(<span class="string">@"sync - %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="built_in">NSLog</span>(<span class="string">@"之后 - %@"</span>, [<span class="built_in">NSThread</span> currentThread]);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>打印完第一句后，dispatch_sync 立即阻塞当前的主线程，然后把 Block 中的任务放到 main_queue 中， main_queue 中的任务会被取出来放到主线程中执行，但主线程这个时候已经被阻塞了，所以 Block 中的任务就不能完成，它不完成，dispatch_sync 就会一直阻塞主线程，这就是死锁现象。导致主线程一直卡死。<br>当然这里只是一个例子,死锁并不只会发生在主线程</p>
+</blockquote>
+<h2 id="一-概述"><a href="#一-概述" class="headerlink" title="一: 概述"></a>一: 概述</h2><blockquote>
+<p>所谓<code>死锁</code>,指的是两个或者两个以上的进程在执行的过程中,由于竞争资源或彼此通信造成的一种阻塞现象.</p>
+<blockquote>
+<p>如果一个线程需要并行处理多个任务，那么就可以创建多个线程，但是线程多了，往往会产生冲突，当一个线程锁定了一个资源A，而又想去锁定资源B，而在另一个线程中，锁定了资源B，而又想去锁定资源A以完成自身的操作，两个线程都想得到对方的资源，而不愿意释放自己的资源，造成两个线程都在等待，而无法执行，此时就是死锁。</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>死锁的规范定义<ul>
+<li>集合中的每一个进程都在等待只能由本集合中的其他进程才能引发的事件，那么该组进程是死锁的。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意 死锁与正常阻塞不一样<br>正常阻塞：事务请求被其他事务锁定的资源的锁时，发出请求的事务一直等到该锁被释放。默认情况下，除非设置了LOCK_TIMEOUT，否则SQL Server事务不会超时。因为发出请求的事务未执行任何操作来阻塞拥有锁的事务，所以该事务是被阻塞，而不是陷入了死锁。最后，拥有锁的事务将完成并释放锁，然后发出请求地事务将获取锁并继续执行。</p>
+</blockquote>
+<h2 id="二-四个必要条件"><a href="#二-四个必要条件" class="headerlink" title="二: 四个必要条件"></a>二: 四个必要条件</h2><ul>
+<li>互斥(资源独占)<ul>
+<li>一个资源一次只能被一个进程使用</li>
+</ul>
+</li>
+<li>请求与保持(部分分配,占有申请)<ul>
+<li>一个进程在申请新的资源的同时保持对原有资源的占有（只有这样才是动态申请，动态分配）</li>
+</ul>
+</li>
+<li>不可剥夺(不可强占)<ul>
+<li>资源申请者不能强行地从资源占有者手中夺取资源，资源只能由占有者自愿释放</li>
+</ul>
+</li>
+<li>循环等待<ul>
+<li>若干进程之间形成一种头尾相连的循环等待资源关</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-产生原因"><a href="#三-产生原因" class="headerlink" title="三: 产生原因"></a>三: 产生原因</h2><ul>
+<li>系统资源不足,竞争不可剥夺资源引起的进程死锁</li>
+<li>竞争临时资源引起的死锁</li>
+<li>进程推进顺序不当引起死锁</li>
+</ul>
+<h3 id="四-破坏死锁"><a href="#四-破坏死锁" class="headerlink" title="四: 破坏死锁"></a>四: 破坏死锁</h3><blockquote>
+<p>需要破坏四个必要条件中的一个或几个</p>
+</blockquote>
+<ul>
+<li>互斥(不能改变)<ul>
+<li>必然存在的,非共享设备所必须的</li>
+</ul>
+</li>
+<li>破坏请求与保持<ul>
+<li>对一个进程在请求资源时，它不能持有不可剥夺资源</li>
+</ul>
+</li>
+<li>破坏不可剥夺<ul>
+<li>对一个已经保持了某些不可剥夺资源的进程，提出新的资源请求而不能得到满足时，它必须释放已经保持的所有资源，待以后需要时再重新申请</li>
+</ul>
+</li>
+<li>破坏循环<ul>
+<li>对系统所有资源类型进行线性排列，并赋予不同序号。规定每个进程必须按序号递增的顺序请求资源。</li>
+</ul>
+</li>
+</ul>
+<h3 id="五-预防死锁"><a href="#五-预防死锁" class="headerlink" title="五: 预防死锁"></a>五: 预防死锁</h3><ul>
+<li>每个进程（事务）将所有要使用的数据全部加锁，否则，就不能继续执行</li>
+<li>预先对数据对象规定一个封锁顺序，所有进程（事务）都按这个顺序加锁</li>
+<li>保证进程处于安全进程序列</li>
+<li>按同一顺序访问对象</li>
+<li>避免事务中的用户交互</li>
+<li>保持事务简短并在一个批处理中</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://blog.csdn.net/weixin_39651041/article/details/79993975" target="_blank" rel="external">https://blog.csdn.net/weixin_39651041/article/details/79993975</a></p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/多线程/">多线程</a>
+  </div>
 
 </div>
 
@@ -157,19 +233,27 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2015/03/08/iOS多线程技术对比/" title="iOS多线程技术对比">
+ <a href="/Ryukie.GitHub.io/2016/03/21/autoreleasepool/" title="AutoreleasePool">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS多线程技术对比</span>
+  AutoreleasePool</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2015/10/12/iOS多线程方案/"  title="iOS多线程方案">
+ <strong>下一篇：</strong><br/> 
+ <span>iOS多线程方案
+</span>
+</a>
+</div>
 
 </nav>
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2014/01/01/hello-world/" data-title="Hello World" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2014/01/01/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="2015/10/12/死锁/" data-title="死锁" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/10/12/死锁/"></div>
 </section>
 
 
@@ -179,7 +263,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#死锁"><span class="toc-number">1.</span> <span class="toc-text">死锁</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-概述"><span class="toc-number">1.1.</span> <span class="toc-text">一: 概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-四个必要条件"><span class="toc-number">1.2.</span> <span class="toc-text">二: 四个必要条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-产生原因"><span class="toc-number">1.3.</span> <span class="toc-text">三: 产生原因</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#四-破坏死锁"><span class="toc-number">1.3.1.</span> <span class="toc-text">四: 破坏死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-预防死锁"><span class="toc-number">1.3.2.</span> <span class="toc-text">五: 预防死锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
