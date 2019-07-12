@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/03/11/iOS-网络安全之HTTPS/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
 <meta property="og:description" content="iOS-网络安全之HTTPS一: 中间人攻击概念 经常会提到的就是中间人攻击 Man-in-the-middle attack(MITM) 攻击者插入到原本直接通信的双方之间,双方已为还在直接跟对方通信,但实际是通过了攻击者这个中间人,信息会被它获取或篡改  时机 HTTPS在建立了TCP链接后,会进行SSL握手来校验证书,写上加密密钥. 所以一般中间人攻击分为 SSL链接建立前的攻击 HTTPS">
-<meta property="og:updated_time" content="2019-07-11T04:56:41.715Z">
+<meta property="og:updated_time" content="2019-07-12T04:55:58.469Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-网络安全之HTTPS">
 <meta name="twitter:description" content="iOS-网络安全之HTTPS一: 中间人攻击概念 经常会提到的就是中间人攻击 Man-in-the-middle attack(MITM) 攻击者插入到原本直接通信的双方之间,双方已为还在直接跟对方通信,但实际是通过了攻击者这个中间人,信息会被它获取或篡改  时机 HTTPS在建立了TCP链接后,会进行SSL握手来校验证书,写上加密密钥. 所以一般中间人攻击分为 SSL链接建立前的攻击 HTTPS">
@@ -97,7 +97,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络安全之HTTPS"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络安全之HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-中间人攻击"><span class="toc-number">1.1.</span> <span class="toc-text">一: 中间人攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时机"><span class="toc-number">1.1.2.</span> <span class="toc-text">时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见攻击"><span class="toc-number">1.1.3.</span> <span class="toc-text">常见攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-SSL证书欺骗攻击"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">a. SSL证书欺骗攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#b-SSL剥离攻击-SSLSTrip"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">b. SSL剥离攻击(SSLSTrip)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-针对SSL算法进行攻击"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">c. 针对SSL算法进行攻击</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-打保证书校验"><span class="toc-number">1.2.</span> <span class="toc-text">二: 打保证书校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-调试SSL-TLS"><span class="toc-number">1.3.</span> <span class="toc-text">三: 调试SSL/TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络安全之HTTPS"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络安全之HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-中间人攻击"><span class="toc-number">1.1.</span> <span class="toc-text">一: 中间人攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时机"><span class="toc-number">1.1.2.</span> <span class="toc-text">时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见攻击"><span class="toc-number">1.1.3.</span> <span class="toc-text">常见攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-SSL证书欺骗攻击"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">a. SSL证书欺骗攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#b-SSL剥离攻击-SSLSTrip"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">b. SSL剥离攻击(SSLSTrip)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-针对SSL算法进行攻击"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">c. 针对SSL算法进行攻击</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-打保证书校验"><span class="toc-number">1.2.</span> <span class="toc-text">二: 打保证书校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -171,7 +171,7 @@
 <blockquote>
 <p>选择哪一级的CA证书就需要自行判断了<br>如果选择末端的叶子证书,可能导致域名变化后无法访问,甚至证书过期的情况</p>
 </blockquote>
-<h2 id="三-调试SSL-TLS"><a href="#三-调试SSL-TLS" class="headerlink" title="三: 调试SSL/TLS"></a>三: 调试SSL/TLS</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
 <p><a href="http://oncenote.com/2015/09/16/Security-2-HTTPS2/" target="_blank" rel="external">http://oncenote.com/2015/09/16/Security-2-HTTPS2/</a> Jaminzzhang博客<br><a href="https://www.jianshu.com/p/86dcf94b43e2" target="_blank" rel="external">https://www.jianshu.com/p/86dcf94b43e2</a> WebView证书验证</p>
 </blockquote>
   
@@ -262,7 +262,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络安全之HTTPS"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络安全之HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-中间人攻击"><span class="toc-number">1.1.</span> <span class="toc-text">一: 中间人攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时机"><span class="toc-number">1.1.2.</span> <span class="toc-text">时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见攻击"><span class="toc-number">1.1.3.</span> <span class="toc-text">常见攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-SSL证书欺骗攻击"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">a. SSL证书欺骗攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#b-SSL剥离攻击-SSLSTrip"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">b. SSL剥离攻击(SSLSTrip)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-针对SSL算法进行攻击"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">c. 针对SSL算法进行攻击</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-打保证书校验"><span class="toc-number">1.2.</span> <span class="toc-text">二: 打保证书校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-调试SSL-TLS"><span class="toc-number">1.3.</span> <span class="toc-text">三: 调试SSL/TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络安全之HTTPS"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络安全之HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-中间人攻击"><span class="toc-number">1.1.</span> <span class="toc-text">一: 中间人攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时机"><span class="toc-number">1.1.2.</span> <span class="toc-text">时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见攻击"><span class="toc-number">1.1.3.</span> <span class="toc-text">常见攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-SSL证书欺骗攻击"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">a. SSL证书欺骗攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#b-SSL剥离攻击-SSLSTrip"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">b. SSL剥离攻击(SSLSTrip)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#c-针对SSL算法进行攻击"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">c. 针对SSL算法进行攻击</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-打保证书校验"><span class="toc-number">1.2.</span> <span class="toc-text">二: 打保证书校验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
@@ -286,7 +286,7 @@
 		<ul>
 		
 		  
-			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>52</sup></a></li>
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>53</sup></a></li>
 		  
 		
 		</ul>
@@ -299,7 +299,7 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>38</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>39</sup></a></li>
 			
 		
 			
@@ -311,6 +311,10 @@
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>5</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
 			
 		
@@ -319,7 +323,7 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>4</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
 			
 		
 			
@@ -327,7 +331,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
 			
@@ -336,18 +348,6 @@
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
@@ -367,11 +367,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
 			
 		
 			

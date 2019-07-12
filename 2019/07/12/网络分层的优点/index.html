@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Runtime-实现NSCoding的自动归档和自动解档 | RyukieSama`sDogHouse</title>
+    <title>网络分层的优点 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="Runtime-实现NSCoding的自动归档和自动解档 需要自定义模型持久化的时候我们往往需要为各个模型实现对应的encode``decode方法  借助Runtime我们可以对此进行封装 解档12345678910111213141516171819202122- (instancetype)initWithCoder:(NSCoder *)aDecoder&amp;#123;        if (">
-<meta name="keywords" content="iOS">
+    <meta name="description" content="网络分层的优点 面试被问到了,记录下   各层之间是独立的 某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务 由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了   灵活性好 当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改">
+<meta name="keywords" content="iOS,网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Runtime-实现NSCoding的自动归档和自动解档">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/index.html">
+<meta property="og:title" content="网络分层的优点">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/12/网络分层的优点/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="Runtime-实现NSCoding的自动归档和自动解档 需要自定义模型持久化的时候我们往往需要为各个模型实现对应的encode``decode方法  借助Runtime我们可以对此进行封装 解档12345678910111213141516171819202122- (instancetype)initWithCoder:(NSCoder *)aDecoder&amp;#123;        if (">
-<meta property="og:updated_time" content="2019-07-07T03:58:13.724Z">
+<meta property="og:description" content="网络分层的优点 面试被问到了,记录下   各层之间是独立的 某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务 由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了   灵活性好 当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改">
+<meta property="og:updated_time" content="2019-07-12T04:56:26.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Runtime-实现NSCoding的自动归档和自动解档">
-<meta name="twitter:description" content="Runtime-实现NSCoding的自动归档和自动解档 需要自定义模型持久化的时候我们往往需要为各个模型实现对应的encode``decode方法  借助Runtime我们可以对此进行封装 解档12345678910111213141516171819202122- (instancetype)initWithCoder:(NSCoder *)aDecoder&amp;#123;        if (">
+<meta name="twitter:title" content="网络分层的优点">
+<meta name="twitter:description" content="网络分层的优点 面试被问到了,记录下   各层之间是独立的 某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务 由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了   灵活性好 当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/" title="Runtime-实现NSCoding的自动归档和自动解档" itemprop="url">Runtime-实现NSCoding的自动归档和自动解档</a>
+      <a href="/Ryukie.GitHub.io/2019/07/12/网络分层的优点/" title="网络分层的优点" itemprop="url">网络分层的优点</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-09-13T03:41:06.000Z" itemprop="datePublished"> 发表于 2018-09-13</time>
+    <time datetime="2019-07-12T04:45:27.000Z" itemprop="datePublished"> 发表于 2019-07-12</time>
     
   </p>
 </header>
@@ -97,19 +97,45 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-实现NSCoding的自动归档和自动解档"><span class="toc-number">1.</span> <span class="toc-text">Runtime-实现NSCoding的自动归档和自动解档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解档"><span class="toc-number">1.1.</span> <span class="toc-text">解档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解档-1"><span class="toc-number">1.2.</span> <span class="toc-text">解档</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络分层的优点"><span class="toc-number">1.</span> <span class="toc-text">网络分层的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="Runtime-实现NSCoding的自动归档和自动解档"><a href="#Runtime-实现NSCoding的自动归档和自动解档" class="headerlink" title="Runtime-实现NSCoding的自动归档和自动解档"></a>Runtime-实现NSCoding的自动归档和自动解档</h1><blockquote>
-<p>需要自定义模型持久化的时候我们往往需要为各个模型实现对应的<code>encode``decode</code>方法</p>
+		<h1 id="网络分层的优点"><a href="#网络分层的优点" class="headerlink" title="网络分层的优点"></a>网络分层的优点</h1><blockquote>
+<p>面试被问到了,记录下</p>
 </blockquote>
-<p>借助<code>Runtime</code>我们可以对此进行封装</p>
-<h2 id="解档"><a href="#解档" class="headerlink" title="解档"></a>解档</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">- (instancetype)initWithCoder:(<span class="type">NSCoder</span> *)aDecoder&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span> = [<span class="keyword">super</span> <span class="keyword">init</span>]) &#123;</div><div class="line">        <span class="type">Class</span> <span class="built_in">c</span> = <span class="keyword">self</span>.<span class="keyword">class</span>;</div><div class="line">        <span class="comment">// 截取类和父类的成员变量</span></div><div class="line">        <span class="keyword">while</span> (<span class="built_in">c</span> &amp;&amp; <span class="built_in">c</span> != [<span class="type">NSObject</span> <span class="class"><span class="keyword">class</span>]) </span>&#123;</div><div class="line">            unsigned int <span class="built_in">count</span> = <span class="number">0</span>;</div><div class="line">            <span class="type">Ivar</span> *ivars = class_copyIvarList(<span class="built_in">c</span>, &amp;<span class="built_in">count</span>);</div><div class="line">            <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="built_in">count</span>; i++) &#123;</div><div class="line">                <span class="type">NSString</span> *key = [<span class="type">NSString</span> stringWithUTF8String:ivar_getName(ivars[i])];</div><div class="line">                id value = [aDecoder decodeObjectForKey:key];</div><div class="line">                <span class="keyword">if</span> (value)&#123;<span class="comment">// 容错</span></div><div class="line">                     [<span class="keyword">self</span> setValue:value forKey:key];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// 获得c的父类</span></div><div class="line">            <span class="built_in">c</span> = [<span class="built_in">c</span> superclass];</div><div class="line">            free(ivars);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>各层之间是独立的<ul>
+<li>某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务</li>
+<li>由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了</li>
+</ul>
+</li>
+<li>灵活性好<ul>
+<li>当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改.当某一层提供的服务不再需要时,甚至可以将这层取消</li>
+</ul>
+</li>
+<li>结构上可分割开<ul>
+<li>各层都可以采用最合适的技术来实现</li>
+</ul>
+</li>
+<li>易于实现和维护<ul>
+<li>这种结构使得实现和调试一个庞大复杂的系统变得容易处理,因为整个系统已经被分解为若干个相对独立的子系统</li>
+</ul>
+</li>
+<li>能够促进标准化工作<ul>
+<li>因为每一层的功能机器提供的服务都已经有了明确的说明</li>
+</ul>
+</li>
+</ul>
 <blockquote>
-<p>这里需要注意的是如果版本升级后<code>Model</code>的属性发生了变化这里可能会发生崩溃<br>所以需要在<code>swtValueForKey</code>的时候做判断</p>
+<p>注意</p>
+<blockquote>
+<p>分层是应该注意每一层的功能非常明确,若层数太少,会使得每一层协议太复杂<br>层数太多又会在描述和综述各功能的系统工程任务时遇到较多困难</p>
 </blockquote>
-<h2 id="解档-1"><a href="#解档-1" class="headerlink" title="解档"></a>解档</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (void)encodeWithCoder:(<span class="type">NSCoder</span> *)aCoder&#123;</div><div class="line">    </div><div class="line">    <span class="type">Class</span> <span class="built_in">c</span> = <span class="keyword">self</span>.<span class="keyword">class</span>;</div><div class="line">    <span class="comment">// 截取类和父类的成员变量</span></div><div class="line">    <span class="keyword">while</span> (<span class="built_in">c</span> &amp;&amp; <span class="built_in">c</span> != [<span class="type">NSObject</span> <span class="class"><span class="keyword">class</span>]) </span>&#123;</div><div class="line">        unsigned int <span class="built_in">count</span> = <span class="number">0</span>;</div><div class="line">        <span class="type">Ivar</span> *ivars = class_copyIvarList(<span class="built_in">c</span>, &amp;<span class="built_in">count</span>);</div><div class="line">        <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="built_in">count</span>; i++) &#123;</div><div class="line">            <span class="type">Ivar</span> ivar = ivars[i];</div><div class="line">            <span class="type">NSString</span> *key = [<span class="type">NSString</span> stringWithUTF8String:ivar_getName(ivar)];</div><div class="line">            id value = [<span class="keyword">self</span> valueForKey:key];</div><div class="line">            <span class="keyword">if</span> (value)&#123;</div><div class="line">                 [aCoder encodeObject:value forKey:key];</div><div class="line">             &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">c</span> = [<span class="built_in">c</span> superclass];</div><div class="line">        <span class="comment">// 释放内存</span></div><div class="line">        free(ivars);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p>《计算机网络（第五版）》</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -123,7 +149,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/网络/">网络</a>
   </div>
 
 </div>
@@ -167,19 +193,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/12/08/UIWebView和WKWebView/" title="UIWebView和WKWebView">
-  <strong>上一篇：</strong><br/>
-  <span>
-  UIWebView和WKWebView</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2018/09/12/Runtime-重写description打印对象信息/"  title="Runtime-重写description打印对象信息">
+<a href="/Ryukie.GitHub.io/2019/07/11/合适的线程数量/"  title="合适的线程数量">
  <strong>下一篇：</strong><br/> 
- <span>Runtime-重写description打印对象信息
+ <span>合适的线程数量
 </span>
 </a>
 </div>
@@ -188,7 +206,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/" data-title="Runtime-实现NSCoding的自动归档和自动解档" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/09/13/Runtime-实现NSCoding的自动归档和自动解档/"></div>
+	<div class="ds-thread" data-thread-key="2019/07/12/网络分层的优点/" data-title="网络分层的优点" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/12/网络分层的优点/"></div>
 </section>
 
 
@@ -198,7 +216,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-实现NSCoding的自动归档和自动解档"><span class="toc-number">1.</span> <span class="toc-text">Runtime-实现NSCoding的自动归档和自动解档</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解档"><span class="toc-number">1.1.</span> <span class="toc-text">解档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解档-1"><span class="toc-number">1.2.</span> <span class="toc-text">解档</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络分层的优点"><span class="toc-number">1.</span> <span class="toc-text">网络分层的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
