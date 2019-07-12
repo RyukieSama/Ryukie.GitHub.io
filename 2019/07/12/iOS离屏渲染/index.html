@@ -1,0 +1,671 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>iOS离屏渲染 | RyukieSama`sDogHouse</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ryukie">
+    
+
+    
+    <meta name="description" content="iOS离屏渲染一: 什么是离屏渲染 如果要爱屏幕上显示内容,我们需要一块至少和屏幕数据量一样大的FrameBuffer作为像素数据的缓存区域,也是GPU储存渲染结果的地方.如果有时面临一些限制,无法把渲染结果直接写入FrameBuffer而是存在别的区域之后再写入FrameBuffer这个过程就是离屏渲染  App -&amp;gt; OffscreenBuffer -&amp;gt; FrameBuffer 二">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS离屏渲染">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/12/iOS离屏渲染/index.html">
+<meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="iOS离屏渲染一: 什么是离屏渲染 如果要爱屏幕上显示内容,我们需要一块至少和屏幕数据量一样大的FrameBuffer作为像素数据的缓存区域,也是GPU储存渲染结果的地方.如果有时面临一些限制,无法把渲染结果直接写入FrameBuffer而是存在别的区域之后再写入FrameBuffer这个过程就是离屏渲染  App -&amp;gt; OffscreenBuffer -&amp;gt; FrameBuffer 二">
+<meta property="og:updated_time" content="2019-07-12T07:58:09.588Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS离屏渲染">
+<meta name="twitter:description" content="iOS离屏渲染一: 什么是离屏渲染 如果要爱屏幕上显示内容,我们需要一块至少和屏幕数据量一样大的FrameBuffer作为像素数据的缓存区域,也是GPU储存渲染结果的地方.如果有时面临一些限制,无法把渲染结果直接写入FrameBuffer而是存在别的区域之后再写入FrameBuffer这个过程就是离屏渲染  App -&amp;gt; OffscreenBuffer -&amp;gt; FrameBuffer 二">
+
+    
+    <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Ryukie.GitHub.io/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/Ryukie.GitHub.io/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/Ryukie.GitHub.io/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Ryukie.GitHub.io/"><img src="/Ryukie.GitHub.io/img/logo.png" alt="RyukieSama`sDogHouse" title="RyukieSama`sDogHouse"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
+				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Ryukie.GitHub.io/">Home</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/archives">Archives</a></li>
+					
+						<li><a href="/Ryukie.GitHub.io/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Ryukie.GitHub.io/2019/07/12/iOS离屏渲染/" title="iOS离屏渲染" itemprop="url">iOS离屏渲染</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-12T06:50:03.000Z" itemprop="datePublished"> Published 2019-07-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS离屏渲染"><span class="toc-number">1.</span> <span class="toc-text">iOS离屏渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是离屏渲染"><span class="toc-number">1.1.</span> <span class="toc-text">一: 什么是离屏渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-CPU离屏渲染"><span class="toc-number">1.2.</span> <span class="toc-text">二: CPU离屏渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-GPU渲染"><span class="toc-number">1.3.</span> <span class="toc-text">三: GPU渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#画家算法"><span class="toc-number">1.3.1.</span> <span class="toc-text">画家算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU离屏渲染"><span class="toc-number">1.3.2.</span> <span class="toc-text">GPU离屏渲染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-常见离屏渲染场景"><span class="toc-number">1.4.</span> <span class="toc-text">四: 常见离屏渲染场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cornerRadius-clipsToBounds"><span class="toc-number">1.4.1.</span> <span class="toc-text">cornerRadius+clipsToBounds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shadow"><span class="toc-number">1.4.2.</span> <span class="toc-text">shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group-opacity"><span class="toc-number">1.4.3.</span> <span class="toc-text">group opacity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mask"><span class="toc-number">1.4.4.</span> <span class="toc-text">mask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIBlurEffect"><span class="toc-number">1.4.5.</span> <span class="toc-text">UIBlurEffect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#allowsEdgeAntialiasing-抗锯齿"><span class="toc-number">1.4.6.</span> <span class="toc-text">allowsEdgeAntialiasing 抗锯齿</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-GPU离屏渲染性能影响"><span class="toc-number">1.5.</span> <span class="toc-text">五: GPU离屏渲染性能影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-利用离屏渲染"><span class="toc-number">1.6.</span> <span class="toc-text">六: 利用离屏渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只离屏渲染一次"><span class="toc-number">1.6.1.</span> <span class="toc-text">只离屏渲染一次</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-什么时候需要CPU渲染"><span class="toc-number">1.7.</span> <span class="toc-text">七: 什么时候需要CPU渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-优化"><span class="toc-number">1.8.</span> <span class="toc-text">八: 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-总结"><span class="toc-number">1.9.</span> <span class="toc-text">九: 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.10.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="iOS离屏渲染"><a href="#iOS离屏渲染" class="headerlink" title="iOS离屏渲染"></a>iOS离屏渲染</h1><h2 id="一-什么是离屏渲染"><a href="#一-什么是离屏渲染" class="headerlink" title="一: 什么是离屏渲染"></a>一: 什么是离屏渲染</h2><blockquote>
+<p>如果要爱屏幕上显示内容,我们需要一块至少和屏幕数据量一样大的<code>FrameBuffer</code>作为像素数据的缓存区域,也是GPU储存渲染结果的地方.<br>如果有时面临一些限制,无法把渲染结果直接写入<code>FrameBuffer</code>而是存在别的区域之后再写入<code>FrameBuffer</code>这个过程就是<code>离屏渲染</code></p>
+</blockquote>
+<p>App -&gt; OffscreenBuffer -&gt; FrameBuffer</p>
+<h2 id="二-CPU离屏渲染"><a href="#二-CPU离屏渲染" class="headerlink" title="二: CPU离屏渲染"></a>二: CPU离屏渲染</h2><ul>
+<li>UIView中实现了<code>drawRect</code>就算内部没有实际代码,系统也会为这个view申请一片内存区域等待<code>CoreGraphics</code>可能的绘画操作</li>
+<li>很多人对于开一块<code>CGContext</code>来画图的操作也成为离屏渲染,因为数据是存入了CGContext而不是FrameBuffer</li>
+<li>进一步讲其实所有CPU进行的光栅化操作(文字渲染,图片解码)都无法直接绘制到有GPU管理的<code>FrameBuffer</code>中,只能暂时放在另一块内存中</li>
+<li>但是苹果工程师说CPU渲染并非真正意义的离屏渲染<ul>
+<li><a href="https://lobste.rs/s/ckm4uw/performance_minded_take_on_ios_design#c_itdkfh" target="_blank" rel="external">https://lobste.rs/s/ckm4uw/performance_minded_take_on_ios_design#c_itdkfh</a></li>
+<li>实现DrawRect打开Xcode调试的“Color offscreen rendered yellow”开关,该区域不会变黄</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-GPU渲染"><a href="#三-GPU渲染" class="headerlink" title="三: GPU渲染"></a>三: GPU渲染</h2><h3 id="画家算法"><a href="#画家算法" class="headerlink" title="画家算法"></a>画家算法</h3><blockquote>
+<p>主要渲染操作都是由<code>CoreAnimation</code>和<code>Render Server</code>模块通过调用显卡驱动提供的接口OpenGL/Metal来执行的</p>
+</blockquote>
+<ul>
+<li>对于每一层Layer,<code>Render Server</code>会按照深度排序依次输出到FrameBuffer</li>
+<li>后一层覆盖前一层,达到最终效果</li>
+<li>此过程不可逆<ul>
+<li>遮住的部分数据永久丢失无法修改</li>
+</ul>
+</li>
+<li>想要突破这个限制<ul>
+<li>在FrameBuffer外开辟一块空间</li>
+<li>把待处理的Layer画上去</li>
+<li>进行修改后再写回FrameBuffer</li>
+</ul>
+</li>
+</ul>
+<h3 id="GPU离屏渲染"><a href="#GPU离屏渲染" class="headerlink" title="GPU离屏渲染"></a>GPU离屏渲染</h3><ul>
+<li>上面开辟空间渲染,真个过程就算离屏渲染</li>
+<li>对于每层Layer如果能通过单次遍历即可完成渲染的话效率最高<ul>
+<li>否则只能开辟离屏Buffer来完成一些复杂操作</li>
+</ul>
+</li>
+</ul>
+<h2 id="四-常见离屏渲染场景"><a href="#四-常见离屏渲染场景" class="headerlink" title="四: 常见离屏渲染场景"></a>四: 常见离屏渲染场景</h2><h3 id="cornerRadius-clipsToBounds"><a href="#cornerRadius-clipsToBounds" class="headerlink" title="cornerRadius+clipsToBounds"></a>cornerRadius+clipsToBounds</h3><ul>
+<li>如果只是设置cornerRadius,而不剪切内容,或者只裁掉矩形区域以外的内容,并不会触发离屏渲染</li>
+</ul>
+<h3 id="shadow"><a href="#shadow" class="headerlink" title="shadow"></a>shadow</h3><ul>
+<li>阴影的形状未必是矩形</li>
+<li>只能在Layer以上的内容全部渲染完成后才能知道形状是什么<ul>
+<li>这样只能离屏渲染,将上层内容渲染完成,知道了shadow的形状,将shadow添加到FrameBuffer</li>
+<li>再把内容回执上去</li>
+<li>如果事先告诉了CoreAnimation(通过shadowPath)阴影的几何形状的话就不需要依赖Layer了</li>
+</ul>
+</li>
+</ul>
+<h3 id="group-opacity"><a href="#group-opacity" class="headerlink" title="group opacity"></a>group opacity</h3><ul>
+<li>两个带透明度的图层叠加</li>
+<li>叠加部分无法通过一次遍历即完成</li>
+<li>会触发离屏渲染</li>
+</ul>
+<h3 id="mask"><a href="#mask" class="headerlink" title="mask"></a>mask</h3><ul>
+<li>作用在Layer所有子Layer之上的而且可能有透明度</li>
+<li>离屏渲染</li>
+</ul>
+<h3 id="UIBlurEffect"><a href="#UIBlurEffect" class="headerlink" title="UIBlurEffect"></a>UIBlurEffect</h3><ul>
+<li>无法一次遍历完成</li>
+</ul>
+<h3 id="allowsEdgeAntialiasing-抗锯齿"><a href="#allowsEdgeAntialiasing-抗锯齿" class="headerlink" title="allowsEdgeAntialiasing 抗锯齿"></a>allowsEdgeAntialiasing 抗锯齿</h3><ul>
+<li>无法一次遍历完成</li>
+</ul>
+<h2 id="五-GPU离屏渲染性能影响"><a href="#五-GPU离屏渲染性能影响" class="headerlink" title="五: GPU离屏渲染性能影响"></a>五: GPU离屏渲染性能影响</h2><ul>
+<li>GPU操作是高度流水线化的.正常情况一直在向FrameBuffer中输出</li>
+<li>当需要开启另一块内存进行其他操作,要暂时停止向FrameBuffer中输出,进行相关操作</li>
+<li>完成后再向FrameBuffer中输出内容</li>
+</ul>
+<blockquote>
+<p>TableView/CollectionView中滚动每一帧变化都会触发重绘<br>一旦发生离屏渲染,上面的切换操作将会发生很多次(60/s)</p>
+</blockquote>
+<h2 id="六-利用离屏渲染"><a href="#六-利用离屏渲染" class="headerlink" title="六: 利用离屏渲染"></a>六: 利用离屏渲染</h2><h3 id="只离屏渲染一次"><a href="#只离屏渲染一次" class="headerlink" title="只离屏渲染一次"></a>只离屏渲染一次</h3><ul>
+<li>CALayer的shouldRasterize属性<ul>
+<li>可以把Layer及其子Layer,还有圆角等内容保存在内存中</li>
+<li>下一帧可以服用,而不会继续触发离屏渲染</li>
+<li>注意<ul>
+<li>如果本来就不复杂,也没有圆角等,打开反而会触发一次不必要的离屏渲染</li>
+<li>缓存有限,不会超过屏幕总像素的2.5倍</li>
+<li>超过100ms没用就被释放</li>
+<li>静态内容,如果有resize或动画的话就失效了,需要重新离屏渲染<ul>
+<li>针对这种情况，Xcode提供了“Color Hits Green and Misses Red”的选项，帮助我们查看缓存的使用是否符合预期</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>除了用来优化离屏渲染还可以用于展示十分复杂的Layer</li>
+</ul>
+</li>
+</ul>
+<h2 id="七-什么时候需要CPU渲染"><a href="#七-什么时候需要CPU渲染" class="headerlink" title="七: 什么时候需要CPU渲染"></a>七: 什么时候需要CPU渲染</h2><ul>
+<li>渲染新能调优核心在于<ul>
+<li>平衡CPU&amp;GPU的负载</li>
+<li>让他们各自做自己擅长的事情</li>
+</ul>
+</li>
+<li>文字(CoreText使用CoreGraphics渲染)图片(ImageIO)的渲染<ul>
+<li>GPU不擅长这些事情</li>
+<li>需要CPU处理完再交给GPU<ul>
+<li>例如: </li>
+<li>一个圆角实现<ul>
+<li>用CoreGraphics给图片加圆角-CPU完成</li>
+<li>这样就不用给容器设置cornerRadius避免可能发生的离屏渲染</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>注意点:<ul>
+<li>渲染不是CPU强项,调用CoreGraphics会消耗一定的计算时间,因此CPU渲染放在后台线程去完成,然后回到主线程将结果返回给CoreAnimation.但是多线程间数据同步会增加一定的复杂度<ul>
+<li>也是AsyncDisplayKit/Texture的主要思想</li>
+</ul>
+</li>
+<li>CPU渲染速度慢,适合不复杂的元素<ul>
+<li>没有硬件加速的视频解码…酸爽啊</li>
+</ul>
+</li>
+<li>渲染结果bitmap数据量较大(一般为解码后的UIImage),需要及时释放</li>
+<li>选择用CPU渲染的话就没必要触发GPU的离屏渲染,否则会有两块相同内存</li>
+<li>善用工具进行检测</li>
+</ul>
+</li>
+</ul>
+<h2 id="八-优化"><a href="#八-优化" class="headerlink" title="八: 优化"></a>八: 优化</h2><ul>
+<li>使用AsyncDisplayKit/Texture框架</li>
+<li>图片圆角<ul>
+<li>采用不适用容器裁剪的方式,用上面提到过的预处理图片的方式</li>
+</ul>
+</li>
+<li>视屏圆角<ul>
+<li>创建四个弧形Layer盖住四个角</li>
+<li>图片也可以</li>
+</ul>
+</li>
+<li>View的圆形边框<ul>
+<li>如果没有backgroundColor可以使用cornerRadius来做</li>
+</ul>
+</li>
+<li>阴影<ul>
+<li>使用shadowPath</li>
+</ul>
+</li>
+<li>特殊形状View<ul>
+<li>使用layer mask并打开shouldRasterize来对渲染结果进行缓存</li>
+</ul>
+</li>
+<li>模糊<ul>
+<li>不采用系统提供的UIVisualEffect，而是另外实现模糊效果（CIGaussianBlur），并手动管理渲染结果</li>
+</ul>
+</li>
+</ul>
+<h2 id="九-总结"><a href="#九-总结" class="headerlink" title="九: 总结"></a>九: 总结</h2><blockquote>
+<p>CPU渲染虽然也是“离屏”，但是通常提到的离屏渲染是发生在GPU<br>如果一个layer无法在一次遍历就完成绘制，那么就不得不触发离屏渲染<br>离屏渲染的开销主要在与frame buffer与离屏buffer之间的上下文切换。如果无法避免，也可以通过有效利用shouldRasterize，减少触发的次数<br>CPU和GPU是相互扶持的关系。CPU渲染效率不高，但是较为通用灵活；GPU擅长并行计算，但也有捉襟见肘之时，此时CPU可以适当给与帮助</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://medium.com/@jasonyuh/关于离屏渲染的深入研究-e776f56b3e60" target="_blank" rel="external">https://medium.com/@jasonyuh/关于离屏渲染的深入研究-e776f56b3e60</a><br><a href="https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/" target="_blank" rel="external">https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/</a> </p>
+</blockquote>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2019/07/12/网络分层的优点/"  title="网络分层的优点">
+ <strong>下一篇：</strong><br/> 
+ <span>网络分层的优点
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2019/07/12/iOS离屏渲染/" data-title="iOS离屏渲染" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/12/iOS离屏渲染/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS离屏渲染"><span class="toc-number">1.</span> <span class="toc-text">iOS离屏渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是离屏渲染"><span class="toc-number">1.1.</span> <span class="toc-text">一: 什么是离屏渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-CPU离屏渲染"><span class="toc-number">1.2.</span> <span class="toc-text">二: CPU离屏渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-GPU渲染"><span class="toc-number">1.3.</span> <span class="toc-text">三: GPU渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#画家算法"><span class="toc-number">1.3.1.</span> <span class="toc-text">画家算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPU离屏渲染"><span class="toc-number">1.3.2.</span> <span class="toc-text">GPU离屏渲染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-常见离屏渲染场景"><span class="toc-number">1.4.</span> <span class="toc-text">四: 常见离屏渲染场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cornerRadius-clipsToBounds"><span class="toc-number">1.4.1.</span> <span class="toc-text">cornerRadius+clipsToBounds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shadow"><span class="toc-number">1.4.2.</span> <span class="toc-text">shadow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#group-opacity"><span class="toc-number">1.4.3.</span> <span class="toc-text">group opacity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mask"><span class="toc-number">1.4.4.</span> <span class="toc-text">mask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UIBlurEffect"><span class="toc-number">1.4.5.</span> <span class="toc-text">UIBlurEffect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#allowsEdgeAntialiasing-抗锯齿"><span class="toc-number">1.4.6.</span> <span class="toc-text">allowsEdgeAntialiasing 抗锯齿</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-GPU离屏渲染性能影响"><span class="toc-number">1.5.</span> <span class="toc-text">五: GPU离屏渲染性能影响</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-利用离屏渲染"><span class="toc-number">1.6.</span> <span class="toc-text">六: 利用离屏渲染</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#只离屏渲染一次"><span class="toc-number">1.6.1.</span> <span class="toc-text">只离屏渲染一次</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-什么时候需要CPU渲染"><span class="toc-number">1.7.</span> <span class="toc-text">七: 什么时候需要CPU渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-优化"><span class="toc-number">1.8.</span> <span class="toc-text">八: 优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-总结"><span class="toc-number">1.9.</span> <span class="toc-text">九: 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.10.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>54</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>40</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/iOS-UI/" title="iOS_UI">iOS_UI<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Bug/" title="Bug">Bug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> WoW~ <br/>
+			Ryukie Sama</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/RyukieSama" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:ryukie.sama@gmail.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/Ryukie.GitHub.io/about" target="_blank" title="Ryukie">Ryukie</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/Ryukie.GitHub.io/js/jquery-2.0.3.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.imagesloaded.min.js"></script>
+<script src="/Ryukie.GitHub.io/js/gallery.js"></script>
+<script src="/Ryukie.GitHub.io/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Ryukie.GitHub.io/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Ryukie.GitHub.io/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	</div>
+	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
