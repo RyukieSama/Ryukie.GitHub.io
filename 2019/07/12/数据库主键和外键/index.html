@@ -4,28 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>R.Swift-安全的资源组织方案forSwift | RyukieSama`sDogHouse</title>
+    <title>数据库主键和外键 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="R.Swift-安全的资源组织方案forSwift 官方链接: https://github.com/mac-cain13/R.swift参考文章:   http://swifter.tips/safe-resource/https://www.jianshu.com/p/6234e6e79b15   场景在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高  一般操作">
-<meta name="keywords" content="iOS,Swift">
+    <meta name="description" content="数据库主键和外键一: 什么是 主键 外键 学生表(学号,姓名,性别)  学号是主键课程表(课程号,课程名,学分)课程号是主键成绩表(学号,课程号,成绩)学号/课程号 是外键    如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键 如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表  二: 外键的作用 外键用于保持数据一致性, 完整性 主要">
+<meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="R.Swift-安全的资源组织方案forSwift">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/index.html">
+<meta property="og:title" content="数据库主键和外键">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/12/数据库主键和外键/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="R.Swift-安全的资源组织方案forSwift 官方链接: https://github.com/mac-cain13/R.swift参考文章:   http://swifter.tips/safe-resource/https://www.jianshu.com/p/6234e6e79b15   场景在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高  一般操作">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179849878526.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179848803178.jpg">
-<meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179854353794.jpg">
-<meta property="og:updated_time" content="2018-02-07T06:39:01.564Z">
+<meta property="og:description" content="数据库主键和外键一: 什么是 主键 外键 学生表(学号,姓名,性别)  学号是主键课程表(课程号,课程名,学分)课程号是主键成绩表(学号,课程号,成绩)学号/课程号 是外键    如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键 如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表  二: 外键的作用 外键用于保持数据一致性, 完整性 主要">
+<meta property="og:updated_time" content="2019-07-12T09:49:21.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="R.Swift-安全的资源组织方案forSwift">
-<meta name="twitter:description" content="R.Swift-安全的资源组织方案forSwift 官方链接: https://github.com/mac-cain13/R.swift参考文章:   http://swifter.tips/safe-resource/https://www.jianshu.com/p/6234e6e79b15   场景在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高  一般操作">
-<meta name="twitter:image" content="http://ohfpqyfi7.bkt.clouddn.com/15179849878526.jpg">
+<meta name="twitter:title" content="数据库主键和外键">
+<meta name="twitter:description" content="数据库主键和外键一: 什么是 主键 外键 学生表(学号,姓名,性别)  学号是主键课程表(课程号,课程名,学分)课程号是主键成绩表(学号,课程号,成绩)学号/课程号 是外键    如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键 如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表  二: 外键的作用 外键用于保持数据一致性, 完整性 主要">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -85,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/" title="R.Swift-安全的资源组织方案forSwift" itemprop="url">R.Swift-安全的资源组织方案forSwift</a>
+      <a href="/Ryukie.GitHub.io/2019/07/12/数据库主键和外键/" title="数据库主键和外键" itemprop="url">数据库主键和外键</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-02-07T03:21:33.000Z" itemprop="datePublished"> Published 2018-02-07</time>
+    <time datetime="2019-07-12T08:40:15.000Z" itemprop="datePublished"> Published 2019-07-12</time>
     
   </p>
 </header>
@@ -101,36 +97,58 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-Swift-安全的资源组织方案forSwift"><span class="toc-number">1.</span> <span class="toc-text">R.Swift-安全的资源组织方案forSwift</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入R-Swift"><span class="toc-number">1.2.</span> <span class="toc-text">导入R.Swift</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库主键和外键"><span class="toc-number">1.</span> <span class="toc-text">数据库主键和外键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是-主键-外键"><span class="toc-number">1.1.</span> <span class="toc-text">一: 什么是 主键 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-外键的作用"><span class="toc-number">1.2.</span> <span class="toc-text">二: 外键的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-主键的设计原则"><span class="toc-number">1.3.</span> <span class="toc-text">三: 主键的设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-数据库主键选取策略"><span class="toc-number">1.4.</span> <span class="toc-text">四: 数据库主键选取策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-外键"><span class="toc-number">1.5.</span> <span class="toc-text">五: 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="R-Swift-安全的资源组织方案forSwift"><a href="#R-Swift-安全的资源组织方案forSwift" class="headerlink" title="R.Swift-安全的资源组织方案forSwift"></a>R.Swift-安全的资源组织方案forSwift</h1><blockquote>
-<p>官方链接: <a href="https://github.com/mac-cain13/R.swift" target="_blank" rel="external">https://github.com/mac-cain13/R.swift</a><br>参考文章: </p>
+		<h1 id="数据库主键和外键"><a href="#数据库主键和外键" class="headerlink" title="数据库主键和外键"></a>数据库主键和外键</h1><h2 id="一-什么是-主键-外键"><a href="#一-什么是-主键-外键" class="headerlink" title="一: 什么是 主键 外键"></a>一: 什么是 主键 外键</h2><blockquote>
+<p>学生表(学号,姓名,性别)</p>
 <blockquote>
-<p><a href="http://swifter.tips/safe-resource/" target="_blank" rel="external">http://swifter.tips/safe-resource/</a><br><a href="https://www.jianshu.com/p/6234e6e79b15" target="_blank" rel="external">https://www.jianshu.com/p/6234e6e79b15</a></p>
+<p>学号是主键<br>课程表(课程号,课程名,学分)<br>课程号是主键<br>成绩表(学号,课程号,成绩)<br>学号/课程号 是外键</p>
 </blockquote>
 </blockquote>
-<h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在项目中经常会遇到通过字符串进行的一些资源操作比如图片什么的,维护修改成本较高</p>
 <ul>
-<li>一般操作</li>
+<li>如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键</li>
+<li>如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表</li>
 </ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> icon = <span class="type">UIImage</span>(named: <span class="string">"settings-icon"</span>)</div><div class="line"><span class="keyword">let</span> font = <span class="type">UIFont</span>(name: <span class="string">"San Francisco"</span>, size: <span class="number">42</span>)</div><div class="line"><span class="keyword">let</span> color = <span class="type">UIColor</span>(named: <span class="string">"indictator highlight"</span>)</div><div class="line"><span class="keyword">let</span> viewController = <span class="type">CustomViewController</span>(nibName: <span class="string">"CustomView"</span>, bundle: <span class="literal">nil</span>)</div><div class="line"><span class="keyword">let</span> string = <span class="type">String</span>(format: <span class="type">NSLocalizedString</span>(<span class="string">"welcome.withName"</span>, comment: <span class="string">""</span>), locale: <span class="type">NSLocale</span>.current, <span class="string">"Arthur Dent"</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li>使用<code>R.Swift</code></li>
+<h2 id="二-外键的作用"><a href="#二-外键的作用" class="headerlink" title="二: 外键的作用"></a>二: 外键的作用</h2><ul>
+<li>外键用于保持数据一致性, 完整性</li>
+<li>主要目的是控制存储在外键表中的数据</li>
 </ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> icon = <span class="type">R</span>.image.settingsIcon()</div><div class="line"><span class="keyword">let</span> font = <span class="type">R</span>.font.sanFrancisco(size: <span class="number">42</span>)</div><div class="line"><span class="keyword">let</span> color = <span class="type">R</span>.color.indicatorHighlight()</div><div class="line"><span class="keyword">let</span> viewController = <span class="type">CustomViewController</span>(nib: <span class="type">R</span>.nib.customView)</div><div class="line"><span class="keyword">let</span> string = <span class="type">R</span>.string.localizable.welcomeWithName(<span class="string">"Arthur Dent"</span>)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>是不是显得十分清爽</p>
-</blockquote>
-<h2 id="导入R-Swift"><a href="#导入R-Swift" class="headerlink" title="导入R.Swift"></a>导入<code>R.Swift</code></h2><ul>
-<li><code>pod &#39;R.swift&#39;</code></li>
-<li><code>install</code>完成后添加 <code>New Run Script Phase</code><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179849878526.jpg" alt=""></li>
-<li>添加脚本 <code>&quot;$PODS_ROOT/R.swift/rswift&quot; generate &quot;$SRCROOT&quot;</code><br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179848803178.jpg" alt=""></li>
-<li><code>Command+B</code>编译一次后会在目录下生成一个<code>R.generated.swift</code>文件,将其拖入工程<br><img src="http://ohfpqyfi7.bkt.clouddn.com/15179854353794.jpg" alt=""></li>
+<h2 id="三-主键的设计原则"><a href="#三-主键的设计原则" class="headerlink" title="三: 主键的设计原则"></a>三: 主键的设计原则</h2><ul>
+<li>主键应当是对用户无意义的</li>
+<li>主键应该是单列的,以提高链接和筛选操作的效率<ul>
+<li>复合键的使用通常出于两点考虑<ul>
+<li>主键应当具有意义<ul>
+<li>这被认为破坏了数据库提供了方便</li>
 </ul>
-<blockquote>
-<p>一定不要选中<code>Copy items if needed</code><br>因为每次编译都会重新生成该文件所以最好在<code>.gitignore</code>中添加忽略<code>*.generated.swift</code></p>
+</li>
+<li>在描述多对多关系的链接表中可与使用两个外部键作为主键<ul>
+<li>该表可能成为其他从表的主表,并成为从表主键的一部分,使得之后的从表包含更多的列</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>永远不要更新主键</li>
+<li>主键不应该包含动态变化的数据(时间戳等)</li>
+<li>主键应当由计算机自动生成</li>
+</ul>
+<h2 id="四-数据库主键选取策略"><a href="#四-数据库主键选取策略" class="headerlink" title="四: 数据库主键选取策略"></a>四: 数据库主键选取策略</h2><ul>
+<li>自动增长型</li>
+<li>手动增长型</li>
+<li>使用UniqueIdentifier SQL Server提供一个UniqueIdentifier数据类型（16字节），并提供一个生成函数NEWID()，生成一个唯一的UniqueIdentifier</li>
+<li>使用COMB类型<ul>
+<li>保留UniqueIdentifier的前10字节，后6字节表示生成时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="五-外键"><a href="#五-外键" class="headerlink" title="五: 外键"></a>五: 外键</h2><ul>
+<li>外键的主要作用是用来控制数据库中数据的完整性,党对一个数据进行操作的时候,和他有关联的一个表或者多个表的数据能够同时发生改变</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.cnblogs.com/buptlyn/p/4555206.html" target="_blank" rel="external">https://www.cnblogs.com/buptlyn/p/4555206.html</a></p>
 </blockquote>
   
 	</div>
@@ -145,7 +163,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/Swift/">Swift</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/数据库/">数据库</a>
   </div>
 
 </div>
@@ -189,19 +207,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/03/26/UICollectionView的一些问题/" title="UICollectionView的一些问题">
-  <strong>上一篇：</strong><br/>
-  <span>
-  UICollectionView的一些问题</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/"  title="Swift使用Carthage替代CocoaPods">
+<a href="/Ryukie.GitHub.io/2019/07/12/iOS离屏渲染/"  title="iOS离屏渲染">
  <strong>下一篇：</strong><br/> 
- <span>Swift使用Carthage替代CocoaPods
+ <span>iOS离屏渲染
 </span>
 </a>
 </div>
@@ -210,7 +220,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/02/07/R-Swift-安全的资源组织方案forSwift/" data-title="R.Swift-安全的资源组织方案forSwift" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/"></div>
+	<div class="ds-thread" data-thread-key="2019/07/12/数据库主键和外键/" data-title="数据库主键和外键" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/12/数据库主键和外键/"></div>
 </section>
 
 
@@ -220,7 +230,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-Swift-安全的资源组织方案forSwift"><span class="toc-number">1.</span> <span class="toc-text">R.Swift-安全的资源组织方案forSwift</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-number">1.1.</span> <span class="toc-text">场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入R-Swift"><span class="toc-number">1.2.</span> <span class="toc-text">导入R.Swift</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库主键和外键"><span class="toc-number">1.</span> <span class="toc-text">数据库主键和外键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是-主键-外键"><span class="toc-number">1.1.</span> <span class="toc-text">一: 什么是 主键 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-外键的作用"><span class="toc-number">1.2.</span> <span class="toc-text">二: 外键的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-主键的设计原则"><span class="toc-number">1.3.</span> <span class="toc-text">三: 主键的设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-数据库主键选取策略"><span class="toc-number">1.4.</span> <span class="toc-text">四: 数据库主键选取策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-外键"><span class="toc-number">1.5.</span> <span class="toc-text">五: 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
