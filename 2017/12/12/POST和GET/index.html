@@ -4,24 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>组件化之路:去模型化与路由 | RyukieSama`sDogHouse</title>
+    <title>POST和GET | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="先吐槽下…去年年底来到新公司, 公司项目代码有四五年了, 经手了十几号人.规范什么的基本不存在, 耦合混乱, 垃圾奇葩代码遍地.印象最深的是UI让改一个到处都有的一个样式的按钮的颜色.MMP改的我要死不活的…连基本的复用都不存在过年前准备对项目进行组件化重构  目标这次组件化方案需要解决的主要问题有两点 解耦 和 取模型化 去模型化这里我采用的是使用 NSDictionary 来实现去模型化 使">
-<meta name="keywords" content="iOS,TODO,架构">
+    <meta name="description" content="POST和GET POST安全? 其实也只是一点点罢了..   get请求的URL会被缓存在浏览器及Web服务器日志里,可能泄露 POST没有记录,只要数据服务器不被黑就安全 抓包的话GG(非HTTPS)  GET相对POST最大的优势可以手输URL 何时使用GET 请求中的URL可以被手动输入 请求中的URL可以被存在书签里，或者历史里，或者快速拨号里面，或者分享给别人 请求中的URL是可以被搜">
+<meta name="keywords" content="iOS,网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="组件化之路:去模型化与路由">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/03/26/项目路由方案/index.html">
+<meta property="og:title" content="POST和GET">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/12/12/POST和GET/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="先吐槽下…去年年底来到新公司, 公司项目代码有四五年了, 经手了十几号人.规范什么的基本不存在, 耦合混乱, 垃圾奇葩代码遍地.印象最深的是UI让改一个到处都有的一个样式的按钮的颜色.MMP改的我要死不活的…连基本的复用都不存在过年前准备对项目进行组件化重构  目标这次组件化方案需要解决的主要问题有两点 解耦 和 取模型化 去模型化这里我采用的是使用 NSDictionary 来实现去模型化 使">
-<meta property="og:updated_time" content="2018-04-08T08:00:21.305Z">
+<meta property="og:description" content="POST和GET POST安全? 其实也只是一点点罢了..   get请求的URL会被缓存在浏览器及Web服务器日志里,可能泄露 POST没有记录,只要数据服务器不被黑就安全 抓包的话GG(非HTTPS)  GET相对POST最大的优势可以手输URL 何时使用GET 请求中的URL可以被手动输入 请求中的URL可以被存在书签里，或者历史里，或者快速拨号里面，或者分享给别人 请求中的URL是可以被搜">
+<meta property="og:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/POST-GET.png">
+<meta property="og:updated_time" content="2019-07-12T04:36:31.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="组件化之路:去模型化与路由">
-<meta name="twitter:description" content="先吐槽下…去年年底来到新公司, 公司项目代码有四五年了, 经手了十几号人.规范什么的基本不存在, 耦合混乱, 垃圾奇葩代码遍地.印象最深的是UI让改一个到处都有的一个样式的按钮的颜色.MMP改的我要死不活的…连基本的复用都不存在过年前准备对项目进行组件化重构  目标这次组件化方案需要解决的主要问题有两点 解耦 和 取模型化 去模型化这里我采用的是使用 NSDictionary 来实现去模型化 使">
+<meta name="twitter:title" content="POST和GET">
+<meta name="twitter:description" content="POST和GET POST安全? 其实也只是一点点罢了..   get请求的URL会被缓存在浏览器及Web服务器日志里,可能泄露 POST没有记录,只要数据服务器不被黑就安全 抓包的话GG(非HTTPS)  GET相对POST最大的优势可以手输URL 何时使用GET 请求中的URL可以被手动输入 请求中的URL可以被存在书签里，或者历史里，或者快速拨号里面，或者分享给别人 请求中的URL是可以被搜">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/POST-GET.png">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/03/26/项目路由方案/" title="组件化之路:去模型化与路由" itemprop="url">组件化之路:去模型化与路由</a>
+      <a href="/Ryukie.GitHub.io/2017/12/12/POST和GET/" title="POST和GET" itemprop="url">POST和GET</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-03-26T02:44:35.000Z" itemprop="datePublished"> 发表于 2018-03-26</time>
+    <time datetime="2017-12-12T04:14:20.000Z" itemprop="datePublished"> 发表于 2017-12-12</time>
     
   </p>
 </header>
@@ -97,27 +99,35 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#去模型化"><span class="toc-number">2.</span> <span class="toc-text">去模型化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用模型有什么好处"><span class="toc-number">2.1.</span> <span class="toc-text">使用模型有什么好处?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#去模型话有什么好处"><span class="toc-number">2.2.</span> <span class="toc-text">去模型话有什么好处?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存在的问题"><span class="toc-number">2.3.</span> <span class="toc-text">存在的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解耦-路由"><span class="toc-number">3.</span> <span class="toc-text">解耦_路由</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#POST和GET"><span class="toc-number">1.</span> <span class="toc-text">POST和GET</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POST安全"><span class="toc-number">1.1.</span> <span class="toc-text">POST安全?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET相对POST最大的优势"><span class="toc-number">1.2.</span> <span class="toc-text">GET相对POST最大的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#何时使用GET"><span class="toc-number">1.3.</span> <span class="toc-text">何时使用GET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<blockquote>
-<p>先吐槽下…<br>去年年底来到新公司, 公司项目代码有四五年了, 经手了十几号人.<br>规范什么的基本不存在, 耦合混乱, 垃圾奇葩代码遍地.<br>印象最深的是UI让改一个到处都有的一个样式的按钮的颜色.<br>MMP改的我要死不活的…连基本的复用都不存在<br>过年前准备对项目进行组件化重构</p>
+		<h1 id="POST和GET"><a href="#POST和GET" class="headerlink" title="POST和GET"></a>POST和GET</h1><p><img src="https://raw.githubusercontent.com/RyukieSama/RyukieImage/master/Blog/POST-GET.png" alt=""></p>
+<h2 id="POST安全"><a href="#POST安全" class="headerlink" title="POST安全?"></a>POST安全?</h2><blockquote>
+<p>其实也只是一点点罢了..</p>
 </blockquote>
-<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>这次组件化方案需要解决的主要问题有两点 <code>解耦</code> 和 <code>取模型化</code></p>
-<h1 id="去模型化"><a href="#去模型化" class="headerlink" title="去模型化"></a>去模型化</h1><p>这里我采用的是使用 <code>NSDictionary</code> 来实现去模型化</p>
-<h2 id="使用模型有什么好处"><a href="#使用模型有什么好处" class="headerlink" title="使用模型有什么好处?"></a>使用模型有什么好处?</h2><ul>
-<li>使用数据较为便捷</li>
-<li>无须过多关心数据解析,交给第三方库即可</li>
+<ul>
+<li>get请求的URL会被缓存在浏览器及Web服务器日志里,可能泄露</li>
+<li>POST没有记录,只要数据服务器不被黑就安全</li>
+<li>抓包的话GG(非HTTPS)</li>
 </ul>
-<h2 id="去模型话有什么好处"><a href="#去模型话有什么好处" class="headerlink" title="去模型话有什么好处?"></a>去模型话有什么好处?</h2><ul>
-<li>解耦</li>
-<li>极大减少项目文件数量</li>
+<h2 id="GET相对POST最大的优势"><a href="#GET相对POST最大的优势" class="headerlink" title="GET相对POST最大的优势"></a>GET相对POST最大的优势</h2><p>可以手输URL</p>
+<h2 id="何时使用GET"><a href="#何时使用GET" class="headerlink" title="何时使用GET"></a>何时使用GET</h2><ul>
+<li>请求中的URL可以被手动输入</li>
+<li>请求中的URL可以被存在书签里，或者历史里，或者快速拨号里面，或者分享给别人</li>
+<li>请求中的URL是可以被搜索引擎收录的</li>
+<li>带云压缩的浏览器，比如Opera mini/Turbo 2, 只有GET才能在服务器端被预取的</li>
+<li>请求中的URL可以被缓存</li>
+<li>可重复的交互例如: 取个数据,跳个页面用Get<ul>
+<li>不可重复的操作如创建,修改就用POST</li>
 </ul>
-<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><ul>
-<li><code>hardcode</code> 这是解耦去模型必然会出现的问题</li>
+</li>
 </ul>
-<h1 id="解耦-路由"><a href="#解耦-路由" class="headerlink" title="解耦_路由"></a>解耦_路由</h1>  
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhihu.com/question/31640769?rf=37401322" target="_blank" rel="external">https://www.zhihu.com/question/31640769?rf=37401322</a></p>
+</blockquote>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -130,7 +140,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/TODO/">TODO</a><a href="/Ryukie.GitHub.io/tags/架构/">架构</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/网络/">网络</a>
   </div>
 
 </div>
@@ -175,18 +185,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/04/03/NSInteger-和/" title="NSInteger 和 %@">
+ <a href="/Ryukie.GitHub.io/2018/01/11/NSTimer与GCD/" title="NSTimer与GCD">
   <strong>上一篇：</strong><br/>
   <span>
-  NSInteger 和 %@</span>
+  NSTimer与GCD</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2018/03/26/UICollectionView的一些问题/"  title="UICollectionView的一些问题">
+<a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/"  title="使用KVC设置UIAlertAction按钮颜色的Crash">
  <strong>下一篇：</strong><br/> 
- <span>UICollectionView的一些问题
+ <span>使用KVC设置UIAlertAction按钮颜色的Crash
 </span>
 </a>
 </div>
@@ -195,7 +205,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/03/26/项目路由方案/" data-title="组件化之路:去模型化与路由" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/03/26/项目路由方案/"></div>
+	<div class="ds-thread" data-thread-key="2017/12/12/POST和GET/" data-title="POST和GET" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/12/12/POST和GET/"></div>
 </section>
 
 
@@ -205,7 +215,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#去模型化"><span class="toc-number">2.</span> <span class="toc-text">去模型化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用模型有什么好处"><span class="toc-number">2.1.</span> <span class="toc-text">使用模型有什么好处?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#去模型话有什么好处"><span class="toc-number">2.2.</span> <span class="toc-text">去模型话有什么好处?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存在的问题"><span class="toc-number">2.3.</span> <span class="toc-text">存在的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#解耦-路由"><span class="toc-number">3.</span> <span class="toc-text">解耦_路由</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#POST和GET"><span class="toc-number">1.</span> <span class="toc-text">POST和GET</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#POST安全"><span class="toc-number">1.1.</span> <span class="toc-text">POST安全?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GET相对POST最大的优势"><span class="toc-number">1.2.</span> <span class="toc-text">GET相对POST最大的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#何时使用GET"><span class="toc-number">1.3.</span> <span class="toc-text">何时使用GET</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.4.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
