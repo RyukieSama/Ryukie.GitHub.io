@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>FMDB与WCDB | RyukieSama`sDogHouse</title>
+    <title>网络分层的优点 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="FMDB与WCDB 参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,">
-<meta name="keywords" content="iOS,数据库">
+    <meta name="description" content="网络分层的优点 面试被问到了,记录下   各层之间是独立的 某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务 由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了   灵活性好 当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改">
+<meta name="keywords" content="iOS,网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FMDB与WCDB">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/07/03/FMDB与WCDB/index.html">
+<meta property="og:title" content="网络分层的优点">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/06/12/网络分层的优点/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="FMDB与WCDB 参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,">
-<meta property="og:updated_time" content="2019-07-03T12:41:10.554Z">
+<meta property="og:description" content="网络分层的优点 面试被问到了,记录下   各层之间是独立的 某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务 由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了   灵活性好 当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改">
+<meta property="og:updated_time" content="2019-07-12T08:06:48.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FMDB与WCDB">
-<meta name="twitter:description" content="FMDB与WCDB 参考:https://cloud.tencent.com/developer/article/1005718 微信团队http://blog.devtang.com/2012/04/22/use-fmdb/ 在iOS开发中使用FMDB  兼容性 都是基于SQLite的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具  性能 读写   SQLite的 速度已经很快了,">
+<meta name="twitter:title" content="网络分层的优点">
+<meta name="twitter:description" content="网络分层的优点 面试被问到了,记录下   各层之间是独立的 某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务 由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了   灵活性好 当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2018/07/03/FMDB与WCDB/" title="FMDB与WCDB" itemprop="url">FMDB与WCDB</a>
+      <a href="/Ryukie.GitHub.io/2019/06/12/网络分层的优点/" title="网络分层的优点" itemprop="url">网络分层的优点</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-07-03T07:33:36.000Z" itemprop="datePublished"> Published 2018-07-03</time>
+    <time datetime="2019-06-12T04:45:27.000Z" itemprop="datePublished"> Published 2019-06-12</time>
     
   </p>
 </header>
@@ -97,44 +97,45 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FMDB与WCDB"><span class="toc-number">1.</span> <span class="toc-text">FMDB与WCDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-number">1.1.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.3.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库升级"><span class="toc-number">1.4.</span> <span class="toc-text">数据库升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络分层的优点"><span class="toc-number">1.</span> <span class="toc-text">网络分层的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="FMDB与WCDB"><a href="#FMDB与WCDB" class="headerlink" title="FMDB与WCDB"></a>FMDB与WCDB</h1><blockquote>
-<p>参考:<br><a href="https://cloud.tencent.com/developer/article/1005718" target="_blank" rel="external">https://cloud.tencent.com/developer/article/1005718</a> 微信团队<br><a href="http://blog.devtang.com/2012/04/22/use-fmdb/" target="_blank" rel="external">http://blog.devtang.com/2012/04/22/use-fmdb/</a> 在iOS开发中使用FMDB</p>
+		<h1 id="网络分层的优点"><a href="#网络分层的优点" class="headerlink" title="网络分层的优点"></a>网络分层的优点</h1><blockquote>
+<p>面试被问到了,记录下</p>
 </blockquote>
-<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><ul>
-<li>都是基于<code>SQLite</code>的所有数据库是可以兼容的,迁移的话需要重新封装项目的数据库工具</li>
-</ul>
-<h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><ol>
-<li>读写</li>
-</ol>
 <ul>
-<li><code>SQLite</code>的 速度已经很快了,<code>FMDB</code>之做了最简单的封装,<code>WCDB</code>还做了ORM等封装,所以有了更多的步骤,性能稍劣于<code>FMDB</code>5%(官方给出的数据)<ul>
-<li>优于多携程读的优势,可以和<code>FMDB</code>持平了</li>
+<li>各层之间是独立的<ul>
+<li>某一层并不需要知道它的下一层是怎么实现的,而仅仅需要知道该层通过层间接口所提供的接口服务</li>
+<li>由于每一层间只实现相对独立的功能,因而可以将一个难以处理的复杂问题分解为若干个较容易处理的更小的问题,这样问题的复杂度就降低了</li>
 </ul>
 </li>
-<li>写操作通常是性能的瓶颈,做了针对性优化使<code>WCDB</code>写操作优于<code>FMDB</code>28%,批量写优于180%</li>
-<li>多线程读写优于<code>FMDB</code>62%</li>
-<li>多线程写<code>FMDB</code>直接返回错误<code>SQLITE_BUSY</code>,无法完成</li>
+<li>灵活性好<ul>
+<li>当某一层发生变化的时候只要层间关系保持不变,则这层的上下层均不受影响,此外,对某一层提供的服务还可以进行修改.当某一层提供的服务不再需要时,甚至可以将这层取消</li>
 </ul>
-<ol>
-<li>初始化</li>
-</ol>
-<ul>
-<li><code>SQLite</code>连接的初始化速度会随着数据库内表的数量增加而逐渐上升,<code>WCDB</code>也针对这个场景做了优化.相较于没有优化的<code>FMDB</code>,<code>WCDB</code>的初始化速度有107%的性能优势</li>
+</li>
+<li>结构上可分割开<ul>
+<li>各层都可以采用最合适的技术来实现</li>
 </ul>
-<h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><blockquote>
-<p>Object Relational Mapping</p>
+</li>
+<li>易于实现和维护<ul>
+<li>这种结构使得实现和调试一个庞大复杂的系统变得容易处理,因为整个系统已经被分解为若干个相对独立的子系统</li>
+</ul>
+</li>
+<li>能够促进标准化工作<ul>
+<li>因为每一层的功能机器提供的服务都已经有了明确的说明</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>注意</p>
+<blockquote>
+<p>分层是应该注意每一层的功能非常明确,若层数太少,会使得每一层协议太复杂<br>层数太多又会在描述和综述各功能的系统工程任务时遇到较多困难</p>
 </blockquote>
-<p>有了ORM开发维护成本大大降低</p>
-<h2 id="数据库升级"><a href="#数据库升级" class="headerlink" title="数据库升级"></a>数据库升级</h2><ul>
-<li><code>SQLite</code> 的数据库升级一直是一个比较繁杂的问题</li>
-<li>通常的做法是，开发者自行定义一个版本号，并保存下来。数据库创建时每次检查版本号，若版本号较低，则对其字段进行升级，并更新版本号。但在多个版本的增增减减之后，版本的处理逻辑会越来越复杂，甚至可能弄错表内哪些字段是新增的，哪些是废弃的</li>
-<li><code>WCDB</code>将数据库升级和<code>ORM</code>结合起来，对于需要增删改的字段，只需直接在<code>ORM</code>层面修改，并再次调用 <code>createTableAndIndexesOfName:withClass:</code>接口即可自动升级</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>与 <code>FMDB</code> 对比， <code>WCDB</code> 使得开发者可以写更少的代码，但能获得更高的性能。<br>开发者不需要额外关注数据库升级和多线程操作的问题。同时， <code>WCDB</code> 还提供了加密、统计、修复等功能。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p>《计算机网络（第五版）》</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -148,7 +149,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/数据库/">数据库</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/网络/">网络</a>
   </div>
 
 </div>
@@ -193,18 +194,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2018/08/12/纯Swift路由方案探究/" title="纯Swift路由方案探究">
+ <a href="/Ryukie.GitHub.io/2019/07/08/Swift5新特性/" title="Swift5新特性">
   <strong>上一篇：</strong><br/>
   <span>
-  纯Swift路由方案探究</span>
+  Swift5新特性</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2018/07/02/Swift-Optional实质/"  title="Swift-Optional实质">
+<a href="/Ryukie.GitHub.io/2019/06/08/直播技术相关/"  title="直播技术相关">
  <strong>下一篇：</strong><br/> 
- <span>Swift-Optional实质
+ <span>直播技术相关
 </span>
 </a>
 </div>
@@ -213,7 +214,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2018/07/03/FMDB与WCDB/" data-title="FMDB与WCDB" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/07/03/FMDB与WCDB/"></div>
+	<div class="ds-thread" data-thread-key="2019/06/12/网络分层的优点/" data-title="网络分层的优点" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/06/12/网络分层的优点/"></div>
 </section>
 
 
@@ -223,7 +224,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FMDB与WCDB"><span class="toc-number">1.</span> <span class="toc-text">FMDB与WCDB</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#兼容性"><span class="toc-number">1.1.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#性能"><span class="toc-number">1.2.</span> <span class="toc-text">性能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM"><span class="toc-number">1.3.</span> <span class="toc-text">ORM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库升级"><span class="toc-number">1.4.</span> <span class="toc-text">数据库升级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.5.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#网络分层的优点"><span class="toc-number">1.</span> <span class="toc-text">网络分层的优点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.1.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
