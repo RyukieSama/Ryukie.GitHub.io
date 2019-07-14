@@ -54,7 +54,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -70,7 +70,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -93,14 +93,14 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-08T14:40:15.000Z" itemprop="datePublished"> Published 2017-07-08</time>
+    <time datetime="2017-07-08T14:40:15.000Z" itemprop="datePublished"> 發表於 2017-07-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSURLConnection-和-NSURLSession"><span class="toc-number">1.</span> <span class="toc-text">NSURLConnection 和 NSURLSession</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-背景"><span class="toc-number">1.1.</span> <span class="toc-text">一: 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-NSURLSession-优点"><span class="toc-number">1.2.</span> <span class="toc-text">二: NSURLSession 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-NSURLConnection-vs-NSURLSession"><span class="toc-number">1.3.</span> <span class="toc-text">三: NSURLConnection vs NSURLSession</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-NSURLSession-API"><span class="toc-number">1.4.</span> <span class="toc-text">四: NSURLSession API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionConfiguration"><span class="toc-number">1.4.1.</span> <span class="toc-text">NSURLSessionConfiguration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionTask"><span class="toc-number">1.4.2.</span> <span class="toc-text">NSURLSessionTask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionDelegate"><span class="toc-number">1.4.3.</span> <span class="toc-text">NSURLSessionDelegate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-Session分类"><span class="toc-number">1.5.</span> <span class="toc-text">四: Session分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-后台传输"><span class="toc-number">1.6.</span> <span class="toc-text">五: 后台传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程安全"><span class="toc-number">1.7.</span> <span class="toc-text">线程安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.8.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
@@ -295,22 +295,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#NSURLConnection-和-NSURLSession"><span class="toc-number">1.</span> <span class="toc-text">NSURLConnection 和 NSURLSession</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-背景"><span class="toc-number">1.1.</span> <span class="toc-text">一: 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-NSURLSession-优点"><span class="toc-number">1.2.</span> <span class="toc-text">二: NSURLSession 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-NSURLConnection-vs-NSURLSession"><span class="toc-number">1.3.</span> <span class="toc-text">三: NSURLConnection vs NSURLSession</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-NSURLSession-API"><span class="toc-number">1.4.</span> <span class="toc-text">四: NSURLSession API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionConfiguration"><span class="toc-number">1.4.1.</span> <span class="toc-text">NSURLSessionConfiguration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionTask"><span class="toc-number">1.4.2.</span> <span class="toc-text">NSURLSessionTask</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NSURLSessionDelegate"><span class="toc-number">1.4.3.</span> <span class="toc-text">NSURLSessionDelegate</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-Session分类"><span class="toc-number">1.5.</span> <span class="toc-text">四: Session分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-后台传输"><span class="toc-number">1.6.</span> <span class="toc-text">五: 后台传输</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程安全"><span class="toc-number">1.7.</span> <span class="toc-text">线程安全</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.8.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -320,11 +320,11 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分類</p>
 		<ul>
 		
 		  
-			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>55</sup></a></li>
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>56</sup></a></li>
 		  
 		
 		</ul>
@@ -333,7 +333,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -353,19 +353,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>4</sup></a></li>
 			
 		
 			
@@ -373,11 +365,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
 			
 		
 			
@@ -385,19 +381,19 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>2</sup></a></li>
 			
 		
 			
@@ -405,11 +401,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/C语言/" title="C语言">C语言<sup>1</sup></a></li>
 			
 		
 			
@@ -421,7 +421,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
 </aside>
@@ -611,7 +611,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 

@@ -11,17 +11,19 @@
     
 
     
-    <meta name="description" content="UIWebView和WKWebView">
+    <meta name="description" content="UIWebView和WKWebView一: UIWebView的优缺点优点 支持缓存和NSURLProtocol拦截  缺点 内存泄露 加载大数据资源时内存占用大,耗电量高  二: WKWebView的优缺点优点 加载网页速度提升,内存占用低(UIWebView的1/3 ~ 1/4) 提供加载网页进度的属性 拥有高达60FPS滚动刷新率及内置手势 高效的App和web信息交换通道  缺点 没有缓存">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIWebView和WKWebView">
 <meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2018/12/08/UIWebView和WKWebView/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="UIWebView和WKWebView">
-<meta property="og:updated_time" content="2019-07-10T04:25:08.213Z">
+<meta property="og:description" content="UIWebView和WKWebView一: UIWebView的优缺点优点 支持缓存和NSURLProtocol拦截  缺点 内存泄露 加载大数据资源时内存占用大,耗电量高  二: WKWebView的优缺点优点 加载网页速度提升,内存占用低(UIWebView的1/3 ~ 1/4) 提供加载网页进度的属性 拥有高达60FPS滚动刷新率及内置手势 高效的App和web信息交换通道  缺点 没有缓存">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1200910-1039aa39914f2e79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/873">
+<meta property="og:updated_time" content="2019-07-12T11:24:34.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWebView和WKWebView">
-<meta name="twitter:description" content="UIWebView和WKWebView">
+<meta name="twitter:description" content="UIWebView和WKWebView一: UIWebView的优缺点优点 支持缓存和NSURLProtocol拦截  缺点 内存泄露 加载大数据资源时内存占用大,耗电量高  二: WKWebView的优缺点优点 加载网页速度提升,内存占用低(UIWebView的1/3 ~ 1/4) 提供加载网页进度的属性 拥有高达60FPS滚动刷新率及内置手势 高效的App和web信息交换通道  缺点 没有缓存">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1200910-1039aa39914f2e79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/873">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -49,7 +51,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +67,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -88,20 +90,79 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-12-08T14:51:12.000Z" itemprop="datePublished"> Published 2018-12-08</time>
+    <time datetime="2018-12-08T14:51:12.000Z" itemprop="datePublished"> 發表於 2018-12-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIWebView和WKWebView"><span class="toc-number">1.</span> <span class="toc-text">UIWebView和WKWebView</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIWebView和WKWebView"><span class="toc-number">1.</span> <span class="toc-text">UIWebView和WKWebView</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-UIWebView的优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一: UIWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-WKWebView的优缺点"><span class="toc-number">1.2.</span> <span class="toc-text">二: WKWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源代理"><span class="toc-number">1.2.3.</span> <span class="toc-text">资源代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Cookie"><span class="toc-number">1.3.</span> <span class="toc-text">三: Cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-跨域"><span class="toc-number">1.4.</span> <span class="toc-text">四: 跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="UIWebView和WKWebView"><a href="#UIWebView和WKWebView" class="headerlink" title="UIWebView和WKWebView"></a>UIWebView和WKWebView</h1>  
+		<h1 id="UIWebView和WKWebView"><a href="#UIWebView和WKWebView" class="headerlink" title="UIWebView和WKWebView"></a>UIWebView和WKWebView</h1><h2 id="一-UIWebView的优缺点"><a href="#一-UIWebView的优缺点" class="headerlink" title="一: UIWebView的优缺点"></a>一: UIWebView的优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>支持缓存和NSURLProtocol拦截</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>内存泄露</li>
+<li>加载大数据资源时内存占用大,耗电量高</li>
+</ul>
+<h2 id="二-WKWebView的优缺点"><a href="#二-WKWebView的优缺点" class="headerlink" title="二: WKWebView的优缺点"></a>二: WKWebView的优缺点</h2><h3 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>加载网页速度提升,内存占用低(UIWebView的1/3 ~ 1/4)</li>
+<li>提供加载网页进度的属性</li>
+<li>拥有高达60FPS滚动刷新率及内置手势</li>
+<li>高效的App和web信息交换通道</li>
+</ul>
+<h3 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>没有缓存(WKWebsiteDataStore - iOS9之后)</li>
+<li>不支持NSURLProtocol拦截(可通过私有方法实现桥接)<ul>
+<li>拦截的POST数据不完整基本等于没用</li>
+</ul>
+</li>
+</ul>
+<h3 id="资源代理"><a href="#资源代理" class="headerlink" title="资源代理"></a>资源代理</h3><ul>
+<li>iOS11开始 <code>WKURLSchemeHandler</code> 可用来加载自定义资源</li>
+<li>注意：<ul>
+<li>setURLSchemeHandler注册时机只能在WKWebView创建WKWebViewConfiguration时注册。</li>
+<li>WKWebView 只允许开发者拦截自定义 Scheme 的请求，不允许拦截 “http”、“https”、“ftp”、“file” 等的请求，否则会crash。</li>
+<li>WKWebView加载网页前，要在user-agent添加个标志，H5遇到这个标识就使用customScheme,否则就是用原来的http或https。</li>
+</ul>
+</li>
+</ul>
+<h2 id="三-Cookie"><a href="#三-Cookie" class="headerlink" title="三: Cookie"></a>三: Cookie</h2><ul>
+<li>WKWebView 上请求不会自动携带 Cookie ，解决方案是 loadRequest 时，从 NSHTTPCookieStorage 中获取对应的 cookie，通过 WKUserScript 设置到 WKWebView 界面中的 document.cookies 中，</li>
+<li>注意的是，注入 cookie 的脚本执行时机需要设置为 WKUserScriptInjectionTimeAtDocumentStart 。</li>
+</ul>
+<h2 id="四-跨域"><a href="#四-跨域" class="headerlink" title="四: 跨域"></a>四: 跨域</h2><ul>
+<li><p>WebKit框架对跨域进行了安全性检查限制，不允许跨域，比如从一个 <code>HTTP</code> 页对 <code>HTTPS</code> 发起请求是无效的(Safari支持)</p>
+</li>
+<li><p>解决办法</p>
+<ul>
+<li>在该方法中特殊处理</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-</span> (void)<span class="selector-tag">webView</span><span class="selector-pseudo">:(WKWebView</span> *)<span class="selector-tag">webView</span> <span class="selector-tag">decidePolicyForNavigationAction</span><span class="selector-pseudo">:(WKNavigationAction</span> *)<span class="selector-tag">navigationAction</span> <span class="selector-tag">decisionHandler</span><span class="selector-pseudo">:(void</span> (^)(WKNavigationActionPolicy))<span class="selector-tag">decisionHandler</span>;</div></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/1200910-1039aa39914f2e79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/873" alt=""></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.jianshu.com/p/90a90bd13aac" target="_blank" rel="external">https://www.jianshu.com/p/90a90bd13aac</a></p>
+<p>iOS App秒开H5优化总结</p>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA5NzMwODI0MA==&amp;mid=2647762931&amp;idx=1&amp;sn=ce6e47875d8d278110fca1f18fec6f28&amp;chksm=8887dcccbff055da059008e463bb26829dbb94ad7b94d1bf7f70231060498388832fc7f3d75c&amp;scene=21#wechat_redirect" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzA5NzMwODI0MA==&amp;mid=2647762931&amp;idx=1&amp;sn=ce6e47875d8d278110fca1f18fec6f28&amp;chksm=8887dcccbff055da059008e463bb26829dbb94ad7b94d1bf7f70231060498388832fc7f3d75c&amp;scene=21#wechat_redirect</a></p>
+</blockquote>
+<p>iOS App秒开H5实战总结</p>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s/1Rfizwcn9EV2rby0btSMaw" target="_blank" rel="external">https://mp.weixin.qq.com/s/1Rfizwcn9EV2rby0btSMaw</a> </p>
+</blockquote>
+<p>WKWebVIew那些坑</p>
+<blockquote>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=2653578513&amp;idx=1&amp;sn=961bf5394eecde40a43060550b81b0bb&amp;scene=21#wechat_redirect" target="_blank" rel="external">https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=2653578513&amp;idx=1&amp;sn=961bf5394eecde40a43060550b81b0bb&amp;scene=21#wechat_redirect</a> </p>
+</blockquote>
+</blockquote>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -184,22 +245,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIWebView和WKWebView"><span class="toc-number">1.</span> <span class="toc-text">UIWebView和WKWebView</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIWebView和WKWebView"><span class="toc-number">1.</span> <span class="toc-text">UIWebView和WKWebView</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-UIWebView的优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一: UIWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-WKWebView的优缺点"><span class="toc-number">1.2.</span> <span class="toc-text">二: WKWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源代理"><span class="toc-number">1.2.3.</span> <span class="toc-text">资源代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Cookie"><span class="toc-number">1.3.</span> <span class="toc-text">三: Cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-跨域"><span class="toc-number">1.4.</span> <span class="toc-text">四: 跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="github-card">
-<p class="asidetitle">Github Card</p>
+<p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
 <script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
@@ -209,11 +270,11 @@
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分類</p>
 		<ul>
 		
 		  
-			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>55</sup></a></li>
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>56</sup></a></li>
 		  
 		
 		</ul>
@@ -222,7 +283,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
@@ -242,19 +303,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>4</sup></a></li>
-			
-		
-			
 				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/多线程/" title="多线程">多线程<sup>4</sup></a></li>
 			
 		
 			
@@ -262,11 +315,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
 			
 		
 			
@@ -274,19 +331,19 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>2</sup></a></li>
 			
 		
 			
@@ -294,11 +351,15 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/C语言/" title="C语言">C语言<sup>1</sup></a></li>
 			
 		
 			
@@ -310,7 +371,7 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
 </aside>
@@ -500,7 +561,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 

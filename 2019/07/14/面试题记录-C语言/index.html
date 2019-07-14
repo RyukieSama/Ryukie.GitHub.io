@@ -4,19 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>RyukieSama`sDogHouse</title>
+    <title>面试题记录-C语言 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="RyukieSama`sDogHouse">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/page/4/index.html">
+    <meta name="description" content="面试题记录-C语言001_int ptr=(int )(&amp;amp;a+1)下面的输出结果是什么? 123456int main()&amp;#123;	int a[5]=&amp;#123;1,2,3,4,5&amp;#125;;	int *ptr=(int *)(&amp;amp;a+1);	printf(&quot;%d,%d\n&quot;,*(a+1),*(ptr-1));&amp;#125;  *(a+1) 这里吧a当成一个指针 a+1 = a">
+<meta name="keywords" content="面试,C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题记录-C语言">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/14/面试题记录-C语言/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
+<meta property="og:description" content="面试题记录-C语言001_int ptr=(int )(&amp;amp;a+1)下面的输出结果是什么? 123456int main()&amp;#123;	int a[5]=&amp;#123;1,2,3,4,5&amp;#125;;	int *ptr=(int *)(&amp;amp;a+1);	printf(&quot;%d,%d\n&quot;,*(a+1),*(ptr-1));&amp;#125;  *(a+1) 这里吧a当成一个指针 a+1 = a">
+<meta property="og:updated_time" content="2019-07-14T12:43:35.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RyukieSama`sDogHouse">
+<meta name="twitter:title" content="面试题记录-C语言">
+<meta name="twitter:description" content="面试题记录-C语言001_int ptr=(int )(&amp;amp;a+1)下面的输出结果是什么? 123456int main()&amp;#123;	int a[5]=&amp;#123;1,2,3,4,5&amp;#125;;	int *ptr=(int *)(&amp;amp;a+1);	printf(&quot;%d,%d\n&quot;,*(a+1),*(ptr-1));&amp;#125;  *(a+1) 这里吧a当成一个指针 a+1 = a">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -70,271 +75,142 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2018/01/11/NSTimer与GCD/" title="NSTimer与GCD" itemprop="url">
-  
-    <h1 itemprop="name">NSTimer与GCD</h1>
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-     
-           <p itemprop="description" >NSTimer与GCD一: 常用延时调用的方式
-NSObject的performSelector…
-实际是在当前线程创建了一个Timer去执行任务
-
-
-NSTimer
-+timerWithTimeInterval
-+scheduledTimerWithTimeInterval
-
-</p>
-        
+      <a href="/Ryukie.GitHub.io/2019/07/14/面试题记录-C语言/" title="面试题记录-C语言" itemprop="url">面试题记录-C语言</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-14T12:32:22.000Z" itemprop="datePublished"> 發表於 2019-07-14</time>
     
-    <time datetime="2018-01-11T04:00:08.000Z" itemprop="datePublished">2018-01-11</time>
-  </a>
-</section>
-
-
-
-
-
-
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试题记录-C语言"><span class="toc-number">1.</span> <span class="toc-text">面试题记录-C语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#001-int-ptr-int-amp-a-1"><span class="toc-number">1.1.</span> <span class="toc-text">001_int ptr=(int )(&a+1)</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="面试题记录-C语言"><a href="#面试题记录-C语言" class="headerlink" title="面试题记录-C语言"></a>面试题记录-C语言</h1><h2 id="001-int-ptr-int-amp-a-1"><a href="#001-int-ptr-int-amp-a-1" class="headerlink" title="001_int ptr=(int )(&amp;a+1)"></a>001_int <em>ptr=(int </em>)(&amp;a+1)</h2><p>下面的输出结果是什么?</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int a[<span class="number">5</span>]=&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</div><div class="line">	int *ptr=(int *)(&amp;a+<span class="number">1</span>);</div><div class="line">	printf(<span class="string">"%d,%d<span class="subst">\n</span>"</span>,*(a+<span class="number">1</span>),*(ptr<span class="number">-1</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>*(a+1)<ul>
+<li>这里吧<code>a</code>当成一个指针</li>
+<li>a+1 = a + sizeof(int)</li>
+<li><code>a+1</code>指向<code>a</code>的下一个整形地址即 <code>&amp;a[1]</code></li>
+</ul>
+</li>
+<li>(&amp;a+1)<ul>
+<li>先获取a的地址</li>
+<li><code>+1</code>再获取下一个与<code>a</code>同类型(<code>int[5]</code>)的相邻地址</li>
+<li>&amp;a+1 = &amp;a + sizeof(a)</li>
+<li>即&amp;a[5],a最后一个元素的下一个地址</li>
+</ul>
+</li>
+<li>*(ptr-1)<ul>
+<li>同*(a+1)原理</li>
+<li>指向了&amp;a[5]前一个元素地址</li>
+<li>即&amp;a[4]</li>
+</ul>
+</li>
+<li>结果<ul>
+<li>2,5</li>
+</ul>
+</li>
+</ul>
   
-<section class="post" itemscope itemprop="blogitem">
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
+
+  <div class="article-tags">
   
-    <a href="/Ryukie.GitHub.io/2017/12/12/POST和GET/" title="POST和GET" itemprop="url">
-  
-    <h1 itemprop="name">POST和GET</h1>
-    
-     
-           <p itemprop="description" >POST和GET
-POST安全?
-其实也只是一点点罢了..
-
-
-get请求的URL会被缓存在浏览器及Web服务器日志里,可能泄露
-POST没有记录,只要数据服务器不被黑就安全
-抓包的话GG(非HTTPS)
-
-GET相对POST最大的优势可以手输URL
-何时使用GET
-请求中的UR</p>
-        
-    
-    <time datetime="2017-12-12T04:14:20.000Z" itemprop="datePublished">2017-12-12</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/10/31/使用KVC设置UIAlertAction按钮颜色的Crash/" title="使用KVC设置UIAlertAction按钮颜色的Crash" itemprop="url">
-  
-    <h1 itemprop="name">使用KVC设置UIAlertAction按钮颜色的Crash</h1>
-    
-     
-           <p itemprop="description" >使用KVC设置UIAlertAction按钮颜色的Crash12345678=&amp;gt; Start [&amp;lt;UIAlertAction 0x1702b63e0&amp;gt; setValue:forUndefinedKey:]: this class is not key value</p>
-        
-    
-    <time datetime="2017-10-31T15:39:48.000Z" itemprop="datePublished">2017-10-31</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/10/17/Storyboard中UnwindSegue的使用/" title="Storyboard中UnwindSegue的使用" itemprop="url">
-  
-    <h1 itemprop="name">Storyboard中UnwindSegue的使用</h1>
-    
-     
-           <p itemprop="description" >Storyboard中UnwindSegue的使用在最下层控制器中添加 unwind segue 的 IBAction在一系列跳转关系的控制器中的根控制器中添加一个方法如下图,我就该在红框控制器中添加
-之后在该控制器后续关联的控制器中点击 exit 可以看到这个 segue 了
-</p>
-        
-    
-    <time datetime="2017-10-17T09:35:02.000Z" itemprop="datePublished">2017-10-17</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/09/28/iOS-使用TTF字体/" title="iOS 使用TTF字体" itemprop="url">
-  
-    <h1 itemprop="name">iOS 使用TTF字体</h1>
-    
-     
-           <p itemprop="description" >iOS 使用TTF字体在项目的 Info.plist 中添加 Fonts provided by application 在其中填入字体文件名
-
-
-
-可以通过下面的方式通过 fontName 设置 font
-
-1234567891011let familyNames = UIFo</p>
-        
-    
-    <time datetime="2017-09-28T14:04:06.000Z" itemprop="datePublished">2017-09-28</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/08/16/Node-js-StudyNotes-02/" title="Node-js-StudyNotes-02" itemprop="url">
-  
-    <h1 itemprop="name">Node-js-StudyNotes-02</h1>
-    
-     
-           <p itemprop="description" >[TOC]
-Node.js 学习笔记02全局严格模式1node --use_strict xx.js
-模块系统优先级Node.js的require方法的文件查找策略如下:
-
-由于Nodejs中存在4类模块(原生模块和3种文件模块),尽管require方法极其简单, 但是内部的加载</p>
-        
-    
-    <time datetime="2017-08-16T07:28:45.000Z" itemprop="datePublished">2017-08-16</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/08/15/Node-js-StudyNotes-01/" title="Nodejs StudyNotes_01" itemprop="url">
-  
-    <h1 itemprop="name">Nodejs StudyNotes_01</h1>
-    
-     
-           <p itemprop="description" >[TOC]
-Node.js 学习笔记01
-最近开始学习 Node.js 了为了给自己的游戏做服务本来就是个懒人…不喜欢写东西还是要逼自己一把了
-
-Node.js 事件循环Node.js是单进程应用程序,但是通过事件和回调支持并发,所以性能非常高.每一个API都是异步的,并作为一个</p>
-        
-    
-    <time datetime="2017-08-14T16:25:00.000Z" itemprop="datePublished">2017-08-15</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/07/08/图片格式-WebP/" title="图片格式-WebP" itemprop="url">
-  
-    <h1 itemprop="name">图片格式-WebP</h1>
-    
-     
-           <p itemprop="description" >图片格式-WebP
-Google出品，Android原生支持，iOS需要单独适配如SD和Kinfisher
-基于VP8编码
-比JPEG小40+
-有损 无损都有
-PNG转
-PNG 转 WebP 的压缩率要高于 PNG 原图压缩率，同样支持有损与无损压缩
-转换后的 WebP 体积大幅</p>
-        
-    
-    <time datetime="2017-07-08T14:53:12.000Z" itemprop="datePublished">2017-07-08</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/07/08/NSURLConnection-和-NSURLSession/" title="NSURLConnection 和 NSURLSession" itemprop="url">
-  
-    <h1 itemprop="name">NSURLConnection 和 NSURLSession</h1>
-    
-     
-           <p itemprop="description" >NSURLConnection 和 NSURLSession
-AFNetworking2.0-&amp;gt;3.0 用NSURLSession替换了NSURLConnection
-
-一: 背景
-iOS早期版本提供了了NSURLConnection来执行网络请求.应用开发人员需要管理链接</p>
-        
-    
-    <time datetime="2017-07-08T14:40:15.000Z" itemprop="datePublished">2017-07-08</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/Ryukie.GitHub.io/2017/06/18/iOS-weak实现原理/" title="iOS-weak实现原理" itemprop="url">
-  
-    <h1 itemprop="name">iOS-weak实现原理</h1>
-    
-     
-           <p itemprop="description" >iOS-weak实现原理描述
-系统维护了一个hash表,
-Key是所指对象的地址,
-Value是weak指针的地址数组
-弱引用,应用对象的引用计数不会+1
-并在对象被释放的时候自动设为nil,这是和assign本质的区别,用assign修饰对象的话会发生野指针的问题
-
-
-
-实现过</p>
-        
-    
-    <time datetime="2017-06-18T07:22:41.000Z" itemprop="datePublished">2017-06-18</time>
-  </a>
-</section>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/Ryukie.GitHub.io/page/3/"><span></span>Prev</a><a class="page-number" href="/Ryukie.GitHub.io/">1</a><a class="page-number" href="/Ryukie.GitHub.io/page/2/">2</a><a class="page-number" href="/Ryukie.GitHub.io/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/Ryukie.GitHub.io/page/5/">5</a><a class="page-number" href="/Ryukie.GitHub.io/page/6/">6</a><a class="extend next" rel="next" href="/Ryukie.GitHub.io/page/5/">Next<span></span></a>
-  </nav>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/面试/">面试</a><a href="/Ryukie.GitHub.io/tags/C语言/">C语言</a>
+  </div>
 
 </div>
+
+
+
+	<div class="article-share" id="share">
+	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+2128469" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/Ryukie.GitHub.io/2019/07/12/数据库主键和外键/"  title="数据库主键和外键">
+ <strong>下一篇：</strong><br/> 
+ <span>数据库主键和外键
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2019/07/14/面试题记录-C语言/" data-title="面试题记录-C语言" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/14/面试题记录-C语言/"></div>
+</section>
+
+
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#面试题记录-C语言"><span class="toc-number">1.</span> <span class="toc-text">面试题记录-C语言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#001-int-ptr-int-amp-a-1"><span class="toc-number">1.1.</span> <span class="toc-text">001_int ptr=(int )(&a+1)</span></a></li></ol></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
@@ -544,14 +420,54 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
 
 
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"Ryuk"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
 
 
 
@@ -620,4 +536,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
