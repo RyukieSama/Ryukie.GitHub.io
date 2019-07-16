@@ -42,7 +42,7 @@
 			
 			<div id="textlogo">
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
-				<h2 class="blog-motto">一只会撸代码的单身狗的幸福生活</h2>
+				<h2 class="blog-motto">一只狗的幸福生活</h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
@@ -75,18 +75,22 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/04/08/CodeReading-01-YYModel/" title="CodeReading-01-YYModel" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/07/08/图片格式-WebP/" title="图片格式-WebP" itemprop="url">
   
-    <h1 itemprop="name">CodeReading-01-YYModel</h1>
+    <h1 itemprop="name">图片格式-WebP</h1>
     
      
-           <p itemprop="description" >CodeReading-01-YYModel
-感觉值对于优秀源码的学习阅读不是很够,开个坑,希望自己坚持下去YY作者写的相关文章必看: https://blog.ibireme.com/2015/10/23/ios_model_framework_benchmark/
-
-结构加上</p>
+           <p itemprop="description" >图片格式-WebP
+Google出品，Android原生支持，iOS需要单独适配如SD和Kinfisher
+基于VP8编码
+比JPEG小40+
+有损 无损都有
+PNG转
+PNG 转 WebP 的压缩率要高于 PNG 原图压缩率，同样支持有损与无损压缩
+转换后的 WebP 体积大幅</p>
         
     
-    <time datetime="2018-04-08T01:40:17.000Z" itemprop="datePublished">2018-04-08</time>
+    <time datetime="2017-07-08T14:53:12.000Z" itemprop="datePublished">2017-07-08</time>
   </a>
 </section>
 
@@ -98,19 +102,19 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/04/03/NSInteger-和/" title="NSInteger 和 %@" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/07/08/NSURLConnection-和-NSURLSession/" title="NSURLConnection 和 NSURLSession" itemprop="url">
   
-    <h1 itemprop="name">NSInteger 和 %@</h1>
+    <h1 itemprop="name">NSURLConnection 和 NSURLSession</h1>
     
      
-           <p itemprop="description" >NSInteger 和 %@12NSInteger age = 12;NSString *str = age ? [NSString stringWithFormat:@&quot;%@&quot;,age] : @&quot;&quot;;
+           <p itemprop="description" >NSURLConnection 和 NSURLSession
+AFNetworking2.0-&amp;gt;3.0 用NSURLSession替换了NSURLConnection
 
-上面代码看起来问题在%@,但最大的问题还在后面.
-运行起来会崩溃
-这里用%</p>
+一: 背景
+iOS早期版本提供了了NSURLConnection来执行网络请求.应用开发人员需要管理链接</p>
         
     
-    <time datetime="2018-04-03T12:40:20.000Z" itemprop="datePublished">2018-04-03</time>
+    <time datetime="2017-07-08T14:40:15.000Z" itemprop="datePublished">2017-07-08</time>
   </a>
 </section>
 
@@ -122,17 +126,24 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/03/26/项目路由方案/" title="组件化之路:去模型化与路由" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/06/18/iOS-weak实现原理/" title="iOS-weak实现原理" itemprop="url">
   
-    <h1 itemprop="name">组件化之路:去模型化与路由</h1>
+    <h1 itemprop="name">iOS-weak实现原理</h1>
     
      
-           <p itemprop="description" >先吐槽下…去年年底来到新公司, 公司项目代码有四五年了, 经手了十几号人.规范什么的基本不存在, 耦合混乱, 垃圾奇葩代码遍地.印象最深的是UI让改一个到处都有的一个样式的按钮的颜色.MMP改的我要死不活的…连基本的复用都不存在过年前准备对项目进行组件化重构
+           <p itemprop="description" >iOS-weak实现原理描述
+系统维护了一个hash表,
+Key是所指对象的地址,
+Value是weak指针的地址数组
+弱引用,应用对象的引用计数不会+1
+并在对象被释放的时候自动设为nil,这是和assign本质的区别,用assign修饰对象的话会发生野指针的问题
 
-目标这次组件化方案</p>
+
+
+实现过</p>
         
     
-    <time datetime="2018-03-26T02:44:35.000Z" itemprop="datePublished">2018-03-26</time>
+    <time datetime="2017-06-18T07:22:41.000Z" itemprop="datePublished">2017-06-18</time>
   </a>
 </section>
 
@@ -144,17 +155,21 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/03/26/UICollectionView的一些问题/" title="UICollectionView的一些问题" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/06/08/iOS-RYPhotosBrowser/" title="iOS_RYPhotosBrowser" itemprop="url">
   
-    <h1 itemprop="name">UICollectionView的一些问题</h1>
+    <h1 itemprop="name">iOS_RYPhotosBrowser</h1>
     
      
-           <p itemprop="description" >UICollectionView的一些问题崩溃 [UICollectionViewData validateLayoutInRect:]在部分系统上数据源有变更(例如清空了reloadData)的情况下会发生如上crash
+           <p itemprop="description" >RYPhotosBrowser亮点
+可高度自定义的图片浏览控件
+支持多种图片传入类型:  本地文件路径 网络图片NSString  UIImage对象或者三者混合
+基于SDWebImage4.0
+可自定义加载阶段HUD
 
-参考链接:https://stackoverflow.</p>
+导入方式iOS 9+pod ‘RYPhotosBrowse</p>
         
     
-    <time datetime="2018-03-26T02:29:57.000Z" itemprop="datePublished">2018-03-26</time>
+    <time datetime="2017-06-08T05:29:17.000Z" itemprop="datePublished">2017-06-08</time>
   </a>
 </section>
 
@@ -166,18 +181,19 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/02/07/R-Swift-安全的资源组织方案forSwift/" title="R.Swift-安全的资源组织方案forSwift" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/06/05/RYImagePicker-iOS图片视频选择器/" title="RYImagePicker_iOS图片视频选择器" itemprop="url">
   
-    <h1 itemprop="name">R.Swift-安全的资源组织方案forSwift</h1>
+    <h1 itemprop="name">RYImagePicker_iOS图片视频选择器</h1>
     
      
-           <p itemprop="description" >R.Swift-安全的资源组织方案forSwift
-官方链接: https://github.com/mac-cain13/R.swift参考文章: 
+           <p itemprop="description" >RYImagePicker_iOS图片视频选择器导入:pod &amp;#39;RYImagePicker&amp;#39;
+照片选择器支持图片 视频选择
 
-http://swifter.tips/safe-resource/https://www.jianshu.com/p/623</p>
+
+配置:1234567891011121314151617181920/** 最大可选图片数量  默认9张   设置为0 的话也是9张 *</p>
         
     
-    <time datetime="2018-02-07T03:21:33.000Z" itemprop="datePublished">2018-02-07</time>
+    <time datetime="2017-06-05T02:30:52.000Z" itemprop="datePublished">2017-06-05</time>
   </a>
 </section>
 
@@ -189,18 +205,20 @@ http://swifter.tips/safe-resource/https://www.jianshu.com/p/623</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/02/06/Swift使用Carthage替代CocoaPods/" title="Swift使用Carthage替代CocoaPods" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/06/02/RYImagesScroller-iOS高度自定义的图片轮播器/" title="RYImagesScroller_iOS高度自定义的图片轮播器" itemprop="url">
   
-    <h1 itemprop="name">Swift使用Carthage替代CocoaPods</h1>
+    <h1 itemprop="name">RYImagesScroller_iOS高度自定义的图片轮播器</h1>
     
      
-           <p itemprop="description" >Swift使用Carthage替代CocoaPods
-官方地址: https://github.com/Carthage/Carthage参考文章: https://www.jianshu.com/p/76b9ff09f99c
+           <p itemprop="description" >RYImagesScroller_iOS高度自定义的图片轮播器
+之前在项目中遇到了需要图片和视频混合轮播的需求但是没找到合适的轮播器于是就自己撸了一个
 
-集成通过 Homebrew 安装1brew ins</p>
+项目地址: https://github.com/RyukieSama/RYImagesScroller
+图片轮播
+支持自定义</p>
         
     
-    <time datetime="2018-02-06T09:46:36.000Z" itemprop="datePublished">2018-02-06</time>
+    <time datetime="2017-06-02T08:34:34.000Z" itemprop="datePublished">2017-06-02</time>
   </a>
 </section>
 
@@ -212,19 +230,16 @@ http://swifter.tips/safe-resource/https://www.jianshu.com/p/623</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/02/06/SwiftPackage使用/" title="SwiftPackage使用" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/05/31/UI调试-UIDebuggingInformationOverlay/" title="UI调试_UIDebuggingInformationOverlay" itemprop="url">
   
-    <h1 itemprop="name">SwiftPackage使用</h1>
+    <h1 itemprop="name">UI调试_UIDebuggingInformationOverlay</h1>
     
      
-           <p itemprop="description" >SwiftPackage使用
-官方文档: https://github.com/apple/swift-package-manager当前不支持 iOS, watchOS, or tvOS.
-
-查看当前版本1swift package --version
-初始化项目先在目标文件夹</p>
+           <p itemprop="description" >UI调试_UIDebuggingInformationOverlay
+最近看到一篇关于使用Apple私有API进行UI调试的文章(http://ryanipete.com/blog/ios/swift/objective-c/uidebugginginformationoverl</p>
         
     
-    <time datetime="2018-02-06T08:57:02.000Z" itemprop="datePublished">2018-02-06</time>
+    <time datetime="2017-05-31T08:00:19.000Z" itemprop="datePublished">2017-05-31</time>
   </a>
 </section>
 
@@ -236,21 +251,15 @@ http://swifter.tips/safe-resource/https://www.jianshu.com/p/623</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/01/29/OC老项目Swift混编的一些坑/" title="OC老项目Swift混编的一些坑" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/03/30/隐藏导航栏下面的线/" title="隐藏导航栏下面的线" itemprop="url">
   
-    <h1 itemprop="name">OC老项目Swift混编的一些坑</h1>
+    <h1 itemprop="name">隐藏导航栏下面的线</h1>
     
      
-           <p itemprop="description" >OC老项目Swift混编的一些坑01: 桥接后 Unknown type name 问题
-场景: 在桥接文件中添加了某OC类的引用 编译时报错
-
-1#import &quot;XXX.h&quot;
-
-在桥接文件中添加CoreLocation库的引用依旧出现上述错误
-12#import &quot;XXX.h</p>
+           <p itemprop="description" >隐藏导航栏下面的线12[self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];[self.navigationCont</p>
         
     
-    <time datetime="2018-01-29T02:25:33.000Z" itemprop="datePublished">2018-01-29</time>
+    <time datetime="2017-03-30T08:48:29.000Z" itemprop="datePublished">2017-03-30</time>
   </a>
 </section>
 
@@ -262,19 +271,18 @@ http://swifter.tips/safe-resource/https://www.jianshu.com/p/623</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/01/24/OC项目中加入Swift混编/" title="OC项目中加入Swift混编" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2017/03/24/UIWebView自适应高度/" title="UIWebView自适应高度" itemprop="url">
   
-    <h1 itemprop="name">OC项目中加入Swift混编</h1>
+    <h1 itemprop="name">UIWebView自适应高度</h1>
     
      
-           <p itemprop="description" >OC项目中加入Swift混编
-年后项目准备引入 Swift新的模块需求使用 Swift 编写需要支持与 OC 与 Swift 的混编这里描述一下前期准备的工作
+           <p itemprop="description" >场景
+最近项目中遇到Native页面内需要内嵌H5页面的需求内嵌的H5页面用来暂时运营后台动态配置的一些运营内容需要自适应H5内容的高度
 
-Project_defines module 配置
-Project_product module name 配置这里的</p>
+思路思路一: webViewDidFinishLoad初遇这个问题时我首先想到的是在webViewDidFinishLoad 这个代理方法中</p>
         
     
-    <time datetime="2018-01-24T01:17:15.000Z" itemprop="datePublished">2018-01-24</time>
+    <time datetime="2017-03-24T08:02:31.000Z" itemprop="datePublished">2017-03-24</time>
   </a>
 </section>
 
@@ -286,24 +294,312 @@ Project_product module name 配置这里的</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/Ryukie.GitHub.io/2018/01/11/NSTimer与GCD/" title="NSTimer与GCD" itemprop="url">
+    <a href="/Ryukie.GitHub.io/2016/09/11/load与-initialize/" title="+load与+initialize" itemprop="url">
   
-    <h1 itemprop="name">NSTimer与GCD</h1>
+    <h1 itemprop="name">+load与+initialize</h1>
     
      
-           <p itemprop="description" >NSTimer与GCD一: 常用延时调用的方式
-NSObject的performSelector…
-实际是在当前线程创建了一个Timer去执行任务
+           <p itemprop="description" >+load与+initialize+ load
+当类对象被引入时,runtime会向每一个类对象
+load方法会在每一个类甚至分类被引入时仅调用一次.
+调用的顺序是:
+父类优先于子类,子类优先于分类
 
 
-NSTimer
-+timerWithTimeInterval
-+scheduledTimerWithTimeInterval
-
-</p>
+load方法不会被自动继承
+子类中没有+load方法时系统不会多次调用父类+</p>
         
     
-    <time datetime="2018-01-11T04:00:08.000Z" itemprop="datePublished">2018-01-11</time>
+    <time datetime="2016-09-11T08:14:17.000Z" itemprop="datePublished">2016-09-11</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2016/03/21/autoreleasepool/" title="AutoreleasePool" itemprop="url">
+  
+    <h1 itemprop="name">AutoreleasePool</h1>
+    
+     
+           <p itemprop="description" >自动释放池
+
+系统
+系统默认会在 main.m 文件中创建一个自动释放池。。。
+
+
+手动
+例如在for循环中产生大量无法及时释放的临时变量12345for (int i = 0; i &amp;lt; largeNumber; ++i) &amp;#123;	NSString *str = @&quot;</p>
+        
+    
+    <time datetime="2016-03-20T17:27:31.000Z" itemprop="datePublished">2016-03-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/10/12/死锁/" title="死锁" itemprop="url">
+  
+    <h1 itemprop="name">死锁</h1>
+    
+     
+           <p itemprop="description" >死锁1234567NSLog(@&quot;之前 - %@&quot;, [NSThread currentThread]);  dispatch_sync(dispatch_get_main_queue(), ^&amp;#123;       NSLog(@&quot;sync - %@&quot;, [NSThread </p>
+        
+    
+    <time datetime="2015-10-12T08:27:13.000Z" itemprop="datePublished">2015-10-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/10/12/iOS多线程方案/" title="iOS多线程方案" itemprop="url">
+  
+    <h1 itemprop="name">iOS多线程方案</h1>
+    
+     
+           <p itemprop="description" >iOS多线程方案一: 总览
+
+pthread
+几乎不用
+C语言的,全部由程序员自己管理
+
+
+NSThread
+程序员自己管理线程,用得少
+
+
+GCD
+自动管理
+
+
+NSOperation
+基于GCD
+比GCD多了一些使用功能
+面向对象
+
+
+
+二: GCD特点
+GCD会自动是用更多</p>
+        
+    
+    <time datetime="2015-10-12T03:02:28.000Z" itemprop="datePublished">2015-10-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/10/04/Runtime-MethodSwizzling的问题/" title="Runtime-MethodSwizzling的问题" itemprop="url">
+  
+    <h1 itemprop="name">Runtime-MethodSwizzling的问题</h1>
+    
+     
+           <p itemprop="description" >Runtime-MethodSwizzling的问题
+使用 Method Swizzling 编程就好比切菜时使用锋利的刀，一些人因为担心切到自己所以害怕锋利的刀具，可是事实上，使用钝刀往往更容易出事，而利刀更为安全。Method swizzling 可以帮助我们写出更好的，更高</p>
+        
+    
+    <time datetime="2015-10-04T07:31:06.000Z" itemprop="datePublished">2015-10-04</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/08/08/Runtime-Class/" title="Runtime-Class" itemprop="url">
+  
+    <h1 itemprop="name">Runtime-Class</h1>
+    
+     
+           <p itemprop="description" >Runtime-Class</p>
+        
+    
+    <time datetime="2015-08-07T17:17:44.000Z" itemprop="datePublished">2015-08-08</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/07/04/时间复杂度-空间复杂度/" title="时间复杂度&amp;空间复杂度" itemprop="url">
+  
+    <h1 itemprop="name">时间复杂度&amp;空间复杂度</h1>
+    
+     
+           <p itemprop="description" >0.时间复杂度与空间复杂度
+我们衡量算法的优劣主要通过两个维度时间``空间,而这两个维度对应的就是时间复杂度``空间复杂度.但鱼和熊掌不可兼得,我们只能在这两者间取得一个合适的平衡点
+
+1.时间复杂度
+算法所需要的时间工作量
+
+
+标记公式
+T(n) = O(n)
+
+
+
+常见的时间</p>
+        
+    
+    <time datetime="2015-07-04T02:42:26.000Z" itemprop="datePublished">2015-07-04</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/04/08/iOS-网络理解/" title="iOS-网络理解" itemprop="url">
+  
+    <h1 itemprop="name">iOS-网络理解</h1>
+    
+     
+           <p itemprop="description" >iOS-网络理解一:网络层级结构TCP/IP四层结构
+应用层
+传输层
+网络层
+网络接口层
+
+OSI七层网络结构
+应用层
+表示层
+会话层
+传输层
+网络层
+数据链路层
+物理层
+
+二:HTTP协议-超文本传输协议
+应用层面向对象的协议常基于TCP链接方式
+
+
+特点:
+支持客户端/服务端</p>
+        
+    
+    <time datetime="2015-04-08T06:25:08.000Z" itemprop="datePublished">2015-04-08</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/03/11/iOS-网络安全之HTTPS/" title="iOS-网络安全之HTTPS" itemprop="url">
+  
+    <h1 itemprop="name">iOS-网络安全之HTTPS</h1>
+    
+     
+           <p itemprop="description" >iOS-网络安全之HTTPS一: 中间人攻击概念
+经常会提到的就是中间人攻击
+Man-in-the-middle attack(MITM)
+攻击者插入到原本直接通信的双方之间,双方已为还在直接跟对方通信,但实际是通过了攻击者这个中间人,信息会被它获取或篡改
+
+时机
+HTTPS在建</p>
+        
+    
+    <time datetime="2015-03-10T22:03:41.000Z" itemprop="datePublished">2015-03-11</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/03/10/SSL-TLS四次握手/" title="SSL/TLS四次握手" itemprop="url">
+  
+    <h1 itemprop="name">SSL/TLS四次握手</h1>
+    
+     
+           <p itemprop="description" >SSL/TLS四次握手一: 图解四次握手
+二: 数字证书
+数字证书是一个电子文档, 其中包含了持有者的信息/公钥/证明证书有效的数字签名.数字证书室友证书认证机构(CA)来负责签发管理数字证书的类型有多种,HTTPS使用的是SSL证书
+
+CA组织的结构
+CA组织顶层是根CA
+根C</p>
+        
+    
+    <time datetime="2015-03-10T08:28:24.000Z" itemprop="datePublished">2015-03-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/Ryukie.GitHub.io/2015/03/08/iOS多线程技术对比/" title="iOS多线程技术对比" itemprop="url">
+  
+    <h1 itemprop="name">iOS多线程技术对比</h1>
+    
+     
+           <p itemprop="description" >iOS多线程技术对比一: NSThread
+每个NSThread对象对应一个线程，真正最原始的线程
+
+
+优点
+NSThread 轻量级最低，相对简单。
+
+
+缺点
+手动管理所有的线程活动，如生命周期、线程同步、睡眠等。
+
+
+
+二: NSOperation
+自带线程管理的抽象类。基于</p>
+        
+    
+    <time datetime="2015-03-08T13:52:11.000Z" itemprop="datePublished">2015-03-08</time>
   </a>
 </section>
 
@@ -314,7 +610,7 @@ NSTimer
 
 
   <nav id="page-nav" class="clearfix unexpand">
-    <a class="extend prev" rel="prev" href="/Ryukie.GitHub.io/page/2/"><span></span>Prev</a><a class="page-number" href="/Ryukie.GitHub.io/">1</a><a class="page-number" href="/Ryukie.GitHub.io/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/Ryukie.GitHub.io/page/4/">4</a><a class="page-number" href="/Ryukie.GitHub.io/page/5/">5</a><a class="page-number" href="/Ryukie.GitHub.io/page/6/">6</a><a class="extend next" rel="next" href="/Ryukie.GitHub.io/page/4/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/Ryukie.GitHub.io/page/2/"><span></span>Prev</a><a class="page-number" href="/Ryukie.GitHub.io/">1</a><a class="page-number" href="/Ryukie.GitHub.io/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/Ryukie.GitHub.io/page/4/">4</a><a class="extend next" rel="next" href="/Ryukie.GitHub.io/page/4/">Next<span></span></a>
   </nav>
 
 </div>
@@ -325,22 +621,12 @@ NSTimer
 <aside class="clearfix">
 
   
-<div class="github-card">
-<p class="asidetitle">Github 名片</p>
-<div class="github-card" data-github="RyukieSama" data-width="220" data-height="119" data-theme="medium">
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
-</div>
-  </div>
-
-
-
-  
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
-			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>56</sup></a></li>
+			<li><a href="/Ryukie.GitHub.io/categories/码生/" title="码生">码生<sup>60</sup></a></li>
 		  
 		
 		</ul>
@@ -353,11 +639,11 @@ NSTimer
 		<ul class="clearfix">
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>40</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/iOS/" title="iOS">iOS<sup>43</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>7</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/Swift/" title="Swift">Swift<sup>8</sup></a></li>
 			
 		
 			
@@ -365,11 +651,11 @@ NSTimer
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>5</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>6</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/网络/" title="网络">网络<sup>5</sup></a></li>
 			
 		
 			
@@ -377,7 +663,7 @@ NSTimer
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/数据库/" title="数据库">数据库<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/TODO/" title="TODO">TODO<sup>4</sup></a></li>
 			
 		
 			
@@ -389,6 +675,10 @@ NSTimer
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
@@ -397,15 +687,7 @@ NSTimer
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
 			
 		
 			
@@ -413,11 +695,7 @@ NSTimer
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/后端/" title="后端">后端<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/面试/" title="面试">面试<sup>2</sup></a></li>
 			
 		
 			
@@ -425,20 +703,24 @@ NSTimer
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/C语言/" title="C语言">C语言<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/直播/" title="直播">直播<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/BUG/" title="BUG">BUG<sup>1</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/Node-js/" title="Node.js">Node.js<sup>1</sup></a></li>
 			
 		
 		</ul>
 </div>
 
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
 
 </aside>
 </div>
