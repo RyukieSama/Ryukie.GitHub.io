@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>数据库主键和外键 | RyukieSama`sDogHouse</title>
+    <title>iOS-常见崩溃分析 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="数据库主键和外键一: 什么是 主键 外键 学生表(学号,姓名,性别)  学号是主键课程表(课程号,课程名,学分)课程号是主键成绩表(学号,课程号,成绩)学号/课程号 是外键    如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键 如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表  二: 外键的作用 外键用于保持数据一致性, 完整性 主要">
-<meta name="keywords" content="数据库">
+    <meta name="description" content="iOS-常见崩溃分析">
+<meta name="keywords" content="iOS,BUG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据库主键和外键">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/01/12/数据库主键和外键/index.html">
+<meta property="og:title" content="iOS-常见崩溃分析">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/05/16/iOS-常见崩溃分析/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="数据库主键和外键一: 什么是 主键 外键 学生表(学号,姓名,性别)  学号是主键课程表(课程号,课程名,学分)课程号是主键成绩表(学号,课程号,成绩)学号/课程号 是外键    如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键 如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表  二: 外键的作用 外键用于保持数据一致性, 完整性 主要">
-<meta property="og:updated_time" content="2019-07-14T12:51:36.729Z">
+<meta property="og:description" content="iOS-常见崩溃分析">
+<meta property="og:updated_time" content="2019-07-16T15:58:41.848Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据库主键和外键">
-<meta name="twitter:description" content="数据库主键和外键一: 什么是 主键 外键 学生表(学号,姓名,性别)  学号是主键课程表(课程号,课程名,学分)课程号是主键成绩表(学号,课程号,成绩)学号/课程号 是外键    如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键 如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表  二: 外键的作用 外键用于保持数据一致性, 完整性 主要">
+<meta name="twitter:title" content="iOS-常见崩溃分析">
+<meta name="twitter:description" content="iOS-常见崩溃分析">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2015/01/12/数据库主键和外键/" title="数据库主键和外键" itemprop="url">数据库主键和外键</a>
+      <a href="/Ryukie.GitHub.io/2017/05/16/iOS-常见崩溃分析/" title="iOS-常见崩溃分析" itemprop="url">iOS-常见崩溃分析</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-12T08:40:15.000Z" itemprop="datePublished"> Published 2015-01-12</time>
+    <time datetime="2017-05-16T15:04:18.000Z" itemprop="datePublished"> Published 2017-05-16</time>
     
   </p>
 </header>
@@ -97,60 +97,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库主键和外键"><span class="toc-number">1.</span> <span class="toc-text">数据库主键和外键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是-主键-外键"><span class="toc-number">1.1.</span> <span class="toc-text">一: 什么是 主键 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-外键的作用"><span class="toc-number">1.2.</span> <span class="toc-text">二: 外键的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-主键的设计原则"><span class="toc-number">1.3.</span> <span class="toc-text">三: 主键的设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-数据库主键选取策略"><span class="toc-number">1.4.</span> <span class="toc-text">四: 数据库主键选取策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-外键"><span class="toc-number">1.5.</span> <span class="toc-text">五: 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-常见崩溃分析"><span class="toc-number">1.</span> <span class="toc-text">iOS-常见崩溃分析</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="数据库主键和外键"><a href="#数据库主键和外键" class="headerlink" title="数据库主键和外键"></a>数据库主键和外键</h1><h2 id="一-什么是-主键-外键"><a href="#一-什么是-主键-外键" class="headerlink" title="一: 什么是 主键 外键"></a>一: 什么是 主键 外键</h2><blockquote>
-<p>学生表(学号,姓名,性别)</p>
-<blockquote>
-<p>学号是主键<br>课程表(课程号,课程名,学分)<br>课程号是主键<br>成绩表(学号,课程号,成绩)<br>学号/课程号 是外键</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>如果公共关键字在一个关系中是主关键字,呢么这个公共关键字被称为另一关系的外键</li>
-<li>如果一个关系的外键作为主关键字的表被称为主表, 具有次此关键字的表被称为主表的从表</li>
-</ul>
-<h2 id="二-外键的作用"><a href="#二-外键的作用" class="headerlink" title="二: 外键的作用"></a>二: 外键的作用</h2><ul>
-<li>外键用于保持数据一致性, 完整性</li>
-<li>主要目的是控制存储在外键表中的数据</li>
-</ul>
-<h2 id="三-主键的设计原则"><a href="#三-主键的设计原则" class="headerlink" title="三: 主键的设计原则"></a>三: 主键的设计原则</h2><ul>
-<li>主键应当是对用户无意义的</li>
-<li>主键应该是单列的,以提高链接和筛选操作的效率<ul>
-<li>复合键的使用通常出于两点考虑<ul>
-<li>主键应当具有意义<ul>
-<li>这被认为破坏了数据库提供了方便</li>
-</ul>
-</li>
-<li>在描述多对多关系的链接表中可与使用两个外部键作为主键<ul>
-<li>该表可能成为其他从表的主表,并成为从表主键的一部分,使得之后的从表包含更多的列</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>永远不要更新主键</li>
-<li>主键不应该包含动态变化的数据(时间戳等)</li>
-<li>主键应当由计算机自动生成</li>
-</ul>
-<h2 id="四-数据库主键选取策略"><a href="#四-数据库主键选取策略" class="headerlink" title="四: 数据库主键选取策略"></a>四: 数据库主键选取策略</h2><ul>
-<li>自动增长型</li>
-<li>手动增长型</li>
-<li>使用UniqueIdentifier SQL Server提供一个UniqueIdentifier数据类型（16字节），并提供一个生成函数NEWID()，生成一个唯一的UniqueIdentifier</li>
-<li>使用COMB类型<ul>
-<li>保留UniqueIdentifier的前10字节，后6字节表示生成时间</li>
-</ul>
-</li>
-</ul>
-<h2 id="五-外键"><a href="#五-外键" class="headerlink" title="五: 外键"></a>五: 外键</h2><ul>
-<li>外键的主要作用是用来控制数据库中数据的完整性,党对一个数据进行操作的时候,和他有关联的一个表或者多个表的数据能够同时发生改变</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<p><a href="https://www.cnblogs.com/buptlyn/p/4555206.html" target="_blank" rel="external">https://www.cnblogs.com/buptlyn/p/4555206.html</a></p>
-</blockquote>
-  
+		<h1 id="iOS-常见崩溃分析"><a href="#iOS-常见崩溃分析" class="headerlink" title="iOS-常见崩溃分析"></a>iOS-常见崩溃分析</h1>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -163,7 +114,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/数据库/">数据库</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/BUG/">BUG</a>
   </div>
 
 </div>
@@ -208,18 +159,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/Ryukie.GitHub.io/2015/03/08/iOS多线程技术对比/" title="iOS多线程技术对比">
+ <a href="/Ryukie.GitHub.io/2017/05/31/UI调试-UIDebuggingInformationOverlay/" title="UI调试_UIDebuggingInformationOverlay">
   <strong>上一篇：</strong><br/>
   <span>
-  iOS多线程技术对比</span>
+  UI调试_UIDebuggingInformationOverlay</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2014/01/01/hello-world/"  title="Hello World">
+<a href="/Ryukie.GitHub.io/2017/03/30/隐藏导航栏下面的线/"  title="隐藏导航栏下面的线">
  <strong>下一篇：</strong><br/> 
- <span>Hello World
+ <span>隐藏导航栏下面的线
 </span>
 </a>
 </div>
@@ -228,7 +179,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/01/12/数据库主键和外键/" data-title="数据库主键和外键" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/01/12/数据库主键和外键/"></div>
+	<div class="ds-thread" data-thread-key="2017/05/16/iOS-常见崩溃分析/" data-title="iOS-常见崩溃分析" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2017/05/16/iOS-常见崩溃分析/"></div>
 </section>
 
 
@@ -238,7 +189,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库主键和外键"><span class="toc-number">1.</span> <span class="toc-text">数据库主键和外键</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-什么是-主键-外键"><span class="toc-number">1.1.</span> <span class="toc-text">一: 什么是 主键 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-外键的作用"><span class="toc-number">1.2.</span> <span class="toc-text">二: 外键的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-主键的设计原则"><span class="toc-number">1.3.</span> <span class="toc-text">三: 主键的设计原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-数据库主键选取策略"><span class="toc-number">1.4.</span> <span class="toc-text">四: 数据库主键选取策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-外键"><span class="toc-number">1.5.</span> <span class="toc-text">五: 外键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-常见崩溃分析"><span class="toc-number">1.</span> <span class="toc-text">iOS-常见崩溃分析</span></a></li></ol>
  
   </div>
 
