@@ -20,7 +20,7 @@
 <meta property="og:description" content="OC项目中加入Swift混编 年后项目准备引入 Swift新的模块需求使用 Swift 编写需要支持与 OC 与 Swift 的混编这里描述一下前期准备的工作  Project_defines module 配置 Project_product module name 配置这里的 Product Module Name 需要和 工程名称 一致  代码修改在需要调用到 Swift 的地方 impor">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15167571775287.jpg">
 <meta property="og:image" content="http://ohfpqyfi7.bkt.clouddn.com/15167572476625.jpg">
-<meta property="og:updated_time" content="2018-01-29T01:52:44.648Z">
+<meta property="og:updated_time" content="2018-01-29T01:52:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC项目中加入Swift混编">
 <meta name="twitter:description" content="OC项目中加入Swift混编 年后项目准备引入 Swift新的模块需求使用 Swift 编写需要支持与 OC 与 Swift 的混编这里描述一下前期准备的工作  Project_defines module 配置 Project_product module name 配置这里的 Product Module Name 需要和 工程名称 一致  代码修改在需要调用到 Swift 的地方 impor">
@@ -52,7 +52,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -68,7 +68,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -91,14 +91,14 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-01-24T01:17:15.000Z" itemprop="datePublished"> Published 2018-01-24</time>
+    <time datetime="2018-01-24T01:17:15.000Z" itemprop="datePublished"> 发表于 2018-01-24</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OC项目中加入Swift混编"><span class="toc-number">1.</span> <span class="toc-text">OC项目中加入Swift混编</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-defines-module-配置"><span class="toc-number">1.1.</span> <span class="toc-text">Project_defines module 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-product-module-name-配置"><span class="toc-number">1.2.</span> <span class="toc-text">Project_product module name 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码修改"><span class="toc-number">1.3.</span> <span class="toc-text">代码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在需要调用到-Swift-的地方-import"><span class="toc-number">1.3.1.</span> <span class="toc-text">在需要调用到 Swift 的地方 import</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">注意点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要暴露给-Swift-调用的"><span class="toc-number">1.3.2.</span> <span class="toc-text">需要暴露给 Swift 调用的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点-1"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">注意点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apple官方混编指南"><span class="toc-number">1.4.</span> <span class="toc-text">Apple官方混编指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#国内汉化"><span class="toc-number">1.5.</span> <span class="toc-text">国内汉化</span></a></li></ol></li></ol>
 		
@@ -208,22 +208,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#OC项目中加入Swift混编"><span class="toc-number">1.</span> <span class="toc-text">OC项目中加入Swift混编</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-defines-module-配置"><span class="toc-number">1.1.</span> <span class="toc-text">Project_defines module 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-product-module-name-配置"><span class="toc-number">1.2.</span> <span class="toc-text">Project_product module name 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码修改"><span class="toc-number">1.3.</span> <span class="toc-text">代码修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#在需要调用到-Swift-的地方-import"><span class="toc-number">1.3.1.</span> <span class="toc-text">在需要调用到 Swift 的地方 import</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">注意点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#需要暴露给-Swift-调用的"><span class="toc-number">1.3.2.</span> <span class="toc-text">需要暴露给 Swift 调用的</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注意点-1"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">注意点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apple官方混编指南"><span class="toc-number">1.4.</span> <span class="toc-text">Apple官方混编指南</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#国内汉化"><span class="toc-number">1.5.</span> <span class="toc-text">国内汉化</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -236,7 +236,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -268,7 +268,7 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>3</sup></a></li>
 			
 		
 			
@@ -276,23 +276,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
 			
@@ -304,7 +292,19 @@
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
@@ -508,7 +508,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 

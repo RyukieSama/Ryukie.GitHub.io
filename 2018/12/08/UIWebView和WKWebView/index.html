@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
 <meta property="og:description" content="UIWebView和WKWebView一: UIWebView的优缺点优点 支持缓存和NSURLProtocol拦截  缺点 内存泄露 加载大数据资源时内存占用大,耗电量高  二: WKWebView的优缺点优点 加载网页速度提升,内存占用低(UIWebView的1/3 ~ 1/4) 提供加载网页进度的属性 拥有高达60FPS滚动刷新率及内置手势 高效的App和web信息交换通道  缺点 没有缓存">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1200910-1039aa39914f2e79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/873">
-<meta property="og:updated_time" content="2019-07-12T11:24:34.304Z">
+<meta property="og:updated_time" content="2019-07-12T11:24:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIWebView和WKWebView">
 <meta name="twitter:description" content="UIWebView和WKWebView一: UIWebView的优缺点优点 支持缓存和NSURLProtocol拦截  缺点 内存泄露 加载大数据资源时内存占用大,耗电量高  二: WKWebView的优缺点优点 加载网页速度提升,内存占用低(UIWebView的1/3 ~ 1/4) 提供加载网页进度的属性 拥有高达60FPS滚动刷新率及内置手势 高效的App和web信息交换通道  缺点 没有缓存">
@@ -51,7 +51,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +67,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -90,14 +90,14 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2018-12-08T14:51:12.000Z" itemprop="datePublished"> Published 2018-12-08</time>
+    <time datetime="2018-12-08T14:51:12.000Z" itemprop="datePublished"> 发表于 2018-12-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIWebView和WKWebView"><span class="toc-number">1.</span> <span class="toc-text">UIWebView和WKWebView</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-UIWebView的优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一: UIWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-WKWebView的优缺点"><span class="toc-number">1.2.</span> <span class="toc-text">二: WKWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源代理"><span class="toc-number">1.2.3.</span> <span class="toc-text">资源代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Cookie"><span class="toc-number">1.3.</span> <span class="toc-text">三: Cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-跨域"><span class="toc-number">1.4.</span> <span class="toc-text">四: 跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
 		
@@ -245,22 +245,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UIWebView和WKWebView"><span class="toc-number">1.</span> <span class="toc-text">UIWebView和WKWebView</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-UIWebView的优缺点"><span class="toc-number">1.1.</span> <span class="toc-text">一: UIWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">1.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点"><span class="toc-number">1.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-WKWebView的优缺点"><span class="toc-number">1.2.</span> <span class="toc-text">二: WKWebView的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#优点-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#缺点-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源代理"><span class="toc-number">1.2.3.</span> <span class="toc-text">资源代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-Cookie"><span class="toc-number">1.3.</span> <span class="toc-text">三: Cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-跨域"><span class="toc-number">1.4.</span> <span class="toc-text">四: 跨域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -273,7 +273,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -305,7 +305,7 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>3</sup></a></li>
 			
 		
 			
@@ -313,23 +313,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
 			
@@ -341,7 +329,19 @@
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
@@ -545,7 +545,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 

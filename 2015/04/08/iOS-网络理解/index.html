@@ -18,7 +18,7 @@
 <meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2015/04/08/iOS-网络理解/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
 <meta property="og:description" content="iOS-网络理解一:网络层级结构TCP/IP四层结构 应用层 传输层 网络层 网络接口层  OSI七层网络结构 应用层 表示层 会话层 传输层 网络层 数据链路层 物理层  二:HTTP协议-超文本传输协议 应用层面向对象的协议常基于TCP链接方式   特点: 支持客户端/服务端模式 简单快捷灵活 客户端每次发送的请求,都需要服务器回送响应,请求结束后主动释放链接.俗称短连接    三:TCP协议">
-<meta property="og:updated_time" content="2019-07-08T07:18:01.354Z">
+<meta property="og:updated_time" content="2019-07-08T07:18:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS-网络理解">
 <meta name="twitter:description" content="iOS-网络理解一:网络层级结构TCP/IP四层结构 应用层 传输层 网络层 网络接口层  OSI七层网络结构 应用层 表示层 会话层 传输层 网络层 数据链路层 物理层  二:HTTP协议-超文本传输协议 应用层面向对象的协议常基于TCP链接方式   特点: 支持客户端/服务端模式 简单快捷灵活 客户端每次发送的请求,都需要服务器回送响应,请求结束后主动释放链接.俗称短连接    三:TCP协议">
@@ -49,7 +49,7 @@
 				<h1 class="site-name"><a href="/Ryukie.GitHub.io/" title="RyukieSama`sDogHouse">RyukieSama`sDogHouse</a></h1>
 				<h2 class="blog-motto">一只狗的幸福生活</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -65,7 +65,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:ryukiesama.github.io/Ryukie.GitHub.io">
 					</form>
 					
@@ -88,14 +88,14 @@
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2015-04-08T06:25:08.000Z" itemprop="datePublished"> Published 2015-04-08</time>
+    <time datetime="2015-04-08T06:25:08.000Z" itemprop="datePublished"> 发表于 2015-04-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络理解"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-网络层级结构"><span class="toc-number">1.1.</span> <span class="toc-text">一:网络层级结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP四层结构"><span class="toc-number">1.1.1.</span> <span class="toc-text">TCP/IP四层结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI七层网络结构"><span class="toc-number">1.1.2.</span> <span class="toc-text">OSI七层网络结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-HTTP协议-超文本传输协议"><span class="toc-number">1.2.</span> <span class="toc-text">二:HTTP协议-超文本传输协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-TCP协议"><span class="toc-number">1.3.</span> <span class="toc-text">三:TCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-UDP协议"><span class="toc-number">1.4.</span> <span class="toc-text">四:UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-Socket"><span class="toc-number">1.5.</span> <span class="toc-text">五:Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-HTTP-Socket-TCP-的关系"><span class="toc-number">1.6.</span> <span class="toc-text">六:HTTP-Socket-TCP 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-TCP-UDP的区别"><span class="toc-number">1.7.</span> <span class="toc-text">七:TCP/UDP的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-Socket工作流程"><span class="toc-number">1.8.</span> <span class="toc-text">八.Socket工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-HTTP和Socket的区别"><span class="toc-number">1.9.</span> <span class="toc-text">九:HTTP和Socket的区别</span></a></li></ol></li></ol>
 		
@@ -273,22 +273,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#iOS-网络理解"><span class="toc-number">1.</span> <span class="toc-text">iOS-网络理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-网络层级结构"><span class="toc-number">1.1.</span> <span class="toc-text">一:网络层级结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP-IP四层结构"><span class="toc-number">1.1.1.</span> <span class="toc-text">TCP/IP四层结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI七层网络结构"><span class="toc-number">1.1.2.</span> <span class="toc-text">OSI七层网络结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-HTTP协议-超文本传输协议"><span class="toc-number">1.2.</span> <span class="toc-text">二:HTTP协议-超文本传输协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-TCP协议"><span class="toc-number">1.3.</span> <span class="toc-text">三:TCP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-UDP协议"><span class="toc-number">1.4.</span> <span class="toc-text">四:UDP协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-Socket"><span class="toc-number">1.5.</span> <span class="toc-text">五:Socket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六-HTTP-Socket-TCP-的关系"><span class="toc-number">1.6.</span> <span class="toc-text">六:HTTP-Socket-TCP 的关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七-TCP-UDP的区别"><span class="toc-number">1.7.</span> <span class="toc-text">七:TCP/UDP的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八-Socket工作流程"><span class="toc-number">1.8.</span> <span class="toc-text">八.Socket工作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九-HTTP和Socket的区别"><span class="toc-number">1.9.</span> <span class="toc-text">九:HTTP和Socket的区别</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -301,7 +301,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -333,7 +333,7 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>3</sup></a></li>
 			
 		
 			
@@ -341,23 +341,11 @@
 			
 		
 			
-				<li><a href="/Ryukie.GitHub.io/tags/架构/" title="架构">架构<sup>3</sup></a></li>
+				<li><a href="/Ryukie.GitHub.io/tags/轮子/" title="轮子">轮子<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/Ryukie.GitHub.io/tags/算法/" title="算法">算法<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
 			
 		
 			
@@ -369,7 +357,19 @@
 			
 		
 			
+				<li><a href="/Ryukie.GitHub.io/tags/Nodejs/" title="Nodejs">Nodejs<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/Ryukie.GitHub.io/tags/摘录/" title="摘录">摘录<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/RunLoop/" title="RunLoop">RunLoop<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/Ryukie.GitHub.io/tags/学习/" title="学习">学习<sup>2</sup></a></li>
 			
 		
 			
@@ -573,7 +573,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/Ryukie.GitHub.io/img/scrollup.png"/></a>
 	</div>
 	<script src="/Ryukie.GitHub.io/js/totop.js"></script>
 
