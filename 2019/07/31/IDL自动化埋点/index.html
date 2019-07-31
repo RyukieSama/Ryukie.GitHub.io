@@ -4,26 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>AutoreleasePool | RyukieSama`sDogHouse</title>
+    <title>IDL自动化生成埋点模型 | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="自动释放池  系统 系统默认会在 main.m 文件中创建一个自动释放池。。。   手动 例如在for循环中产生大量无法及时释放的临时变量12345for (int i = 0; i &amp;lt; largeNumber; ++i) &amp;#123;	NSString *str = @&quot;Hello World&quot;;	str = [str stringByAppendingFormat:@&quot; - %d&quot;, i">
-<meta name="keywords" content="iOS_UI">
+    <meta name="description" content="IDL自动化生成埋点模型 使用定义好的IDL语言规范生成JSON上传至指定仓库 Jenkins脚本转化生成代码，上传至指定仓库 项目同步更新相关仓库，在需要埋点的地方埋点时使用相关事件模型即可">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AutoreleasePool">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2016/03/21/autoreleasepool/index.html">
+<meta property="og:title" content="IDL自动化生成埋点模型">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/31/IDL自动化埋点/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="自动释放池  系统 系统默认会在 main.m 文件中创建一个自动释放池。。。   手动 例如在for循环中产生大量无法及时释放的临时变量12345for (int i = 0; i &amp;lt; largeNumber; ++i) &amp;#123;	NSString *str = @&quot;Hello World&quot;;	str = [str stringByAppendingFormat:@&quot; - %d&quot;, i">
-<meta property="og:image" content="https://github.com/RyukieSama/Ryukie.GitHub.io/blob/gh-pages/images/79FFBB31-E37D-440D-8870-E3092C958B2C.png?raw=true">
-<meta property="og:updated_time" content="2017-08-15T12:01:06.000Z">
+<meta property="og:description" content="IDL自动化生成埋点模型 使用定义好的IDL语言规范生成JSON上传至指定仓库 Jenkins脚本转化生成代码，上传至指定仓库 项目同步更新相关仓库，在需要埋点的地方埋点时使用相关事件模型即可">
+<meta property="og:updated_time" content="2019-07-31T13:45:33.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AutoreleasePool">
-<meta name="twitter:description" content="自动释放池  系统 系统默认会在 main.m 文件中创建一个自动释放池。。。   手动 例如在for循环中产生大量无法及时释放的临时变量12345for (int i = 0; i &amp;lt; largeNumber; ++i) &amp;#123;	NSString *str = @&quot;Hello World&quot;;	str = [str stringByAppendingFormat:@&quot; - %d&quot;, i">
-<meta name="twitter:image" content="https://github.com/RyukieSama/Ryukie.GitHub.io/blob/gh-pages/images/79FFBB31-E37D-440D-8870-E3092C958B2C.png?raw=true">
+<meta name="twitter:title" content="IDL自动化生成埋点模型">
+<meta name="twitter:description" content="IDL自动化生成埋点模型 使用定义好的IDL语言规范生成JSON上传至指定仓库 Jenkins脚本转化生成代码，上传至指定仓库 项目同步更新相关仓库，在需要埋点的地方埋点时使用相关事件模型即可">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -83,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2016/03/21/autoreleasepool/" title="AutoreleasePool" itemprop="url">AutoreleasePool</a>
+      <a href="/Ryukie.GitHub.io/2019/07/31/IDL自动化埋点/" title="IDL自动化生成埋点模型" itemprop="url">IDL自动化生成埋点模型</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-20T17:27:31.000Z" itemprop="datePublished"> Published 2016-03-21</time>
+    <time datetime="2019-07-31T10:14:05.000Z" itemprop="datePublished"> Published 2019-07-31</time>
     
   </p>
 </header>
@@ -99,52 +97,29 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IDL自动化生成埋点模型"><span class="toc-number">1.</span> <span class="toc-text">IDL自动化生成埋点模型</span></a></li></ol>
 		
 		</div>
 		
-		<p>自动释放池</p>
-<ul>
-<li>系统<ul>
-<li>系统默认会在 main.m 文件中创建一个自动释放池。。。</li>
-</ul>
-</li>
-<li>手动<ul>
-<li>例如在for循环中产生大量无法及时释放的临时变量<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; largeNumber; ++i) &#123;</div><div class="line">	NSString *<span class="keyword">str</span> = @<span class="string">"Hello World"</span>;</div><div class="line">	<span class="keyword">str</span> = [<span class="keyword">str</span> stringByAppendingFormat:@<span class="string">" - %d"</span>, i];</div><div class="line">	<span class="keyword">str</span> = [<span class="keyword">str</span> uppercaseString];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p>问：以上代码存在什么样的问题？如果循环的次数非常大时，应该如何修改？</p>
-<pre><code>- 如果不在本次循环结束的时候消除的话节会一直存在直到程序运行过 } 才会被释放占用大量内存
-- 解决办法:
-</code></pre><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">-(<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">	[<span class="keyword">super</span> viewDidLoad];</div><div class="line"></div><div class="line">    <span class="keyword">int</span> largeNumber = <span class="number">1000000</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; largeNumber; ++i) &#123;</div><div class="line">@autoreleasepool &#123;</div><div class="line">	NSString *<span class="keyword">str</span> = @<span class="string">"Hello World"</span>;</div><div class="line">	<span class="keyword">str</span> = [<span class="keyword">str</span> stringByAppendingFormat:@<span class="string">" - %d"</span>, i];</div><div class="line">	<span class="keyword">str</span> = [<span class="keyword">str</span> uppercaseString];</div><div class="line">		&#125;<span class="comment">// 循环执行到这里就会回头继续执行循环了</span></div><div class="line">		<span class="comment">//这样在循环内部就已经释放了自动释放池</span></div><div class="line">	&#125;</div><div class="line">    <span class="comment">// 不加自动释放池的话要执行到这里才会释放对象</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>自动释放池的 创建 &amp; 销毁</p>
-<ul>
-<li>每一次 主线程 的 消息循环 开始的时候会创建自动释放池</li>
-<li>消息循环结束前,会释放自动释放池</li>
-<li>自动释放池销毁的时候会向其内部所有的对象发送一个 release 消息 释放所有的对象</li>
-</ul>
-<p>内存管理-OC</p>
-<p>消息循环</p>
-<ul>
-<li>保证应用程序不退出</li>
-<li>实现: 一个死循环不断地监视事件 (方法,点击事件等),并执行对应的方法</li>
-<li>[面试会问]app是如何运行的?<br><img src="https://github.com/RyukieSama/Ryukie.GitHub.io/blob/gh-pages/images/79FFBB31-E37D-440D-8870-E3092C958B2C.png?raw=true" alt=""></li>
-<li>执行流程详细描述:<ul>
-<li>应用程序开启 -&gt; 创建一个消息循环 -&gt; 监视事件 -&gt; 接收到事件 -&gt; 执行创建自动释放次并执行相应操作 -&gt; 将执行中产生的对象丢入刚才创建的那个自动释放池 -&gt; 消息执行结束 -&gt; 自动释放池销毁(对其中所有对象发送一个 release消息,销毁对象) -&gt; 一次消息循环结束 -&gt; 开始下一次消息循环</li>
-</ul>
-</li>
+		<h1 id="IDL自动化生成埋点模型"><a href="#IDL自动化生成埋点模型" class="headerlink" title="IDL自动化生成埋点模型"></a>IDL自动化生成埋点模型</h1><ul>
+<li>使用定义好的<code>IDL</code>语言规范生成<code>JSON</code>上传至指定仓库</li>
+<li><code>Jenkins</code>脚本转化生成代码，上传至指定仓库</li>
+<li>项目同步更新相关仓库，在需要埋点的地方埋点时使用相关<code>事件模型</code>即可</li>
 </ul>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Ryukie.GitHub.io/categories/码生/">码生</a>
+</div>
+
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS-UI/">iOS_UI</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
   </div>
 
 </div>
@@ -188,19 +163,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2016/09/11/load与-initialize/" title="+load与+initialize">
-  <strong>上一篇：</strong><br/>
-  <span>
-  +load与+initialize</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2015/10/12/死锁/"  title="死锁">
+<a href="/Ryukie.GitHub.io/2019/07/16/iOS-为什么用dispatch-once实现单例/"  title="iOS-为什么用dispatch_once实现单例">
  <strong>下一篇：</strong><br/> 
- <span>死锁
+ <span>iOS-为什么用dispatch_once实现单例
 </span>
 </a>
 </div>
@@ -209,7 +176,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2016/03/21/autoreleasepool/" data-title="AutoreleasePool" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2016/03/21/autoreleasepool/"></div>
+	<div class="ds-thread" data-thread-key="2019/07/31/IDL自动化埋点/" data-title="IDL自动化生成埋点模型" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/31/IDL自动化埋点/"></div>
 </section>
 
 
@@ -219,7 +186,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IDL自动化生成埋点模型"><span class="toc-number">1.</span> <span class="toc-text">IDL自动化生成埋点模型</span></a></li></ol>
  
   </div>
 
