@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>IDL自动化生成埋点模型 | RyukieSama`sDogHouse</title>
+    <title>Swift COW | RyukieSama`sDogHouse</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ryukie">
     
 
     
-    <meta name="description" content="IDL自动化生成埋点模型 使用定义好的IDL语言规范生成JSON上传至指定仓库 Jenkins脚本转化生成代码，上传至指定仓库 项目同步更新相关仓库，在需要埋点的地方埋点时使用相关事件模型即可">
-<meta name="keywords" content="iOS">
+    <meta name="description" content="Swift COW什么是 COWCopy on write  COW是一种常见的计算机技术，有助于在复制结构时提高效率 例如一个数组有100个元素，赋值到另一个数组，赋值所有元素，即最终两个数组内容相同   当使用COW的话 当将两个变量指向同一数组时，他们指向相同的底层数据。两个变量指向相同的数据可能看起来矛盾，当修改第二个变量的时候，Swift才会去复制一个副本，第一个不会改变。   通过延迟">
+<meta name="keywords" content="iOS,Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IDL自动化生成埋点模型">
-<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/31/IDL自动化埋点/index.html">
+<meta property="og:title" content="Swift COW">
+<meta property="og:url" content="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/08/04/Swift-COW/index.html">
 <meta property="og:site_name" content="RyukieSama`sDogHouse">
-<meta property="og:description" content="IDL自动化生成埋点模型 使用定义好的IDL语言规范生成JSON上传至指定仓库 Jenkins脚本转化生成代码，上传至指定仓库 项目同步更新相关仓库，在需要埋点的地方埋点时使用相关事件模型即可">
-<meta property="og:updated_time" content="2019-07-31T13:45:33.342Z">
+<meta property="og:description" content="Swift COW什么是 COWCopy on write  COW是一种常见的计算机技术，有助于在复制结构时提高效率 例如一个数组有100个元素，赋值到另一个数组，赋值所有元素，即最终两个数组内容相同   当使用COW的话 当将两个变量指向同一数组时，他们指向相同的底层数据。两个变量指向相同的数据可能看起来矛盾，当修改第二个变量的时候，Swift才会去复制一个副本，第一个不会改变。   通过延迟">
+<meta property="og:updated_time" content="2019-08-04T15:29:01.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IDL自动化生成埋点模型">
-<meta name="twitter:description" content="IDL自动化生成埋点模型 使用定义好的IDL语言规范生成JSON上传至指定仓库 Jenkins脚本转化生成代码，上传至指定仓库 项目同步更新相关仓库，在需要埋点的地方埋点时使用相关事件模型即可">
+<meta name="twitter:title" content="Swift COW">
+<meta name="twitter:description" content="Swift COW什么是 COWCopy on write  COW是一种常见的计算机技术，有助于在复制结构时提高效率 例如一个数组有100个元素，赋值到另一个数组，赋值所有元素，即最终两个数组内容相同   当使用COW的话 当将两个变量指向同一数组时，他们指向相同的底层数据。两个变量指向相同的数据可能看起来矛盾，当修改第二个变量的时候，Swift才会去复制一个副本，第一个不会改变。   通过延迟">
 
     
     <link rel="alternative" href="/atom.xml" title="RyukieSama`sDogHouse" type="application/atom+xml">
@@ -81,14 +81,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Ryukie.GitHub.io/2019/07/31/IDL自动化埋点/" title="IDL自动化生成埋点模型" itemprop="url">IDL自动化生成埋点模型</a>
+      <a href="/Ryukie.GitHub.io/2019/08/04/Swift-COW/" title="Swift COW" itemprop="url">Swift COW</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/Ryukie.GitHub.io/about" title="Ryukie" target="_blank" itemprop="author">Ryukie</a>
 		
   <p class="article-time">
-    <time datetime="2019-07-31T10:14:05.000Z" itemprop="datePublished"> Published 2019-07-31</time>
+    <time datetime="2019-08-04T15:19:37.000Z" itemprop="datePublished"> Published 2019-08-04</time>
     
   </p>
 </header>
@@ -97,15 +97,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IDL自动化生成埋点模型"><span class="toc-number">1.</span> <span class="toc-text">IDL自动化生成埋点模型</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-COW"><span class="toc-number">1.</span> <span class="toc-text">Swift COW</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是-COW"><span class="toc-number">1.1.</span> <span class="toc-text">什么是 COW</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="IDL自动化生成埋点模型"><a href="#IDL自动化生成埋点模型" class="headerlink" title="IDL自动化生成埋点模型"></a>IDL自动化生成埋点模型</h1><ul>
-<li>使用定义好的<code>IDL</code>语言规范生成<code>JSON</code>上传至指定仓库</li>
-<li><code>Jenkins</code>脚本转化生成代码，上传至指定仓库</li>
-<li>项目同步更新相关仓库，在需要埋点的地方埋点时使用相关<code>事件模型</code>即可</li>
+		<h1 id="Swift-COW"><a href="#Swift-COW" class="headerlink" title="Swift COW"></a>Swift COW</h1><h2 id="什么是-COW"><a href="#什么是-COW" class="headerlink" title="什么是 COW"></a>什么是 COW</h2><p>Copy on write</p>
+<ul>
+<li>COW是一种常见的计算机技术，有助于在复制结构时提高效率<ul>
+<li>例如一个数组有100个元素，赋值到另一个数组，赋值所有元素，即最终两个数组内容相同</li>
 </ul>
+</li>
+<li>当使用COW的话<ul>
+<li>当将两个变量指向同一数组时，他们指向相同的底层数据。两个变量指向相同的数据可能看起来矛盾，当修改第二个变量的时候，Swift才会去复制一个副本，第一个不会改变。</li>
+</ul>
+</li>
+<li>通过延迟复制操作，直到实际使用到的时候 才去复制，以此确保没有浪费的工作。</li>
+</ul>
+<blockquote>
+<p>COW是特别添加到Swift数组和字典的功能，自定义的数据类型不会自动实现。</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -119,7 +129,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a>
+  <span></span> <a href="/Ryukie.GitHub.io/tags/iOS/">iOS</a><a href="/Ryukie.GitHub.io/tags/Swift/">Swift</a>
   </div>
 
 </div>
@@ -163,19 +173,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/Ryukie.GitHub.io/2019/08/01/Struce与Class/" title="Struct与Class">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Struct与Class</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/Ryukie.GitHub.io/2019/07/16/iOS-为什么用dispatch-once实现单例/"  title="iOS-为什么用dispatch_once实现单例">
+<a href="/Ryukie.GitHub.io/2019/08/04/Swift-向下向上取整/"  title="Swift 向下向上取整">
  <strong>下一篇：</strong><br/> 
- <span>iOS-为什么用dispatch_once实现单例
+ <span>Swift 向下向上取整
 </span>
 </a>
 </div>
@@ -184,7 +186,7 @@
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2019/07/31/IDL自动化埋点/" data-title="IDL自动化生成埋点模型" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/07/31/IDL自动化埋点/"></div>
+	<div class="ds-thread" data-thread-key="2019/08/04/Swift-COW/" data-title="Swift COW" data-url="http://ryukiesama.github.io/Ryukie.GitHub.io/2019/08/04/Swift-COW/"></div>
 </section>
 
 
@@ -194,7 +196,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#IDL自动化生成埋点模型"><span class="toc-number">1.</span> <span class="toc-text">IDL自动化生成埋点模型</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-COW"><span class="toc-number">1.</span> <span class="toc-text">Swift COW</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是-COW"><span class="toc-number">1.1.</span> <span class="toc-text">什么是 COW</span></a></li></ol></li></ol>
  
   </div>
 
